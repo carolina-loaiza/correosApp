@@ -1,0 +1,63 @@
+/* Global Reset */
+
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Global Reset Fin */
+
+
+/* Global variables */
+
+:root {
+  --highlighter-yellow: #5fb33e;
+  --blue: #043d5a;
+  --ligh-blue: #d5d3d3;
+  --dark-blue: #1e2630;
+}
+
+/* Global variables Fin */
+
+
+ul li {
+  display: block;
+  width: 120px;
+  height: 120px;
+  float: left;
+}
+
+.bg-01 {
+  background: var(--highlighter-yellow);
+}
+
+.bg-02 {
+  background: var(--ligh-blue);
+}
+
+.bg-03 {
+  background: var(--dark-blue);
+}
+
+.bg-04 {
+  background: var(--blue);
+}
