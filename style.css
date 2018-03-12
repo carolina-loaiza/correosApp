@@ -1,3 +1,14 @@
+/* Global variables
+
+:root {
+  --highlighter: #5fb33e;
+  --blue: #043d5a;
+  --grey: #d5d3d3;
+  --dark-blue: #1e2630;
+}
+
+Global variables Fin */
+
 /* Global Reset */
 
 html {
@@ -26,38 +37,36 @@ img {
 
 /* Global Reset Fin */
 
-
-/* Global variables */
-
-:root {
-  --highlighter-yellow: #5fb33e;
-  --blue: #043d5a;
-  --ligh-blue: #d5d3d3;
-  --dark-blue: #1e2630;
+header,
+footer {
+  height: 130px;
+  background-color: #043d5a;
 }
 
-/* Global variables Fin */
-
-
-ul li {
-  display: block;
-  width: 120px;
-  height: 120px;
-  float: left;
+.mainContainer {
+  display: -webkit-flex;
+  display: flex;
+  max-width: 960px;
+  min-height: 600px;
+  margin: 0 auto;
 }
 
-.bg-01 {
-  background: var(--highlighter-yellow);
+.sideBar {
+  background-color: #1e2630;
+  -webkit-flex: auto;
+  flex: auto;
+  width: 20%;
 }
 
-.bg-02 {
-  background: var(--ligh-blue);
+.innerContainer {
+  background-color: #d5d3d3;
+  -webkit-flex: auto;
+  flex: auto;
+  width: 70%;
 }
 
-.bg-03 {
-  background: var(--dark-blue);
-}
-
-.bg-04 {
-  background: var(--blue);
+.content {
+  background-color: #fff;
+  margin: 60px 30px;
+  min-height: 300px;
 }
