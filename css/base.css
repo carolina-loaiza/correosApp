@@ -39,8 +39,13 @@ img {
 
 header,
 footer {
-  height: 130px;
+  padding: 40px;
   background-color: #043d5a;
+}
+
+.logo {
+  padding: 40px 20px;
+  margin-bottom: 40px;
 }
 
 .mainContainer {
