@@ -1,0 +1,77 @@
+/* Global variables
+
+:root {
+  --highlighter: #5fb33e;
+  --blue: #043d5a;
+  --grey: #d5d3d3;
+  --dark-blue: #1e2630;
+}
+
+Global variables Fin */
+
+/* Global Reset */
+
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Global Reset Fin */
+
+header,
+footer {
+  padding: 40px;
+  background-color: #043d5a;
+}
+
+.logo {
+  padding: 40px 20px;
+  margin-bottom: 40px;
+}
+
+.mainContainer {
+  display: -webkit-flex;
+  display: flex;
+  max-width: 960px;
+  min-height: 600px;
+  margin: 0 auto;
+}
+
+.sideBar {
+  background-color: #1e2630;
+  -webkit-flex: auto;
+  flex: auto;
+  width: 20%;
+}
+
+.innerContainer {
+  background-color: #d5d3d3;
+  -webkit-flex: auto;
+  flex: auto;
+  width: 70%;
+}
+
+.content {
+  background-color: #fff;
+  margin: 60px 30px;
+  min-height: 300px;
+}
