@@ -50,6 +50,21 @@ a:focus {
   outline: none;
 }
 
+label {
+  display: block;
+}
+
+input,
+select,
+textarea {
+  outline: none;
+  border: none;
+  display: block;
+  width: 100%;
+  background: none;
+  font-size: 14px;
+}
+
 /* Global Reset Fin */
 
 /* Layout */
@@ -107,6 +122,7 @@ footer .footerContent .fas {
   margin: 60px 20px;
   min-height: 300px;
   padding: 15px;
+  color: #1e2630;
 }
 
 .title {
@@ -127,6 +143,43 @@ footer .footerContent .fas {
 }
 
 /* Layout Fin */
+
+/* Columnas */
+
+.row {
+  display: -webkit-flex;
+  display: flex;
+}
+
+.col6 {
+  -webkit-flex: auto;
+  flex: auto;
+  width: 50%;
+}
+
+.colWithPaddingLeft {
+  padding-left: 10px;
+}
+
+.colWithPaddingRight {
+  padding-right: 10px;
+}
+
+/* Columnas Fin */
+
+/* Form */
+
+.inputContainer {
+  margin-bottom: 20px;
+}
+
+.input {
+  padding: 8px 12px;
+  border: 1px solid #d5d3d3;
+  margin-top: 10px;
+}
+
+/* Form Fin */
 
 /* Icons */
 
