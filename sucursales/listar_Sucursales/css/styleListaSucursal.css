@@ -24,6 +24,7 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
   padding: 0;
   font-weight: normal;
   font-size: 14px;
+  
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -166,15 +167,18 @@ footer .footerContent .fas {
 /* Columnas Fin */
 
 /* Form */
-
+/* 
 .inputContainer {
   margin-bottom: 20px;
-}
+   display: inline-block;
+} */
 
 .input {
   padding: 8px 12px;
   border: 1px solid #d5d3d3;
   margin-top: 10px;
+  width: 620px;
+  display: inline-block;
 }
 
 /* Form Fin */
@@ -194,6 +198,10 @@ footer .footerContent .fas {
   margin-right: 10px;
   display: inline-block;
   text-align: center;
+}
+
+.acciones {
+
 }
 
 /* Icons Fin */
@@ -315,3 +323,56 @@ footer .footerContent .fas {
 }
 
 /* Sidebar Fin */
+
+/* Tabla inicio*/
+#tblListaSucursal{
+  width: 640px;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+th{
+  font-size: 13px;
+  font-weight: normal;
+  padding: 8px;
+  background-color: rgb(95, 179, 62);
+  color: white;
+}
+td{
+  padding: 8px;
+  background: #e8edff;
+  border-bottom: 1px solid #fff;
+  color: #1e2630;
+  border-top: 1px solid transparent;
+}
+.acciones{
+  text-align: center;
+  width: 50px;
+}
+tr:hover td{
+  background: #d0dafd;
+  color: #339;
+}
+#tbody
+{
+  background: #d0dafd;
+}
+/*tabla Fin */
+
+.iconfilter
+{
+  padding:8px;
+  margin-right:4px;
+}
+
+.iFiltroConv
+{
+  width:605px;
+  display: inline-block;
+}
+
+.lupa
+{
+  width: 10px;
+  display: inline-block;
+  margin-right: 6px;
+}
