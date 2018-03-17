@@ -45,8 +45,6 @@ function mostrarEncargados() {
            atag.dataset.correo = listaEncargados[i][4];
            cEditar.appendChild(atag);
 
-           atag.addEventListener('click', redirect);
-
 
            
 
@@ -56,8 +54,10 @@ function mostrarEncargados() {
            botonDesactivar.classList.add("fas", "fa-times");
            botonDesactivar.dataset.correo = listaEncargados[i][4];
            cDesactivar.appendChild(botonDesactivar);
+
        }//if
     }//for loop
+
 
 }
 
@@ -65,12 +65,8 @@ function mostrarEncargados() {
 //funcion que redirige a un html con formulario nuevo
 function redirect() {
     let sCorreo = this.dataset.correo; 
-    setTemp(sCorreo);
+    atag.addEventListener('click', setTemp(sCorreo));
 }
-
-
-
-
 
 
 //funcion que despliega los datos en un formulario nuevo para modificarlos

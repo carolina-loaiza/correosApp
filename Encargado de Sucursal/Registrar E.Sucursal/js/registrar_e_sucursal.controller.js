@@ -51,11 +51,12 @@ function obtenerDatos() {
         let edad = calcularEdad();
         let genero = document.querySelector('#opGenero').value;
         let sucursal = document.querySelector('#opSucursal').value;
+        
 
         //la foto no se guarda
 
         infoEncargadoSucursal.push(primerNombre, segundoNombre, primerApellido, cedula, correo, telefono_1, telefono_2
-        , edad, genero, sucursal);
+        , edad, genero, sucursal, edad);
         setInfoEncargadosSucursal(infoEncargadoSucursal);
 
         swal({
