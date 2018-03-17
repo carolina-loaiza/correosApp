@@ -1,43 +1,45 @@
-document.querySelector('#txtFiltro').addEventListener('keyup', mostrarConvenios);
-mostrarConvenios();
+document.querySelector('#txtFiltro').addEventListener('keyup', mostrarMetodos);
+mostrarMetodos();
 
-function mostrarConvenios(){
+function mostrarMetodos(){
     let sFiltro = document.querySelector('#txtFiltro').value;
-    let listaConvenios = getNuevosConvenios();
+    let listaMetodos = getNuevosConvenios();
     let cuerpoTabla = document.querySelector('#tblConvenios tbody');
     cuerpoTabla.innerHTML = '';
 
-    for(let i = 0; i <listaConvenios.length; i++){
-        if (listaConvenios[i][0].toLowerCase().includes(sFiltro.toLowerCase())){
+    for(let i = 0; i <listaMetodos.length; i++){
+        if (listaMetodos[i][0].toLowerCase().includes(sFiltro.toLowerCase())){
             let fila = cuerpoTabla.insertRow();
-            let cNombre = fila.insertCell();
-            let cDescripcion = fila.insertCell();
+            let cTitular = fila.insertCell();
+            let cNumero = fila.insertCell();
+            let cExpiracion = fila.insertCell();
             let cModificar = fila.insertCell();
             let cEliminar = fila.insertCell();
 
             cModificar.classList.add('acciones');
             cEliminar.classList.add('acciones');
 
-            let sNombre = document.createTextNode(listaConvenios[i][0]);
-            let sDescripcion = document.createTextNode(listaConvenios[i][1]);
+            let sTitular = document.createTextNode(listaMetodos[i][0]);
+            let sNumero = document.createTextNode(listaMetodos[i][1]);
+            let sExpiracion = document.createTextNode(listaMetodos[i][1]);
 
-            cNombre.appendChild(sNombre);
-            cDescripcion.appendChild(sDescripcion);
+            cNombre.appendChild(sTitular);
+            cDescripcion.appendChild(sNumero);
+            cExpiracion.appendChild(sExpiracion);
 
             //Creación del botón de editar
             let botonEditar = document.createElement('i');
 
             botonEditar.classList.add("far", "fa-edit", "ed-delink");
-            botonEditar.dataset.codigo = listaConvenios[i][0];
-            botonEditar.addEventListener('click', editar);     
-            botonEditar.href="../RegistrarConvenios/registrarConvenios.html"; 
+            botonEditar.dataset.codigo = listaMetodos[i][0];
+            botonEditar.addEventListener('click', editar);
             cModificar.appendChild(botonEditar);
 
             //Creación del botón de deshabilitar
             let botonDeshabilitar = document.createElement('i');
 
             botonDeshabilitar.classList.add("fas", "fa-times", "ed-delink", "disable");
-            botonDeshabilitar.dataset.codigo = listaConvenios[i][0];
+            botonDeshabilitar.dataset.codigo = listaMetodos[i][0];
             botonDeshabilitar.addEventListener('click', deshabilitar);       
             cEliminar.appendChild(botonDeshabilitar);
         }

@@ -35,14 +35,14 @@ function obtenerConvenio(){
         let nombre = document.querySelector('#txtNombre').value;
         let descripcion = document.querySelector('#txtDescripcion').value;
 
-        aNuevoConvenio.push(nombre, descripcion, 'activo');
+        aNuevoConvenio.push(nombre, descripcion, '1');
         setNuevosConvenios(aNuevoConvenio);
 
         console.log(aNuevoConvenio);
 
         swal({
-            title: "Mensaje enviado correctamente",
-            text: "En breve nos contactaremos con usted",
+            title: "Convenio registrado exitosamente",
+            text: "Ahora puedes hacer envíos de un nuevo documento",
             icon: "success",
             button: "OK",
           });
