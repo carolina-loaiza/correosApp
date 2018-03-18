@@ -39,11 +39,11 @@
         <form name="formIniciarSesion" class="formIniciarSesion">
           <div class="inputContainer">
             <label for="Email">Correo electrónico</label>
-            <div class="input"><input type="email" name="Email" id="sesionEmail"></div>
+            <input class="input" type="email" name="Email" id="sesionEmail">
           </div>
           <div class="inputContainer">
             <label for="password">Contraseña</label>
-            <div class="input"><input type="password" id="sesionPassword" name="password"></div>
+            <input class="input" type="password" id="sesionPassword" name="password">
           </div>
           <button type="button" id="checkUsuario" class="button">Iniciar sesión</button>
           <a href="#" class="link">Restaurar contraseña</a>
@@ -59,8 +59,8 @@
     </div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="js/usuariosData.js"></script>
+  <script src="../js/localStorage.servicio.js"></script>
   <script src="js/iniciarSesion.controller.js"></script>
 </body>
 </html>

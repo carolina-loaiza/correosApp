@@ -179,6 +179,10 @@ footer .footerContent .fas {
   margin-top: 10px;
 }
 
+.inputError {
+  border: 1px solid red;
+}
+
 /* Form Fin */
 
 /* Icons */
@@ -213,6 +217,7 @@ footer .footerContent .fas {
   font-weight: bold;
   cursor: pointer;
   letter-spacing: 0.7px;
+  background: #fff;
 }
 
 .button:hover {
