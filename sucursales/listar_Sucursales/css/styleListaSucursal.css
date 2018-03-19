@@ -1,0 +1,52 @@
+/* Tabla inicio*/
+#tblListaSucursal{
+  width: 640px;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+th{
+  font-size: 13px;
+  font-weight: normal;
+  padding: 8px;
+  background-color: rgb(95, 179, 62);
+  color: white;
+}
+td{
+  padding: 8px;
+  background: #e8edff;
+  border-bottom: 1px solid #fff;
+  color: #1e2630;
+  border-top: 1px solid transparent;
+}
+.acciones{
+  text-align: center;
+  width: 50px;
+}
+tr:hover td{
+  background: #d0dafd;
+  color: #339;
+}
+#tbody
+{
+  background: #d0dafd;
+}
+/*tabla Fin */
+
+.iconfilter
+{
+  padding:8px;
+  margin-right:4px;
+}
+
+.iFiltroConv
+{
+  width:605px;
+  display: inline-block;
+}
+
+.lupa
+{
+  width: 10px;
+  display: inline-block;
+  margin-right: 6px;
+}
