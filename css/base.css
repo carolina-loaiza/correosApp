@@ -231,6 +231,12 @@ footer .footerContent .fas {
 
 .button:focus {
   outline: none;
+  box-shadow: none;
+}
+
+.button:active {
+  outline: none;
+  background-color: #073d59;
 }
 
 .buttonIcon {

@@ -1,7 +1,9 @@
 const imageCloudName = 'app-correos-costarica';
 const unsignedUser = 'pgl2jn3n';
 
-$.cloudinary.unsigned_upload_tag(unsignedUser, { cloud_name: imageCloudName });
+if (typeof($) !== 'undefined' && $.cloudinary) {
+  $.cloudinary.unsigned_upload_tag(unsignedUser, { cloud_name: imageCloudName });
+}
 
 function calcularEdad(fecha) {
   let hoy = new Date();
@@ -9,6 +11,21 @@ function calcularEdad(fecha) {
   let edad = hoy.getFullYear() - nacimiento.getFullYear();
 
   return edad;
+}
+
+function calcularEdad(fecha) {
+  let hoy = new Date();
+  let nacimiento = new Date(fecha);
+  let edad = hoy.getFullYear() - nacimiento.getFullYear();
+
+  return edad;
+}
+
+function generarDato(numero, contraseña) {
+  if (contraseña) {
+    return Math.random().toString(36).substring(4);
+  }
+  return Math.floor(Math.random() * Math.floor(999));
 }
 
 function validarInputsRequeridos(inputs) {
@@ -27,7 +44,7 @@ function validarInputsRequeridos(inputs) {
   return error;
 }
 
-function mostrarMensajeModal(tipoMensaje, contraseñaTemporal) {
+function mostrarMensajeModal(tipoMensaje, contraseñaTemporal, tipoCliente) {
   switch (tipoMensaje) {
     case 'error formulario':
       swal({
@@ -36,7 +53,7 @@ function mostrarMensajeModal(tipoMensaje, contraseñaTemporal) {
         icon: "error",
         button: {
           text: "OK",
-          className: "modalButton",
+          className: "button",
         },
       });
       break;
@@ -47,7 +64,7 @@ function mostrarMensajeModal(tipoMensaje, contraseñaTemporal) {
         icon: "success",
         button: {
           text: "OK",
-          className: "modalButton",
+          className: "button",
         },
         });
       break;
@@ -58,10 +75,11 @@ function mostrarMensajeModal(tipoMensaje, contraseñaTemporal) {
         icon: "success",
         button: {
           text: "OK",
-          className: "modalButton",
+          className: "button",
         },
       }).then(() => {
-        console.log(window.location);
+        var iniciarSessionPage = window.location.origin + '/iniciarSesion/index.html';
+        document.location.replace(iniciarSessionPage);
       });
       break;
   }

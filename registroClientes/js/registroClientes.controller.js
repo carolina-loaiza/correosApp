@@ -11,18 +11,24 @@
         imagePreview.setAttribute("src", data.result.url);
         imagePreview.style.display = 'block';
         urlFotoPerfil = data.result.url;
+        document.querySelector('#inputFotoPerfil').classList.remove('inputError');
       });
   };
 
   function guardarDatos() {
-    let inputs = document.querySelectorAll('#formRegistroClientes input:required');
+    let inputs = document.querySelectorAll('#formRegistroClientes input:required, #formRegistroClientes textarea:required, #formRegistroClientes select[name="genero"]');
     let error = validarInputsRequeridos(inputs);
-    if(error == true) {
+    if(!urlFotoPerfil || error == true ) {
       mostrarMensajeModal('error formulario');
+      if (!urlFotoPerfil) {
+        document.querySelector('#inputFotoPerfil').classList.add('inputError');
+      }
     }
     else {
       var infoCliente = [];
-      var contraseñaTemporal = Math.random().toString(36).substring(4);
+      var contraseñaTemporal = generarDato(0, 'contraseña')
+      var clienteID = 'u' + generarDato('numero');
+      var loginID = 'l' + generarDato('numero');
 
       var primerNombre = document.querySelector('.formRegistroClientes input[name="nombre"').value;
       var segundoNombre = document.querySelector('.formRegistroClientes input[name="segundoNombre"').value;
@@ -37,13 +43,12 @@
       var direccion = document.querySelector('.formRegistroClientes textarea[name="direccion"').value;
       var fotoPerfil = urlFotoPerfil;
       
-      infoCliente.push(primerNombre, segundoNombre, primerApellido, segundoApellido, cedula, correo, telefono_1, telefono_2
+      infoCliente.push(clienteID, primerNombre, segundoNombre, primerApellido, segundoApellido, cedula, correo, telefono_1, telefono_2
         , edad, genero, direccion, fotoPerfil);
-      console.log(infoCliente);
-      setDataStorage('cliente', infoCliente);
+
+      guardarDatoLocal('dataUsuarios', infoCliente);
+      guardarDatoLocal('loginUsuarios', [loginID, clienteID, correo, contraseñaTemporal]);
       mostrarMensajeModal('registro exitoso de usuario', contraseñaTemporal);
-      console.log(contraseñaTemporal);
-      //agregarClienteLoginData(correo, contraseñaTemporal);
     }
   }
 

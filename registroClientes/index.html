@@ -60,11 +60,11 @@
             </div>
             <div class="inputContainer">
               <label for="text">Foto de perfil</label>
-              <div class="input">
+              <div class="input" id="inputFotoPerfil">
                 <div class="preview"><img id="previewFoto" alt="Foto perfil"></div>
                 <div class="fileupload">
                   <button type="button" class="button">Agregar foto</button>
-                  <input required class="cloudinary-fileupload" value="Upload file" data-url="https://api.cloudinary.com/v1_1/app-correos-costarica/auto/upload" type="file" name="file">
+                  <input required class="cloudinary-fileupload" data-url="https://api.cloudinary.com/v1_1/app-correos-costarica/auto/upload" type="file" name="file">
                 </div>
               </div>
             </div>
@@ -120,8 +120,8 @@
   <script src="https://rawgit.com/cloudinary/cloudinary_js/master/js/jquery.iframe-transport.js"></script>
   <script src="https://rawgit.com/cloudinary/cloudinary_js/master/js/jquery.fileupload.js"></script>
   <script src="https://rawgit.com/cloudinary/cloudinary_js/master/js/jquery.cloudinary.js"></script>
-  <script src="../js/servicios.js"></script>
   <script src="../js/localStorage.servicio.js"></script>
+  <script src="../js/servicios.js"></script>
   <script src="js/registroClientes.controller.js"></script>
 </body>
 </html>

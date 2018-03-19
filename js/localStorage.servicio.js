@@ -1,11 +1,11 @@
-function setDataStorage(key, data){
-  let setData = getDataStorage(key);
+function guardarDatoLocal(key, data){
+  let setData = obtenerDatoLocal(key);
   setData.push(data);
   
   localStorage.setItem(key, JSON.stringify(setData));
-}
+};
 
-function getDataStorage(key){
+function obtenerDatoLocal(key){
   let getData = JSON.parse(localStorage.getItem(key));
 
   if(getData == null){
@@ -13,4 +13,4 @@ function getDataStorage(key){
   }
 
   return getData;
-}
+};
