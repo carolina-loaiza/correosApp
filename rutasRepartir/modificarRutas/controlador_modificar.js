@@ -22,16 +22,10 @@ botonActualizar.addEventListener('click',obtenerActualizar);
 
 
 function obtenerActualizar() {
-    let berror = validar();
+    let berror = validarInputsRequeridos(document.querySelectorAll('input:required','select:requiered'));
 
     if (berror == true) {
-        swal({
-            title: "Ocurrió un error",
-            text: "Faltan los datos de los campos resaltados",
-            icon: "error",
-            button: "Ok",
-            //Mensaje de error
-        });
+        mostrarMensajeModal('error formulario');
     }
     else {
 
@@ -55,35 +49,10 @@ function obtenerActualizar() {
         aInputs.push(selectSucursal,inputNombrederuta, inputDescripcion);
         actualizarListaRutas(aRutas);
         removeTemp();
-        swal({
-            title: 'Datos Correctos',
-            text: 'Continue',
-            icon: 'success',
-            button: "Ok",
-
-
-        });
-        window.location,href='../listar y buscar/listado.html';
-
-    }
+        mostrarMensajeModal('registro exitoso');
+        window.location.href='../listarRutas/listado.html';
+    } 
     
-}
-
-//Validacion
-
-function validar() {
-    let aInputs = document.querySelectorAll('input:required','select:requiered');
-    let berror = false;
-
-    for (let i = 0; i < aInputs.length; i++) {
-        if (aInputs[i].value === '') {
-            berror = true;
-            aInputs[i].classList.add('input_error');
-        }
-        else { aInputs[i].classList.remove('input_error'); }
-
-
-    } return berror;
 }
 
 

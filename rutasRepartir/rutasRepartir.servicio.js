@@ -1,21 +1,5 @@
-function getListaRutas(){
-  let listaRutas=JSON.parse(localStorage.getItem('listaRutasLS'));
-
-  if(listaRutas==null){
-      listaRutas=[];
-  }
-  return listaRutas;
-      
-  }
-  function setListaRutas(pinfoRutas){
-      let listaRutas=getListaRutas();
-      listaRutas.push(pinfoRutas);
-
-      localStorage.setItem('listaRutasLS',JSON.stringify(listaRutas));
-
-  }
 function buscarRuta(pNombre){
-  let listaRutas=getListaRutas();
+  let listaRutas=obtenerDatoLocal('listaRutasLS');
   let rutaEncontrada=[];
   for(let i=0;i<listaRutas.length;i++){
   if(pNombre == listaRutas[i][1]){
@@ -38,7 +22,7 @@ function removeTemp(){
 }
 
 function actualizarListaRutas(pinfoRutas){
-  let listaRutas=getListaRutas();
+  let listaRutas=obtenerDatoLocal('listaRutasLS');
   for(let i=0;i<listaRutas.length;i++){
       if(listaRutas[i][0]==pinfoRutas[0]){
           listaRutas[i]=pinfoRutas;

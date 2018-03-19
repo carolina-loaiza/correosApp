@@ -13,14 +13,6 @@ function calcularEdad(fecha) {
   return edad;
 }
 
-function calcularEdad(fecha) {
-  let hoy = new Date();
-  let nacimiento = new Date(fecha);
-  let edad = hoy.getFullYear() - nacimiento.getFullYear();
-
-  return edad;
-}
-
 function generarDato(numero, contraseña) {
   if (contraseña) {
     return Math.random().toString(36).substring(4);

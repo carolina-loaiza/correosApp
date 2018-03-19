@@ -6,16 +6,10 @@ botonGuardar.addEventListener('click', obtenerDatos);
 //Funcion de obtener datos.
 
 function obtenerDatos() {
-    let berror = validar();
+    let berror = validarInputsRequeridos(document.querySelectorAll('input:required', 'select:requiered'));
 
     if (berror == true) {
-        swal({
-            title: "Ocurrió un error",
-            text: "Faltan los datos de los campos resaltados",
-            icon: "error",
-            button: "Ok",
-            //Mensaje de error
-        });
+        mostrarMensajeModal('error formulario');
     }
     else {
 
@@ -37,41 +31,13 @@ function obtenerDatos() {
         aRutas.push(sSucursal, sNombrederuta, sDescripcion);
         console.log(aRutas);
         aInputs.push(selectSucursal, inputNombrederuta, inputDescripcion);
-        setListaRutas(aRutas);
-    
-        swal({
-            title: 'Datos Correctos',
-            text: 'Continue',
-            icon: 'success',
-            button: "Ok",
-
-
-        })
+        guardarDatoLocal('listaRutasLS', aRutas);
+        mostrarMensajeModal('registro exitoso');
         limpiar();
 
     }
     
 }
-
-//Validacion
-
-function validar() {
-    let aInputs = document.querySelectorAll('input:required', 'select:requiered');
-    let berror = false;
-
-    for (let i = 0; i < aInputs.length; i++) {
-        if (aInputs[i].value === '') {
-            berror = true;
-            aInputs[i].classList.add('input_error');
-        }
-        else { aInputs[i].classList.remove('input_error'); }
-
-
-    } return berror;
-}
-
-
-
 
 function limpiar() {
     document.querySelector('#sltSucursal').value = '';

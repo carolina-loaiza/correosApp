@@ -4,7 +4,7 @@ document.querySelector('#txtFiltro').addEventListener('keyup',mostrarRutas);
 mostrarRutas();
 
 function mostrarRutas() {
-    let listaRutas = getListaRutas();
+    let listaRutas = obtenerDatoLocal('listaRutasLS');
 
     let cuerpoTabla = document.querySelector('#tblbase tbody');
     let sFiltro = document.querySelector('#txtFiltro').value;
@@ -29,7 +29,7 @@ function mostrarRutas() {
             let botonEditar  = document.createElement('i');
             botonEditar.classList.add("far","fa-edit");
             let elementa = document.createElement('a');
-            elementa.setAttribute("href" , "../modificar/modificar.html");
+            elementa.setAttribute("href" , "../modificarRutas/modificar.html");
             elementa.appendChild(botonEditar);
             
 
