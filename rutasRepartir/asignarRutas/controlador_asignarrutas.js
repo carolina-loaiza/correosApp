@@ -21,7 +21,8 @@ function mostrarRepartidores(){
         }
     }
 
-}
+};
+
 function mostrarRutas(){
     let listaRutas =getlistaRep();
     let cuerpoTabla=document.querySelector("#tblbase tbody");
