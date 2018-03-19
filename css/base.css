@@ -183,6 +183,30 @@ footer .footerContent .fas {
   border: 1px solid red;
 }
 
+.inputFotoPerfil {
+  position: relative;
+}
+
+.inputFotoPerfil .button {
+  border: none;
+  padding: 0px;
+  border-bottom: 2px solid;
+}
+
+.inputFotoPerfil .cloudinary_fileupload {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.fotoPerfil img {
+  margin-bottom: 20px;
+  display: none;
+}
+
 /* Form Fin */
 
 /* Icons */

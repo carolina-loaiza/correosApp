@@ -1,27 +1,3 @@
-.fileupload {
-  position: relative;
-}
-
-.fileupload .button {
-  border: none;
-  padding: 0px;
-  border-bottom: 2px solid;
-}
-
-.fileupload .cloudinary_fileupload {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  opacity: 0;
-}
-
-.preview img {
-  margin-bottom: 20px;
-  display: none;
-}
-
 .registrarUsuarioButton {
   margin: 0 auto;
   display: block;
