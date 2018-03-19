@@ -23,14 +23,6 @@ function obtenerEncargado() {
     console.log(infoEncargado);
 }
 
-function calcularEdad() {
-    let hoy = new Date();
-    let fecha = document.querySelector('#dtFecha').value;
-    let nacimiento = new Date(fecha);
-    let edad = hoy.getFullYear() - nacimiento.getFullYear();
-    return edad;
-}
-
 function registrarDatosActualizados() {
     let infoEncargado = [];
 
@@ -41,7 +33,7 @@ function registrarDatosActualizados() {
         let correo = document.querySelector('#txtCorreo').value;
         let telefono_1 = document.querySelector('#txtTel1').value;
         let telefono_2 = document.querySelector('#txtTel2').value;
-        let edad = calcularEdad();
+        let edad = calcularEdad(document.querySelector('#dtFecha').value);
         let genero = document.querySelector('#opGenero').value;
         let sucursal = document.querySelector('#opSucursal').value;
 

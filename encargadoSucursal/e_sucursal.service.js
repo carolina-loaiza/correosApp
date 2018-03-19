@@ -1,22 +1,7 @@
-function getInfoEncargadoSucursal() {
-    let listaEncargados = JSON.parse(localStorage.getItem('listaEncargadosLS'));
-    if(listaEncargados == null) {
-        listaEncargados = [];
-    }
-    return listaEncargados;
-}
-
-function setInfoEncargadosSucursal(pInfoEncargado) {
-    let listaEncargados = getInfoEncargadoSucursal();
-     listaEncargados.push(pInfoEncargado);
-     localStorage.setItem('listaEncargadosLS', JSON.stringify(listaEncargados));
-
-
-}
 //retorna un arreglo con los correos de los encargados de sucursal
 //se llama al darle click al boton de editar
 function buscarEncargadoPorCorreo(pCorreo) {
-let listaEncargados = getInfoEncargadoSucursal();
+let listaEncargados = obtenerDatoLocal('listaEncargadosLS');
 let encargadoEncontrado = [];
 
 for(let i = 0; i < listaEncargados.length; i++) {
@@ -43,7 +28,7 @@ function removeTemp (){
 }
 
 function actualizarEncargado(pInfoEncargado) {
-    let listaEncargados = getInfoEncargadoSucursal();
+    let listaEncargados = obtenerDatoLocal('listaEncargadosLS');
 
     for(let i = 0; i < listaEncargados.length; i++) {
         //si los correos coinciden, los datos se sobre escriben

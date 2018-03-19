@@ -5,7 +5,7 @@ document.querySelector('#txtFiltro').addEventListener('keyup', mostrarEncargados
 
 
 function mostrarEncargados() {
-    listaEncargados = getInfoEncargadoSucursal();
+    listaEncargados = obtenerDatoLocal('listaEncargadosLS');
     let tbody = document.querySelector('#tblEncargadosSucursal tbody');
     
     let sFiltro = document.querySelector('#txtFiltro').value;
@@ -45,6 +45,8 @@ function mostrarEncargados() {
            atag.dataset.correo = listaEncargados[i][4];
            cEditar.appendChild(atag);
 
+           atag.addEventListener('click', redirect);
+
 
            
 
@@ -54,10 +56,8 @@ function mostrarEncargados() {
            botonDesactivar.classList.add("fas", "fa-times");
            botonDesactivar.dataset.correo = listaEncargados[i][4];
            cDesactivar.appendChild(botonDesactivar);
-
        }//if
     }//for loop
-
 
 }
 
@@ -65,8 +65,12 @@ function mostrarEncargados() {
 //funcion que redirige a un html con formulario nuevo
 function redirect() {
     let sCorreo = this.dataset.correo; 
-    atag.addEventListener('click', setTemp(sCorreo));
+    setTemp(sCorreo);
 }
+
+
+
+
 
 
 //funcion que despliega los datos en un formulario nuevo para modificarlos
