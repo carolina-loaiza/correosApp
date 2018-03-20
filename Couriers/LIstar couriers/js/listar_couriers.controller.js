@@ -11,7 +11,7 @@ function mostrarCouriers() {
     tbody.innerHTML = '';
 
     for(let i = 0; i < listaCouriers.length; i++) {
-        if (listaCouriers[i][0].includes(sFiltro)) {
+        if (listaCouriers[i][1].toLowerCase().includes(sFiltro)) {
             let fila = tbody.insertRow();
 
             let cNombre = fila.insertCell();
