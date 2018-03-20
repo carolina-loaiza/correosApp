@@ -40,6 +40,7 @@ td {
 .acciones {
   width: 50px;
   text-align: center;
+  color: #000000;
 }
 
 tr:hover td{
@@ -64,4 +65,12 @@ tr:hover td{
 
 #btnSeleccionarImagen:hover {
   background-color: rgb(156, 151, 151);
+}
+
+.fa-edit:before {
+  color: black;
+}
+
+.fa-times::before {
+  color: #000000;
 }
