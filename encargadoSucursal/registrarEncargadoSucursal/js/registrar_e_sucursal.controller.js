@@ -1,42 +1,11 @@
 document.querySelector('#btnRegistrar').addEventListener('click', obtenerDatos);
 
-
-function validar() {
-    let inputs = document.querySelectorAll('input:required');
-    let error = false;
-
-    for(let i = 0; i < inputs.length; i++) {
-        if(inputs[i].value == '') {
-            error = true;
-            inputs[i].classList.add('error');
-        }
-        else {
-            inputs[i].classList.remove('error');   
-        
-        
-        }//else statement
-    }//for loop
-    return error;
-}
-
-function calcularEdad() {
-    let hoy = new Date();
-    let fecha = document.querySelector('#dtFecha').value;
-    let nacimiento = new Date(fecha);
-    let edad = hoy.getFullYear() - nacimiento.getFullYear();
-    return edad;
-}
-
-
 function obtenerDatos() {
-    let error = validar();
+    let inputs = document.querySelectorAll('input:required');
+    let error = validarInputsRequeridos(inputs);
+
     if(error == true) {
-        swal({
-            title: "Ocurrió un error",
-            text: "Por favor verifique los campos resaltados",
-            icon: "error",
-            button: "OK",
-          });
+        mostrarMensajeModal('error formulario');
     }
     else {
         let infoEncargadoSucursal = [];
@@ -48,7 +17,7 @@ function obtenerDatos() {
         let correo = document.querySelector('#txtCorreo').value;
         let telefono_1 = document.querySelector('#txtTel1').value;
         let telefono_2 = document.querySelector('#txtTel2').value;
-        let edad = calcularEdad();
+        let edad = calcularEdad(document.querySelector('#dtFecha').value);
         let genero = document.querySelector('#opGenero').value;
         let sucursal = document.querySelector('#opSucursal').value;
         
@@ -57,14 +26,9 @@ function obtenerDatos() {
 
         infoEncargadoSucursal.push(primerNombre, segundoNombre, primerApellido, cedula, correo, telefono_1, telefono_2
         , edad, genero, sucursal, edad);
-        setInfoEncargadosSucursal(infoEncargadoSucursal);
+        guardarDatoLocal('listaEncargadosLS', infoEncargadoSucursal);
 
-        swal({
-            title: "Información registrada correctamente",
-            text: "Puede proceder",
-            icon: "success",
-            button: "OK",
-          });
+        mostrarMensajeModal('registro exitoso');
 
     }//else
     

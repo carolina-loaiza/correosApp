@@ -5,7 +5,7 @@ document.querySelector('#txtFiltro').addEventListener('keyup', mostrarEncargados
 
 
 function mostrarEncargados() {
-    listaEncargados = getInfoEncargadoSucursal();
+    listaEncargados = obtenerDatoLocal('listaEncargadosLS');
     let tbody = document.querySelector('#tblEncargadosSucursal tbody');
     
     let sFiltro = document.querySelector('#txtFiltro').value;
@@ -45,6 +45,8 @@ function mostrarEncargados() {
            atag.dataset.correo = listaEncargados[i][4];
            cEditar.appendChild(atag);
 
+           atag.addEventListener('click', redirect);
+
 
            
 
@@ -54,10 +56,8 @@ function mostrarEncargados() {
            botonDesactivar.classList.add("fas", "fa-times");
            botonDesactivar.dataset.correo = listaEncargados[i][4];
            cDesactivar.appendChild(botonDesactivar);
-
        }//if
     }//for loop
-
 
 }
 
@@ -65,32 +65,11 @@ function mostrarEncargados() {
 //funcion que redirige a un html con formulario nuevo
 function redirect() {
     let sCorreo = this.dataset.correo; 
-    atag.addEventListener('click', setTemp(sCorreo));
+    setTemp(sCorreo);
 }
 
 
-//funcion que despliega los datos en un formulario nuevo para modificarlos
-/*function obtenerEncargado() {
 
-    //aqui seria get temp
-    guardarTemp(sCorreo);
-    
-    
-    //let infoEncargado = buscarEncargadoPorCorreo(sCorreo);
-    //esta se llama en el controlador de 
-    console.log(infoEncargado);
-
-    document.querySelector('#txtPrimerNombre').value = infoEncargado[0];
-    document.querySelector('#txtSegundoNombre').value = infoEncargado[1];
-    document.querySelector('#txtPrimerApellido').value = infoEncargado[2];
-    document.querySelector('#txtId').value = infoEncargado[3];
-    document.querySelector('#txtCorreo').value = infoEncargado[4];
-    document.querySelector('#txtTel1').value = infoEncargado[5];
-    document.querySelector('#txtTel2').value = infoEncargado[6];
-    //edad no porque si la quiere modificar da igual si sale o no por el tipo de input
-    document.querySelector('#opGenero').value = infoEncargado[8];
-    document.querySelector('#opSucursal').value = infoEncargado[9];
-}*/
 
 
 
