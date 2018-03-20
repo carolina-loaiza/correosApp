@@ -1,7 +1,7 @@
 const imageCloudName = 'app-correos-costarica';
 const unsignedUser = 'pgl2jn3n';
 
-if (typeof($) !== 'undefined' && $.cloudinary) {
+if (typeof($) !== 'undefined' && $.cloudinary && $.cloudinary.unsigned_upload_tag) {
   $.cloudinary.unsigned_upload_tag(unsignedUser, { cloud_name: imageCloudName });
 }
 
