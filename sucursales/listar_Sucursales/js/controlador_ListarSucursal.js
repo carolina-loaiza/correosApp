@@ -5,7 +5,7 @@ mostrarListas();
 
 function mostrarListas()
 {
-    let listarSucursales = getInfoContactos();
+    let listarSucursales = obtenerDatoLocal('RegistroLS');
     let tbody = document.querySelector('#tblListaSucursal tbody');
     let sfiltro = document.querySelector('#txtFiltro').value;
 
