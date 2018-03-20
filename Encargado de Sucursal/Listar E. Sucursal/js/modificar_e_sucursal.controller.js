@@ -19,8 +19,6 @@ function obtenerEncargado() {
     //edad no porque si la quiere modificar da igual si sale o no por el tipo de input
     document.querySelector('#opGenero').value = infoEncargado[8];
     document.querySelector('#opSucursal').value = infoEncargado[9];
-
-    console.log(infoEncargado);
 }
 
 function calcularEdad() {
@@ -51,9 +49,4 @@ function registrarDatosActualizados() {
         removeTemp();
         window.location.href = 'index.html';
 }
-
-//falta que una vez que se le de click a actualizar, se elimine el 
-//dato temporal del servicio y que me devuelva a la lista actualizada
-
-
 

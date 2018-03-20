@@ -73,28 +73,3 @@ function redirect() {
 
 
 
-//funcion que despliega los datos en un formulario nuevo para modificarlos
-/*function obtenerEncargado() {
-
-    //aqui seria get temp
-    guardarTemp(sCorreo);
-    
-    
-    //let infoEncargado = buscarEncargadoPorCorreo(sCorreo);
-    //esta se llama en el controlador de 
-    console.log(infoEncargado);
-
-    document.querySelector('#txtPrimerNombre').value = infoEncargado[0];
-    document.querySelector('#txtSegundoNombre').value = infoEncargado[1];
-    document.querySelector('#txtPrimerApellido').value = infoEncargado[2];
-    document.querySelector('#txtId').value = infoEncargado[3];
-    document.querySelector('#txtCorreo').value = infoEncargado[4];
-    document.querySelector('#txtTel1').value = infoEncargado[5];
-    document.querySelector('#txtTel2').value = infoEncargado[6];
-    //edad no porque si la quiere modificar da igual si sale o no por el tipo de input
-    document.querySelector('#opGenero').value = infoEncargado[8];
-    document.querySelector('#opSucursal').value = infoEncargado[9];
-}*/
-
-
-
