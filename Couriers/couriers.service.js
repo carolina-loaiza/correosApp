@@ -17,7 +17,7 @@ function buscarCourierPorNombre(pCourier) {
     let courierEcontrado = [];
 
     for(let i = 0; i < listaCouriers.length; i++) {
-        if(pCourier == listaCouriers[i]) {
+        if(pCourier == listaCouriers[i][0]) {
             courierEcontrado = listaCouriers[i];
             break;
         }//if
@@ -41,8 +41,9 @@ function actualizarCourier(pInfoCourier) {
     let listaCouriers = getInfoCourier();
 
     for(let i = 0; i < listaCouriers.length; i++) {
-        if(pInfoCourier == listaCouriers[i]) {
-            listaCouriers[i] = pInfoCourier;
+        if(pInfoCourier[0] == listaCouriers[i][0]) {
+            listaCouriers[i][0] = pInfoCourier[0];
+            listaCouriers[i][1] = pInfoCourier[1];
         }//if
     }//for loop
     localStorage.setItem('listaCouriersLS', JSON.stringify(listaCouriers));

@@ -7,15 +7,17 @@ function obtenerCourier() {
     let sCourier = getTemp();
     let infoCourier = buscarCourierPorNombre(sCourier);
 
-    document.querySelector('#txtNombre').value = infoCourier;
+    document.querySelector('#numCourier').value = infoCourier[0];    
+    document.querySelector('#txtNombre').value = infoCourier[1];
 }
 
 function registrarDatosActualizados() {
     let courier = [];
 
+    let numero = document.querySelector('#numCourier').value;
     let nombre = document.querySelector('#txtNombre').value;
 
-    courier.push(nombre);
+    courier.push(numero, nombre);
     actualizarCourier(courier);
     removeTemp();
     window.location.href = 'index.html';

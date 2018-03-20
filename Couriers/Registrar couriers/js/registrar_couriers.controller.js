@@ -1,16 +1,16 @@
 document.querySelector('#btnRegistrar').addEventListener('click', obtenerDatos);
 
 function validar() {
-    let input = document.querySelectorAll('input:required');
+    let inputs = document.querySelectorAll('input:required');
     let error = false;
 
-    for(let i = 0; i < input.length; i++) {
-        if(input[i].value == '') {
+    for(let i = 0; i < inputs.length; i++) {
+        if(inputs[i].value == '') {
             error = true;
-            input[i].classList.add('error');
+            inputs[i].classList.add('error');
         }
         else {
-            input[i].classList.remove('error');
+            inputs[i].classList.remove('error');
         }//else statement
     }//for loop
     return error;
@@ -27,13 +27,14 @@ function obtenerDatos() {
           });
     }//if
     else {
-        let courier = [];
+        let couriers = [];
 
+        let numero = document.querySelector('#numCourier').value;
         let nombre = document.querySelector('#txtNombre').value;
 
 
-        courier.push(nombre);
-        setInfoCouriers(courier);
+        couriers.push(numero, nombre);
+        setInfoCouriers(couriers);
 
         swal({
             title: "Información registrada correctamente",
