@@ -3,8 +3,8 @@ mostrarMetodos();
 
 function mostrarMetodos(){
     let sFiltro = document.querySelector('#txtFiltro').value;
-    let listaMetodos = getNuevosConvenios();
-    let cuerpoTabla = document.querySelector('#tblConvenios tbody');
+    let listaMetodos = getNuevosMetodos();
+    let cuerpoTabla = document.querySelector('#tblMetodos tbody');
     cuerpoTabla.innerHTML = '';
 
     for(let i = 0; i <listaMetodos.length; i++){
@@ -23,8 +23,8 @@ function mostrarMetodos(){
             let sNumero = document.createTextNode(listaMetodos[i][1]);
             let sExpiracion = document.createTextNode(listaMetodos[i][1]);
 
-            cNombre.appendChild(sTitular);
-            cDescripcion.appendChild(sNumero);
+            cTitular.appendChild(sTitular);
+            cNumero.appendChild(sNumero);
             cExpiracion.appendChild(sExpiracion);
 
             //Creación del botón de editar
