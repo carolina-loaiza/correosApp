@@ -1,18 +1,26 @@
 (function() {
   var datosUsuario = obtenerDatoLocal('usuario');
+
+  if (!datosUsuario || datosUsuario.length === 0) {
+    window.location.href = '../iniciarSesion/index.html';
+  }
+
   var perfilUsuario = document.querySelector('#userPerfilInfo');
   var imagenPerfil = document.querySelector('#userPerfilAvatar');
   var sideBarMenu = document.querySelector('#sideBarMenu');
   var rol = 'Rol';
   var editarPage = '#';
 
-  switch (datosUsuario[11]) {
+  switch (datosUsuario[12]) {
     case '1':
       rol = 'Administrador';
       break;
     case '2':
       rol = 'Cliente';
       editarPage = '../clientes/editarClientes.html';
+      sideBarMenu.appendChild(crearLinkMenu('../paquetes/alertarPaquete.html', 'Alertar Paquete', ['fas', 'fa-cube']));
+      sideBarMenu.appendChild(crearLinkMenu('#', 'Nombre item', ['far', 'fa-file-alt']));
+      sideBarMenu.appendChild(crearLinkMenu('#', 'Nombre item', ['far', 'fa-file-alt']));
       break;
     case '3':
       rol = 'Encargado de sucursal';
@@ -29,18 +37,26 @@
     imagenPerfil.setAttribute("src", datosUsuario[7]);
   }
 
-  perfilUsuario.querySelector('h3').innerHTML = datosUsuario[0] + " " + datosUsuario[1];
-  perfilUsuario.querySelector('h4').innerHTML = rol;
+  perfilUsuario.querySelector('h3').innerText = datosUsuario[0] + " " + datosUsuario[2];
+  perfilUsuario.querySelector('h4').innerText = rol;
   perfilUsuario.querySelector('a').setAttribute("href", editarPage);
   
   
-  //perfilUsuario.appendChild(.innerText());
-/*    */
+  function crearLinkMenu(href, text, iconoClass) {
+    var menuItem = document.createElement('li');
+    var link = document.createElement('a');
+    link.setAttribute('href', href);
+    var contenedorIcono = document.createElement('span'); 
+    contenedorIcono.classList.add('icon', 'iconMenu');
+    var icono = document.createElement('i');
+    iconoClass.forEach(className => {
+      icono.classList.add(className);
+    });
+    contenedorIcono.appendChild(icono);
+    link.appendChild(document.createTextNode(text));
+    link.prepend(contenedorIcono);
+    menuItem.appendChild(link);
 
-/*   <li>
-    <a href="#">
-      <span class="icon iconMenu"><i class="far fa-file-alt"></i></span>
-      Nombre item
-    </a>
-  </li> */
+    return menuItem;
+  }
 })();

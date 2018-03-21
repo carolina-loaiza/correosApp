@@ -1,9 +1,16 @@
 (function () {
   var registrarClientes = document.querySelector('#registrarClientes');
+  var modificarCliente = document.querySelector('#modificarClientes');
   var imagePreview = document.querySelector('#previewFoto');
   var urlFotoPerfil = false;
 
-  registrarClientes.addEventListener('click', guardarDatos);
+  if (registrarClientes) {
+    registrarClientes.addEventListener('click', guardarDatos);
+  }
+
+  if (modificarCliente) {
+    modificarCliente.addEventListener('click', guardarDatos);
+  }
 
   function initFotoPerfil() {
     $("input.cloudinary-fileupload[type=file]").unsigned_cloudinary_upload(unsignedUser, { cloud_name: imageCloudName, tags: 'browser_uploads' })
@@ -14,6 +21,8 @@
         document.querySelector('#inputFotoPerfil').classList.remove('inputError');
       });
   };
+
+  initFotoPerfil();
 
   function guardarDatos() {
     let inputs = document.querySelectorAll('#formRegistroClientes input:required, #formRegistroClientes textarea:required, #formRegistroClientes select[name="genero"]');
@@ -49,12 +58,23 @@
       infoCliente.push(primerNombre, segundoNombre, primerApellido, segundoApellido, cedula, correo, telefono_1, telefono_2
         , fecha_nacimiento, genero, direccion, fotoPerfil, tipoUsuario, activo);
 
-      guardarDatoLocal('listaUsuarios', infoCliente);
-      guardarDatoLocal('loginUsuarios', [correo, contraseña]);
-      mostrarMensajeModal('registro exitoso de usuario', contraseña);
+      if (this.dataset.modificar) {
+        var listaUsuarios = obtenerDatoLocal('listaUsuarios');
+
+        for(var i = 0; i < listaUsuarios.length; i++) {
+          if (listaUsuarios[i][5] === correo) {
+            listaUsuarios[i] = infoCliente;
+            localStorage.setItem('usuario', JSON.stringify(infoCliente));
+          }
+        }
+        localStorage.setItem('listaUsuarios', JSON.stringify(listaUsuarios));
+        mostrarMensajeModal('registro exitoso');
+      } else {
+        guardarDatoLocal('listaUsuarios', infoCliente);
+        guardarDatoLocal('loginUsuarios', [correo, contraseña]);
+        mostrarMensajeModal('registro exitoso de usuario', contraseña);
+      }
     }
   }
-
-  initFotoPerfil();
 
 })();
