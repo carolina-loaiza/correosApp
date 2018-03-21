@@ -1,5 +1,31 @@
 document.querySelector('#btnRegistrar').addEventListener('click', obtenerDatos);
 
+    var imagePreview = document.querySelector('#previewFoto');
+    var urlFotoPerfil = false;
+  
+    function initFotoPerfil() {
+      $("input.cloudinary-fileupload[type=file]").unsigned_cloudinary_upload(unsignedUser, { cloud_name: imageCloudName, tags: 'browser_uploads' })
+        .bind('cloudinarydone', function(e, data) {
+          imagePreview.setAttribute("src", data.result.url);
+          imagePreview.style.display = 'block';
+          urlFotoPerfil = data.result.url;
+          document.querySelector('#inputFotoPerfil').classList.remove('inputError');
+        });
+    };
+    initFotoPerfil();
+//mete las sucursales en el select de registro 
+ function agregarSucursales() {
+     let lista = obtenerDatoLocal('RegistroLS');
+     for(let i = 0; i < lista.length; i++) {
+         let opcion = document.createElement('option');
+         opcion.value = lista[i][0];
+         opcion.innerText = lista[i][0];
+         document.getElementById('opSucursal').appendChild(opcion);
+     }
+ }
+
+ agregarSucursales();
+
 function obtenerDatos() {
     let inputs = document.querySelectorAll('input:required');
     let error = validarInputsRequeridos(inputs);
@@ -20,14 +46,21 @@ function obtenerDatos() {
         let edad = calcularEdad(document.querySelector('#dtFecha').value);
         let genero = document.querySelector('#opGenero').value;
         let sucursal = document.querySelector('#opSucursal').value;
+        let fotoPerfil = urlFotoPerfil;
+        let sTipoUsuario = 4;
+        let sActivo = 1;
+
+        if (edad < 18) {
+            mostrarMensajeModal('error edad');
+            return false;
+        }
         
 
         //la foto no se guarda
 
         infoEncargadoSucursal.push(primerNombre, segundoNombre, primerApellido, cedula, correo, telefono_1, telefono_2
-        , edad, genero, sucursal, edad);
+        , edad, genero, sucursal, fotoPerfil, sTipoUsuario, sActivo);
         guardarDatoLocal('listaEncargadosLS', infoEncargadoSucursal);
-
         mostrarMensajeModal('registro exitoso');
 
     }//else
@@ -35,34 +68,3 @@ function obtenerDatos() {
     
 }
 
-let imagenUrl = '';
-$(function() {
-    // Configure Cloudinary
-    // with credentials available on
-    // your Cloudinary account dashboard
-    $.cloudinary.config({ cloud_name: 'pabskun', api_key: '896788142178273'});
-
-    // Upload button
-    let uploadButton = $('#btnSeleccionarImagen');
-
-    // Upload button event
-    uploadButton.on('click', function(e){
-        // Initiate upload
-        cloudinary.openUploadWidget({ cloud_name: 'pabskun', upload_preset: 'proyecto', tags: ['cgal']},
-        function(error, result) {
-            if(error) console.log(error);
-            // If NO error, log image data to console
-            let id = result[0].public_id;
-             console.log(id);
-            imagenUrl = 'https://res.cloudinary.com/x-treem/image/upload/' + id;
-          console.log(imagenUrl);
-        });
-    });
-})
-
-function processImage(id) {
-    let options = {
-        client_hints: true,
-    };
-    return  $.cloudinary.url(id, options);
-}
