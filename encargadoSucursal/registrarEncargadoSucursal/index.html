@@ -106,16 +106,23 @@
             </div>
             <div class="inputContainer">
               <label for="txtSegundoApellido">Segundo Apellido</label>
-              <input type="text" class="input" id="txtSegundoApellido">  
-            <div class="inputContainer">
-              <label for="text">Foto</label>
-              <button type="button" id="btnSeleccionarImagen" name="submit" >Seleccionar imagen</button>
-            </div>
+              <input type="text" class="input" id="txtSegundoApellido">
+            </div>  
+              <div class="inputContainer">
+                  <label for="text">Foto de perfil</label>
+                  <div class="input" id="inputFotoPerfil">
+                    <div class="fotoPerfil"><img id="previewFoto" alt="Foto perfil"></div>
+                    <div class="inputFotoPerfil">
+                      <button type="button" class="button">Agregar foto</button>
+                      <input required class="cloudinary-fileupload" data-url="https://api.cloudinary.com/v1_1/app-correos-costarica/auto/upload" type="file" name="file">
+                    </div>
+                  </div>
+                </div>
             <div class="inputContainer">
               <label for="txtTel2">Teléfono2</label>
               <input type="text" class="input" id="txtTel2">
-          </div>
-            <div class="inputContainer">
+            </div>
+              <div class="inputContainer">
                 <label for="opGenero">Género</label>
                 <div class="input"><select id="opGenero">
                   <option value="masculino">Masculino</option>
@@ -125,29 +132,34 @@
               </div>
               <div class="inputContainer">
                   <label for="opSucursal">Sucursal</label>
-                  <div class="input"><select id="opSucursal">
-                    option*
-                  </select></div>
-                </div>
+                  <div class="input">
+                    <select id="opSucursal">
+                    
+                    </select>
+                  </div>
+              </div>
           </div><!--columna derecha-->
-          <button type="button" id="btnRegistrar" class="button">Registrar</button>
         </form>
+
+        <button type="button" id="btnRegistrar" class="button">Registrar</button>
       </div> 
-    </div>
-    <footer>
-        <div class="footerContent">
-          <p><i class="fas fa-phone"></i> Central telefónica : +506 800-900-2000</p>
-          <p><i class="fas fa-envelope"></i> Email : srvclientes@correos.go.cr</p>
-        </div>
-        <div class="logo"><img src="../../img/logo_correoscr.png" alt="logo_Correos_CR"></div>
+      <footer>
+          <div class="footerContent">
+            <p><i class="fas fa-phone"></i> Central telefónica : +506 800-900-2000</p>
+            <p><i class="fas fa-envelope"></i> Email : srvclientes@correos.go.cr</p>
+          </div>
+          <div class="logo"><img src="../../img/logo_correoscr.png" alt="logo_Correos_CR"></div>
       </footer>
+    </div>
   </div>
 
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src='https://cdn.jsdelivr.net/jquery.cloudinary/1.0.18/jquery.cloudinary.js' type='text/javascript'></script>
-  <script src="https://widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://cdn.rawgit.com/cloudinary/cloudinary_js/master/js/jquery.ui.widget.js"></script>
+  <script src="https://rawgit.com/cloudinary/cloudinary_js/master/js/jquery.iframe-transport.js"></script>
+  <script src="https://rawgit.com/cloudinary/cloudinary_js/master/js/jquery.fileupload.js"></script>
+  <script src="https://rawgit.com/cloudinary/cloudinary_js/master/js/jquery.cloudinary.js"></script>
 
   <script src="../../js/localStorage.servicio.js"></script>
   <script src="../../js/servicios.js"></script>
