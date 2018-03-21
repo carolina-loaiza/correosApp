@@ -39,6 +39,7 @@ function obtenerConvenio(){
         setNuevosConvenios(aNuevoConvenio);
 
         console.log(aNuevoConvenio);
+        limpiar();
 
         swal({
             title: "Convenio registrado exitosamente",
@@ -47,4 +48,8 @@ function obtenerConvenio(){
             button: "OK",
           });
     }
+}
+function limpiar(){
+    document.querySelector('#txtNombre').value = "";
+    document.querySelector('#txtDescripcion').value = "";
 }

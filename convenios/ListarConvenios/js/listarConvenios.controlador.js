@@ -24,16 +24,19 @@ function mostrarConvenios(){
             cNombre.appendChild(sNombre);
             cDescripcion.appendChild(sDescripcion);
 
-            //Creación del botón de editar
+            //Creación del botón de editar-------------
             let botonEditar = document.createElement('i');
-
             botonEditar.classList.add("far", "fa-edit", "ed-delink");
-            botonEditar.dataset.codigo = listaConvenios[i][0];
-            botonEditar.addEventListener('click', editar);     
-            botonEditar.href="../RegistrarConvenios/registrarConvenios.html"; 
-            cModificar.appendChild(botonEditar);
+            let elementa = document.createElement('a');  
+            elementa.setAttribute("href", "../ModificarConvenios/modificarConvenios.html"); 
+            elementa.appendChild(botonEditar);
+            elementa.addEventListener('click', redirect);
+            elementa.dataset.nombre = listaConvenios[i][0]; 
 
-            //Creación del botón de deshabilitar
+            cModificar.appendChild(elementa);
+
+
+            //Creación del botón de deshabilitar---------
             let botonDeshabilitar = document.createElement('i');
 
             botonDeshabilitar.classList.add("fas", "fa-times", "ed-delink", "disable");
@@ -43,9 +46,13 @@ function mostrarConvenios(){
         }
     }
 }
-function editar(){
-
-}
 function deshabilitar(){
 
 }
+
+function redirect(){
+    let sNombre = this.dataset.nombre;
+
+    setTemp(sNombre);
+}
+
