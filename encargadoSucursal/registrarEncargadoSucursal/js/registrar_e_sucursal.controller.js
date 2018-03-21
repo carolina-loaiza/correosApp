@@ -50,6 +50,10 @@ function obtenerDatos() {
         let sTipoUsuario = 4;
         let sActivo = 1;
 
+        if (edad < 18) {
+            mostrarMensajeModal('error edad');
+            return false;
+        }
         
 
         //la foto no se guarda

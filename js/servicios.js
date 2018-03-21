@@ -60,6 +60,17 @@ function mostrarMensajeModal(tipoMensaje, contraseñaTemporal, tipoCliente) {
         },
         });
       break;
+    case 'error edad':
+      swal({
+        title: "Necesita ser mayor de edad para ingresar",
+        text: "Verifique la fecha de nacimiento",
+        icon: "error",
+        button: {
+          text: "OK",
+          className: "button",
+        },
+        });
+      break;
     case 'registro exitoso de usuario':
       swal({
         title: "Información registrada correctamente",
