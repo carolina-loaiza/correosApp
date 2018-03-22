@@ -8,7 +8,7 @@ function mostrarMetodos(){
     cuerpoTabla.innerHTML = '';
 
     for(let i = 0; i <listaMetodos.length; i++){
-        if (listaMetodos[i][0].toLowerCase().includes(sFiltro.toLowerCase())){
+        if (listaMetodos[i][1].toLowerCase().includes(sFiltro.toLowerCase())){
             let fila = cuerpoTabla.insertRow();
             let cTitular = fila.insertCell();
             let cNumero = fila.insertCell();
