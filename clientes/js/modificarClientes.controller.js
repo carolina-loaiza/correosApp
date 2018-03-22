@@ -1,8 +1,15 @@
 (function () {
   document.querySelector('#desactivarCuenta').addEventListener('click', desactivarCuenta);
 
+
   function mostarDatosUsuarios() {
-    var datosUsuario = obtenerDatoLocal('usuario');
+    var datosUsuario = [];
+    console.log(getTemp());
+    if (getTemp()) {
+      datosUsuario = buscarClientePorCorreo(getTemp());
+    } else {
+      datosUsuario = obtenerDatoLocal('usuario');
+    }
 
     document.querySelector('.formRegistroClientes input[name="nombre"').value = datosUsuario[0]
     document.querySelector('.formRegistroClientes input[name="segundoNombre"').value = datosUsuario[1]

@@ -12,13 +12,15 @@
     var listaUsuarios = [
       ["Carla", "", "Arias", "", "213123123", "test02@gmail.com", "23123123123", "", "1999-11-11", "femenino", "lugar de habitación", false, "2", "1"],
       ["Maria", "", "Castro", "", "213123123", "test01@gmail.com", "23123123123", "", "1999-11-11", "femenino", "lugar de habitación", false, "2", "1"],
-      ["Marta", "", "Ramirez", "", "213123123", "test03@gmail.com", "23123123123", "", "1999-11-11", "femenino", "lugar de habitación", false, "2", "1"]
+      ["Marta", "", "Ramirez", "", "213123123", "test03@gmail.com", "23123123123", "", "1999-11-11", "femenino", "lugar de habitación", false, "2", "1"],
+      ["Esteban", "", "Ramirez", "", "213123123", "test04@gmail.com", "23123123123", "", "1999-11-11", "femenino", "lugar de habitación", false, "1", "1"]
     ];
     // Datos de inicar sesion de prueba
     var loginUsuarios = [
       ["test02@gmail.com", "contraseña"],
       ["test01@gmail.com", "contraseña"],
       ["test03@gmail.com", "contraseña"],
+      ["test04@gmail.com", "contraseña"]
     ];
 
     listaUsuarios.forEach(usuario => guardarDatoLocal('listaUsuarios', usuario));
@@ -78,7 +80,7 @@
     console.log(tipoUsuario)
     switch (tipoUsuario) {
       case '1':
-        window.location.href = '../clientes/index.html';
+        window.location.href = '../clientes/listarClientes.html';
         break;
       case '2':
         window.location.href = '../paquetes/alertarPaquete.html';
