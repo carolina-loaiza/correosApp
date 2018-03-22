@@ -48,8 +48,8 @@ function obtenerDatosTarjeta(){
         console.log(aNuevaTarjeta);
 
         swal({
-            title: "Convenio registrado exitosamente",
-            text: "Ahora puedes hacer envíos de un nuevo documento",
+            title: "Método de pago registrado exitosamente",
+            text: "Ahora puedes hacer uso de tu nuevo método",
             icon: "success",
             button: "OK",
           });

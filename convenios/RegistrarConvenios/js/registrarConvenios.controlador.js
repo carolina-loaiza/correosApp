@@ -44,7 +44,7 @@ function obtenerConvenio(){
 
         swal({
             title: "Convenio registrado exitosamente",
-            text: "Ahora puedes hacer envíos de un nuevo documento",
+            text: "Ahora puedes hacer envíos de un nuevp documento",
             icon: "success",
             button: "OK",
           });

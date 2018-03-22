@@ -63,8 +63,8 @@ function eliminar() {
 
     let id = this.dataset.codigo;
     swal({
-            title: '¿Está seguro que desea eliminar el convenio?',
-            text: 'En caso de continuar desaparecerá de la lista de convenios',
+            title: '¿Está seguro que desea eliminar este método de pago?',
+            text: 'En caso de continuar desaparecerá de la lista de tarjetas',
             icon: 'warning',
             buttons: {
                 catch: {
