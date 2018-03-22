@@ -7,48 +7,55 @@ function mostrarConvenios(){
     let cuerpoTabla = document.querySelector('#tblConvenios tbody');
     cuerpoTabla.innerHTML = '';
 
+
     for(let i = 0; i <listaConvenios.length; i++){
-        if (listaConvenios[i][1].toLowerCase().includes(sFiltro.toLowerCase())){
-            let fila = cuerpoTabla.insertRow();
-            let cNombre = fila.insertCell();
-            let cDescripcion = fila.insertCell();
-            let cModificar = fila.insertCell();
-            let cEliminar = fila.insertCell();
 
-            cModificar.classList.add('acciones');
-            cEliminar.classList.add('acciones');
+        if(listaConvenios[i][3]=="1"){
 
-            let sNombre = document.createTextNode(listaConvenios[i][1]);
-            let sDescripcion = document.createTextNode(listaConvenios[i][2]);
+            if (listaConvenios[i][1].toLowerCase().includes(sFiltro.toLowerCase())){
+                let fila = cuerpoTabla.insertRow();
+                let cNombre = fila.insertCell();
+                let cDescripcion = fila.insertCell();
+                let cModificar = fila.insertCell();
+                let cEliminar = fila.insertCell();
 
-            cNombre.appendChild(sNombre);
-            cDescripcion.appendChild(sDescripcion);
+                cModificar.classList.add('acciones');
+                cEliminar.classList.add('acciones');
 
-            //Creación del botón de editar-------------
-            let botonEditar = document.createElement('i');
-            botonEditar.classList.add("far", "fa-edit", "ed-delink");
-            let elementa = document.createElement('a');  
-            elementa.setAttribute("href", "../ModificarConvenios/modificarConvenios.html"); 
-            elementa.appendChild(botonEditar);
-            elementa.addEventListener('click', redirect);
-            elementa.dataset.nombre = listaConvenios[i][0]; 
+                let sNombre = document.createTextNode(listaConvenios[i][1]);
+                let sDescripcion = document.createTextNode(listaConvenios[i][2]);
 
-            cModificar.appendChild(elementa);
+                cNombre.appendChild(sNombre);
+                cDescripcion.appendChild(sDescripcion);
+
+                //Creación del botón de editar-------------
+                let botonEditar = document.createElement('i');
+                botonEditar.classList.add("far", "fa-edit", "ed-delink");
+                let elementa = document.createElement('a');  
+                elementa.setAttribute("href", "../ModificarConvenios/modificarConvenios.html"); 
+                elementa.appendChild(botonEditar);
+                elementa.addEventListener('click', redirect);
+                elementa.dataset.nombre = listaConvenios[i][0]; 
+
+                cModificar.appendChild(elementa);
 
 
-            //Creación del botón de deshabilitar---------
-            let botonDeshabilitar = document.createElement('i');
-            botonDeshabilitar.classList.add("fas", "fa-times", "ed-delink", "disable");
-            let elementb = document.createElement('a');
-            elementb.appendChild(botonDeshabilitar);
-            elementb.addEventListener('click', eliminar); 
-            elementb.dataset.codigo = listaConvenios[i][0];
-                  
-            cEliminar.appendChild(elementb);
+                //Creación del botón de deshabilitar---------
+                let botonDeshabilitar = document.createElement('i');
+                botonDeshabilitar.classList.add("fas", "fa-times", "ed-delink", "disable");
+                let elementb = document.createElement('a');
+                elementb.appendChild(botonDeshabilitar);
+                elementb.addEventListener('click', eliminar); 
+                elementb.dataset.codigo = i;
+                    
+                cEliminar.appendChild(elementb);
+            }
         }
     }
 }
 function eliminar(){
+
+    let id = this.dataset.codigo;
     swal({
         title: '¿Está seguro que desea eliminar el convenio?',
         text: 'En caso de continuar desaparecerá de la lista de convenios',
@@ -65,11 +72,12 @@ function eliminar(){
     .then((botonUsuario) =>{
         if(botonUsuario === "Eliminar"){
             let listaConvenios = getNuevosConvenios();
-            if(listaConvenios[this.dataset.id][3]=="1"){
-                listaConvenios[this.dataset.id][3]=="0"
-            } else{listaConvenios[this.dataset.id][0]=="1"}
-        actualizarlistaConvenios(listaConvenios[this.dataset.id]);
+            if(listaConvenios[id][3]=="1"){
+                listaConvenios[id][3]="0"
+            } else{listaConvenios[id][3]="1"}
+        actualizarListaConvenios(listaConvenios[id]);
         mostrarConvenios();
+        console.log(listaConvenios);
             }
         }
     )
