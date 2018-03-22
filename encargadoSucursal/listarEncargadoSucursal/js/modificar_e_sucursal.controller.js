@@ -4,6 +4,19 @@ botonActualizar.addEventListener('click', registrarDatosActualizados);
 
 obtenerEncargado();
 
+
+function agregarSucursales() {
+    let lista = obtenerDatoLocal('RegistroLS');
+    for(let i = 0; i < lista.length; i++) {
+        let opcion = document.createElement('option');
+        opcion.value = lista[i][0];
+        opcion.innerText = lista[i][0];
+        document.getElementById('opSucursal').appendChild(opcion);
+    }
+}
+
+agregarSucursales();
+
 function obtenerEncargado() {
     let sCorreo = getTemp();
     let infoEncargado = buscarEncargadoPorCorreo(sCorreo);

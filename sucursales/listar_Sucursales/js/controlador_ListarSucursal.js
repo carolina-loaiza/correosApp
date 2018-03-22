@@ -1,5 +1,6 @@
 ////INTERFAZ LISTAR
 document.querySelector('#txtFiltro').addEventListener('keyup', mostrarListas );
+
 mostrarListas();
 
 
