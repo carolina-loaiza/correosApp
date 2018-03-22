@@ -28,5 +28,55 @@ function setInfoRegistro(pDatosRegistro)
     localStorage.setItem('RegistroLS',JSON.stringify(listaContactos));
 }
 
+////////////////////////////////////////////////////////////////////////////////////
 
+
+
+function buscarSucursal(pNombre)
+{
+    let listaRepartidores=getInfoContactos();
+    let repartidorEncontrado=[];
+    for(let i=0;i<listaRepartidores.length;i++)
+    {
+        if(pNombre == listaRepartidores[i][0])
+        {
+            repartidorEncontrado=listaRepartidores[i];
+        }
+    }
+    return repartidorEncontrado;
+}
+
+
+
+
+function setTemp(data)
+{
+    localStorage.setItem('tempLs', JSON.stringify(data));
+}
+
+
+function getTemp()
+{
+    return JSON.parse(localStorage.getItem('tempLs'));
+}
+
+
+
+function removeTemp()
+{
+   localStorage.removeItem('tempLs');
+}
+
+
+
+function actualizarListaSucursales(pDatosRegistro)
+{
+    let listaRepartidores=getInfoContactos();
+    for(let i=0;i<listaRepartidores.length;i++){
+        if(listaRepartidores[i][2]==pDatosRegistro[2]){
+            listaRepartidores[i]=pDatosRegistro;
+            localStorage.setItem('RegistroLS',JSON.stringify(listaRepartidores));
+        }
+    }
+}
 

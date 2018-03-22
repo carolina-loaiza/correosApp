@@ -14,6 +14,7 @@ function registrar()
     else
     {
         var aRegistroArticulos = [];
+        var articuloID = Math.random().toString(36).substring(8);
         
 
         //var sUsr = 'adrian';        
@@ -21,7 +22,7 @@ function registrar()
         var sImpuestos = document.querySelector('#txtImpuestos').value;
                
     
-        aRegistroArticulos=[sCategoria,sImpuestos];
+        aRegistroArticulos=[articuloID,sCategoria,sImpuestos,'1'];
         console.log(aRegistroArticulos);
 
         setInfoRegistro(aRegistroArticulos);

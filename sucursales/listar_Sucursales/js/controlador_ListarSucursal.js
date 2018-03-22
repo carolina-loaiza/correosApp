@@ -31,23 +31,28 @@ function mostrarListas()
             //sDesactivar.appendChild(document.createTextNode(listarSucursales[i][4]));
 
             //BOTONES MODIFICAR Y DESACTIVAR
-            //Se definen las variables de los  botones modificar y eleminar----------------------------------------------
+            //Se definen las variables de los  botones modificar 
             let botonModificar = document.createElement('i');//crea la variable del modificar con un icono
             botonModificar.classList.add("far", "fa-edit");//inserta el elemento icono
-            
-
-            let botonDesactivar =document.createElement('i');//crea la variable del modificar con un icono
+            let botonDesactivar = document.createElement('i');//crea la variable del modificar con un icono
             botonDesactivar.classList.add("fas", "fa-times");//inserta el elemento icono
-            //Se definen las variables de los  botones modificar y eleminar-----------------------------------------------
-            
-           // let elemento = document.createElement('i');
 
-            //elemento.setAttribute("href", "../modificar/modificar.html");
-            sModificar.appendChild(botonModificar);
+
+            let elementa = document.createElement('a');
+            elementa.setAttribute("href", "../Modificar_Sucursales/modificar_Sucursales.html");
+            elementa.appendChild(botonModificar);
+            elementa.addEventListener('click' , redirect);
+            elementa.dataset.sucursal = listarSucursales[i][0];
+            
+            sModificar.appendChild(elementa);
+            
+            elementa.appendChild(botonModificar);
             sModificar.classList.add('acciones');
 
             sDesactivar.appendChild(botonDesactivar);
             sDesactivar.classList.add('acciones');
+
+
             
             
 
@@ -60,4 +65,11 @@ function mostrarListas()
         }
        
     }
+}
+
+
+function redirect()
+{
+    let sNombre = this.dataset.sucursal;
+    setTemp(sNombre);
 }

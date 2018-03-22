@@ -7,6 +7,7 @@
   <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800|Roboto:400,500,700" rel="stylesheet">
   <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="css/styleListaEncargadoAduana.css">
   <title>Correos de Costa Rica</title>
 </head>
 <body>
@@ -24,9 +25,11 @@
         </div>
         <ul class="sideBarMenu">
           <li>
-            <li class="activeItem">
-              <span class="icon iconMenu"><i class="far fa-file-alt"></i></span>
-              Registrar
+            <li class="#">
+              <a href="../registrarEncargadoAduana/RegistroEncAduanas.html">
+                <span class="icon iconMenu"><i class="far fa-file-alt"></i></span>
+                Registrar
+              </a>
             </a>
           </li>
           <li>
@@ -35,8 +38,8 @@
               Asignar
             </a>
           </li>
-          <li class="#">
-            <a href="./../listar_tiposArticulo/listar_TiposArticulo.html">
+          <li class="activeItem">
+            <a href="#">
               <span class="icon iconMenu"><i class="fas fa-clipboard-list"></i></span>
               Listar
             </a>
@@ -59,12 +62,21 @@
       </header>
       <div class="content">
         <h1 class="title titleUnderline">Listar encargados de aduanas</h1>
+
+        
+        <div class="inputContainer">
+            <label for="text" class="lupa">
+              <i class="fas fa-search"></i>
+            </label>
+  
+            <div class="input"><input type="text" placeholder="Aduanas" name="text" id="txtFiltro" required></div>
+          </div>
         
         <!--<button type="button" class="button buttonIcon"><span class="icon"><i class="fas fa-arrow-right"></i></span> Button Simple</button>-->
         <form name="form" class="row">
           <div class="col6 colWithPaddingRight">
 
-              <table id="tblListaSucursal">
+              <table id="tblListaEncargadoAduana">
                   <thead>
                       <tr>
                           <th>Primer nombre</th>
@@ -125,7 +137,7 @@
   </div>
 
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <script src="../js/servicioEncargadosAduana.js"></script>
+  <script src="../js/registroEncAduanas.servicio.js"></script>
   <script src="js/controlador_ListarEncargadoAduana.js"></script>
 
 </body>
