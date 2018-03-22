@@ -64,7 +64,9 @@
         for(var i = 0; i < listaUsuarios.length; i++) {
           if (listaUsuarios[i][5] === correo) {
             listaUsuarios[i] = infoCliente;
-            localStorage.setItem('usuario', JSON.stringify(infoCliente));
+            if (!getTemp()) { 
+              localStorage.setItem('usuario', JSON.stringify(infoCliente));
+            }
           }
         }
         localStorage.setItem('listaUsuarios', JSON.stringify(listaUsuarios));
