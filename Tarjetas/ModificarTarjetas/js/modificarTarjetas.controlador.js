@@ -1,6 +1,20 @@
-let btnRegistro = document.querySelector('#btnGuardar');
+obtenerTarjeta();
 
-btnRegistro.addEventListener('click', obtenerDatosTarjeta);
+function obtenerTarjeta(){
+    let sNumero=getTemp();
+    let infoTarjeta=buscarTarjeta(sNumero);
+
+    console.log(infoTarjeta);
+    
+    document.querySelector('#txtTitular').value=infoTarjeta[1];
+    document.querySelector('#txtNumero').value=infoTarjeta[2];
+    document.querySelector('#txtmm').value=infoTarjeta[3];
+    document.querySelector('#txtyy').value=infoTarjeta[4];
+    document.querySelector('#txtcvv').value=infoTarjeta[5];
+}
+
+let botonActualizar=document.querySelector('#btnGuardar');
+botonActualizar.addEventListener('click',obtenerActualizar);
 
 function validarDatos(){
 
@@ -19,7 +33,7 @@ function validarDatos(){
     return bError;
 }
 
-function obtenerDatosTarjeta(){
+function obtenerActualizar(){
 
     let bError = validarDatos();
     if (bError == true) {
@@ -33,16 +47,16 @@ function obtenerDatosTarjeta(){
     else {
         let aNuevaTarjeta = [];
         let valido = true;
-        let tarjetaId = Math.random().toString(36).substring(8);
-
+        let temporal = getTemp();
         let nombreTitutar = document.querySelector('#txtTitular').value;
         let numeroTarjeta = document.querySelector('#txtNumero').value;
         let year = document.querySelector('#txtyy').value;
         let month = document.querySelector('#txtmm').value;
         let cvv = document.querySelector('#txtcvv').value;
 
-        aNuevaTarjeta.push(tarjetaId, nombreTitutar, numeroTarjeta, year, month, cvv,'1',  '1');
-        setNuevasTarjetas(aNuevaTarjeta);
+        aNuevaTarjeta.push(temporal, nombreTitutar, numeroTarjeta, year, month, cvv, '1');
+        actualizarlistaTarjetas(aNuevaTarjeta);
+        removeTemp();
         limpiar();
 
         console.log(aNuevaTarjeta);
@@ -55,6 +69,7 @@ function obtenerDatosTarjeta(){
           });
         }
 }
+
 function limpiar(){
     document.querySelector('#txtTitular').value = '';
     document.querySelector('#txtNumero').value = '';

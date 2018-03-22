@@ -3,7 +3,7 @@ mostrarMetodos();
 
 function mostrarMetodos(){
     let sFiltro = document.querySelector('#txtFiltro').value;
-    let listaMetodos = getNuevosMetodos();
+    let listaMetodos = getNuevasTarjetas();
     let cuerpoTabla = document.querySelector('#tblMetodos tbody');
     cuerpoTabla.innerHTML = '';
 
@@ -19,9 +19,9 @@ function mostrarMetodos(){
             cModificar.classList.add('acciones');
             cEliminar.classList.add('acciones');
 
-            let sTitular = document.createTextNode(listaMetodos[i][0]);
-            let sNumero = document.createTextNode(listaMetodos[i][1]);
-            let sExpiracion = document.createTextNode(listaMetodos[i][1]);
+            let sTitular = document.createTextNode(listaMetodos[i][1]);
+            let sNumero = document.createTextNode(listaMetodos[i][2]);
+            let sExpiracion = document.createTextNode(listaMetodos[i][3] + "/" +listaMetodos[i][4]);
 
             cTitular.appendChild(sTitular);
             cNumero.appendChild(sNumero);
@@ -29,11 +29,16 @@ function mostrarMetodos(){
 
             //Creación del botón de editar
             let botonEditar = document.createElement('i');
-
             botonEditar.classList.add("far", "fa-edit", "ed-delink");
-            botonEditar.dataset.codigo = listaMetodos[i][0];
-            botonEditar.addEventListener('click', editar);
-            cModificar.appendChild(botonEditar);
+            let elementa = document.createElement('a');
+            elementa.setAttribute("href", "../ModificarTarjetas/modificarTarjetas.html"); 
+            elementa.appendChild(botonEditar);
+            elementa.addEventListener('click', redirect);
+            elementa.dataset.numero = listaMetodos[i][0];
+
+            cModificar.appendChild(elementa);   
+
+
 
             //Creación del botón de deshabilitar
             let botonDeshabilitar = document.createElement('i');
@@ -45,8 +50,10 @@ function mostrarMetodos(){
         }
     }
 }
-function editar(){
+function redirect(){
+    let sNumero = this.dataset.numero;
 
+    setTemp(sNumero);
 }
 function deshabilitar(){
 
