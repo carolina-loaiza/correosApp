@@ -1,4 +1,5 @@
-//////REGISTRAR INTERFAZ
+//////REGISTRAR tipos de articulo
+
 
 document.querySelector('#btnRegistrar').addEventListener('click',registrar);
 
@@ -12,18 +13,19 @@ function registrar()
     }
     else
     {
-        var aRegistro = [];
-        var infoRegistro = [];  
+        var aRegistroArticulos = [];
+        var articuloID = Math.random().toString(36).substring(8);
+        
 
         //var sUsr = 'adrian';        
-        var sSucursal = document.querySelector('#txtSucursal').value;  
-        var sDireccion = document.querySelector('#txtDireccion').value;
-        var sTelefono = document.querySelector('#txtTelefono').value;       
+        var sCategoria = document.querySelector('#txtCategoria').value;  
+        var sImpuestos = document.querySelector('#txtImpuestos').value;
+               
     
-        aRegistro=[sSucursal,sDireccion,sTelefono];
-        console.log(aRegistro);
+        aRegistroArticulos=[articuloID,sCategoria,sImpuestos,'1'];
+        console.log(aRegistroArticulos);
 
-        setInfoRegistro(aRegistro);
+        setInfoRegistro(aRegistroArticulos);
         
      
         swal('Registro exitoso','Existen Campos Vacios','success');
