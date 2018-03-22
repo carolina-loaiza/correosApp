@@ -7,37 +7,37 @@
   sesionEmail.addEventListener('keyup', quitarMensajeError);
   sesionPassword.addEventListener('keyup', quitarMensajeError);
 
-  if (obtenerDatoLocal('dataUsuarios').length === 0 && obtenerDatoLocal('loginUsuarios').length === 0) {
+  if (obtenerDatoLocal('listaUsuarios').length === 0 && obtenerDatoLocal('loginUsuarios').length === 0) {
     // Datos usuarios de prueba
-    var dataUsuarios = [
-      ["u132","primer nombre", "segundo nombre", "primer apellido", "segundo apellido", "cédula", "teléfono 1", "teléfono 2", "foto", "correo@electrónico.com", "fecha de nacimiento", "género", "lugar de habitación", 1],
-      ["u234","primer nombre", "segundo nombre", "primer apellido", "segundo apellido", "cédula", "teléfono 1", "teléfono 2", "foto", "correo@electrónico.gf", "fecha de nacimiento", "género", "lugar de habitación", 2],
-      ["u334","primer nombre", "segundo nombre", "primer apellido", "segundo apellido", "cédula", "teléfono 1", "teléfono 2", "foto", "correo@electrónico.cr", "fecha de nacimiento", "género", "lugar de habitación", 3]
+    var listaUsuarios = [
+      ["Carla", "", "Arias", "", "213123123", "test02@gmail.com", "23123123123", "", "1999-11-11", "femenino", "lugar de habitación", false, "2", "1"],
+      ["Maria", "", "Castro", "", "213123123", "test01@gmail.com", "23123123123", "", "1999-11-11", "femenino", "lugar de habitación", false, "2", "1"],
+      ["Marta", "", "Ramirez", "", "213123123", "test03@gmail.com", "23123123123", "", "1999-11-11", "femenino", "lugar de habitación", false, "2", "1"]
     ];
     // Datos de inicar sesion de prueba
     var loginUsuarios = [
-      ["l134", "u132", "correo@electronico.com", "contraseña"],
-      ["l243", "u234", "correo@electronico.gf", "contraseña"],
-      ["l323", "u334", "correo@electronico.cr", "contraseña"],
+      ["test02@gmail.com", "contraseña"],
+      ["test01@gmail.com", "contraseña"],
+      ["test03@gmail.com", "contraseña"],
     ];
 
-    dataUsuarios.forEach(usuario => guardarDatoLocal('dataUsuarios', usuario));
+    listaUsuarios.forEach(usuario => guardarDatoLocal('listaUsuarios', usuario));
     loginUsuarios.forEach(loginData => guardarDatoLocal('loginUsuarios', loginData));
   }
 
 
   function validarDatosIngreso() {
     var datosValidos = false;
-    var listaUsuarios = obtenerDatoLocal('loginUsuarios');
+    var loginUsuarios = obtenerDatoLocal('loginUsuarios');
     var error = validarInputsRequeridos([sesionEmail, sesionPassword]);
     if(error == true) {
       mostrarMensajeModal('error formulario');
       return false;
     }
 
-    listaUsuarios.forEach(log => {
-      if(log[2] === sesionEmail.value && log[3] === sesionPassword.value) {
-        obtenerUsuario(log[1]);
+    loginUsuarios.forEach(log => {
+      if(log[0] === sesionEmail.value && log[1] === sesionPassword.value) {
+        obtenerUsuario(log[0]);
         datosValidos = true;
         return true;
       }
@@ -58,16 +58,40 @@
     this.classList.remove('inputError');
   }
 
-  function obtenerUsuario(id) {
+  function obtenerUsuario(email) {
     var usuario = false;
+    usuario = obtenerDatoLocal('listaUsuarios').filter(usuario => {
+      var activo = usuario.length-1;
+      return usuario[5] === email && usuario[activo] === '1';
+    });
 
-    usuario = obtenerDatoLocal('dataUsuarios').filter(usuario => usuario[0] === id);
-
-    if (usuario) {
-      localStorage.setItem('usuario', JSON.stringify(usuario));
+    if (usuario[0] && usuario[0].length != 0) {
+      var tipoUsuario = usuario[0].length-2;
+      localStorage.setItem('usuario', JSON.stringify(usuario[0]));
+      redireccionarUsuario(usuario[0][tipoUsuario]);
     } else {
-      mostarMensajeError();
       mostrarMensajeModal('error formulario');
     }
+  }
+
+  function redireccionarUsuario(tipoUsuario) {
+    console.log(tipoUsuario)
+    switch (tipoUsuario) {
+      case '1':
+        window.location.href = '../clientes/index.html';
+        break;
+      case '2':
+        window.location.href = '../paquetes/alertarPaquete.html';
+        break;
+      case '3':
+        window.location.href = '../clientes/index.html';
+        break;
+      case '4':
+        window.location.href = '../clientes/index.html';
+        break;
+      default:
+        mostrarMensajeModal('error formulario');
+        break;
+    };
   }
 })()

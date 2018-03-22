@@ -36,7 +36,7 @@ function validarInputsRequeridos(inputs) {
   return error;
 }
 
-function mostrarMensajeModal(tipoMensaje, contraseñaTemporal, tipoCliente) {
+function mostrarMensajeModal(tipoMensaje, contraseñaTemporal) {
   switch (tipoMensaje) {
     case 'error formulario':
       swal({
@@ -81,8 +81,7 @@ function mostrarMensajeModal(tipoMensaje, contraseñaTemporal, tipoCliente) {
           className: "button",
         },
       }).then(() => {
-        var iniciarSessionPage = window.location.origin + '/iniciarSesion/index.html';
-        document.location.replace(iniciarSessionPage);
+        window.location.href = '../iniciarSesion/index.html';
       });
       break;
   }
