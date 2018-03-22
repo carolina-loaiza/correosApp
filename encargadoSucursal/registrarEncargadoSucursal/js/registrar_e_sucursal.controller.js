@@ -47,8 +47,8 @@ function obtenerDatos() {
         let genero = document.querySelector('#opGenero').value;
         let sucursal = document.querySelector('#opSucursal').value;
         let fotoPerfil = urlFotoPerfil;
-        let sTipoUsuario = 4;
-        let sActivo = 1;
+        let sTipoUsuario = '4';
+        let sActivo = '1';
 
         if (edad < 18) {
             mostrarMensajeModal('error edad');
