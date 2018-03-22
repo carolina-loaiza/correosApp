@@ -1,0 +1,14 @@
+body{
+    background-color:brown;
+}
+.inputContainer{
+    width: 400px;
+    margin-left: 110px;
+}
+.obligat{
+    margin:110px;
+}
+button{
+    float: right;
+    margin-right: 130px;
+}

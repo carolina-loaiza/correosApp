@@ -7,7 +7,7 @@
   <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800|Roboto:400,500,700" rel="stylesheet">
   <link rel="stylesheet" href="../../css/base.css">
-  <link rel="stylesheet" href="css/registrarConvenios.style.css">
+  <link rel="stylesheet" href="css/modificarContraseña.style.css">
   <title>Correos de Costa Rica</title>
 </head>
 <body>
@@ -59,18 +59,22 @@
           </button>
       </header>
       <div class="content">
-        <h1 class="title titleUnderline">Modificar convenios</h1>
+        <h1 class="title titleUnderline">Modificar contraseña temporal</h1>
         <form name="form" class="row">
             <div class="col6 colWithPaddingRight">
                 <div class="inputContainer">
-                    <label for="text">Nombre del documento</label>
+                    <label for="text">Contraseña actual</label>
                     <input id="txtNombre" type="text" class="input"  required>
                 </div>
                 <div class="inputContainer">
-                    <label for="text">Descripción del convenio</label>
-                    <textarea id="txtDescripcion"  rows="3" class="input" required></textarea>
+                    <label for="text">Nueva contraseña</label>
+                    <input id="txtNombre" type="text" class="input"  required>
                 </div>
-           <button id="btnGuardar" type="button" class="guardar button">Actualizar</button>
+                <div class="inputContainer">
+                    <label for="text">Confirmar nueva contraseña</label>
+                    <input id="txtNombre" type="text" class="input"  required>
+                </div>
+           <button id="btnGuardar" type="button" class="guardar button">Modificar</button>
            </div>
         </form>
       </div>
@@ -82,8 +86,8 @@
         <div class="logo"><img src="../../img/logo_correoscr.png" alt="logo_Correos_CR"></div>
       </footer>
       <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-      <script src="../convenios.servicios.js"></script>
-      <script src="js/modificarConvenios.controlador.js"></script>
+      <!-- <script src="../convenios.servicios.js"></script>
+      <script src="js/registrarConvenios.controlador.js"></script> -->
     </div>
   </div>
 </body>

@@ -34,8 +34,9 @@ function obtenerConvenio(){
 
         let nombre = document.querySelector('#txtNombre').value;
         let descripcion = document.querySelector('#txtDescripcion').value;
+        let ConvenioId = Math.random().toString(36).substring(8);
 
-        aNuevoConvenio.push(nombre, descripcion, '1');
+        aNuevoConvenio.push(ConvenioId, nombre, descripcion, '1');
         setNuevosConvenios(aNuevoConvenio);
 
         console.log(aNuevoConvenio);

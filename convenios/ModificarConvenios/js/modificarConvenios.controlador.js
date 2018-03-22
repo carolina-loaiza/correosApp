@@ -6,8 +6,8 @@ function obtenerConvenio(){
 
     console.log(infoConvenio);
     
-    document.querySelector('#txtNombre').value=infoConvenio[0];
-    document.querySelector('#txtDescripcion').value=infoConvenio[1];
+    document.querySelector('#txtNombre').value=infoConvenio[1];
+    document.querySelector('#txtDescripcion').value=infoConvenio[2];
 }
 
 let botonActualizar=document.querySelector('#btnGuardar');
@@ -26,11 +26,12 @@ function obtenerActualizar() {
     else {
         let aNuevoConvenio = [];
         let valido = true;
+        let temp = getTemp();
 
         let nombre = document.querySelector('#txtNombre').value;
         let descripcion = document.querySelector('#txtDescripcion').value;
 
-        aNuevoConvenio.push(nombre, descripcion, '1');
+        aNuevoConvenio.push(temp, nombre, descripcion, '1');
         actualizarListaConvenios(aNuevoConvenio);
         removeTemp();
         console.log(aNuevoConvenio);

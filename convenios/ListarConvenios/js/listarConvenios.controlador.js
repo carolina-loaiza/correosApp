@@ -8,7 +8,7 @@ function mostrarConvenios(){
     cuerpoTabla.innerHTML = '';
 
     for(let i = 0; i <listaConvenios.length; i++){
-        if (listaConvenios[i][0].toLowerCase().includes(sFiltro.toLowerCase())){
+        if (listaConvenios[i][1].toLowerCase().includes(sFiltro.toLowerCase())){
             let fila = cuerpoTabla.insertRow();
             let cNombre = fila.insertCell();
             let cDescripcion = fila.insertCell();
@@ -18,8 +18,8 @@ function mostrarConvenios(){
             cModificar.classList.add('acciones');
             cEliminar.classList.add('acciones');
 
-            let sNombre = document.createTextNode(listaConvenios[i][0]);
-            let sDescripcion = document.createTextNode(listaConvenios[i][1]);
+            let sNombre = document.createTextNode(listaConvenios[i][1]);
+            let sDescripcion = document.createTextNode(listaConvenios[i][2]);
 
             cNombre.appendChild(sNombre);
             cDescripcion.appendChild(sDescripcion);
@@ -38,21 +38,45 @@ function mostrarConvenios(){
 
             //Creación del botón de deshabilitar---------
             let botonDeshabilitar = document.createElement('i');
-
             botonDeshabilitar.classList.add("fas", "fa-times", "ed-delink", "disable");
-            botonDeshabilitar.dataset.codigo = listaConvenios[i][0];
-            botonDeshabilitar.addEventListener('click', deshabilitar);       
-            cEliminar.appendChild(botonDeshabilitar);
+            let elementb = document.createElement('a');
+            elementb.appendChild(botonDeshabilitar);
+            elementb.addEventListener('click', eliminar); 
+            elementb.dataset.codigo = listaConvenios[i][0];
+                  
+            cEliminar.appendChild(elementb);
         }
     }
 }
-function deshabilitar(){
-
+function eliminar(){
+    swal({
+        title: '¿Está seguro que desea eliminar el convenio?',
+        text: 'En caso de continuar desaparecerá de la lista de convenios',
+        icon: 'warning',
+        buttons:{
+            catch:{
+                text:'Eliminar',
+                value:'Eliminar',
+                className:'button',
+            },
+            cancel:'Cancelar'
+        },
+    })
+    .then((botonUsuario) =>{
+        if(botonUsuario === "Eliminar"){
+            let listaConvenios = getNuevosConvenios();
+            if(listaConvenios[this.dataset.id][3]=="1"){
+                listaConvenios[this.dataset.id][3]=="0"
+            } else{listaConvenios[this.dataset.id][0]=="1"}
+        actualizarlistaConvenios(listaConvenios[this.dataset.id]);
+        mostrarConvenios();
+            }
+        }
+    )
 }
 
 function redirect(){
     let sNombre = this.dataset.nombre;
-
     setTemp(sNombre);
 }
 
