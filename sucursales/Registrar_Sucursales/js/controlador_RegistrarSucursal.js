@@ -4,11 +4,11 @@ document.querySelector('#btnRegistrar').addEventListener('click',registrar);
 
 function registrar()
 {
-    var error = validarInputsRequeridos(document.querySelectorAll('input:required'));
+    var error = validar();
     
     if(error==true)
     {
-        mostrarMensajeModal('error formulario');
+        swal('error','Existen campos vacios','warning');
     }
     else
     {
@@ -23,7 +23,30 @@ function registrar()
         aRegistro=[sSucursal,sDireccion,sTelefono];
         console.log(aRegistro);
 
-        guardarDatoLocal('RegistroLS', aRegistro); 
-        mostrarMensajeModal('registro exitoso');
+        setInfoRegistro(aRegistro);
+        
+     
+        swal('Registro exitoso','Existen Campos Vacios','success');
     }
-};
+}
+
+function validar()
+{
+    var inputs = document.querySelectorAll('input:required');
+    var bError = false;
+
+    for(var i = 0; i < inputs.length; i++)
+    {
+        if (inputs[i].value == '')
+        {
+            bError = true;
+            inputs[i].classList.add('error');
+        }
+        else
+        {
+            inputs[i].classList.remove('error');
+        }
+    } 
+    return bError;
+} 
+

@@ -14,7 +14,7 @@ function mostrarListas()
 
     for (let i =0; i<listarArticulos.length;i++)
     {     
-        if(listarArticulos[i][0].toLowerCase().includes(sfiltro))
+        if(listarArticulos[i][1].toLowerCase().includes(sfiltro)||listarArticulos[i][2].includes(sfiltro))
         {
             let fila= tbody. insertRow();// CREA FILAS
 

@@ -33,7 +33,7 @@
                 </div>
                 <ul class="sideBarMenu">
                     <li class="activeItem">
-                        <a href="../registrar_tiposArticulo/registrar_TiposArticulo.html">
+                        <a href="../registrar/registrar.html">
                             <span class="icon iconMenu">
                                 <i class="far fa-file-alt"></i>
                             </span>
@@ -49,7 +49,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="../listar_tiposArticulo/listar_TiposArticulo.html">
+                        <a href="../listar_Sucursales/listar_Sucursal.html">
                             <span class="icon iconMenu">
                                 <i class="fas fa-list-alt"></i>
                             </span>
@@ -79,7 +79,7 @@
                 </button>
             </header>
             <div class="content">
-                <h1 class="title titleUnderline">Modificar tipo de articulo</h1>
+                <h1 class="title titleUnderline">Modificar registro de sucursal</h1>
                 <!--<button type="button" class="button">Button Simple</button>
                 <button type="button" class="button buttonIcon">
                     <span class="icon">
@@ -89,20 +89,25 @@
                     <div class="col6 colWithPaddingRight">
 
                         <div class="inputContainer">
-                            <label for="txtCategoria">Categoria del articulo*</label>
+                            <label for="txtSucursal">Sucursal*</label>
                             <div class='input'>
-                                <input type="text" id="txtCategoria" required>
+                                <input type="text" id="txtSucursal" required>
                             </div>
                         </div>
 
                         <div class="inputContainer">
-                            <label for="txtImpuesto">Impuesto del articulo*</label>
+                            <label for="txtDireccion">Direccion*</label>
                             <div class='input'>
-                                <input type="text" id="txtImpuestos" required>
+                                <input type="text" id="txtDireccion" required>
                             </div>
                         </div>
 
-                       
+                        <div class="inputContainer">
+                            <label for="txtTelefono">Telefono*</label>
+                            <div class='input'>
+                                <input type="text" id="txtTelefono" required>
+                            </div>
+                        </div>
 <!-- 
                         <div  class="inputContainer">
                             <label for="txtCorreo">Correo electrónico</label>
@@ -192,7 +197,7 @@
 
                         <div class="buttonContainer">
                             <button class="button" type="button" id="btnGuardar">
-                                Actualizar
+                                Modificar
                             </button>
                         </div>
                         
@@ -213,8 +218,8 @@
         </div>
         <!---Script de la aplicacion -->
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <script src="../js/servicioTiposArticulo.js"></script>
-        <script src="js/controlador_ModificarTiposArticulo.js"></script>
+        <script src="../js/Servicio_Sucursal.js"></script>
+        <script src="js/controladorModificarSucursales.js"></script>
         
 </body>
 
