@@ -10,9 +10,9 @@
   if (obtenerDatoLocal('listaUsuarios').length === 0 && obtenerDatoLocal('loginUsuarios').length === 0) {
     // Datos usuarios de prueba
     var listaUsuarios = [
-      ["Carla", "", "Arias", "", "213123123", "test02@gmail.com", "23123123123", "", "1999-11-11", "femenino", "lugar de habitación", "2", "1"],
-      ["Maria", "", "Castro", "", "213123123", "test01@gmail.com", "23123123123", "", "1999-11-11", "femenino", "lugar de habitación", "2", "1"],
-      ["Marta", "", "Ramirez", "", "213123123", "test03@gmail.com", "23123123123", "", "1999-11-11", "femenino", "lugar de habitación", "2", "1"]
+      ["Carla", "", "Arias", "", "213123123", "test02@gmail.com", "23123123123", "", "1999-11-11", "femenino", "lugar de habitación", false, "2", "1"],
+      ["Maria", "", "Castro", "", "213123123", "test01@gmail.com", "23123123123", "", "1999-11-11", "femenino", "lugar de habitación", false, "2", "1"],
+      ["Marta", "", "Ramirez", "", "213123123", "test03@gmail.com", "23123123123", "", "1999-11-11", "femenino", "lugar de habitación", false, "2", "1"]
     ];
     // Datos de inicar sesion de prueba
     var loginUsuarios = [

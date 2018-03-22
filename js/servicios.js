@@ -36,7 +36,7 @@ function validarInputsRequeridos(inputs) {
   return error;
 }
 
-function mostrarMensajeModal(tipoMensaje, contraseñaTemporal, tipoCliente) {
+function mostrarMensajeModal(tipoMensaje, contraseñaTemporal) {
   switch (tipoMensaje) {
     case 'error formulario':
       swal({
