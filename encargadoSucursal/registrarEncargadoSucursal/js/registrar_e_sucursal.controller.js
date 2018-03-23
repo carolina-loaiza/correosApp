@@ -13,6 +13,11 @@ document.querySelector('#btnRegistrar').addEventListener('click', obtenerDatos);
         });
     };
     initFotoPerfil();
+
+    var sucursale1 = ["Sucursal #1","Direccion Sucursal #1","312423423", "200", "200"];
+    guardarDatoLocal('RegistroLS', sucursale1);
+    var sucursale2 = ["Sucursal #2","Direccion Sucursal #2","342342343", "200", "200"];
+    guardarDatoLocal('RegistroLS', sucursale2);
 //mete las sucursales en el select de registro 
  function agregarSucursales() {
      let lista = obtenerDatoLocal('RegistroLS');
@@ -35,10 +40,12 @@ function obtenerDatos() {
     }
     else {
         let infoEncargadoSucursal = [];
+        let contraseña = generarDato(0, 'contraseña');
 
         let primerNombre = document.querySelector('#txtPrimerNombre').value;
         let segundoNombre = document.querySelector('#txtSegundoNombre').value;
         let primerApellido = document.querySelector('#txtPrimerApellido').value;
+        let segundoApellido = document.querySelector('#txtSegundoApellido').value;
         let cedula = document.querySelector('#txtId').value;
         let correo = document.querySelector('#txtCorreo').value;
         let telefono_1 = document.querySelector('#txtTel1').value;
@@ -58,10 +65,13 @@ function obtenerDatos() {
 
         //la foto no se guarda
 
-        infoEncargadoSucursal.push(primerNombre, segundoNombre, primerApellido, cedula, correo, telefono_1, telefono_2
+        infoEncargadoSucursal.push(primerNombre, segundoNombre, primerApellido, segundoApellido, cedula, correo, telefono_1, telefono_2
         , edad, genero, sucursal, fotoPerfil, sTipoUsuario, sActivo);
         guardarDatoLocal('listaEncargadosLS', infoEncargadoSucursal);
-        mostrarMensajeModal('registro exitoso');
+        //mostrarMensajeModal('registro exitoso');
+        guardarDatoLocal('listaUsuarios', infoEncargadoSucursal);
+        guardarDatoLocal('loginUsuarios', [correo, contraseña]);
+        mostrarMensajeModal('registro exitoso de usuario', contraseña);
 
     }//else
     

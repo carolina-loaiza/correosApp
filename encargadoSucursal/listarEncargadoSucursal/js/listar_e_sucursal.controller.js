@@ -15,7 +15,7 @@ function mostrarEncargados() {
 
     for(let i = 0; i < listaEncargados.length; i++) {
         
-        if(listaEncargados[i][12] == '1') {
+        if(listaEncargados[i][13] == '1') {
             if(listaEncargados[i][0].toLowerCase().includes(sFiltro) || listaEncargados[i][2].toLowerCase().includes(sFiltro) || listaEncargados[i][4].toLowerCase().includes(sFiltro) || listaEncargados[i][9].toLowerCase().includes(sFiltro)) {
            let fila = tbody.insertRow();
            
@@ -33,9 +33,9 @@ function mostrarEncargados() {
 
            cPrimerNombre.appendChild(document.createTextNode(listaEncargados[i][0]));
            cPrimerApellido.appendChild(document.createTextNode(listaEncargados[i][2]));
-           cCorreo.appendChild(document.createTextNode(listaEncargados[i][4]));
-           cTelefono.appendChild(document.createTextNode(listaEncargados[i][5]));
-           cSucursal.appendChild(document.createTextNode(listaEncargados[i][9]));
+           cCorreo.appendChild(document.createTextNode(listaEncargados[i][5]));
+           cTelefono.appendChild(document.createTextNode(listaEncargados[i][6]));
+           cSucursal.appendChild(document.createTextNode(listaEncargados[i][10]));
 
            let atag = document.createElement('a');
            atag.setAttribute('href', "index_modificar.html");
@@ -45,7 +45,7 @@ function mostrarEncargados() {
            botonEditar.classList.add("far", "fa-edit");
 
            atag.appendChild(botonEditar);
-           atag.dataset.correo = listaEncargados[i][4];
+           atag.dataset.correo = listaEncargados[i][5];
            cEditar.appendChild(atag);
 
            atag.addEventListener('click', redirect);
@@ -88,10 +88,10 @@ function eliminar() {
           if(botonUsuario === "Eliminar") {
               let listaEncargados = obtenerDatoLocal('listaEncargadosLS');
               console.log(listaEncargados[id]);
-              if(listaEncargados[id][12] == '1') {
-                  listaEncargados[id][12] = '0'
+              if(listaEncargados[id][13] == '1') {
+                  listaEncargados[id][13] = '0'
               }
-              else {listaEncargados[id][12] = '1'}
+              else {listaEncargados[id][13] = '1'}
               actualizarEncargado(listaEncargados[id]);
               mostrarEncargados();
           }
