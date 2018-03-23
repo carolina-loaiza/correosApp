@@ -33,16 +33,7 @@ function actualizarEncargado(pInfoEncargado) {
     for(let i = 0; i < listaEncargados.length; i++) {
         //si los correos coinciden, los datos se sobre escriben
         if(pInfoEncargado[4] == listaEncargados[i][4]) {
-            listaEncargados[i][0] = pInfoEncargado[0];
-            listaEncargados[i][1] = pInfoEncargado[1];
-            listaEncargados[i][2] = pInfoEncargado[2];
-            listaEncargados[i][3] = pInfoEncargado[3];
-            listaEncargados[i][4] = pInfoEncargado[4];
-            listaEncargados[i][5] = pInfoEncargado[5];
-            listaEncargados[i][6] = pInfoEncargado[6];
-            listaEncargados[i][7] = pInfoEncargado[7];
-            listaEncargados[i][8] = pInfoEncargado[8];
-            listaEncargados[i][9] = pInfoEncargado[9];   
+            listaEncargados[i] = pInfoEncargado;  
         }//if
     }//for loop
     localStorage.setItem('listaEncargadosLS', JSON.stringify(listaEncargados));

@@ -1,6 +1,31 @@
 let botonActualizar = document.querySelector('#btnActualizar');
 botonActualizar.addEventListener('click', registrarDatosActualizados);
 
+var imagePreview = document.querySelector('#previewFoto');
+var urlFotoPerfil = false;
+
+function initFotoPerfil() {
+    $("input.cloudinary-fileupload[type=file]").unsigned_cloudinary_upload(unsignedUser, { cloud_name: imageCloudName, tags: 'browser_uploads' })
+      .bind('cloudinarydone', function(e, data) {
+        imagePreview.setAttribute("src", data.result.url);
+        imagePreview.style.display = 'block';
+        urlFotoPerfil = data.result.url;
+        document.querySelector('#inputFotoPerfil').classList.remove('inputError');
+      });
+  };
+  initFotoPerfil();
+//mete las sucursales en el select de registro 
+function agregarSucursales() {
+   let lista = obtenerDatoLocal('RegistroLS');
+   for(let i = 0; i < lista.length; i++) {
+       let opcion = document.createElement('option');
+       opcion.value = lista[i][0];
+       opcion.innerText = lista[i][0];
+       document.getElementById('opSucursal').appendChild(opcion);
+   }
+}
+
+agregarSucursales();
 
 obtenerEncargado();
 
@@ -47,9 +72,12 @@ function registrarDatosActualizados() {
         let edad = calcularEdad(document.querySelector('#dtFecha').value);
         let genero = document.querySelector('#opGenero').value;
         let sucursal = document.querySelector('#opSucursal').value;
+        let fotoPerfil = urlFotoPerfil;
+        let sTipoUsuario = '4';
+        let sActivo = '1';
 
         infoEncargado.push(primerNombre, segundoNombre, primerApellido, 
-        cedula, correo, telefono_1, telefono_2, edad, genero, sucursal);
+        cedula, correo, telefono_1, telefono_2, edad, genero, sucursal, fotoPerfil, sTipoUsuario, sActivo);
         actualizarEncargado(infoEncargado);
         removeTemp();
         window.location.href = 'index.html';

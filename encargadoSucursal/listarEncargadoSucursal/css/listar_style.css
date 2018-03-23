@@ -1,14 +1,4 @@
-#btnSeleccionarImagen {
-  color: #000000;
-  padding: 8px 12px;
-  margin-top: 10px;
-  height: 135px;
-  width: 70%;
-}
 
-#btnSeleccionarImagen:hover {
-  background-color: rgb(156, 151, 151);
-}
 
 .filtro {
   width: 605px;
@@ -57,15 +47,7 @@ tr:hover td{
   color: #000000;
 }
 
-#btnSeleccionarImagen {
-  color: #000000;
-  padding: 8px 12px;
-  margin-top: 10px;
-}
 
-#btnSeleccionarImagen:hover {
-  background-color: rgb(156, 151, 151);
-}
 
 .fa-edit:before {
   color: black;
@@ -73,4 +55,8 @@ tr:hover td{
 
 .fa-times::before {
   color: #000000;
+}
+
+#editarPerfil::before {
+  color:#fff;
 }
