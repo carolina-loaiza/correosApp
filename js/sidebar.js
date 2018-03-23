@@ -24,7 +24,7 @@
     }).then((botonUsuario) => {
       if (botonUsuario === 'Cerrar sesión') {
         localStorage.removeItem('usuario');
-        window.location.href = '../iniciarSesion/index.html';
+        // window.location.href = '../iniciarSesion/index.html';
       }
     });
   }
@@ -53,6 +53,10 @@
     case '4':
       rol = 'Encargado de sucursal';
       editarPage = '../encargadoSucursal/listarEncargadoSucursal/index_modificar.html';
+      sideBarMenu.appendChild(crearLinkMenu('../clientes/registroClientes.html', 'Registrar clientes', ['far', 'fa-list-alt']));
+      sideBarMenu.appendChild(crearLinkMenu('../repartidor/registrar/registrar.html', 'Registrar repartidor', ['far', 'fa-list-alt']));
+      sideBarMenu.appendChild(crearLinkMenu('../clientes/listarClientes.html', 'Listar clientes', ['far', 'fa-list-alt']));
+      sideBarMenu.appendChild(crearLinkMenu('../repartidor/listar_buscar/listado.html', 'Listar repartidor', ['far', 'fa-list-alt']));
       sideBarMenu.appendChild(crearLinkMenu('../paquetes/listarPaquetes.html', 'Listar paquetes', ['far', 'fa-list-alt']));
       break;
     case '5':
