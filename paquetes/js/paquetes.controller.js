@@ -34,9 +34,9 @@
       });
       break;
     case "5":
-      estados = ['Tránsito a destino', 'Entragdo'];
+      estados = ['Tránsito a destino', 'Entragado'];
       listaEstadosUsuario = listaPaquetes.filter(function (paquete) {
-        return paquete[9] === 'Tránsito a destino' || paquete[9] === 'Entragdo';
+        return paquete[9] === 'Tránsito a destino' || paquete[9] === 'Entragado';
       });
       break;
   }
@@ -52,6 +52,8 @@
       document.querySelector('#paquetesTabla .mostrarIDCliente').style.display = "table-cell";
       document.querySelector('#paquetesTabla .cambioEstado').style.display = "table-cell";
       document.querySelector('.estadosTitulos').style.display = "block";
+      document.querySelector('#estado1').appendChild(document.createTextNode(estados[0]));
+      document.querySelector('#estado2').appendChild(document.createTextNode(estados[1]));
     }
     console.log(listaEstadosUsuario)
     for(let i = 0; i < listaEstadosUsuario.length; i++) {

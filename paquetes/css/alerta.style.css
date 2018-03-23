@@ -12,7 +12,8 @@
 }
 
 .estados li {
-  width: 30%;
+  width: 47%;
+  font-weight: bold;
   display: inline-block;
 }
 
