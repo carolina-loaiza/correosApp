@@ -7,9 +7,12 @@
   sesionEmail.addEventListener('keyup', quitarMensajeError);
   sesionPassword.addEventListener('keyup', quitarMensajeError);
 
-  if (obtenerDatoLocal('listaUsuarios').length === 0 && obtenerDatoLocal('loginUsuarios').length === 0) {
+  //if (obtenerDatoLocal('listaUsuarios').length === 0 && obtenerDatoLocal('loginUsuarios').length === 0) {
     // Datos usuarios de prueba
     var listaUsuarios = [
+      ["nombre","","apellido","","213123123","k@gmail.com","123123123","",26,"masculino","Sucursal #1",false,"4","1"],
+      ["nombre","","apellido","","213123123","g@gmail.com","123123123","",26,"masculino","Sucursal #2",false,"4","1"],
+      ["encargadoAduana","","apellido","","213123123","f@gmail.com","123123123","",26,"masculino","Sucursal #2",false,"3","1"],
       ["Carla", "", "Arias", "", "213123123", "test02@gmail.com", "23123123123", "", "1999-11-11", "femenino", "lugar de habitación", false, "2", "1"],
       ["Maria", "", "Castro", "", "213123123", "test01@gmail.com", "23123123123", "", "1999-11-11", "femenino", "lugar de habitación", false, "2", "1"],
       ["Marta", "", "Ramirez", "", "213123123", "test03@gmail.com", "23123123123", "", "1999-11-11", "femenino", "lugar de habitación", false, "2", "1"],
@@ -18,6 +21,9 @@
     ];
     // Datos de inicar sesion de prueba
     var loginUsuarios = [
+      ["k@gmail.com", "contraseña"],
+      ["p@gmail.com", "contraseña"],
+      ["f@gmail.com", "contraseña"],
       ["test02@gmail.com", "contraseña"],
       ["test01@gmail.com", "contraseña"],
       ["test03@gmail.com", "contraseña"],
@@ -27,7 +33,7 @@
 
     listaUsuarios.forEach(usuario => guardarDatoLocal('listaUsuarios', usuario));
     loginUsuarios.forEach(loginData => guardarDatoLocal('loginUsuarios', loginData));
-  }
+  //}
 
 
   function validarDatosIngreso() {

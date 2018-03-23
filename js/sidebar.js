@@ -46,13 +46,17 @@
       sideBarMenu.appendChild(crearLinkMenu('../paquetes/listarPaquetes.html', 'Listar paquetes', ['far', 'fa-list-alt']));
       break;
     case '3':
-      rol = 'Encargado de sucursal';
+      rol = 'Encargado de aduanas';
+      sideBarMenu.appendChild(crearLinkMenu('../paquetes/listarPaquetes.html', 'Listar paquetes', ['far', 'fa-list-alt']));
       break;
     case '4':
-      rol = 'Encargado de aduanas';
+      rol = 'Encargado de sucursal';
+      editarPage = '../encargadoSucursal/listarEncargadoSucursal/index_modificar.html';
+      sideBarMenu.appendChild(crearLinkMenu('../paquetes/listarPaquetes.html', 'Listar paquetes', ['far', 'fa-list-alt']));
       break;
     case '5':
       rol = 'Repartidor';
+      sideBarMenu.appendChild(crearLinkMenu('../paquetes/listarPaquetes.html', 'Listar paquetes', ['far', 'fa-list-alt']));
       break;
   }
 

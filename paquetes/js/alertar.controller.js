@@ -72,7 +72,7 @@
       var estadoInicial = 'En transito'; 
 
       paquete.push(numeroTracking, peso, courier, sucursal, categoria, tarjeta, precioInicial, precioFinal, usuarioEmail[5], estadoInicial);
-      guardarDatoLocal('listaPaquete', paquete);
+      guardarDatoLocal('listaPaquetes', paquete);
       mostrarMensajeModal('registro exitoso');
     }
   }
