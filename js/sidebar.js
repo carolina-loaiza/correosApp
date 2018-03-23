@@ -44,11 +44,12 @@
       editarPage = '../clientes/editarClientes.html';
       sideBarMenu.appendChild(crearLinkMenu('../paquetes/alertarPaquete.html', 'Alertar Paquete', ['fas', 'fa-cube']));
       sideBarMenu.appendChild(crearLinkMenu('../paquetes/listarPaquetes.html', 'Listar paquetes', ['far', 'fa-list-alt']));
+      sideBarMenu.appendChild(crearLinkMenu('../Tarjetas/RegistroTarjetas/RegistrarTarjetas.html', 'Formas de pago', ['fas', 'fa-credit-card']));
       break;
     case '3':
       rol = 'Encargado de aduanas';
+      editarPage = '../clientes/editarClientes.html';
       sideBarMenu.appendChild(crearLinkMenu('../paquetes/listarPaquetes.html', 'Listar paquetes', ['far', 'fa-list-alt']));
-      break;
     case '4':
       rol = 'Encargado de sucursal';
       editarPage = '../encargadoSucursal/listarEncargadoSucursal/index_modificar.html';
@@ -56,6 +57,7 @@
       break;
     case '5':
       rol = 'Repartidor';
+      editarPage = '../repartidor/modificar/modificar.html';
       sideBarMenu.appendChild(crearLinkMenu('../paquetes/listarPaquetes.html', 'Listar paquetes', ['far', 'fa-list-alt']));
       break;
   }
