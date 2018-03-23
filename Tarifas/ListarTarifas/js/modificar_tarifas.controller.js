@@ -4,7 +4,7 @@ botonActualizar.addEventListener('click', registrarDatosActualizados);
 obtenerTarifa();
 
 function agregarSucursales() {
-    let lista = obtenerDatoLocal('RegistroLS');
+    let lista = obtenerDatoLocal('RegistroTarifa');
     for(let i = 0; i < lista.length; i++) {
         let opcion = document.createElement('option');
         opcion.value = lista[i][0];

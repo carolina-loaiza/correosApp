@@ -37,50 +37,37 @@
           </button>
       </header>
       <div class="content">
-        <h1 class="title titleUnderline">Alertar paquete nuevo</h1>
-        <form id="formAlertarPaquete" class="alertaForm">
-          <div class="inputContainer">
-            <label for="numeroTracking">Número de tracking</label>
-            <input class="input" type="number" name="text" id="numeroTracking" required>
-          </div>
-          <div class="inputContainer">
-            <label for="peso">Peso (kg)</label>
-            <input class="input" type="number" name="peso" id="peso" required>
-          </div>
-          <div class="inputContainer">
-              <label for="precioInicial">Precio (colones)</label>
-              <input class="input" type="number" name="precioInicial" id="precioInicial" required>
-            </div>
-          <div class="inputContainer">
-            <label for="opCourier">Seleccione un courier</label>
-            <div class="input">
-              <select name="opCourier" id="opCourier" required> 
-              </select>
-            </div>
-          </div>
-          <div class="inputContainer">
-            <label for="opSucursal">Seleccione la sucursal</label>
-            <div class="input">
-              <select name="opSucursal" id="opSucursal" required> 
-              </select>
-            </div>
-          </div>
-          <div class="inputContainer">
-            <label for="opCategoria">Seleccione una categoria</label>
-            <div class="input">
-              <select name="opCategoria" id="opCategoria" required> 
-              </select>
-            </div>
-          </div>
-          <div class="inputContainer">
-            <label for="opTarjeta">Seleccione una forma de pago</label>
-            <div class="input">
-              <select name="opTarjeta" id="opTarjeta" required> 
-              </select>
-            </div>
-          </div>
-          <button type="button" id="alertarPaquete" class="button">Alertar paquete</button>
-        </form>
+        <h1 class="title titleUnderline">Lista de paquetes</h1>
+        <ul class="estados">
+          <li>
+            <img src="../img/icono1.png" alt="">
+            Estado
+          </li>
+          <li>
+            <img src="../img/icono2.png" alt="">
+            Estado
+          </li>
+          <li>
+            <img src="../img/icono3.png" alt="">
+            Estado
+        </ul> 
+        <i class="fas fa-search iconfiltro"></i>  
+        <input class="input filtro" type="text" id="txtFiltro">
+        
+        <table id="paquetesTabla">
+          <thead>
+            <tr id="paquetesTitulo">
+              <th>Número de tracking</th>
+              <th>Courier</th>
+              <th>Categoria</th>
+              <th>Peso</th>
+              <th>Estado</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table> 
       </div>
       <footer>
         <div class="footerContent">
@@ -96,6 +83,6 @@
   <script src="../js/localStorage.servicio.js"></script>
   <script src="../js/servicios.js"></script>
   <script src="../js/sidebar.js"></script>
-  <script src="js/alertar.controller.js"></script>
+  <script src="js/paquetes.controller.js"></script>
 </body>
 </html>
