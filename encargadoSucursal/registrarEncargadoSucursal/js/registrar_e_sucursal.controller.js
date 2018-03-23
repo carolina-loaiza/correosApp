@@ -13,6 +13,9 @@ document.querySelector('#btnRegistrar').addEventListener('click', obtenerDatos);
         });
     };
     initFotoPerfil();
+
+    var listaSucursales = ["Sucursal #1","Direccion Sucursal #1","312423423", "200", "200"];
+    guardarDatoLocal('RegistroLS', listaSucursales);
 //mete las sucursales en el select de registro 
  function agregarSucursales() {
      let lista = obtenerDatoLocal('RegistroLS');
@@ -39,6 +42,7 @@ function obtenerDatos() {
         let primerNombre = document.querySelector('#txtPrimerNombre').value;
         let segundoNombre = document.querySelector('#txtSegundoNombre').value;
         let primerApellido = document.querySelector('#txtPrimerApellido').value;
+        let segundoApellido = document.querySelector('#txtPrimerApellido').value;
         let cedula = document.querySelector('#txtId').value;
         let correo = document.querySelector('#txtCorreo').value;
         let telefono_1 = document.querySelector('#txtTel1').value;

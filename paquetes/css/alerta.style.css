@@ -46,3 +46,8 @@ td {
   display: inline-block;
   width: 97%;
 }
+
+.mostrarIDCliente,
+.mostrarEstado {
+  display: none;
+}

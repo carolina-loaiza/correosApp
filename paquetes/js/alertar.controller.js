@@ -11,7 +11,7 @@
   function agregarCouriers() {
     for(var i = 0; i < listaCouriers.length; i++) {
       var opcion = document.createElement('option');
-      opcion.value = listaCouriers[i][0];
+      opcion.value = listaCouriers[i][1];
       opcion.innerText = listaCouriers[i][1];
       document.getElementById('opCourier').appendChild(opcion);
     }
@@ -26,16 +26,16 @@
     }
   }
 
-  function agregarTarjetas() {
+  function agregarCategorias() {
     for(var i = 0; i < listaCategorias.length; i++) {
       var opcion = document.createElement('option');
-      opcion.value = listaCategorias[i][0];
+      opcion.value = listaCategorias[i][1];
       opcion.innerText = listaCategorias[i][1];
       document.getElementById('opCategoria').appendChild(opcion);
     }
   }
 
-  function agregarCategorias() {
+  function agregarTarjetas() {
     for(var i = 0; i < listaTarjetas.length; i++) {
       var opcion = document.createElement('option');
       opcion.value = listaTarjetas[i][1];
@@ -69,7 +69,7 @@
       var precioInicial = document.querySelector('#precioInicial').value;
       var precioFinal = precioInicial;
       var usuarioEmail = obtenerDatoLocal('usuario');
-      var estadoInicial = 'estado 1'; 
+      var estadoInicial = 'En transito'; 
 
       paquete.push(numeroTracking, peso, courier, sucursal, categoria, tarjeta, precioInicial, precioFinal, usuarioEmail[5], estadoInicial);
       guardarDatoLocal('listaPaquete', paquete);

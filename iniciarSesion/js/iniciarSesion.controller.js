@@ -13,14 +13,16 @@
       ["Carla", "", "Arias", "", "213123123", "test02@gmail.com", "23123123123", "", "1999-11-11", "femenino", "lugar de habitación", false, "2", "1"],
       ["Maria", "", "Castro", "", "213123123", "test01@gmail.com", "23123123123", "", "1999-11-11", "femenino", "lugar de habitación", false, "2", "1"],
       ["Marta", "", "Ramirez", "", "213123123", "test03@gmail.com", "23123123123", "", "1999-11-11", "femenino", "lugar de habitación", false, "2", "1"],
-      ["Esteban", "", "Ramirez", "", "213123123", "test04@gmail.com", "23123123123", "", "1999-11-11", "femenino", "lugar de habitación", false, "1", "1"]
+      ["Esteban", "", "Ramirez", "", "213123123", "test04@gmail.com", "23123123123", "", "1999-11-11", "femenino", "lugar de habitación", false, "1", "1"],
+      ["Carlos", "", "Ramirez", "", "213123123", "test05@gmail.com", "23123123123", "", "1999-11-11", "masculino", "lugar de habitación", false, "3", "1"]
     ];
     // Datos de inicar sesion de prueba
     var loginUsuarios = [
       ["test02@gmail.com", "contraseña"],
       ["test01@gmail.com", "contraseña"],
       ["test03@gmail.com", "contraseña"],
-      ["test04@gmail.com", "contraseña"]
+      ["test04@gmail.com", "contraseña"],
+      ["test05@gmail.com", "contraseña"]
     ];
 
     listaUsuarios.forEach(usuario => guardarDatoLocal('listaUsuarios', usuario));
@@ -86,10 +88,13 @@
         window.location.href = '../paquetes/alertarPaquete.html';
         break;
       case '3':
-        window.location.href = '../clientes/index.html';
+        window.location.href = '../paquetes/listarPaquetes.html';
         break;
       case '4':
-        window.location.href = '../clientes/index.html';
+        window.location.href = '../paquetes/listarPaquetes.html';
+        break;
+      case '5':
+        window.location.href = '../paquetes/listarPaquetes.html';
         break;
       default:
         mostrarMensajeModal('error formulario');

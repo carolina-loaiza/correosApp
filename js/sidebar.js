@@ -5,6 +5,30 @@
     window.location.href = '../iniciarSesion/index.html';
   }
 
+  if (document.querySelector('.headerSesion button')) {
+    document.querySelector('.headerSesion button').addEventListener('click', cerrarSesion);
+  }
+
+  function cerrarSesion() {
+    swal({
+      title: "¿Está seguro de que desea cerrar sesión?",
+      icon: "warning",
+      buttons: {
+        catch: {
+          text: "Cerrar sesión",
+          value: "Cerrar sesión",
+          className: "button"
+        },
+        cancel: "Cancelar",
+      },
+    }).then((botonUsuario) => {
+      if (botonUsuario === 'Cerrar sesión') {
+        localStorage.removeItem('usuario');
+        window.location.href = '../iniciarSesion/index.html';
+      }
+    });
+  }
+
   var perfilUsuario = document.querySelector('#userPerfilInfo');
   var imagenPerfil = document.querySelector('#userPerfilAvatar');
   var sideBarMenu = document.querySelector('#sideBarMenu');
@@ -19,8 +43,7 @@
       rol = 'Cliente';
       editarPage = '../clientes/editarClientes.html';
       sideBarMenu.appendChild(crearLinkMenu('../paquetes/alertarPaquete.html', 'Alertar Paquete', ['fas', 'fa-cube']));
-      sideBarMenu.appendChild(crearLinkMenu('#', 'Nombre item', ['far', 'fa-file-alt']));
-      sideBarMenu.appendChild(crearLinkMenu('#', 'Nombre item', ['far', 'fa-file-alt']));
+      sideBarMenu.appendChild(crearLinkMenu('../paquetes/listarPaquetes.html', 'Listar paquetes', ['far', 'fa-list-alt']));
       break;
     case '3':
       rol = 'Encargado de sucursal';
