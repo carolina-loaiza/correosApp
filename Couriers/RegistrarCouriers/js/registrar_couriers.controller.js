@@ -31,10 +31,14 @@ function obtenerDatos() {
 
         let numero = document.querySelector('#numCourier').value;
         let nombre = document.querySelector('#txtNombre').value;
+        let sActivo = 1;
 
 
-        couriers.push(numero, nombre);
-        setInfoCouriers(couriers);
+        couriers.push(numero, nombre, sActivo);
+        guardarDatoLocal('listaCouriersLS', couriers);
+        //con el servicio global las funciones de get y set ya no son necesarias
+        //setInfoCouriers(couriers);
+
 
         swal({
             title: "Información registrada correctamente",
@@ -44,3 +48,4 @@ function obtenerDatos() {
           });
     }//else
 }//function
+
