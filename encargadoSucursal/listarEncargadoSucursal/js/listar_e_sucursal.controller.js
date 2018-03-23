@@ -1,6 +1,7 @@
 mostrarEncargados();
 
 document.querySelector('#txtFiltro').addEventListener('keyup', mostrarEncargados);
+listaEncargados = obtenerDatoLocal('listaEncargadosLS');
 
 
 
@@ -13,7 +14,9 @@ function mostrarEncargados() {
     tbody.innerHTML = '';
 
     for(let i = 0; i < listaEncargados.length; i++) {
-        if(listaEncargados[i][0].toLowerCase().includes(sFiltro) || listaEncargados[i][2].toLowerCase().includes(sFiltro) || listaEncargados[i][4].toLowerCase().includes(sFiltro) || listaEncargados[i][9].toLowerCase().includes(sFiltro)) {
+        
+        if(listaEncargados[i][12] == '1') {
+            if(listaEncargados[i][0].toLowerCase().includes(sFiltro) || listaEncargados[i][2].toLowerCase().includes(sFiltro) || listaEncargados[i][4].toLowerCase().includes(sFiltro) || listaEncargados[i][9].toLowerCase().includes(sFiltro)) {
            let fila = tbody.insertRow();
            
            let cPrimerNombre = fila.insertCell();
@@ -46,19 +49,17 @@ function mostrarEncargados() {
            cEditar.appendChild(atag);
 
            atag.addEventListener('click', redirect);
-
-
            
-
-           
-
            let botonDesactivar = document.createElement('i');
            botonDesactivar.classList.add("fas", "fa-times");
-           botonDesactivar.dataset.correo = listaEncargados[i][4];
+           botonDesactivar.dataset.indice = i;
+           botonDesactivar.addEventListener('click', eliminar);
            cDesactivar.appendChild(botonDesactivar);
-       }//if
-    }//for loop
 
+           
+       }//if
+    }//if estado
+    }//for loop
 }
 
 
@@ -67,6 +68,40 @@ function redirect() {
     let sCorreo = this.dataset.correo; 
     setTemp(sCorreo);
 }
+
+function eliminar() {
+    var id = this.dataset.indice;
+    swal({
+        title: "¿Está seguro de eliminar al encargado?",
+        text: "Si lo hace, el registro del encargado desaparecerá por completo",
+        icon: "warning",
+        buttons: {
+          catch: {
+              text: 'Eliminar',
+              value: 'Eliminar',
+              className: 'button',
+          },
+          cancel: 'Cancelar'
+        },
+      })
+      .then((botonUsuario) => {
+          if(botonUsuario === "Eliminar") {
+              let listaEncargados = obtenerDatoLocal('listaEncargadosLS');
+              console.log(listaEncargados[id]);
+              if(listaEncargados[id][12] == '1') {
+                  listaEncargados[id][12] = '0'
+              }
+              else {listaEncargados[id][12] = '1'}
+              actualizarEncargado(listaEncargados[id]);
+              mostrarEncargados();
+          }
+      })
+
+
+}
+
+
+
 
 
 

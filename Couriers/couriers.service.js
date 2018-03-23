@@ -1,19 +1,6 @@
-function getInfoCourier() {
-    let listaCouriers = JSON.parse(localStorage.getItem('listaCouriersLS'));
-    if(listaCouriers == null) {
-        listaCouriers = [];
-    }
-    return listaCouriers;
-}
-
-function setInfoCouriers(pInfoCourier) {
-    let listaCouriers = getInfoCourier();
-    listaCouriers.push(pInfoCourier);
-    localStorage.setItem('listaCouriersLS', JSON.stringify(listaCouriers));
-}
 
 function buscarCourierPorNombre(pCourier) {
-    let listaCouriers = getInfoCourier();
+    let listaCouriers = obtenerDatoLocal('listaCouriersLS');
     let courierEcontrado = [];
 
     for(let i = 0; i < listaCouriers.length; i++) {
@@ -38,12 +25,13 @@ function removeTemp() {
 }
 
 function actualizarCourier(pInfoCourier) {
-    let listaCouriers = getInfoCourier();
+    let listaCouriers = obtenerDatoLocal('listaCouriersLS');
 
     for(let i = 0; i < listaCouriers.length; i++) {
         if(pInfoCourier[0] == listaCouriers[i][0]) {
             listaCouriers[i][0] = pInfoCourier[0];
             listaCouriers[i][1] = pInfoCourier[1];
+            listaCouriers[i][2] = pInfoCourier[2];
         }//if
     }//for loop
     localStorage.setItem('listaCouriersLS', JSON.stringify(listaCouriers));

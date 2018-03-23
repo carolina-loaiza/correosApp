@@ -31,8 +31,9 @@ function registrarDatosActualizados() {
     let tarifaPeso = document.querySelector('#numTarifaPeso').value;
     let sucursal = document.querySelector('#opSucursal').value;
     let tarifaKm = document.querySelector('#numTarifaKm').value;
+    let sActivo = 1;
 
-    infoTarifa.push(sucursal, tarifaPeso, tarifaKm);
+    infoTarifa.push(sucursal, tarifaPeso, tarifaKm, sActivo);
     actualizarTarifa(infoTarifa);
     removeTemp();
     window.location.href = 'index.html'

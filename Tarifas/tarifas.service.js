@@ -23,6 +23,8 @@ function removeTemp() {
     localStorage.removeItem('tempLS');
 }
 
+
+//modificar!!
 function actualizarTarifa(pInfoTarifa) {
     let listaTarifas = obtenerDatoLocal('RegistroLS');
 
@@ -31,6 +33,7 @@ function actualizarTarifa(pInfoTarifa) {
             listaTarifas[i][0] = pInfoTarifa[0];
             listaTarifas[i][3] = pInfoTarifa[1];
             listaTarifas[i][4] = pInfoTarifa[2];
+            listaTarifas[i][5] = pInfoTarifa[3];
         }
     }
     localStorage.setItem('RegistroLS', JSON.stringify(listaTarifas));
