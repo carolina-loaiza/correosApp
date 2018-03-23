@@ -8,7 +8,15 @@ function registrar()
     
     if(error==true)
     {
-        swal('error','Existen campos vacios','warning');
+        swal({
+            title: "Ocurrió un error",
+            text: "Por favor verifique los campos resaltados",
+            icon: "error",
+            button: {
+              text: "OK",
+              className: "button",
+            },
+          });
     }
     else
     {
@@ -26,7 +34,15 @@ function registrar()
         setInfoRegistro(aRegistro);
         
      
-        swal('Registro exitoso','Existen Campos Vacios','success');
+        swal({
+            title: "Información registrada correctamente",
+            text: "Puede proceder",
+            icon: "success",
+            button: {
+              text: "OK",
+              className: "button",
+            },
+            });
     }
 }
 

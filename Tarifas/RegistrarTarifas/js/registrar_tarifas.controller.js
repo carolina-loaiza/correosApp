@@ -31,13 +31,15 @@ function obtenerDatos() {
         let tarifaPeso = document.querySelector('#numTarifaPeso').value;
         let sucursalElegida = document.querySelector('#opSucursal').value;
         let tarifaKm = document.querySelector('#numTarifaKm').value;
+        let sActivo = 1;
 
         for (let i= 0; i < listaSucursales.length; i++) {
             //si la sucursal de las registradas coincide con la sucursal seleccionada
             //se insertan en el arreglo las tarifas registradas
             if(listaSucursales[i][0] == sucursalElegida){
                 listaSucursales[i].push(tarifaPeso);
-                listaSucursales[i].push(tarifaKm);
+                listaSucursales[i].push(tarifaKm)
+                listaSucursales[i].push(sActivo);
             }
         }
 
