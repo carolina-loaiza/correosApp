@@ -48,6 +48,8 @@ td {
   width: 97%;
 }
 
+.estadoSucursal,
+.estado3,
 .estadosTitulos,
 .cambioEstado,
 .mostrarIDCliente,
@@ -55,19 +57,27 @@ td {
   display: none;
 }
 
+.estadoSucursal,
 .cambioEstado {
   background: #fff;
 }
 
 .cambioEstado .estados li {
-  width: 70px;
+  width: 48px;
+}
+
+.estadoSucursal li {
+  min-width: 48px;
+}
+
+.estadosTitulos li {
+  margin-bottom: 20px;
 }
 
 
 /* Cambio de estados  */
-
 .onoffswitch {
-  position: relative; width: 153px;
+  position: relative; width: 104px;
   -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
 }
 .onoffswitch-checkbox {
@@ -75,7 +85,7 @@ td {
 }
 .onoffswitch-label {
   display: block; overflow: hidden; cursor: pointer;
-  border: 2px solid #FFFFFF; border-radius: 41px;
+  border: 2px solid #FFFFFF; border-radius: 50px;
 }
 .onoffswitch-inner {
   display: block; width: 200%; margin-left: -100%;
@@ -98,11 +108,11 @@ td {
   text-align: right;
 }
 .onoffswitch-switch {
-  display: block; width: 30px; margin: 5px;
+  display: block; width: 34px; margin: 4.5px;
   background: #FFFFFF;
   position: absolute; top: 0; bottom: 0;
-  right: 112px;
-  border: 2px solid #FFFFFF; border-radius: 41px;
+  right: 63px;
+  border: 2px solid #FFFFFF; border-radius: 50px;
   transition: all 0.3s ease-in 0s; 
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {

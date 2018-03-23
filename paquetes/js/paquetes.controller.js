@@ -36,7 +36,7 @@
     case "5":
       estados = ['Tránsito a destino', 'Entragado'];
       listaEstadosUsuario = listaPaquetes.filter(function (paquete) {
-        return paquete[9] === 'Tránsito a destino' || paquete[9] === 'Entragado';
+        return (paquete[9] === 'Tránsito a destino' || paquete[9] === 'Entragado') && (paquete[10] === usuario[5]);
       });
       break;
   }
@@ -45,6 +45,7 @@
     let tbody = document.querySelector('#paquetesTabla tbody');
     let sFiltro = filtroPaquetes.value;
     tbody.innerHTML = '';
+    document.querySelector('#estado3').style.display = "none";
 
     if(usuario[12] === '2') {
       document.querySelector('#paquetesTabla .mostrarEstado').style.display = "table-cell";
@@ -55,7 +56,13 @@
       document.querySelector('#estado1').appendChild(document.createTextNode(estados[0]));
       document.querySelector('#estado2').appendChild(document.createTextNode(estados[1]));
     }
-    console.log(listaEstadosUsuario)
+
+    if (usuario[12] === '4') {
+      document.querySelector('#paquetesTabla .estadoSucursal').style.display = "table-cell";
+      document.querySelector('#estado3').style.display = "block";
+      document.querySelector('#estado3').appendChild(document.createTextNode(estados[2]));
+    }
+
     for(let i = 0; i < listaEstadosUsuario.length; i++) {
 
         if(listaEstadosUsuario[i][0].toLowerCase().includes(sFiltro) || listaEstadosUsuario[i][2].toLowerCase().includes(sFiltro) || listaEstadosUsuario[i][5].toLowerCase().includes(sFiltro)) {
@@ -84,6 +91,12 @@
           courier.appendChild(document.createTextNode(listaEstadosUsuario[i][2]));
           categoria.appendChild(document.createTextNode(listaEstadosUsuario[i][4]));
           peso.appendChild(document.createTextNode(listaEstadosUsuario[i][1]));
+
+          if (usuario[12] === '4') {
+            let estadoSucursal = fila.insertCell();
+            let estadoSucursalTexto = listaEstadosUsuario[i][10] ? listaEstadosUsuario[i][10] : '';
+            estadoSucursal.appendChild(document.createTextNode(estadoSucursalTexto));
+          }
         }
     }
   }
@@ -135,6 +148,23 @@
         }
       }
       localStorage.setItem('listaPaquetes', JSON.stringify(listaPaquetesActuales));
+
+      if (estados[1] === "Entragado") {
+        mostrarFactura();
+      }
     };
+  }
+
+  function mostrarFactura() {
+    swal({
+      title: "Paquete entregado.",
+      icon: "success",
+      button: {
+        text: "Ver factura",
+        className: "button",
+      },
+    }).then(() => {
+      window.location.href = '../factura/factura.html';
+    });
   }
 })();
