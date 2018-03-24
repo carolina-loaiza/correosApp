@@ -54,6 +54,8 @@
       rol = 'Encargado de sucursal';
       editarPage = '../encargadoSucursal/listarEncargadoSucursal/index_modificar.html';
       sideBarMenu.appendChild(crearLinkMenu('../paquetes/listarPaquetes.html', 'Listar paquetes', ['far', 'fa-list-alt']));
+      sideBarMenu.appendChild(crearLinkMenu('../asignarpaquetesrepartidor/asignarpaquetes_repartidor.html', 'Asignar paquetes', ['fas', 'fa-cube']));
+      sideBarMenu.appendChild(crearLinkMenu('../repartidor/registrar/registrar.html', 'Registrar repartidor', ['fas', 'fa-cube']));
       break;
     case '5':
       rol = 'Repartidor';
