@@ -5,10 +5,12 @@ botonGuardar.addEventListener('click', obtenerDatos);
 
 //Funcion de obtener datos.
 
-function obtenerDatos() {
+function obtenerDatos()
+{
     let berror = validar();
 
-    if (berror == true) {
+    if (berror == true)
+    {
         swal({
             title: "Ocurrió un error",
             text: "Faltan los datos de los campos resaltados",
@@ -17,27 +19,30 @@ function obtenerDatos() {
             //Mensaje de error
         });
     }
-    else {
-
+    else
+    {
+        //primer nombre = 0
+        //primer apellido = 2
+        //telefono =  5
         let aEncAduanas = [];
         let valido = true;
 
-        let inputPrimernombre = document.querySelector('#txtPrimernombre');
+        let inputPrimernombre = document.querySelector('#txtPrimernombre');//0
         let sPrimernombre = inputPrimernombre.value;
 
-        let inputSegundonombre = document.querySelector('#txtSegundonombre');
+        let inputSegundonombre = document.querySelector('#txtSegundonombre');//1
         let sSegundonombre = inputSegundonombre.value;
 
-        let inputPrimerapellido = document.querySelector('#txtPrimerapellido');
+        let inputPrimerapellido = document.querySelector('#txtPrimerapellido');//2
         let sPrimerapellido = inputPrimerapellido.value;
 
-        let inputSegundoapellido = document.querySelector('#txtSegundoapellido');
+        let inputSegundoapellido = document.querySelector('#txtSegundoapellido');//3
         let sSegundoapellido = inputSegundoapellido.value;
 
-        let inputIdentificacion = document.querySelector('#txtIdentificacion');
+        let inputIdentificacion = document.querySelector('#txtIdentificacion');//4
         let sIdentificacion = inputIdentificacion.value;
 
-        let inputTelefono1 = document.querySelector('#txtTelefono1');
+        let inputTelefono1 = document.querySelector('#txtTelefono1');//5
         let sTelefono1 = inputTelefono1.value;
 
         let inputTelefono2 = document.querySelector('#txtTelefono2');
