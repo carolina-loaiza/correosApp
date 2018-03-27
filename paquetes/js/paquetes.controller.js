@@ -31,10 +31,10 @@
       console.log(listaEstadosUsuario);
       break;
     case "5":
-      estados = ['Tránsito a destino', 'Entragado'];
+      estados = ['Tránsito a destino', 'Entregado'];
       listaEstadosUsuario = listaPaquetes.filter(function (paquete) {
         console.log(paquete[10], usuario[5]);
-        return (paquete[9] === 'Tránsito a destino' || paquete[9] === 'Entragado') && (paquete[10] === usuario[5]);
+        return (paquete[9] === 'Tránsito a destino' || paquete[9] === 'Entregado') && (paquete[10] === usuario[5]);
       });
       break;
   }
@@ -147,7 +147,7 @@
       }
       localStorage.setItem('listaPaquetes', JSON.stringify(listaPaquetesActuales));
 
-      if (estados[1] === "Entragado") {
+      if (estados[1] === "Entregado") {
         mostrarFactura();
       }
     };
