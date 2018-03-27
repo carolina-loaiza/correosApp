@@ -1,10 +1,5 @@
 (function () {
-  //
-  //obtenerDatoLocal('listaEncargadosLS');
-  if (obtenerDatoLocal('listaPaquetes').length === 0 ) {
-    var testPaquetes = [["213123123","100","Nombre del courier #1","Sucursal #1","COSMETICOS","# tarjeta","100","100","test02@gmail.com","En transito"],["234234","100","Nombre del courier #2","Sucursal #2","DESODORANTES","# tarjeta","100","100","test02@gmail.com","En transito"],["324454534","100","Nombre del courier #3","Sucursal #3","EQUIPO DE SONIDO","# tarjeta","100","100","test02@gmail.com","En transito"],["65434534","100","Nombre del courier #1","Sucursal #1","COSMETICOS","# tarjeta","100","100","test01@gmail.com","En transito"],["12323234","100","Nombre del courier #1","Sucursal #2","DESODORANTES","# tarjeta","100","100","test01@gmail.com","En transito"]];
-    testPaquetes.forEach(paquete => guardarDatoLocal('listaPaquetes', paquete));
-  }
+
 
   var listaPaquetes = obtenerDatoLocal('listaPaquetes');
   var usuario = obtenerDatoLocal('usuario');
@@ -30,13 +25,16 @@
     case "4":
       estados = ['Proceso de distribución', 'Recibido en el centro de distribución', 'Tránsito a destino'];
       listaEstadosUsuario = listaPaquetes.filter(function (paquete) {
+        console.log(paquete[3] === usuario[10]);
         return (paquete[9] === 'Proceso de desalmacenaje' || paquete[9] === 'Recibido en el centro de distribución' || paquete[9] === 'Tránsito a destino') && (paquete[3] === usuario[10]);
       });
+      console.log(listaEstadosUsuario);
       break;
     case "5":
-      estados = ['Tránsito a destino', 'Entragado'];
+      estados = ['Tránsito a destino', 'Entregado'];
       listaEstadosUsuario = listaPaquetes.filter(function (paquete) {
-        return (paquete[9] === 'Tránsito a destino' || paquete[9] === 'Entragado') && (paquete[10] === usuario[5]);
+        console.log(paquete[10], usuario[5]);
+        return (paquete[9] === 'Tránsito a destino' || paquete[9] === 'Entregado') && (paquete[10] === usuario[5]);
       });
       break;
   }
@@ -64,7 +62,7 @@
     }
 
     for(let i = 0; i < listaEstadosUsuario.length; i++) {
-
+        console.log(listaEstadosUsuario);
         if(listaEstadosUsuario[i][0].toLowerCase().includes(sFiltro) || listaEstadosUsuario[i][2].toLowerCase().includes(sFiltro) || listaEstadosUsuario[i][5].toLowerCase().includes(sFiltro)) {
           let fila = tbody.insertRow();
           
@@ -149,7 +147,7 @@
       }
       localStorage.setItem('listaPaquetes', JSON.stringify(listaPaquetesActuales));
 
-      if (estados[1] === "Entragado") {
+      if (estados[1] === "Entregado") {
         mostrarFactura();
       }
     };

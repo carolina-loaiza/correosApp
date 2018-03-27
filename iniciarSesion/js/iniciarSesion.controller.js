@@ -10,25 +10,21 @@
   //if (obtenerDatoLocal('listaUsuarios').length === 0 && obtenerDatoLocal('loginUsuarios').length === 0) {
     // Datos usuarios de prueba
     var listaUsuarios = [
-      ["nombre","","apellido","","213123123","k@gmail.com","123123123","",26,"masculino","Sucursal #1",false,"4","1"],
-      ["nombre","","apellido","","213123123","g@gmail.com","123123123","",26,"masculino","Sucursal #2",false,"4","1"],
-      ["encargadoAduana","","apellido","","213123123","f@gmail.com","123123123","",26,"masculino","Sucursal #2",false,"3","1"],
-      ["Carla", "", "Arias", "", "213123123", "test02@gmail.com", "23123123123", "", "1999-11-11", "femenino", "lugar de habitación", false, "2", "1"],
-      ["Maria", "", "Castro", "", "213123123", "test01@gmail.com", "23123123123", "", "1999-11-11", "femenino", "lugar de habitación", false, "2", "1"],
-      ["Marta", "", "Ramirez", "", "213123123", "test03@gmail.com", "23123123123", "", "1999-11-11", "femenino", "lugar de habitación", false, "2", "1"],
-      ["Esteban", "", "Ramirez", "", "213123123", "test04@gmail.com", "23123123123", "", "1999-11-11", "femenino", "lugar de habitación", false, "1", "1"],
-      ["Carlos", "", "Ramirez", "", "213123123", "test05@gmail.com", "23123123123", "", "1999-11-11", "masculino", "lugar de habitación", false, "3", "1"]
+      ["Felipe","","Castro","","213123123","ocoto@correos.cr","123123123","",26,"masculino","Sucursal #1",false,"4","1"],
+      ["Alvarado","","Castro","","213123123","alva@correos.cr","123123123","",26,"masculino","Sucursal #2",false,"4","1"],
+      ["Marta","","Castro","","213123123","marta@correos.cr","123123123","",26,"masculino","Sucursal #2",false,"5","1"],
+      ["Carla", "", "Arias", "", "213123123", "carla@gmail.com", "23123123123", "", "1999-11-11", "femenino", "lugar de habitación", false, "2", "1"],
+      ["Esteban", "", "Ramirez", "", "213123123", "esteban@gmail.com", "23123123123", "", "1999-11-11", "femenino", "lugar de habitación", false, "2", "1"],
+      ["Carlos", "", "Ramirez", "", "213123123", "carlos@aduanas.cr", "23123123123", "", "1999-11-11", "masculino", "lugar de habitación", false, "3", "1"]
     ];
     // Datos de inicar sesion de prueba
     var loginUsuarios = [
-      ["k@gmail.com", "contraseña"],
-      ["p@gmail.com", "contraseña"],
-      ["f@gmail.com", "contraseña"],
-      ["test02@gmail.com", "contraseña"],
-      ["test01@gmail.com", "contraseña"],
-      ["test03@gmail.com", "contraseña"],
-      ["test04@gmail.com", "contraseña"],
-      ["test05@gmail.com", "contraseña"]
+      ["ocoto@correos.cr", "12345"],
+      ["alva@correos", "12345"],
+      ["marta@correos.cr", "12345"],
+      ["carla@gmail.com", "12345"],
+      ["esteban@gmail.com", "12345"],
+      ["carlos@aduanas.cr", "12345"]
     ];
 
     listaUsuarios.forEach(usuario => guardarDatoLocal('listaUsuarios', usuario));
