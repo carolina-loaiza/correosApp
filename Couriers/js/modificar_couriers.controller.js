@@ -23,5 +23,5 @@ function registrarDatosActualizados() {
     courier.push(numero, nombre, sActivo);
     actualizarCourier(courier);
     removeTemp();
-    window.location.href = 'index.html';
+    window.location.href = 'index_listar.html';
 }
