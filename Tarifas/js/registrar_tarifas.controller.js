@@ -5,6 +5,7 @@ document.querySelector('#btnRegistrar').addEventListener('click', obtenerDatos);
 let listaSucursales = obtenerDatoLocal('RegistroLS');
 
 
+
 function agregarSucursales() {
     for(let i = 0; i < listaSucursales.length; i++) {
         //crea un elemento opcion para meterlo en el select
@@ -31,7 +32,7 @@ function obtenerDatos() {
         let tarifaPeso = document.querySelector('#numTarifaPeso').value;
         let sucursalElegida = document.querySelector('#opSucursal').value;
         let tarifaKm = document.querySelector('#numTarifaKm').value;
-        let sActivo = 1;
+        let sActivo = '1';
 
         for (let i= 0; i < listaSucursales.length; i++) {
             //si la sucursal de las registradas coincide con la sucursal seleccionada
@@ -44,10 +45,16 @@ function obtenerDatos() {
         }
 
         localStorage.setItem('RegistroLS', JSON.stringify(listaSucursales));
+        limpiar();
         mostrarMensajeModal('registro exitoso');
 
     }//else
     
     
+}
+
+function limpiar() {
+    document.querySelector('#numTarifaPeso').value = '';
+    document.querySelector('#numTarifaKm').value = '';
 }
 

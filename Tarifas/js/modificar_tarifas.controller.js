@@ -3,17 +3,18 @@ botonActualizar.addEventListener('click', registrarDatosActualizados);
 
 obtenerTarifa();
 
+
 function agregarSucursales() {
-    let lista = obtenerDatoLocal('RegistroTarifa');
-    for(let i = 0; i < lista.length; i++) {
-        let opcion = document.createElement('option');
-        opcion.value = lista[i][0];
-        opcion.innerText = lista[i][0];
-        document.getElementById('opSucursal').appendChild(opcion);
-    }
+    let lista = getTemp();
+    let opcion = document.createElement('option');
+    opcion.value = lista;
+    opcion.innerText = lista;
+    document.getElementById('opSucursal').appendChild(opcion);
 }
 
 agregarSucursales();
+
+let sSucursal = getTemp();
 
 function obtenerTarifa() {
     let sSucursal = getTemp();
@@ -21,7 +22,7 @@ function obtenerTarifa() {
     /*La tarifa de peso debe de estra disabled cuando sea
     el encargado de sucursal quien modifique*/ 
     document.querySelector('#numTarifaPeso').value = infoTarifa[3];
-    document.querySelector('#opSucursal').value = infoTarifa[0];
+    //document.querySelector('#opSucursal').value = infoTarifa[0];
     document.querySelector('#numTarifaKm').value = infoTarifa[4];
 }
 
@@ -31,12 +32,12 @@ function registrarDatosActualizados() {
     let tarifaPeso = document.querySelector('#numTarifaPeso').value;
     let sucursal = document.querySelector('#opSucursal').value;
     let tarifaKm = document.querySelector('#numTarifaKm').value;
-    let sActivo = 1;
+    let sActivo = '1';
 
     infoTarifa.push(sucursal, tarifaPeso, tarifaKm, sActivo);
     actualizarTarifa(infoTarifa);
     removeTemp();
-    window.location.href = 'index.html'
+    window.location.href = 'index_listar.html'
 
 
 }
