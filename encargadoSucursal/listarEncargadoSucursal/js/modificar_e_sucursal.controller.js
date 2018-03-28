@@ -29,8 +29,11 @@ agregarSucursales();
 
 obtenerEncargado();
 
+
+
 function obtenerEncargado() {
     let sCorreo = getTemp();
+    //console.log(getTemp());
     let infoEncargado = buscarEncargadoPorCorreo(sCorreo);
 
     document.querySelector('#txtPrimerNombre').value = infoEncargado[0];

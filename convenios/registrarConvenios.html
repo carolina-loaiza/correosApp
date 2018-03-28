@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800|Roboto:400,500,700" rel="stylesheet">
-  <link rel="stylesheet" href="../../css/base.css">
+  <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="css/registrarConvenios.style.css">
   <title>Correos de Costa Rica</title>
 </head>
 <body>
   <div class="mainContainer">
     <div class="sideBar">
-      <div class="logo"><img src="../../img/logo_correoscr.png" alt="logo_Correos_CR"></div>
+      <div class="logo"><img src="../img/logo_correoscr.png" alt="logo_Correos_CR"></div>
       <div class="sideBarContent">
         <div class="userPerfil">
-          <div class="userPerfilAvatar"><img src="../../img/avatar.png" alt="Avatar default"></div>
+          <div class="userPerfilAvatar"><img src="../img/avatar.png" alt="Avatar default"></div>
           <div class="userPerfilInfo">
             <h3>Nombre cliente</h3>
             <h4>Rol</h4>
@@ -27,25 +27,31 @@
           <li>
             <a href="#">
               <span class="icon iconMenu"><i class="far fa-file-alt"></i></span>
-              Nombre item
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="icon iconMenu"><i class="fas fa-truck"></i></span>
-              Nombre item
+              Registrar personas
             </a>
           </li>
           <li class="activeItem">
             <a href="#">
-              <span class="icon iconMenu"><i class="fas fa-clipboard-list"></i></span>
-              Nombre item
+              <span class="icon iconMenu"><i class="far fa-file-alt"></i></span>
+              Otros registros
             </a>
           </li>
           <li>
             <a href="#">
-              <span class="icon iconMenu"><i class="fas fa-box"></i></span>
-              Nombre item
+              <span class="icon iconMenu"><i class="far fa-list-alt"></i></span>
+              Listar personas
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon iconMenu"><i class="far fa-list-alt"></i></span>
+              Otros listados
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon iconMenu"><i class="far fa-file"></i></span>
+              Reportes
             </a>
           </li>
         </ul>
@@ -63,13 +69,18 @@
         <form name="form" class="row">
             <div class="col6 colWithPaddingRight">
                 <div class="inputContainer">
-                    <label for="text">Nombre del documento</label>
+                    <label for="numId">Número de registro</label>
+                    <input id="numId" type="number" class="input"  required>
+                </div>
+                <div class="inputContainer">
+                    <label for="txtNombre">Nombre del documento</label>
                     <input id="txtNombre" type="text" class="input"  required>
                 </div>
                 <div class="inputContainer">
-                    <label for="text">Descripción del convenio</label>
-                    <textarea id="txtDescripcion"  rows="3" class="input" required></textarea>
+                    <label for="txtDescripcion">Nombre de la entidad</label>
+                    <input id="txtDescripcion" class="input" required>
                 </div>
+                <h3 id="notificacion">*(Cada convenio registrado debe de tener un número único)</h3>
            <button id="btnGuardar" type="button" class="guardar button">Registrar</button>
            </div>
         </form>
@@ -79,10 +90,12 @@
           <p><i class="fas fa-phone"></i> Central telefónica : +506 800-900-2000</p>
           <p><i class="fas fa-envelope"></i> Email : srvclientes@correos.go.cr</p>
         </div>
-        <div class="logo"><img src="../../img/logo_correoscr.png" alt="logo_Correos_CR"></div>
+        <div class="logo"><img src="../img/logo_correoscr.png" alt="logo_Correos_CR"></div>
       </footer>
       <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-      <script src="../convenios.servicios.js"></script>
+      <script src="../js/servicios.js"></script>
+      <script src="../js/localStorage.servicio.js"></script>
+      <script src="convenios.servicios.js"></script>
       <script src="js/registrarConvenios.controlador.js"></script>
     </div>
   </div>
