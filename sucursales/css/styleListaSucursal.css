@@ -376,3 +376,11 @@ tr:hover td{
   display: inline-block;
   margin-right: 6px;
 }
+
+.fa-edit {
+  color: #000000;
+}
+
+#perfil {
+  color: #fff;
+}
