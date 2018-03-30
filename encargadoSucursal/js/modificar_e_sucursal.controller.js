@@ -30,10 +30,8 @@ agregarSucursales();
 obtenerEncargado();
 
 
-
 function obtenerEncargado() {
     let sCorreo = getTemp();
-    //console.log(getTemp());
     let infoEncargado = buscarEncargadoPorCorreo(sCorreo);
 
     document.querySelector('#txtPrimerNombre').value = infoEncargado[0];
@@ -72,6 +70,6 @@ function registrarDatosActualizados() {
         cedula, correo, telefono_1, telefono_2, edad, genero, sucursal, fotoPerfil, sTipoUsuario, sActivo);
         actualizarEncargado(infoEncargado);
         removeTemp();
-        window.location.href = 'index.html';
+        window.location.href = 'index_listar.html';
 }
 
