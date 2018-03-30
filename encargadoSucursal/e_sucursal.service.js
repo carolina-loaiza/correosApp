@@ -5,7 +5,7 @@ let listaEncargados = obtenerDatoLocal('listaEncargadosLS');
 let encargadoEncontrado = [];
 
 for(let i = 0; i < listaEncargados.length; i++) {
-    if(pCorreo == listaEncargados[i][4]) {
+    if(pCorreo == listaEncargados[i][5]) {
        encargadoEncontrado = listaEncargados[i];
        break; 
         }//if
@@ -32,7 +32,7 @@ function actualizarEncargado(pInfoEncargado) {
 
     for(let i = 0; i < listaEncargados.length; i++) {
         //si los correos coinciden, los datos se sobre escriben
-        if(pInfoEncargado[4] == listaEncargados[i][4]) {
+        if(pInfoEncargado[5] == listaEncargados[i][5]) {
             listaEncargados[i] = pInfoEncargado;  
         }//if
     }//for loop

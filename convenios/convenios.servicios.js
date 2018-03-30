@@ -1,18 +1,4 @@
-function setNuevosConvenios(paNuevosConvenios){
-    let listaConvenios = getNuevosConvenios();
 
-    listaConvenios.push(paNuevosConvenios);
-
-    localStorage.setItem('listaConveniosLS', JSON.stringify(listaConvenios));
-}
-function getNuevosConvenios(){
-    let listaConvenios = JSON.parse(localStorage.getItem('listaConveniosLS'));
-
-    if(listaConvenios == null){
-        listaConvenios = [];
-    }
-    return listaConvenios;
-}
 
 function setTemp(data){
     localStorage.setItem('tempLs', JSON.stringify(data));
@@ -25,22 +11,25 @@ function removeTemp(){
    localStorage.removeItem('tempLs');
 }
 
-function buscarConvenio(pNombre){
-    let listaConvenios=getNuevosConvenios();
+function buscarConvenio(pId){
+    let listaConvenios=obtenerDatoLocal('listaConveniosLS');
     let convenioEncontrado=[];
     for(let i=0;i<listaConvenios.length;i++){
-    if(pNombre == listaConvenios[i][0]){
+    if(pId == listaConvenios[i][3]){
         convenioEncontrado=listaConvenios[i];
-    }}
+        break;
+    }
+}
     return convenioEncontrado;
 }
 
 function actualizarListaConvenios(pinfoConvenios){
-    let listaConvenios=getNuevosConvenios();
+    let listaConvenios=obtenerDatoLocal('listaConveniosLS');
+    
     for(let i=0;i<listaConvenios.length;i++){
-        if(listaConvenios[i][0]==pinfoConvenios[0]){
+        if(pinfoConvenios[3] == listaConvenios[i][3]){
             listaConvenios[i]=pinfoConvenios;
-            localStorage.setItem('listaConveniosLS',JSON.stringify(listaConvenios));
-        }
-    }
+        }//if
+    }//for
+    localStorage.setItem('listaConveniosLS',JSON.stringify(listaConvenios));
 }

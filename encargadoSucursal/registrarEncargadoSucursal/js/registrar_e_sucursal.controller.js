@@ -13,11 +13,14 @@ document.querySelector('#btnRegistrar').addEventListener('click', obtenerDatos);
         });
     };
     initFotoPerfil();
-
+    
+//?????
     var sucursale1 = ["Sucursal #1","Direccion Sucursal #1","312423423", "200", "200"];
     guardarDatoLocal('RegistroLS', sucursale1);
     var sucursale2 = ["Sucursal #2","Direccion Sucursal #2","342342343", "200", "200"];
     guardarDatoLocal('RegistroLS', sucursale2);
+
+
 //mete las sucursales en el select de registro 
  function agregarSucursales() {
      let lista = obtenerDatoLocal('RegistroLS');
@@ -71,10 +74,25 @@ function obtenerDatos() {
         //mostrarMensajeModal('registro exitoso');
         guardarDatoLocal('listaUsuarios', infoEncargadoSucursal);
         guardarDatoLocal('loginUsuarios', [correo, contraseña]);
+        limpiar();
         mostrarMensajeModal('registro exitoso de usuario', contraseña);
 
     }//else
     
+    
+}//funcion
+
+function limpiar() {
+    document.querySelector('#txtPrimerNombre').value = '';
+    document.querySelector('#txtSegundoNombre').value = '';
+    document.querySelector('#txtPrimerApellido').value = '';
+    document.querySelector('#txtSegundoApellido').value = '';
+    document.querySelector('#txtId').value = '';
+    document.querySelector('#txtCorreo').value = '';
+    document.querySelector('#txtTel1').value = '';
+    document.querySelector('#txtTel2').value = '';
+    document.querySelector('#dtFecha').value = '';
+   
     
 }
 

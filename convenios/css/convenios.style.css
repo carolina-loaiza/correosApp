@@ -42,3 +42,11 @@ tr:hover td{
     background: #d0dafd; 
     color: #339; 
 }
+
+.fa-edit {
+    color: black;
+}
+
+#perfil {
+    color: white;
+}

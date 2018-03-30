@@ -1,9 +1,11 @@
 .guardar{
     display: block;
 }
-body{
-    background-color: green;
-}
+
 .error{
     border-color: red;
+}
+
+#notificacion {
+    margin-bottom: 10px;
 }
