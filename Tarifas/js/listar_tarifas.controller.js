@@ -3,6 +3,9 @@ mostrarTarifas();
 
 document.querySelector('#txtFiltro').addEventListener('keyup', mostrarTarifas);
 
+
+
+
 function mostrarTarifas() {
     listaTarifas = obtenerDatoLocal('RegistroLS');
     let tbody = document.querySelector('#tblTarifas tbody');
@@ -12,7 +15,7 @@ function mostrarTarifas() {
     tbody.innerHTML = '';
 
     for(let i = 0; i < listaTarifas.length; i++) {
-        if(listaTarifas[i][5] == 1){
+        if(listaTarifas[i][5] == '1'){
         if(listaTarifas[i][0].includes(sFiltro)) {
             let fila = tbody.insertRow();
 
@@ -84,7 +87,6 @@ function eliminar() {
           .then((botonUsuario) => {
               if(botonUsuario === "Eliminar") {
                   let listaTarifas = obtenerDatoLocal('RegistroLS');
-                  console.log(listaTarifas[id]);
                   if(listaTarifas[id][5] == '1') {
                       listaTarifas[id][5] = '0'
                   }

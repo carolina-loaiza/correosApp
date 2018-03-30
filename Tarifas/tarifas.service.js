@@ -1,3 +1,5 @@
+
+
 function buscarTarifaPorSucursal(pSucursal) {
     let listaTarifas = obtenerDatoLocal('RegistroLS');
     let sucursalEncontrada = [];
