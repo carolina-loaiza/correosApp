@@ -4,7 +4,7 @@ document.querySelector('#txtFiltro').addEventListener('keyup',mostrarRepartidore
 mostrarRepartidores();
 
 function mostrarRepartidores() {
-    let listaRepartidores = getListaRepartidores();
+    let listaRepartidores = obtenerDatoLocal('listaRepartidoresLS');
 
     let cuerpoTabla = document.querySelector('#tblbase tbody');
     let sFiltro = document.querySelector('#txtFiltro').value;
@@ -16,16 +16,9 @@ function mostrarRepartidores() {
             let fila = cuerpoTabla.insertRow();
 
             let cPrimernombre = fila.insertCell();
-            // let cSegundonombre = fila.insertCell();
             let cPrimerapellido = fila.insertCell();
-            //let cSegundoApellido = fila.insertCell();
-            // let cIdentificacion = fila.insertCell();
             //let cTelefono1 = fila.insertCell();
-            // let cTelefono2 = fila.insertCell();
             //let cCorreo = fila.insertCell();
-            //let cFechanacimiento = fila.insertCell();
-            //let cGenero = fila.insertCell();
-            //let cEdad = fila.insertCell();
             let cSucursal=fila.insertCell();
 
             let cModificar = fila.insertCell();
@@ -56,7 +49,7 @@ function mostrarRepartidores() {
             let botonEditar = document.createElement('i');
             botonEditar.classList.add("far","fa-edit");
             let elementa = document.createElement('a');
-            elementa.setAttribute("href" , "../modificar/modificar.html");
+            elementa.setAttribute("href" , "modificar_repartidor.html");
             elementa.appendChild(botonEditar);
             elementa.addEventListener('click', redirect);
              elementa.dataset.nombre = listaRepartidores[i][0];
@@ -65,7 +58,6 @@ function mostrarRepartidores() {
             let botonDesactivar = document.createElement('i');
             botonDesactivar.classList.add("far","fa-dot-circle");
             botonDesactivar.dataset.indice = i;
-            //desactiva.appendChild(botonDesactivar);
             botonDesactivar.addEventListener('click',desactivar);
             cDesactivar.appendChild(botonDesactivar);
             
@@ -86,7 +78,7 @@ function redirect(){
 }
 
 function desactivar(){
-    let listaRepartidores= getListaRepartidores();
+    let listaRepartidores= obtenerDatoLocal('listaRepartidoresLS');
     if(listaRepartidores[this.dataset.indice][13]=='1'){
         listaRepartidores[this.dataset.indice][13]='0'
     }
@@ -94,7 +86,6 @@ function desactivar(){
         listaRepartidores[this.dataset.indice][13]='1'
     };
     actualizarListaRepartidores(listaRepartidores[this.dataset.indice]);
-    console.log('#', listaRepartidores[this.dataset.indice]);
     mostrarRepartidores();
 }
 
