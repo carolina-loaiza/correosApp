@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -8,6 +8,7 @@
     <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800|Roboto:400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Correos de Costa Rica</title>
 </head>
 
@@ -79,16 +80,8 @@
             </header>
             <div class="content">
                 <h1 class="title titleUnderline">Registro de repartidor</h1>
-                <!--<button type="button" class="button">Button Simple</button>
-                <button type="button" class="button buttonIcon">
-                    <span class="icon">
-                        <i class="fas fa-arrow-right"></i>
-                    </span> Button Simple</button>-->
+
                 <form name="form" class="row">
-
-
-
-
                     <div class="col6 colWithPaddingRight">
                         <div class="inputContainer">
                             <label for="txtPrimernombre">Primer nombre*</label>
@@ -121,7 +114,7 @@
                         <div class="inputContainer">
                             <label for="txtTelefono1">Teléfono 1*</label>
                             <div class='input'>
-                                <input type="number" id="txtTelefono1" required>
+                                <input type="tel" id="txtTelefono1" required>
                             </div>
                         </div>
 
@@ -149,19 +142,24 @@
                             </div>
                         </div>
 
-                        <div class="inputContainerfoto">
-
-
-                            <form id="file-form" enctype="multipart/form-data">
-                                <button type="button" id='btnSeleccionarImagen' name='submit'>Agregar foto</button>
-                            </form>
-
+                        <div class="inputContainer">
+                            <label for="text">Foto de perfil</label>
+                            <div class="input" id="inputFotoPerfil">
+                                <div class="fotoPerfil">
+                                    <img id="previewFoto" alt="Foto perfil">
+                                </div>
+                                <div class="inputFotoPerfil">
+                                    <button type="button" class="button">Agregar foto</button>
+                                    <input required class="cloudinary-fileupload" data-url="https://api.cloudinary.com/v1_1/app-correos-costarica/auto/upload"
+                                        type="file" name="file">
+                                </div>
+                            </div>
                         </div>
 
                         <div class="inputContainer">
                             <label for="txtTelefono2">Teléfono 2</label>
                             <div class='input'>
-                                <input type="number" id="txtTelefono2">
+                                <input type="tel" id="txtTelefono2">
                             </div>
                         </div>
 
@@ -169,7 +167,6 @@
                             <label for="sltGenero">Género*</label>
                             <div class='input'>
                                 <select id="sltGenero" required>
-                                    <option value=""></option>
                                     <option value="Masculino">Masculino</option>
                                     <option value="Femenino">Femenino</option>
                                     <option value="Otro">Otro</option>
@@ -182,12 +179,7 @@
                             <label for="sltSucursal">Seleccione sucursal*</label>
                             <div class="input">
                                 <select id="sltSucursal" required>
-                                    <option value=""></option>
-                                    <option value="Sucursal 01">Sucursal 01</option>
-                                    <option value="Sucursal 02">Sucursal 02</option>
-                                    <option value="Sucursal 03">Sucursal 03</option>
-                                    <option value="Sucursal 04">Sucursal 04</option>
-                                    <option value="Sucursal 05">Sucursal 05</option>
+                                    
                                 </select>
                             </div>
                         </div>
@@ -218,13 +210,17 @@
         </div>
         <!---Script de la aplicacion -->
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src='https://cdn.jsdelivr.net/jquery.cloudinary/1.0.18/jquery.cloudinary.js' type='text/javascript'></script>
-        <script src="https://widget.cloudinary.com/global/all.js" type="text/javascript"></script>
-        
-        <script src="../js/servicio.js"></script>
-        <script src="controlador_registrar.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="https://cdn.rawgit.com/cloudinary/cloudinary_js/master/js/jquery.ui.widget.js"></script>
+        <script src="https://rawgit.com/cloudinary/cloudinary_js/master/js/jquery.iframe-transport.js"></script>
+        <script src="https://rawgit.com/cloudinary/cloudinary_js/master/js/jquery.fileupload.js"></script>
+        <script src="https://rawgit.com/cloudinary/cloudinary_js/master/js/jquery.cloudinary.js"></script>
+
+        <script src="../js/localStorage.servicio.js"></script>
+        <script src="../js/servicios.js"></script>
+        <script src="repartidor.service.js"></script>
+        <script src="js/registrar.controller.js"></script>
 </body>
 
 </html>

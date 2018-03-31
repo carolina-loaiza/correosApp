@@ -1,5 +1,5 @@
 <DOCTYPE html>
-  <html lang="en">
+  <html lang="es">
 
   <head>
     <meta charset="UTF-8">
@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800|Roboto:400,500,700" rel="stylesheet">
-    <link rel="stylesheet" href="..//css/base.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Correos de Costa Rica</title>
   </head>
 
@@ -75,34 +76,27 @@
             Cerrar sesión
           </button>
         </header>
-        
+
         <div class="content">
           <h1 class="title titleUnderline">Lista de repartidores</h1>
           <!-- <button type="button" class="button">Modificar</button>
         <button type="button" class="button buttonIcon"><span class="icon"><i class="fas fa-arrow-right"></i></span> Eliminar</button>-->
-        
-     
-              <i class="fas fa-search icono"></i>
-            
-            <input class="input filtro" type='text' id='txtFiltro' placeholder="Sucursal o nombre o apellido">
-          
+
+
+          <i class="fas fa-search icono"></i>
+
+          <input class="input filtro" type='text' id='txtFiltro' placeholder="Sucursal o nombre o apellido">
+
 
           <table id='tblbase'>
             <thead>
               <th>Nombre</th>
-              <!--<th>Segundo Nombre</th>-->
               <th>Apellido</th>
-              <!--<th>Segundo Apellido</th>-->
-              <!--<th>Indentificacion</th>-->
-              <!--<th>Telefono</th>-->
-              <!--<th>Telefono 2</th>-->
-              <!--<th>foto</th>-->
-             <!-- <th>Correo</th>-->
+              <!-- <th>Correo</th>-->
               <th>Sucursal</th>
               <th>Modificar</th>
               <th>Cambiar estado</th>
               <th>Estado</th>
-              <!-- <th>Edad</th>-->
 
             </thead>
             <tbody>
@@ -122,11 +116,13 @@
             <img src="../img/logo_correoscr.png" alt="logo_Correos_CR">
           </div>
         </footer>
-</div>
-        <script src="../js/servicio.js"></script>
-        <script src="controlador_listado.js"></script>
+      </div>
+      <script src="../js/localStorage.servicio.js"></script>
+      <script src="../js/servicios.js"></script>
+      <script src="repartidor.service.js"></script>
+      <script src="js/listar.controller.js"></script>
 
-     
+
     </div>
   </body>
 

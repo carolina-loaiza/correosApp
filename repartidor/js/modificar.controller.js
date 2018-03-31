@@ -1,11 +1,35 @@
+var imagePreview = document.querySelector('#previewFoto');
+var urlFotoPerfil = false;
+
+function initFotoPerfil() {
+    $("input.cloudinary-fileupload[type=file]").unsigned_cloudinary_upload(unsignedUser, { cloud_name: imageCloudName, tags: 'browser_uploads' })
+      .bind('cloudinarydone', function(e, data) {
+        imagePreview.setAttribute("src", data.result.url);
+        imagePreview.style.display = 'block';
+        urlFotoPerfil = data.result.url;
+        document.querySelector('#inputFotoPerfil').classList.remove('inputError');
+      });
+  };
+  initFotoPerfil();
+//mete las sucursales en el select de registro 
+function agregarSucursales() {
+   let lista = obtenerDatoLocal('RegistroLS');
+   for(let i = 0; i < lista.length; i++) {
+       let opcion = document.createElement('option');
+       opcion.value = lista[i][0];
+       opcion.innerText = lista[i][0];
+       document.getElementById('sltSucursal').appendChild(opcion);
+   }
+}
+
+agregarSucursales();
+
 
 obtenerRepartidor();
 
 function obtenerRepartidor() {
     let sNombre = getTemp();
     let infoRepartidor = buscarRepartidor(sNombre);
-
-    console.log(infoRepartidor);
 
     document.querySelector('#txtPrimernombre').value = infoRepartidor[0];
     document.querySelector('#txtSegundonombre').value = infoRepartidor[1];
@@ -25,22 +49,8 @@ let botonActualizar = document.querySelector('#btnGuardar');
 botonActualizar.addEventListener('click', obtenerActualizar);
 
 function obtenerActualizar() {
-    let berror = validar();
-
-    if (berror == true) {
-        swal({
-            title: "Ocurrió un error",
-            text: "Por favor verifique los campos resaltados",
-            icon: "error",
-            button: "Ok",
-            //Mensaje de error
-        });
-    }
-    else {
 
         let aRepartidores = [];
-        let aInputs = [];
-        let valido = true;
 
         let inputPrimernombre = document.querySelector('#txtPrimernombre');
         let sPrimernombre = inputPrimernombre.value;
@@ -93,42 +103,13 @@ function obtenerActualizar() {
             let sEdad = Calcularedad();
 
             aRepartidores.push(sPrimernombre, sSegundonombre, sPrimerapellido, sSegundoapellido, sIdentificacion, sTelefono1, sTelefono2, sCorreo, sFechanacimiento, sGenero, sSucursal, sEdad, sTipoUsuario, sActivo);
-            console.log(aRepartidores);
-            aInputs.push(inputPrimernombre, inputSegundonombre, inputPrimerapellido, inputSegundoapellido, inputIdentificacion, inputTelefono1, inputTelefono2, inputCorreo, inputFechanacimiento, selectGenero, selectSucursal);
             actualizarListaRepartidores(aRepartidores);
             removeTemp();
+            window.location.href = 'listar_repartidor.html'
             
-            swal({
-                title: 'Información registrada correctamente',
-                text: 'Puede continuar',
-                icon: 'success',
-                button: { text: "Ok", className: "button", }
-
-
-            })}
-
-
-
 
         }
-    }
 
-    //Validacion
-
-    function validar() {
-        let aInputs = document.querySelectorAll('input:required,select:required');
-        let berror = false;
-
-        for (let i = 0; i < aInputs.length; i++) {
-            if (aInputs[i].value === '') {
-                berror = true;
-                aInputs[i].classList.add('input_error');
-            }
-            else { aInputs[i].classList.remove('input_error'); }
-
-
-        } return berror;
-    }
 
 
     function Calcularedad() {
@@ -148,3 +129,4 @@ function obtenerActualizar() {
         }
         return eerror;
     }
+}
