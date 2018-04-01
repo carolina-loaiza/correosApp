@@ -1,3 +1,26 @@
+.ListaMetodos {
+    margin-bottom: 100px;
+}
+
+.iconfilter{
+    padding: 8px;
+    margin-right: 4px;
+}
+.iFiltroMetodos{
+    width: 605px;
+    display: inline-block;
+}
+
+.ed-delink{
+    font-size: 20px;
+}
+.ed-delink:hover{
+    color: rgb(95, 179, 62);
+}
+.disable{
+    color: #e74c3c;
+}
+
 .inputNumber{
     width: 100px;
     display: inline-block;

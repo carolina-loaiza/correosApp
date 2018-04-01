@@ -7,23 +7,24 @@
   <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800|Roboto:400,500,700" rel="stylesheet">
   <link rel="stylesheet" href="../css/base.css">
-  <link rel="stylesheet" href="css/registroClientes.style.css">
-  <title>Correos de Costa Rica - Editar perfil</title>
+  <link rel="stylesheet" href="css/alerta.style.css">
+  <link rel="stylesheet" href="../clientes/css/registroClientes.style.css">
+  <title>Correos de Costa Rica</title>
 </head>
 <body>
   <div class="mainContainer">
     <header class="headerSesion">
       <div class="logo"><img src="../img/logo_correoscr.png" alt="logo_Correos_CR"></div>
-      <div class="userPerfilInfo">
+      <div class="userPerfilInfo" id="userPerfilInfo">
         <button type="button" class="button buttonIcon">
           <span class="icon"><i class="fas fa-home"></i></span>
           Inicio
         </button>
-        <button type="button" class="button buttonIcon" id="cerrarSesion">
+        <button type="button" class="button buttonIcon">
           <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
           Cerrar sesión
         </button>
-        <h3 id="userNombre"></h3>
+        <h3>Administrador Carlos Alvarado</h3>
         <div class="userPerfilAvatar">
           <img src="../img/avatar.png" id="userPerfilAvatar" alt="Avatar default">
         </div>
@@ -31,23 +32,53 @@
     </header>
     <div class="innerContainer">
       <div class="menu">
-        <ul class="menuOpciones" id="menuOpciones">
+        <ul class="menuOpciones">
+          <li>
+            <a href="#">
+              <span class="icon iconMenu"><i class="far fa-file-alt"></i></span>
+              <span class="linkTexto activo">Registro usuarios</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon iconMenu"><i class="far fa-file-alt"></i></span>
+              <span class="linkTexto">Otros registros</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon iconMenu"><i class="fas fa-list-alt"></i></span>
+              <span class="linkTexto">Listar usuarios</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon iconMenu"><i class="fas fa-list-alt"></i></span>
+              <span class="linkTexto">Otros listados</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon iconMenu"><i class="far fa-file"></i></span>
+              <span class="linkTexto">Reportes</span>
+            </a>
+          </li>
           <li class="editarPerfil">
-            <a href="#" id="editarPerfil">
+            <a href="#">
               <span class="icon iconMenu"><i class="far fa-edit"></i></span>
-              <span class="linkTexto" id="editarPerfilText">Editar perfil</span>
+              <span class="linkTexto">Editar perfil</span>
             </a>
           </li>
         </ul>
       </div>
       <div class="content">
-        <h1 class="title titleUnderline">
-          Editar perfil 
-          <button type="button" id="desactivarCuenta" class="button buttonIcon desactivarCuenta">
-            <span class="icon"><i class="fas fa-user-times"></i></span>
-            Desactivar cuenta
-          </button>
-        </h1>
+        <ul class="subMenu">
+          <li class="activo"><a href="#">Clientes</a></li>
+          <li><a href="#">Encargados de aduana</a></li>
+          <li><a href="#">Encargados de sucursal</a></li>
+          <li><a href="#">Repartidores</a></li>
+        </ul>
+        <h1 class="title titleUnderline">Registrar Persona Física</h1>
         <form id="formRegistroClientes" class="row formRegistroClientes">
           <div class="col6 colWithPaddingRight">
             <div class="inputContainer">
@@ -92,7 +123,7 @@
             </div>
             <div class="inputContainer">
               <label for="text">Correo electrónico</label>
-              <input class="input" disabled type="text" name="email" required>
+              <input class="input" type="text" name="email" required>
             </div>
             <div class="inputContainer">
               <label for="text">Teléfono 2</label>
@@ -114,7 +145,7 @@
             </div>
           </div>
         </form>
-        <button type="button" id="modificarClientes" data-modificar="true" class="button registrarUsuarioButton">Actualizar</button>
+        <button type="button" id="registrarClientes" class="button registrarUsuarioButton">Registrar</button>
       </div>
     </div>
 
@@ -138,9 +169,6 @@
   <script src="https://rawgit.com/cloudinary/cloudinary_js/master/js/jquery.cloudinary.js"></script>
   <script src="../js/localStorage.servicio.js"></script>
   <script src="../js/servicios.js"></script>
-  <script src="../js/menuOpciones.js"></script>
-  <script src="clientes.service.js"></script>
-  <script src="js/registroClientes.controller.js"></script>
-  <script src="js/modificarClientes.controller.js"></script>
+  <script src="../clientes/js/registroClientes.controller.js"></script>
 </body>
 </html>

@@ -8,94 +8,110 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800|Roboto:400,500,700" rel="stylesheet">
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="css/alerta.style.css">
-  <title>Correos de Costa Rica</title>
+  <title>Correos de Costa Rica - Alertar paquetes</title>
 </head>
 <body>
   <div class="mainContainer">
-    <div class="sideBar">
+    <header class="headerSesion">
       <div class="logo"><img src="../img/logo_correoscr.png" alt="logo_Correos_CR"></div>
-      <div class="sideBarContent">
-        <div class="userPerfil">
-          <div class="userPerfilAvatar">
-            <img src="../img/avatar.png" id="userPerfilAvatar" alt="Avatar default">
-          </div>
-          <div class="userPerfilInfo" id="userPerfilInfo">
-            <h3>Nombre cliente</h3>
-            <h4>Rol</h4>
-            <a href="#">Editar perfil <i class="far fa-edit"></i></a>
-          </div>
+      <div class="userPerfilInfo">
+        <button type="button" class="button buttonIcon">
+          <span class="icon"><i class="fas fa-home"></i></span>
+          Inicio
+        </button>
+        <button type="button" class="button buttonIcon" id="cerrarSesion">
+          <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+          Cerrar sesión
+        </button>
+        <h3 id="userNombre"></h3>
+        <div class="userPerfilAvatar">
+          <img src="../img/avatar.png" id="userPerfilAvatar" alt="Avatar default">
         </div>
-        <ul class="sideBarMenu" id="sideBarMenu">
+      </div>
+    </header>
+    <div class="innerContainer">
+      <div class="menu">
+        <ul class="menuOpciones" id="menuOpciones">
+          <li class="editarPerfil">
+            <a href="#" id="editarPerfil">
+              <span class="icon iconMenu"><i class="far fa-edit"></i></span>
+              <span class="linkTexto" id="editarPerfilText">Editar perfil</span>
+            </a>
+          </li>
         </ul>
       </div>
-    </div>
-    <div class="innerContainer">
-      <header class="headerSesion">
-          <button type="button" class="button buttonIcon">
-            <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
-            Cerrar sesión
-          </button>
-      </header>
       <div class="content">
         <h1 class="title titleUnderline">Alertar paquete nuevo</h1>
-        <form id="formAlertarPaquete" class="alertaForm">
-          <div class="inputContainer">
-            <label for="numeroTracking">Número de tracking</label>
-            <input class="input" type="number" name="text" id="numeroTracking" required>
-          </div>
-          <div class="inputContainer">
-            <label for="peso">Peso (kg)</label>
-            <input class="input" type="number" name="peso" id="peso" required>
-          </div>
-          <div class="inputContainer">
+        <form id="formAlertarPaquete" class="row">
+          <div class="col6 colWithPaddingRight">
+            <div class="inputContainer">
+              <label for="numeroTracking">Número de tracking</label>
+              <input class="input" type="number" name="text" id="numeroTracking" required>
+            </div>
+            <div class="inputContainer">
+              <label for="peso">Peso (kg)</label>
+              <input class="input" type="number" name="peso" id="peso" required>
+            </div>
+            <div class="inputContainer">
               <label for="precioInicial">Precio (colones)</label>
               <input class="input" type="number" name="precioInicial" id="precioInicial" required>
             </div>
-          <div class="inputContainer">
-            <label for="opCourier">Seleccione un courier</label>
-            <div class="input">
-              <select name="opCourier" id="opCourier" required> 
-              </select>
+            <div class="inputContainer">
+              <label for="dirección">Dirección</label>
+              <input class="input" type="text" name="dirección" id="dirección" required>
             </div>
           </div>
-          <div class="inputContainer">
-            <label for="opSucursal">Seleccione la sucursal</label>
-            <div class="input">
-              <select name="opSucursal" id="opSucursal" required> 
-              </select>
+          <div class="col6 colWithPaddingLeft">
+            <div class="inputContainer">
+              <label for="opCourier">Seleccione un courier</label>
+              <div class="input">
+                <select name="opCourier" id="opCourier" required> 
+                </select>
+              </div>
+            </div>
+            <div class="inputContainer">
+              <label for="opSucursal">Seleccione la sucursal</label>
+              <div class="input">
+                <select name="opSucursal" id="opSucursal" required> 
+                </select>
+              </div>
+            </div>
+            <div class="inputContainer">
+              <label for="opCategoria">Seleccione una categoria</label>
+              <div class="input">
+                <select name="opCategoria" id="opCategoria" required> 
+                </select>
+              </div>
+            </div>
+            <div class="inputContainer">
+              <label for="opTarjeta">Seleccione una forma de pago</label>
+              <div class="input">
+                <select name="opTarjeta" id="opTarjeta" required> 
+                </select>
+              </div>
             </div>
           </div>
-          <div class="inputContainer">
-            <label for="opCategoria">Seleccione una categoria</label>
-            <div class="input">
-              <select name="opCategoria" id="opCategoria" required> 
-              </select>
-            </div>
-          </div>
-          <div class="inputContainer">
-            <label for="opTarjeta">Seleccione una forma de pago</label>
-            <div class="input">
-              <select name="opTarjeta" id="opTarjeta" required> 
-              </select>
-            </div>
-          </div>
-          <button type="button" id="alertarPaquete" class="button">Alertar paquete</button>
         </form>
+        <button type="button" id="alertarPaquete" class="button alertaFormButton">Alertar paquete</button>
       </div>
-      <footer>
-        <div class="footerContent">
-          <p><i class="fas fa-phone"></i> Central telefónica : +506 800-900-2000</p>
-          <p><i class="fas fa-envelope"></i> Email : srvclientes@correos.go.cr</p>
-        </div>
-        <div class="logo"><img src="../img/logo_correoscr.png" alt="logo_Correos_CR"></div>
-      </footer>
     </div>
+
+    <footer>
+      <div class="footerContent">
+        <p><i class="fas fa-phone"></i> Central telefónica : +506 800-900-2000</p>
+        <p><i class="fas fa-envelope"></i> Email : srvclientes@correos.go.cr</p>
+      </div>
+      <ul class="footerSociaLinks">
+        <li><a href="https://www.facebook.com/CorreosdeCostaRica/"><i class="fab fa-facebook-square"></i></a></li>
+        <li><a href="https://twitter.com/CorreosCR"><i class="fab fa-twitter-square"></i></a></li>
+      </ul>
+    </footer>
   </div>
 
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="../js/localStorage.servicio.js"></script>
   <script src="../js/servicios.js"></script>
-  <script src="../js/sidebar.js"></script>
+  <script src="../js/menuOpciones.js"></script>
   <script src="js/alertar.controller.js"></script>
 </body>
 </html>

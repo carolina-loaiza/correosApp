@@ -31,7 +31,7 @@ function mostrarMetodos(){
             let botonEditar = document.createElement('i');
             botonEditar.classList.add("far", "fa-edit", "ed-delink");
             let elementa = document.createElement('a');
-            elementa.setAttribute("href", "../ModificarTarjetas/modificarTarjetas.html"); 
+            elementa.setAttribute("href", "modificarTarjetas.html"); 
             elementa.appendChild(botonEditar);
             elementa.addEventListener('click', redirect);
             elementa.dataset.numero = listaMetodos[i][0];
