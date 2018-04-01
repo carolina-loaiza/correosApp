@@ -35,10 +35,6 @@
   background: #fff;
 }
 
-.cambioEstado .estados li {
-  width: 48px;
-}
-
 .estadoSucursal li {
   min-width: 48px;
 }
@@ -50,7 +46,7 @@
 
 /* Cambio de estados  */
 .onoffswitch {
-  position: relative; width: 104px;
+  position: relative;
   -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
 }
 .onoffswitch-checkbox {
@@ -84,7 +80,7 @@
   display: block; width: 34px; margin: 4.5px;
   background: #FFFFFF;
   position: absolute; top: 0; bottom: 0;
-  right: 63px;
+  right: 74%;
   border: 2px solid #FFFFFF; border-radius: 50px;
   transition: all 0.3s ease-in 0s; 
 }
