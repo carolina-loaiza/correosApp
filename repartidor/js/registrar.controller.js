@@ -88,7 +88,8 @@ function obtenerDatos() {
         }
         
 
-            aRepartidores.push(sPrimernombre, sSegundonombre, sPrimerapellido, sSegundoapellido, sIdentificacion, sTelefono1, sTelefono2, sCorreo, sFechanacimiento, sGenero, sSucursal, sEdad, sTipoUsuario, sActivo);
+            aRepartidores.push(sPrimernombre, sSegundonombre, sPrimerapellido, sSegundoapellido, sIdentificacion, sCorreo, sTelefono1, sTelefono2, sFechanacimiento, sGenero, sSucursal, fotoPerfil, sTipoUsuario, sActivo);
+ 
             guardarDatoLocal('listaRepartidoresLS',aRepartidores);
             guardarDatoLocal('listaUsuarios', aRepartidores);
             guardarDatoLocal('loginUsuarios', [sCorreo, contraseña]);
@@ -109,40 +110,6 @@ function Calcularedad() {
     let nacimiento = new Date(fecha);
     let edad = hoy.getFullYear() - nacimiento.getFullYear();
     return edad;
-}
-
-
-
-let imagenUrl = '';
-$(function () {
-    // Configure Cloudinary
-    // with credentials available on
-    // your Cloudinary account dashboard
-    $.cloudinary.config({ cloud_name: 'pabskun', api_key: '896788142178273' });
-
-    // Upload button
-    let uploadButton = $('#btnSeleccionarImagen');
-
-    // Upload button event
-    uploadButton.on('click', function (e) {
-        // Initiate upload
-        cloudinary.openUploadWidget({ cloud_name: 'pabskun', upload_preset: 'proyecto', tags: ['cgal'] },
-            function (error, result) {
-                if (error) console.log(error);
-                // If NO error, log image data to console
-                let id = result[0].public_id;
-                console.log(id);
-                imagenUrl = 'https://res.cloudinary.com/x-treem/image/upload/' + id;
-                console.log(imagenUrl);
-            });
-    });
-})
-
-function processImage(id) {
-    let options = {
-        client_hints: true,
-    };
-    return $.cloudinary.url(id, options);
 }
 
 

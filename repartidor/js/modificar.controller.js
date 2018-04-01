@@ -31,6 +31,10 @@ function obtenerRepartidor() {
     let sNombre = getTemp();
     let infoRepartidor = buscarRepartidor(sNombre);
 
+    if (!sNombre && obtenerDatoLocal('usuario')) {
+        infoRepartidor = obtenerDatoLocal('usuario');
+    }
+
     document.querySelector('#txtPrimernombre').value = infoRepartidor[0];
     document.querySelector('#txtSegundonombre').value = infoRepartidor[1];
     document.querySelector('#txtPrimerapellido').value = infoRepartidor[2];

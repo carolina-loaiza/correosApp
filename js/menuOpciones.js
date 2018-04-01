@@ -58,7 +58,7 @@
       break;
     case '5':
       rol = 'Repartidor';
-      editarPage = '../repartidor/modificar/modificar.html';
+      editarPage = '../repartidor/modificar_repartidor.html';
       menuOpciones.prepend(crearLinkMenu('../paquetes/listarPaquetes.html', 'Listar paquetes', ['far', 'fa-list-alt']));
       break;
   }
