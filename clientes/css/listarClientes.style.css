@@ -10,37 +10,10 @@
     display: inline-block;
   }
   
-  #tblClientes {
-    width: 640px;
-    margin-top: 20px;
-    border-collapse: collapse;
-  }
-  
-  th {
-    font-size: 13px;
-    font-weight: normal;
-    padding: 8px;
-    background-color: rgb(95, 179, 62);
-    color: #fff;
-  }
-  
-  td {
-    padding: 8px;
-    background: #e8edff;
-    border-bottom: 1px solid #fff;
-    color: #1e2630;
-    border-top: 1px solid transparent;
-  }
-  
   .acciones {
     width: 50px;
     text-align: center;
     color: #000000;
-  }
-  
-  tr:hover td{
-    background: #d0dafd;
-    color: #339;
   }
   
   .iconfiltro {
@@ -53,8 +26,7 @@
   }
   
 
-  
-  .fa-edit:before {
+  table .fa-edit:before {
     color: black;
   }
   

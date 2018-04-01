@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800|Roboto:400,500,700" rel="stylesheet">
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="css/registroClientes.style.css">
-  <title>Correos de Costa Rica</title>
+  <title>Correos de Costa Rica - Registrar cliente</title>
 </head>
 <body>
   <div class="mainContainer">
@@ -19,9 +19,27 @@
           <span class="icon"><i class="fas fa-home"></i></span>
           Inicio
         </button>
+        <button type="button" class="button buttonIcon" id="cerrarSesion">
+          <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+          Cerrar sesión
+        </button>
+        <h3 id="userNombre"></h3>
+        <div class="userPerfilAvatar">
+          <img src="../img/avatar.png" id="userPerfilAvatar" alt="Avatar default">
+        </div>
       </div>
     </header>
     <div class="innerContainer">
+      <div class="menu">
+        <ul class="menuOpciones" id="menuOpciones">
+          <li class="editarPerfil">
+            <a href="#" id="editarPerfil">
+              <span class="icon iconMenu"><i class="far fa-edit"></i></span>
+              <span class="linkTexto" id="editarPerfilText">Editar perfil</span>
+            </a>
+          </li>
+        </ul>
+      </div>
       <div class="content">
         <h1 class="title titleUnderline">Registrar Persona Física</h1>
         <form id="formRegistroClientes" class="row formRegistroClientes">
@@ -114,6 +132,7 @@
   <script src="https://rawgit.com/cloudinary/cloudinary_js/master/js/jquery.cloudinary.js"></script>
   <script src="../js/localStorage.servicio.js"></script>
   <script src="../js/servicios.js"></script>
+  <script src="../js/menuOpciones.js"></script>
   <script src="js/registroClientes.controller.js"></script>
 </body>
 </html>

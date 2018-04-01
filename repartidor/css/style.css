@@ -1,36 +1,5 @@
-select{height: 18px;
-}
-
-#tblbase{
-    width: 640px;
-    margin-top: 20px;
-    border-collapse: collapse;
-}
-
-#tblbase th{
-    text-align: center;
-    font-size: 13px;
-    font-weight: normal;
-    padding: 8px;
-    background-color: rgb(95,179,62);
-    color:white;
-}
-
-#tblbase td{
-    padding: 11px;
-    background: #e8edff;
-    border-bottom: 1px solid #fff;
-    color: #1e2630;
-    border-top:1px solid transparent;
-}
-
-#tblbase tr{
-    padding: 20px;
-}
-
-#tblbase tr:hover td{
-background: #d0dafd;
-color: #339;
+select{
+    height: 18px;
 }
 
 .filtro{
@@ -61,11 +30,11 @@ color: #339;
     width: 33%;
 }
 
-inputContainerfoto{
+.inputContainerfoto{
     object-position: center;
     top: 40%;
     right: 20%;
-    transform: translate(0%--50%);
+    transform: translate(0% -50%);
     margin-top: 74px;
     text-align: center;
 }
@@ -92,11 +61,13 @@ inputContainerfoto{
 
 .acciones{
     text-align: center;
-    width: 50px;
-}
-a{color: #000000;
+    width: 150px;
 }
 
+
+table .fa-edit:before {
+    color: black;
+  }
 
 
 

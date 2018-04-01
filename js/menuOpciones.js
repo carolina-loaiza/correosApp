@@ -47,14 +47,18 @@
       break;
     case '3':
       rol = 'Encargado de aduanas';
-      editarPage = '../clientes/editarClientes.html';
+      editarPage = '../EncAduanas/modificar.html';
       menuOpciones.prepend(crearLinkMenu('../paquetes/listarPaquetes.html', 'Listar paquetes', ['far', 'fa-list-alt']));
+      break;
     case '4':
       rol = 'Encargado de sucursal';
-      editarPage = '../encargadoSucursal/listarEncargadoSucursal/index_modificar.html';
-      menuOpciones.prepend(crearLinkMenu('../paquetes/listarPaquetes.html', 'Listar paquetes', ['far', 'fa-list-alt']));
+      editarPage = '../encargadoSucursal/index_modificar.html';
+      menuOpciones.prepend(crearLinkMenu('../clientes/registroClientes.html', 'Registrar cliente', ['fas', 'fa-file-alt']));
+      menuOpciones.prepend(crearLinkMenu('../repartidor/registrar_repartidor.html', 'Registrar repartidor', ['fas', 'fa-file-alt']));
+      menuOpciones.prepend(crearLinkMenu('../clientes/listarClientes.html', 'Listar clientes', ['far', 'fa-list-alt']));
+      menuOpciones.prepend(crearLinkMenu('../repartidor/listar_repartidor.html', 'Listar repartidores', ['far', 'fa-list-alt']));
       menuOpciones.prepend(crearLinkMenu('../asignarpaquetesrepartidor/asignarpaquetes_repartidor.html', 'Asignar paquetes', ['fas', 'fa-cube']));
-      menuOpciones.prepend(crearLinkMenu('../repartidor/registrar/registrar.html', 'Registrar repartidor', ['fas', 'fa-cube']));
+      menuOpciones.prepend(crearLinkMenu('../paquetes/listarPaquetes.html', 'Listar paquetes', ['far', 'fa-list-alt']));
       break;
     case '5':
       rol = 'Repartidor';

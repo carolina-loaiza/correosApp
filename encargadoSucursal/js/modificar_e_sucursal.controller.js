@@ -34,6 +34,10 @@ function obtenerEncargado() {
     let sCorreo = getTemp();
     let infoEncargado = buscarEncargadoPorCorreo(sCorreo);
 
+    if (!sCorreo && obtenerDatoLocal('usuario')) {
+        infoEncargado = obtenerDatoLocal('usuario');
+    }
+
     document.querySelector('#txtPrimerNombre').value = infoEncargado[0];
     document.querySelector('#txtSegundoNombre').value = infoEncargado[1];
     document.querySelector('#txtPrimerApellido').value = infoEncargado[2];
