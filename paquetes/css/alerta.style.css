@@ -1,14 +1,7 @@
-.alertaForm {
-  width: 60%;
+.alertaFormButton {
   margin: 0 auto;
-}
-
-.alertaForm .inputContainer {
-  width: 100%;
-}
-
-.alertaForm .button {
-  margin: 0 auto;
+  margin-top: 20px;
+  display: block;
 }
 
 .estados li {
@@ -21,26 +14,6 @@
   width: 30px;
   vertical-align: middle;
   margin-right: 8px;
-}
-
-table {
-  margin-top: 20px;
-}
-
-th {
-  font-size: 13px;
-  font-weight: normal;
-  padding: 8px;
-  background-color: rgb(95, 179, 62);
-  color: #fff;
-}
-
-td {
-  padding: 8px;
-  background: #e8edff;
-  border-bottom: 1px solid #fff;
-  color: #1e2630;
-  border-top: 1px solid transparent;
 }
 
 .filtro {
@@ -62,10 +35,6 @@ td {
   background: #fff;
 }
 
-.cambioEstado .estados li {
-  width: 48px;
-}
-
 .estadoSucursal li {
   min-width: 48px;
 }
@@ -77,7 +46,7 @@ td {
 
 /* Cambio de estados  */
 .onoffswitch {
-  position: relative; width: 104px;
+  position: relative;
   -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
 }
 .onoffswitch-checkbox {
@@ -111,7 +80,7 @@ td {
   display: block; width: 34px; margin: 4.5px;
   background: #FFFFFF;
   position: absolute; top: 0; bottom: 0;
-  right: 63px;
+  right: 74%;
   border: 2px solid #FFFFFF; border-radius: 50px;
   transition: all 0.3s ease-in 0s; 
 }

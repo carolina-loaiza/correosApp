@@ -81,7 +81,7 @@ function mostrarMensajeModal(tipoMensaje, contraseñaTemporal) {
           className: "button",
         },
       }).then(() => {
-        //window.location.href = '../iniciarSesion/index.html';
+        window.location.href = '../iniciarSesion/index.html';
       });
       break;
   }

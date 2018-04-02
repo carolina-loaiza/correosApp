@@ -25,15 +25,14 @@
     case "4":
       estados = ['Proceso de distribución', 'Recibido en el centro de distribución', 'Tránsito a destino'];
       listaEstadosUsuario = listaPaquetes.filter(function (paquete) {
-        console.log(paquete[3] === usuario[10]);
-        return (paquete[9] === 'Proceso de desalmacenaje' || paquete[9] === 'Recibido en el centro de distribución' || paquete[9] === 'Tránsito a destino') && (paquete[3] === usuario[10]);
+        if (paquete[9] === 'Proceso de desalmacenaje' || paquete[9] === 'Recibido en el centro de distribución' || paquete[9] === 'Tránsito a destino') {
+          return paquete[3] === usuario[10];
+        }
       });
-      console.log(listaEstadosUsuario);
       break;
     case "5":
       estados = ['Tránsito a destino', 'Entregado'];
       listaEstadosUsuario = listaPaquetes.filter(function (paquete) {
-        console.log(paquete[10], usuario[5]);
         return (paquete[9] === 'Tránsito a destino' || paquete[9] === 'Entregado') && (paquete[10] === usuario[5]);
       });
       break;

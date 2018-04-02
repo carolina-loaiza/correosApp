@@ -1,3 +1,16 @@
+.innerContainer {
+  min-height: 800px;
+}
+
+.content {
+  width: 60%;
+  margin: 100px auto;
+}
+
+.titleUnderline {
+  text-align: center;
+}
+
 .formIniciarSesion {
   width: 50%;
   margin: 40px auto;
@@ -15,7 +28,8 @@
 
 .formIniciarSesion .link {
   display: inline-block;
-  color: #043d5a;
+  color: #ef5b14;
+  font-weight: bold;
   padding-top: 10px;
   text-decoration: underline;
 }
