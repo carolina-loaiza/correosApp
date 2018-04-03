@@ -1,8 +1,9 @@
 (function() {
   var datosUsuario = obtenerDatoLocal('usuario');
   var paginaActual = document.title;
+  var paginaRegistroClientes = paginaActual.includes('Registrar cliente');
 
-  if (!datosUsuario || datosUsuario.length === 0) {
+  if (!paginaRegistroClientes && (!datosUsuario || datosUsuario.length === 0)) {
     window.location.href = '../iniciarSesion/index.html';
   }
 
@@ -76,6 +77,13 @@
 
   if (paginaActual.includes('Editar perfil')){
     document.querySelector('#editarPerfilText').classList.add('activo');
+  }
+
+  if (paginaRegistroClientes && (!datosUsuario || datosUsuario.length === 0)){
+    menuOpciones.style.display = 'none';
+    document.querySelector('#userNombre').style.display = 'none';
+    document.querySelector('#userPerfilAvatar').style.display = 'none';
+    document.querySelector('#editarPerfil').style.display = 'none';
   }
   
   function crearLinkMenu(href, text, iconoClass) {
