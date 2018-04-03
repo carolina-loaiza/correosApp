@@ -386,3 +386,11 @@ tr:hover td{
   display: inline-block;
   margin-right: 6px;
 }
+
+.fa-edit {
+  color: #000000;
+}
+
+#editar:before {
+  color: #fff;
+}
