@@ -16,7 +16,7 @@ function obtenerConvenio(){
 
 
 function obtenerActualizar() {
-   
+        
         let aNuevoConvenio = [];
 
         let id = getTemp();

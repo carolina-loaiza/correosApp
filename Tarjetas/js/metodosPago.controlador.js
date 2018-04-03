@@ -29,7 +29,7 @@ function mostrarMetodos(){
 
             //Creación del botón de editar
             let botonEditar = document.createElement('i');
-            botonEditar.classList.add("far", "fa-edit", "ed-delink");
+            botonEditar.classList.add("far", "fa-edit");
             let elementa = document.createElement('a');
             elementa.setAttribute("href", "modificarTarjetas.html"); 
             elementa.appendChild(botonEditar);
@@ -43,7 +43,7 @@ function mostrarMetodos(){
             //Creación del botón de deshabilitar
             let botonDeshabilitar = document.createElement('i');
 
-            botonDeshabilitar.classList.add("fas", "fa-times", "ed-delink", "disable");
+            botonDeshabilitar.classList.add("fas", "fa-times");
             botonDeshabilitar.dataset.codigo = listaMetodos[i][0];
             botonDeshabilitar.addEventListener('click', deshabilitar);       
             cEliminar.appendChild(botonDeshabilitar);
