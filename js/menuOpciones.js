@@ -2,13 +2,14 @@
   var datosUsuario = obtenerDatoLocal('usuario');
   var paginaActual = document.title;
   var paginaRegistroClientes = paginaActual.includes('Registrar cliente');
+  var cerrarSesionBoton = document.querySelector('#cerrarSesion');
 
   if (!paginaRegistroClientes && (!datosUsuario || datosUsuario.length === 0)) {
     window.location.href = '../iniciarSesion/index.html';
   }
 
-  if (document.querySelector('#cerrarSesion')) {
-    document.querySelector('#cerrarSesion').addEventListener('click', cerrarSesion);
+  if (cerrarSesionBoton) {
+    cerrarSesionBoton.addEventListener('click', cerrarSesion);
   }
 
   function cerrarSesion() {
@@ -80,10 +81,11 @@
   }
 
   if (paginaRegistroClientes && (!datosUsuario || datosUsuario.length === 0)){
-    menuOpciones.style.display = 'none';
+    document.querySelector('.menu').style.display = 'none';
     document.querySelector('#userNombre').style.display = 'none';
     document.querySelector('#userPerfilAvatar').style.display = 'none';
     document.querySelector('#editarPerfil').style.display = 'none';
+    cerrarSesionBoton.style.display = 'none';
   }
   
   function crearLinkMenu(href, text, iconoClass) {
