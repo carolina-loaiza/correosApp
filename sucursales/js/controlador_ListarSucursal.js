@@ -1,14 +1,14 @@
 ////INTERFAZ LISTAR
-document.querySelector('#txtFiltro').addEventListener('keyup', mostrarListas );
-mostrarListas();
+document.querySelector('#txtFiltro').addEventListener('keyup', mostrarListasSucursales);
+mostrarListasSucursales();
 
 
-function mostrarListas()
+function mostrarListasSucursales()
 {
-    let listarSucursales = getInfoContactos();
+    let listarSucursales = getInfoSucursales();
     let tbody = document.querySelector('#tblListaSucursal tbody');
-    let sfiltro = document.querySelector('#txtFiltro').value;
-
+    let sfiltro = document.querySelector('#txtFiltro').value;      
+    
     tbody.innerHTML = '';
 
     for (let i =0; i<listarSucursales.length;i++)
@@ -24,9 +24,9 @@ function mostrarListas()
             let sModificar = fila.insertCell();
             let sDesactivar = fila.insertCell();           
 
-            sSucursal.appendChild(document.createTextNode(listarSucursales[i][0]));
-            sDireccion.appendChild(document.createTextNode(listarSucursales[i][1]));
-            sTelefono.appendChild(document.createTextNode(listarSucursales[i][2]));
+            sSucursal.appendChild(document.createTextNode(listarSucursales[i][1]));
+            sDireccion.appendChild(document.createTextNode(listarSucursales[i][2]));
+            sTelefono.appendChild(document.createTextNode(listarSucursales[i][3]));
             //sModificar.appendChild(document.createTextNode(listarSucursales[i][3]));
             //sDesactivar.appendChild(document.createTextNode(listarSucursales[i][4]));
 
@@ -39,9 +39,9 @@ function mostrarListas()
 
 
             let elementa = document.createElement('a');
-            elementa.setAttribute("href", "../Modificar_Sucursales/modificar_Sucursales.html");
+            elementa.setAttribute("href", "modificar_Sucursales.html");
             elementa.appendChild(botonModificar);
-            elementa.addEventListener('click' , redirect);
+            elementa.addEventListener('click' , redirectSucursal);
             elementa.dataset.sucursal = listarSucursales[i][0];
             
             sModificar.appendChild(elementa);
@@ -68,8 +68,8 @@ function mostrarListas()
 }
 
 
-function redirect()
+function redirectSucursal()
 {
     let sNombre = this.dataset.sucursal;
-    setTemp(sNombre);
+    setTempSucursal(sNombre);
 }

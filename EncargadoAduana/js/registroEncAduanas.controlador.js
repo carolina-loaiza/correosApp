@@ -65,8 +65,13 @@ function obtenerDatos()
 
         let sEdad = Calcularedad();
 
-        aEncAduanas.push(sPrimernombre, sSegundonombre, sPrimerapellido, sSegundoapellido, sIdentificacion, sTelefono1, sTelefono2, sCorreo, sFechanacimiento, sGenero, sSucursal,sEdad, sPuestoReal, '1');
+        //let tipoUsuario = 'rol';
+        let activo = '1';
+
+
+        aEncAduanas.push(sPrimernombre, sSegundonombre, sPrimerapellido, sSegundoapellido, sIdentificacion, sTelefono1, sTelefono2, sCorreo, sFechanacimiento, sGenero, sSucursal,sEdad, sPuestoReal, activo);
         console.log(aEncAduanas);
+        
         setListaEncAduanas(aEncAduanas);
     
         swal({

@@ -31,9 +31,9 @@ listarEncargadoAduana[i][4].includes(sfiltro))
 
 
             sPrimerNombre.appendChild(document.createTextNode(listarEncargadoAduana[i][0]));
-            sPrimerApellido.appendChild(document.createTextNode(listarEncargadoAduana[i][1]));
-            sCorreo.appendChild(document.createTextNode(listarEncargadoAduana[i][2]));
-            sTelefono.appendChild(document.createTextNode(listarEncargadoAduana[i][3]));
+            sPrimerApellido.appendChild(document.createTextNode(listarEncargadoAduana[i][2]));
+            sTelefono.appendChild(document.createTextNode(listarEncargadoAduana[i][5]));
+            sCorreo.appendChild(document.createTextNode(listarEncargadoAduana[i][7]));
             sCedula.appendChild(document.createTextNode(listarEncargadoAduana[i][4]));
 
             let botonModificar =document.createElement('i');
@@ -46,7 +46,7 @@ listarEncargadoAduana[i][4].includes(sfiltro))
     
 
             let elementA = document.createElement('a');
-            elementA.setAttribute("href" , "../modificarEncargadoAduana/modificarEncargadoAduana.html")
+            elementA.setAttribute("href" , "modificarEncargadoAduana.html")
             elementA.appendChild(botonModificar);
 
             elementA.addEventListener('click' , redirect);
@@ -61,7 +61,7 @@ listarEncargadoAduana[i][4].includes(sfiltro))
             sDesactivar.classList.add('acciones');
 
 
-            botonDesactivar.dataset.codigo = listarEncargadoAduana[i][1];
+            botonDesactivar.dataset.codigo = listarEncargadoAduana[i][0];
 
             sDesactivar.classList.add('iconos');
             

@@ -61,7 +61,7 @@ function obtenerDatos() {
             mostrarMensajeModal('error edad');
             return false;
         }
-        
+            
 
         //la foto no se guarda
 

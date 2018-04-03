@@ -1,26 +1,26 @@
 
-    obtenerSucursal();
+    obtenerSucursales();
 
-    function obtenerSucursal()
+    function obtenerSucursales()
     {
-        let sNombre=getTemp();
-        let infoRepartidor=buscarSucursal(sNombre);
+        let sNombre=getTempSucursal();
+        let infoRepartidor=buscarSucursales(sNombre);
 
         console.log(infoRepartidor);
         
-        document.querySelector('#txtSucursal').value=infoRepartidor[0];
-        document.querySelector('#txtDireccion').value=infoRepartidor[1];
-        document.querySelector('#txtTelefono').value=infoRepartidor[2];
+        document.querySelector('#txtSucursal').value=infoRepartidor[1];
+        document.querySelector('#txtDireccion').value=infoRepartidor[2];
+        document.querySelector('#txtTelefono').value=infoRepartidor[3];
         
       
     }
     
     let botonActualizar=document.querySelector('#btnGuardar');
-    botonActualizar.addEventListener('click',obtenerActualizar);
+    botonActualizar.addEventListener('click',obtenerActualizarSucursal);
 
-    function obtenerActualizar() 
+    function obtenerActualizarSucursal() 
     {
-        let berror = validar();
+        let berror = validarSucursal();
     
         if (berror == true) 
         {
@@ -47,16 +47,17 @@
     
             let inputTelefono = document.querySelector('#txtTelefono');
             let sTelefono = inputTelefono.value;
+            let tempSucursal= getTempSucursal();
     
     
             //let sEdad = Calcularedad();
     
-            aSucursales.push(sSucursal, sDireccion, sTelefono);
+            aSucursales.push(tempSucursal,sSucursal, sDireccion, sTelefono);
             console.log(aSucursales);
 
             aInputs.push(inputSucursal, inputDireccion, inputTelefono);
             actualizarListaSucursales(aSucursales);
-            removeTemp();
+            removeTempSucursal();
             swal({
                 title: 'Datos Correctos',
                 text: 'Continue',
@@ -71,7 +72,7 @@
     
     //Validacion
     
-    function validar() 
+    function validarSucursal() 
     {
         let aInputs = document.querySelectorAll('input:required,select:required');
         let berror = false;

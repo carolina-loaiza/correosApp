@@ -1,25 +1,3 @@
-// let botonActualizar = document.querySelector('#btnGuardar');
-// botonActualizar.addEventListener('click', registrarDatosActualizados);
-
-// obtenerTipoArticulo();
-
-// function obtenerTipoArticulo() {
-//     let sNombre = getTemp();
-//     let infoTipo = buscarSucursal(sNombre);
-
-//     document.querySelector('#txtCategoria').value = infoTipo[0];
-//     document.querySelector('#txtImpuestos').value = infoTipo[1];
-
-
-
-// }
-
-// function modificarDatosActualizados()
-// {
-//     let infoTipoArticulo = [];
-
-//     let 
-// }
 
 
 obtenerSucursal();
@@ -36,6 +14,8 @@ function obtenerSucursal()
     
   
 }
+
+
 
 let botonActualizar=document.querySelector('#btnGuardar');
 botonActualizar.addEventListener('click',obtenerActualizar);

@@ -1,8 +1,8 @@
 //////REGISTRAR INTERFAZ
 
-document.querySelector('#btnRegistrar').addEventListener('click',registrar);
+document.querySelector('#btnRegistrar').addEventListener('click',registrarSucursal);
 
-function registrar()
+function registrarSucursal()
 {
     var error = validar();
     
@@ -21,17 +21,18 @@ function registrar()
     else
     {
         var aRegistro = [];
-        var infoRegistro = [];  
+        var infoRegistro = []; 
+        var sucursalID = Math.random().toString(36).substring(8);
 
         //var sUsr = 'adrian';        
         var sSucursal = document.querySelector('#txtSucursal').value;  
         var sDireccion = document.querySelector('#txtDireccion').value;
         var sTelefono = document.querySelector('#txtTelefono').value;       
     
-        aRegistro=[sSucursal,sDireccion,sTelefono];
+        aRegistro=[sucursalID,sSucursal,sDireccion,sTelefono,'1'];
         console.log(aRegistro);
 
-        setInfoRegistro(aRegistro);
+        setInfoSucursal(aRegistro);
         
      
         swal({

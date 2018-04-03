@@ -11,10 +11,10 @@ function getListaEncAduanas()
 }
 
 
-function setListaEncAduanas(pinfoRepartidores)
+function setListaEncAduanas(pinfoAduanas)
 {
     let ListaEncAduanas = getListaEncAduanas();
-    ListaEncAduanas.push(pinfoRepartidores);
+    ListaEncAduanas.push(pinfoAduanas);
 
     localStorage.setItem('ListaEncAduanasLS',JSON.stringify(ListaEncAduanas));
 
@@ -26,10 +26,13 @@ function buscarRepartidor(pNombre)
 {
     let ListaEncAduanas=getListaEncAduanas();
     let encAduanaEncontrado=[];
-    for(let i=0;i<ListaEncAduanas.length;i++){
-    if(pNombre == ListaEncAduanas[i][0]){
-        encAduanaEncontrado=ListaEncAduanas[i];
-    }}
+    for(let i=0;i<ListaEncAduanas.length;i++)
+    {
+        if(pNombre == ListaEncAduanas[i][0])
+        {
+            encAduanaEncontrado=ListaEncAduanas[i];
+        }
+    }
     return encAduanaEncontrado;
 }
 
@@ -53,14 +56,14 @@ function removeTemp()
 }
 
 
-function actualizarListaEncAduanas(pinfoRepartidores)
+function actualizarListaEncAduanas(pinfoAduanas)
 {
     let ListaEncAduanas=getListaEncAduanas();
     for(let i=0;i<ListaEncAduanas.length;i++)
     {
-        if(ListaEncAduanas[i][0]==pinfoRepartidores[0])
+        if(ListaEncAduanas[i][0]==pinfoAduanas[0])
         {
-            ListaEncAduanas[i]=pinfoRepartidores;
+            ListaEncAduanas[i]=pinfoAduanas;
             localStorage.setItem('ListaEncAduanasLS',JSON.stringify(ListaEncAduanas));
         }
     }

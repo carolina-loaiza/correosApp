@@ -73,8 +73,10 @@ function removeTemp()
 function actualizarListaArticulos(pDatosRegistro)
 {
     let listaRepartidores=getInfoContactos();
-    for(let i=0;i<listaRepartidores.length;i++){
-        if(listaRepartidores[i][0]==pDatosRegistro[0]){
+    for(let i=0;i<listaRepartidores.length;i++)
+    {
+        if(listaRepartidores[i][0]==pDatosRegistro[0])
+        {
             listaRepartidores[i]=pDatosRegistro;
             localStorage.setItem('RegistroArticulosLS',JSON.stringify(listaRepartidores));
         }
