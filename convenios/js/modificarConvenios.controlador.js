@@ -19,11 +19,12 @@ function obtenerActualizar() {
    
         let aNuevoConvenio = [];
 
+        let id = getTemp();
         let nombre = document.querySelector('#txtNombre').value;
         let descripcion = document.querySelector('#txtDescripcion').value;
         let activo = '1';
 
-        aNuevoConvenio.push(nombre, descripcion, activo);
+        aNuevoConvenio.push(id, nombre, descripcion, activo);
         actualizarListaConvenios(aNuevoConvenio);
         removeTemp();
         window.location.href = 'ListarConvenios.html'
