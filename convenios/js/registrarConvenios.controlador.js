@@ -11,13 +11,13 @@ function obtenerConvenio(){
     else {
         let aNuevoConvenio = [];
         let valido = true;
+        let convenioId = Math.random().toString(36).substring(8);
         let activo = '1';
 
         let nombre = document.querySelector('#txtNombre').value;
         let descripcion = document.querySelector('#txtDescripcion').value;
-        let id = document.querySelector('#numId').value;
 
-        aNuevoConvenio.push(nombre, descripcion, activo, id);
+        aNuevoConvenio.push(convenioId, nombre, descripcion, activo);
         guardarDatoLocal('listaConveniosLS', aNuevoConvenio); 
 
         limpiar();

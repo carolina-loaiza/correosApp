@@ -8,8 +8,8 @@ function mostrarConvenios(){
     cuerpoTabla.innerHTML = '';
 
     for(let i = 0; i <listaConvenios.length; i++){
-        if(listaConvenios[i][2] == '1') {
-        if (listaConvenios[i][0].toLowerCase().includes(sFiltro) || listaConvenios[i][1].toLowerCase().includes(sFiltro)){
+        if(listaConvenios[i][3] == '1') {
+        if (listaConvenios[i][1].toLowerCase().includes(sFiltro) || listaConvenios[i][2].toLowerCase().includes(sFiltro)){
             let fila = cuerpoTabla.insertRow();
             let cNombre = fila.insertCell();
             let cDescripcion = fila.insertCell();
@@ -19,8 +19,8 @@ function mostrarConvenios(){
             cModificar.classList.add('acciones');
             cEliminar.classList.add('acciones');
 
-            let sNombre = document.createTextNode(listaConvenios[i][0]);
-            let sDescripcion = document.createTextNode(listaConvenios[i][1]);
+            let sNombre = document.createTextNode(listaConvenios[i][1]);
+            let sDescripcion = document.createTextNode(listaConvenios[i][2]);
 
             cNombre.appendChild(sNombre);
             cDescripcion.appendChild(sDescripcion);
@@ -32,7 +32,7 @@ function mostrarConvenios(){
             elementa.setAttribute("href", "modificarConvenios.html"); 
             elementa.appendChild(botonEditar);
             elementa.addEventListener('click', redirect);
-            elementa.dataset.id = listaConvenios[i][3]; 
+            elementa.dataset.id = listaConvenios[i][0]; 
 
             cModificar.appendChild(elementa);
 
@@ -74,10 +74,10 @@ function eliminar() {
           if(botonUsuario === "Eliminar") {
               let listaConvenios = obtenerDatoLocal('listaConveniosLS');
             //   console.log(listaConvenios[id]);
-              if(listaConvenios[id][2] == '1') {
-                  listaConvenios[id][2] = '0'
+              if(listaConvenios[id][3] == '1') {
+                  listaConvenios[id][3] = '0'
               }
-              else {listaConvenios[id][2] = '1'}
+              else {listaConvenios[id][3] = '1'}
               actualizarListaConvenios(listaConvenios[id]);
             mostrarConvenios();
           }
