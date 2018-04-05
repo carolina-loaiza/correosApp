@@ -15,7 +15,7 @@ function buscarConvenio(pId){
     let listaConvenios=obtenerDatoLocal('listaConveniosLS');
     let convenioEncontrado=[];
     for(let i=0;i<listaConvenios.length;i++){
-    if(pId == listaConvenios[i][3]){
+    if(pId == listaConvenios[i][0]){
         convenioEncontrado=listaConvenios[i];
         break;
     }
@@ -27,7 +27,7 @@ function actualizarListaConvenios(pinfoConvenios){
     let listaConvenios=obtenerDatoLocal('listaConveniosLS');
     
     for(let i=0;i<listaConvenios.length;i++){
-        if(pinfoConvenios[3] == listaConvenios[i][3]){
+        if(pinfoConvenios[0] == listaConvenios[i][0]){
             listaConvenios[i]=pinfoConvenios;
         }//if
     }//for
