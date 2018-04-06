@@ -24,11 +24,21 @@ function removeTemp(){
 function actualizarListaRepartidores(pinfoRepartidores){
     let listaRepartidores=obtenerDatoLocal('listaRepartidoresLS');
     for(let i=0;i<listaRepartidores.length;i++){
-        if(listaRepartidores[i][7]==pinfoRepartidores[7]){
+        if(listaRepartidores[i][5]==pinfoRepartidores[5]){
             listaRepartidores[i]=pinfoRepartidores;
         }
     }
     localStorage.setItem('listaRepartidoresLS',JSON.stringify(listaRepartidores));
 
+}
+
+function actualizarListaUsuarios(pListaUsuarios) {
+    let listaUsuarios = obtenerDatoLocal('listaUsuarios');
+    for(let i =0; i < listaUsuarios.length; i++) {
+        if(listaUsuarios[i][5] == pListaUsuarios[5]) {
+            listaUsuarios[i]=pListaUsuarios;
+        }
+    }
+    localStorage.setItem('listaUsuarios', JSON.stringify(listaUsuarios));
 }
 

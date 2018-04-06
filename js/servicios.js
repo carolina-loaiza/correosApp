@@ -36,22 +36,23 @@ function validarInputsRequeridos(inputs) {
   return error;
 }
 
-function validarRegistroDoble(correo) {
-let lista = obtenerDatoLocal('loginUsuarios');
-  for(let i = 0; i < lista.length; i++) {
-    if(correo == lista[i][0]) { 
-      swal({
-        title: "Usuario ya registrado",
-        text: "Esta dirección de correo ya ha sido utilizada",
-        icon: "error",
-        button: {
-          text: "OK",
-          className: "button",
-        }})
-        return false; 
-    }
-  }
-}
+function validarRegistroDoble(correo) { 
+  let lista = obtenerDatoLocal('loginUsuarios'); 
+    for(let i = 0; i < lista.length; i++) { 
+      if(correo == lista[i][0]) {  
+        swal({ 
+          title: "Usuario ya registrado", 
+          text: "Esta dirección de correo ya ha sido utilizada", 
+          icon: "error", 
+          button: { 
+            text: "OK", 
+            className: "button", 
+          }}) 
+          return false;  
+      } 
+    } 
+  } 
+  
 
 function mostrarMensajeModal(tipoMensaje, contraseñaTemporal) {
   switch (tipoMensaje) {
