@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +7,8 @@
   <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800|Roboto:400,500,700" rel="stylesheet">
   <link rel="stylesheet" href="../css/base.css">
-  <!-- <link rel="stylesheet" href="css/styleListaSucursal.css"> -->
-  <title>Correos de Costa Rica - Sucursales - Otros listados</title>
+  <link rel="stylesheet" href="css/convenios.style.css">
+  <title>Correos de Costa Rica - Convenios - Otros listados</title>
 </head>
 <body>
   <div class="mainContainer">
@@ -42,40 +41,28 @@
         </ul>
       </div>
       <div class="content">
-        <h1 class="title titleUnderline">Lista de sucursales</h1>
+        <h1 class="title titleUnderline">Lista de convenios</h1>
+        <form name="form">
+            <a class="asearch"></a><i class="iconfilter fas fa-search"></i><input type="text" id="txtFiltro" class="input iFiltroConv" placeholder="Nombre del convenio o descripción"></a>
+            <div class="colWithPaddingRight">
+                <table id="tblConvenios">
+                   <thead>
+                      <tr>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Modificar</th>
+                        <th>Deshabilitar</th>
+                      </tr>
+                   </thead>
 
-        <div class="inputContainer">
-          <label for="text" class="lupa">
-            <i class="fas fa-search"></i>
-          </label>
-
-          <div class="input">
-            <input type="text" placeholder="Sucursal" name="text" id="txtFiltro" required>
-          </div>
-        </div>
-
-
-
-        <table id="tblListaSucursal">
-          <thead>
-            <tr>
-              <th>Sucursal</th>
-              <th>Dirección</th>
-              <th>Telefono</th>
-              <th>Modificar</th>
-              <th>Desactivar</th>
-
-            </tr>
-          </thead>
-
-          <tbody id="tbody">
-
-          </tbody>
-
-        </table>
+                   <tbody>
+                     <!-- Aquí se ingresan los valores generados dinamicamente -->
+                   </tbody>
+                </table>
+            </div>
+        </form>
       </div>
     </div>
-
     <footer>
       <div class="footerContent">
         <p><i class="fas fa-phone"></i> Central telefónica : +506 800-900-2000</p>
@@ -92,9 +79,7 @@
   <script src="../js/localStorage.servicio.js"></script>
   <script src="../js/servicios.js"></script>
   <script src="../js/menuOpciones.js"></script>
-  <script src="sucursal.service.js"></script>
-  <script src="js/listar_sucursal.controller.js"></script>
-
+  <script src="convenios.servicios.js"></script>
+  <script src="js/listarConvenios.controlador.js"></script>
 </body>
-
 </html>

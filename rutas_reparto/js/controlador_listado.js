@@ -39,7 +39,7 @@ function mostrarRutas() {
             let botonEditar  = document.createElement('i');
             botonEditar.classList.add("far","fa-edit");
             let elementa = document.createElement('a');
-            elementa.setAttribute("href" , "../modificar/modificar.html");
+            elementa.setAttribute("href" , "modificar.html");
             elementa.appendChild(botonEditar);
             elementa.addEventListener('click', redirect);
             elementa.dataset.nombre = listaRutas[i][1];

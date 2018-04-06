@@ -32,6 +32,8 @@ document.querySelector('#btnRegistrar').addEventListener('click', obtenerDatos);
 
  agregarSucursales();
 
+
+
 function obtenerDatos() {
     let inputs = document.querySelectorAll('input:required');
     let error = validarInputsRequeridos(inputs);
@@ -52,6 +54,7 @@ function obtenerDatos() {
         let telefono_1 = document.querySelector('#txtTel1').value;
         let telefono_2 = document.querySelector('#txtTel2').value;
         let edad = calcularEdad(document.querySelector('#dtFecha').value);
+        let fechaNacimiento = document.querySelector('#dtFecha').value;
         let genero = document.querySelector('#opGenero').value;
         let sucursal = document.querySelector('#opSucursal').value;
         let fotoPerfil = urlFotoPerfil;
@@ -62,14 +65,20 @@ function obtenerDatos() {
             mostrarMensajeModal('error edad');
             return false;
         }
+
+        let registroValido = validarRegistroDoble(correo);
+        if(registroValido == false) {
+            return false;
+        }
+        
+
         
 
         //la foto no se guarda
 
-        infoEncargadoSucursal.push(primerNombre, segundoNombre, primerApellido, segundoApellido, cedula, correo, telefono_1, telefono_2
-        , edad, genero, sucursal, fotoPerfil, sTipoUsuario, sActivo);
+        infoEncargadoSucursal.push(primerNombre, segundoNombre, primerApellido, segundoApellido, cedula, correo, fotoPerfil, telefono_1, telefono_2
+        , edad, fechaNacimiento, genero, sucursal, sTipoUsuario, sActivo);
         guardarDatoLocal('listaEncargadosLS', infoEncargadoSucursal);
-        //mostrarMensajeModal('registro exitoso');
         guardarDatoLocal('listaUsuarios', infoEncargadoSucursal);
         guardarDatoLocal('loginUsuarios', [correo, contraseña]);
 
@@ -90,5 +99,6 @@ function limpiar() {
     document.querySelector('#txtCorreo').value = '';
     document.querySelector('#txtTel1').value = '';
     document.querySelector('#txtTel2').value = '';
+    document.querySelector('#dtFecfa').value = '';
 }
 

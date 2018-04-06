@@ -86,7 +86,7 @@
     console.log(tipoUsuario)
     switch (tipoUsuario) {
       case '1':
-        window.location.href = '../clientes/listarClientes.html';
+        window.location.href = '../clientes/registroClientes.html';
         break;
       case '2':
         window.location.href = '../paquetes/alertarPaquete.html';

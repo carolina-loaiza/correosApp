@@ -1,7 +1,6 @@
 (function () {
   document.querySelector('#desactivarCuenta').addEventListener('click', desactivarCuenta);
 
-
   function mostarDatosUsuarios() {
     var datosUsuario = [];
     console.log(getTemp());
@@ -9,6 +8,10 @@
       datosUsuario = buscarClientePorCorreo(getTemp());
     } else {
       datosUsuario = obtenerDatoLocal('usuario');
+    }
+
+    if (datosUsuario[12] != '2') {
+      document.querySelector('#desactivarCuenta').style.display = 'none';
     }
 
     document.querySelector('.formRegistroClientes input[name="nombre"').value = datosUsuario[0]
