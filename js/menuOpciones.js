@@ -135,7 +135,19 @@
     if (paginaActual.includes('Otros registros')){
       document.querySelector('#menuOpciones li:nth-child(3) .linkTexto').classList.add('activo');
       subMenuTexto = ['Sucursal', 'Convenio', 'Ruta'];
-      subMenuLinks = ['../sucursales/registrar_sucursal.html', '../convenios/registrarConvenios.html', '../encargadoSucursal/index_registrar.html'];
+      subMenuLinks = ['../sucursales/registrar_sucursal.html', '../convenios/registrarConvenios.html', '../rutas_reparto/registrar.html'];
+    }
+
+    if (paginaActual.includes('Listar usuarios')){
+      document.querySelector('#menuOpciones li:nth-child(4) .linkTexto').classList.add('activo');
+      subMenuTexto = ['Clientes', 'Encargados de aduana', 'Encargados de sucursal', 'Repartidores'];
+      subMenuLinks = ['../clientes/listarClientes.html', '../clientes/registroClientes.html', '../encargadoSucursal/index_registrar.html', '../repartidor/registrar_repartidor.html'];
+    }
+
+    if (paginaActual.includes('Otros listados')){
+      document.querySelector('#menuOpciones li:nth-child(5) .linkTexto').classList.add('activo');
+      subMenuTexto = ['Sucursales', 'Convenios', 'Rutas'];
+      subMenuLinks = ['../sucursales/listar_Sucursal.html', '../convenios/ListarConvenios.html', '../rutas_reparto/listado.html'];
     }
 
     for (let i = 0; i < subMenuLinks.length; i++) {

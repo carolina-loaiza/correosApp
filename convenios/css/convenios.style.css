@@ -6,11 +6,7 @@
     width: 605px;
     display: inline-block;
 }
-#tblConvenios{
-    width: 640px;
-    margin-top: 20px;
-    border-collapse: collapse;
-}
+
 .ed-delink{
     font-size: 20px;
 }
@@ -20,27 +16,9 @@
 .disable{
     color: #e74c3c;
 }
-th{     
-    font-size: 13px;     
-    font-weight: normal;     
-    padding: 8px;     
-    background-color: rgb(95, 179, 62);
-    color: white;
-}
-td{    
-    padding: 8px;     
-    background: #e8edff;     
-    border-bottom: 1px solid #fff;
-    color: #1e2630;    
-    border-top: 1px solid transparent;
-}
 .acciones{
     width: 50px;
     text-align: center;
-}
-tr:hover td{ 
-    background: #d0dafd; 
-    color: #339; 
 }
 
 .fa-edit {
