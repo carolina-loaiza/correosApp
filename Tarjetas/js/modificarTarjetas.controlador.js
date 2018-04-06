@@ -45,6 +45,7 @@ function obtenerActualizar(){
           });
     }
     else {
+        let id = getTemp();
         let aNuevaTarjeta = [];
         let valido = true;
 
@@ -54,7 +55,7 @@ function obtenerActualizar(){
         let month = document.querySelector('#txtmm').value;
         let cvv = document.querySelector('#txtcvv').value;
 
-        aNuevaTarjeta.push(nombreTitutar, numeroTarjeta, year, month, cvv, '1');
+        aNuevaTarjeta.push(id, nombreTitutar, numeroTarjeta, year, month, cvv, '1', '1');
         actualizarlistaTarjetas(aNuevaTarjeta);
         removeTemp();
         limpiar();

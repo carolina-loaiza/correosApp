@@ -34,27 +34,53 @@ function mostrarMetodos(){
             elementa.setAttribute("href", "modificarTarjetas.html"); 
             elementa.appendChild(botonEditar);
             elementa.addEventListener('click', redirect);
-            elementa.dataset.numero = listaMetodos[i][0];
-
+            elementa.dataset.codigo = listaMetodos[i][0];
             cModificar.appendChild(elementa);   
 
 
 
             //Creación del botón de deshabilitar
             let botonDeshabilitar = document.createElement('i');
-
             botonDeshabilitar.classList.add("fas", "fa-times");
-            botonDeshabilitar.dataset.codigo = listaMetodos[i][0];
-            botonDeshabilitar.addEventListener('click', deshabilitar);       
-            cEliminar.appendChild(botonDeshabilitar);
+            let elementb = document.createElement('a');
+
+            elementb.appendChild(botonDeshabilitar);
+            elementb.addEventListener('click', deshabilitar);
+            elementa.dataset.numero = i;
+                 
+            cEliminar.appendChild(elementb);
         }
     }
 }
 function redirect(){
-    let sNumero = this.dataset.numero;
+    let sNumero = this.dataset.codigo;
 
     setTemp(sNumero);
 }
 function deshabilitar(){
-
+    var id = this.dataset.codigo;
+    swal({
+        title: "¿Está seguro de eliminar el metodo de pago?",
+        text: "Si lo hace, el registro del mismo desaparecerá por completo",
+        icon: "warning",
+        buttons: {
+          catch: {
+              text: 'Eliminar',
+              value: 'Eliminar',
+              className: 'button',
+          },
+          cancel: 'Cancelar'
+        },
+      })
+      .then((botonUsuario) => {
+          if(botonUsuario === "Eliminar") {
+              let listaMetodos = getNuevasTarjetas('listaTarjetasLS');
+              if(listaMetodos[id][6] == '1') {
+                listaMetodos[id][6] = '0'
+              }
+              else {listaMetodos[id][6] = '1'}
+              actualizarlistaTarjetas(listaMetodos[id]);
+              mostrarMetodos();
+          }
+      })
 }

@@ -20,6 +20,9 @@ function setTemp(data){
 function getTemp(){
     return JSON.parse(localStorage.getItem('tempLs'));
 }
+function getState(){
+    return JSON.parse(localStorage.getItem('tempStateLs'));
+}
 
 function removeTemp(){
    localStorage.removeItem('tempLs');
