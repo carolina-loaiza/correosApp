@@ -38,3 +38,16 @@ function actualizarEncargado(pInfoEncargado) {
     }//for loop
     localStorage.setItem('listaEncargadosLS', JSON.stringify(listaEncargados));
 }
+
+function actualizarListaUsuarios(pListaUsuarios) {
+    let listaUsuarios = obtenerDatoLocal('listaUsuarios');
+
+    for(let i = 0; i < listaUsuarios.length; i++) {
+        if(pListaUsuarios[5] == listaUsuarios[i][5]) {
+            listaUsuarios[i] = pListaUsuarios;
+        }
+    }
+    localStorage.setItem('listaUsuarios', JSON.stringify(listaUsuarios));
+}
+
+
