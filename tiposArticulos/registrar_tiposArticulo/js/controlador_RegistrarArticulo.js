@@ -17,7 +17,7 @@ function registrar()
         var articuloID = Math.random().toString(36).substring(8);
         
 
-        //var sUsr = 'adrian';        
+           
         var sCategoria = document.querySelector('#txtCategoria').value;  
         var sImpuestos = document.querySelector('#txtImpuestos').value;
                

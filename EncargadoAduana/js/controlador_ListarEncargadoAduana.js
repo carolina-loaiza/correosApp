@@ -1,9 +1,9 @@
 ////INTERFAZ LISTAR
-document.querySelector('#txtFiltro').addEventListener('keyup', mostrarListas );
-mostrarListas();
+document.querySelector('#txtFiltro').addEventListener('keyup', mostrarEncargadoAduana );
+mostrarEncargadoAduana();
 
 
-function mostrarListas()
+function mostrarEncargadoAduana()
 {
     let listarEncargadoAduana = getListaEncAduanas();
     let tbody = document.querySelector('#tblListaEncargadoAduana tbody');
@@ -30,11 +30,11 @@ listarEncargadoAduana[i][4].includes(sfiltro))
             let sDesactivar = fila.insertCell();                      
 
 
-            sPrimerNombre.appendChild(document.createTextNode(listarEncargadoAduana[i][0]));
-            sPrimerApellido.appendChild(document.createTextNode(listarEncargadoAduana[i][2]));
-            sTelefono.appendChild(document.createTextNode(listarEncargadoAduana[i][5]));
-            sCorreo.appendChild(document.createTextNode(listarEncargadoAduana[i][7]));
-            sCedula.appendChild(document.createTextNode(listarEncargadoAduana[i][4]));
+            sPrimerNombre.appendChild(document.createTextNode(listarEncargadoAduana[i][1]));
+            sPrimerApellido.appendChild(document.createTextNode(listarEncargadoAduana[i][3]));
+            sTelefono.appendChild(document.createTextNode(listarEncargadoAduana[i][7]));
+            sCedula.appendChild(document.createTextNode(listarEncargadoAduana[i][5]));
+            sCorreo.appendChild(document.createTextNode(listarEncargadoAduana[i][6]));
 
             let botonModificar =document.createElement('i');
             botonModificar.classList.add("far" , "fa-edit");
@@ -77,5 +77,5 @@ listarEncargadoAduana[i][4].includes(sfiltro))
 function redirect()
 {
     let sNombre = this.dataset.codigo;
-    setTemp(sNombre);
+    setTempEncAdu(sNombre);
 }

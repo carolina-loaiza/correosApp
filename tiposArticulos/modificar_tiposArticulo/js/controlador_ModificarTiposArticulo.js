@@ -1,28 +1,9 @@
-// let botonActualizar = document.querySelector('#btnGuardar');
-// botonActualizar.addEventListener('click', registrarDatosActualizados);
-
-// obtenerTipoArticulo();
-
-// function obtenerTipoArticulo() {
-//     let sNombre = getTemp();
-//     let infoTipo = buscarSucursal(sNombre);
-
-//     document.querySelector('#txtCategoria').value = infoTipo[0];
-//     document.querySelector('#txtImpuestos').value = infoTipo[1];
-
-
-
-// }
-
-// function modificarDatosActualizados()
-// {
-//     let infoTipoArticulo = [];
-
-//     let 
-// }
-
 
 obtenerSucursal();
+
+let botonActualizar=document.querySelector('#btnGuardar');
+botonActualizar.addEventListener('click',obtenerActualizar);
+
 
 function obtenerSucursal()
 {
@@ -37,8 +18,6 @@ function obtenerSucursal()
   
 }
 
-let botonActualizar=document.querySelector('#btnGuardar');
-botonActualizar.addEventListener('click',obtenerActualizar);
 
 function obtenerActualizar() 
 {
@@ -66,6 +45,8 @@ function obtenerActualizar()
 
         let inputImpuestos = document.querySelector('#txtImpuestos');
         let sImpuestos = inputImpuestos.value;
+
+        
         let temp = getTemp();
         
 
