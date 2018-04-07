@@ -40,12 +40,13 @@ function obtenerRepartidor() {
     document.querySelector('#txtPrimerapellido').value = infoRepartidor[2];
     document.querySelector('#txtSegundoapellido').value = infoRepartidor[3];
     document.querySelector('#txtIdentificacion').value = infoRepartidor[4];
-    document.querySelector('#txtTelefono1').value = infoRepartidor[5];
-    document.querySelector('#txtTelefono2').value = infoRepartidor[6];
-    document.querySelector('#txtCorreo').value = infoRepartidor[7];
-    document.querySelector('#txtFechanacimiento').value = infoRepartidor[8];
-    document.querySelector('#sltGenero').value = infoRepartidor[9];
-    document.querySelector('#sltSucursal').value = infoRepartidor[10];
+    document.querySelector('#txtCorreo').value = infoRepartidor[5];
+    //aqui iria la foto del perfil
+    document.querySelector('#txtTelefono1').value = infoRepartidor[7];
+    document.querySelector('#txtTelefono2').value = infoRepartidor[8];
+    document.querySelector('#txtFechanacimiento').value = infoRepartidor[9];
+    document.querySelector('#sltGenero').value = infoRepartidor[10];
+    document.querySelector('#sltSucursal').value = infoRepartidor[11];
 
 }
 
@@ -80,6 +81,8 @@ function obtenerActualizar() {
         let inputCorreo = document.querySelector('#txtCorreo');
         let sCorreo = inputCorreo.value;
 
+        let fotoPerfil = urlFotoPerfil;
+
         let inputFechanacimiento = document.querySelector('#txtFechanacimiento');
         let sFechanacimiento = inputFechanacimiento.value;
 
@@ -106,8 +109,9 @@ function obtenerActualizar() {
         } else {
             let sEdad = Calcularedad();
 
-            aRepartidores.push(sPrimernombre, sSegundonombre, sPrimerapellido, sSegundoapellido, sIdentificacion, sTelefono1, sTelefono2, sCorreo, sFechanacimiento, sGenero, sSucursal, sEdad, sTipoUsuario, sActivo);
+            aRepartidores.push(sPrimernombre, sSegundonombre, sPrimerapellido, sSegundoapellido, sIdentificacion, sCorreo, fotoPerfil, sTelefono1, sTelefono2, sFechanacimiento, sGenero, sSucursal, sTipoUsuario, sActivo);           
             actualizarListaRepartidores(aRepartidores);
+            actualizarListaUsuarios(aRepartidores);
             removeTemp();
             window.location.href = 'listar_repartidor.html'
             

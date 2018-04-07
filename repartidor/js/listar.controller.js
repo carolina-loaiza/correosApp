@@ -37,7 +37,7 @@ function mostrarRepartidores() {
             //cFechanacimiento.appendChild(document.createTextNode(listaRepartidores[i][8]));
             //cGenero.appendChild(document.createTextNode(listaRepartidores[i][9]));
             //cEdad.appendChild(document.createTextNode(listaRepartidores[i][11]));
-            cSucursal.appendChild(document.createTextNode(listaRepartidores[i][10]));
+            cSucursal.appendChild(document.createTextNode(listaRepartidores[i][11]));
 
             var estado = 'Activo';
             if (listaRepartidores[i][13] === '0') {

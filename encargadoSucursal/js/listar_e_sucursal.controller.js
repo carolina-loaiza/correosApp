@@ -15,7 +15,7 @@ function mostrarEncargados() {
 
     for(let i = 0; i < listaEncargados.length; i++) {
         
-        if(listaEncargados[i][13] == '1') {
+        if(listaEncargados[i][14] == '1') {
             if(listaEncargados[i][0].toLowerCase().includes(sFiltro) || listaEncargados[i][2].toLowerCase().includes(sFiltro) || listaEncargados[i][4].toLowerCase().includes(sFiltro) || listaEncargados[i][9].toLowerCase().includes(sFiltro)) {
            let fila = tbody.insertRow();
            
@@ -34,8 +34,8 @@ function mostrarEncargados() {
            cPrimerNombre.appendChild(document.createTextNode(listaEncargados[i][0]));
            cPrimerApellido.appendChild(document.createTextNode(listaEncargados[i][2]));
            cCorreo.appendChild(document.createTextNode(listaEncargados[i][5]));
-           cTelefono.appendChild(document.createTextNode(listaEncargados[i][6]));
-           cSucursal.appendChild(document.createTextNode(listaEncargados[i][10]));
+           cTelefono.appendChild(document.createTextNode(listaEncargados[i][7]));
+           cSucursal.appendChild(document.createTextNode(listaEncargados[i][12]));
 
            let atag = document.createElement('a');
            atag.setAttribute('href', "index_modificar.html");
@@ -70,7 +70,7 @@ function redirect() {
 }
 
 function eliminar() {
-    var id = this.dataset.indice;
+    let id = this.dataset.indice;
     swal({
         title: "¿Está seguro de eliminar al encargado?",
         text: "Si lo hace, el registro del encargado desaparecerá por completo",
@@ -88,10 +88,10 @@ function eliminar() {
           if(botonUsuario === "Eliminar") {
               let listaEncargados = obtenerDatoLocal('listaEncargadosLS');
               console.log(listaEncargados[id]);
-              if(listaEncargados[id][13] == '1') {
-                  listaEncargados[id][13] = '0'
+              if(listaEncargados[id][14] == '1') {
+                  listaEncargados[id][14] = '0'
               }
-              else {listaEncargados[id][13] = '1'}
+              else {listaEncargados[id][14] = '1'}
               actualizarEncargado(listaEncargados[id]);
               mostrarEncargados();
           }

@@ -441,6 +441,7 @@ footer .footerSociaLinks a {
 table {
   width: 100%;
   margin-top: 20px;
+  border-collapse: collapse;
 }
 
 th {
@@ -457,7 +458,6 @@ td {
   background: #f0f0f0;
   border-bottom: 1px solid #fff;
   color: #1e2630;
-  border-top: 1px solid transparent;
 }
 
 /* Table Fin */

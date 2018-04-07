@@ -8,66 +8,42 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800|Roboto:400,500,700" rel="stylesheet">
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="css/convenios.style.css">
-  <title>Correos de Costa Rica</title>
+  <title>Correos de Costa Rica - Convenios - Otros listados</title>
 </head>
 <body>
   <div class="mainContainer">
-    <div class="sideBar">
+    <header class="headerSesion">
       <div class="logo"><img src="../img/logo_correoscr.png" alt="logo_Correos_CR"></div>
-      <div class="sideBarContent">
-        <div class="userPerfil">
-          <div class="userPerfilAvatar"><img src="../img/avatar.png" alt="Avatar default"></div>
-          <div class="userPerfilInfo">
-            <h3>Nombre cliente</h3>
-            <h4>Rol</h4>
-            <a href="#">Editar perfil <i id="perfil" class="far fa-edit"></i></a>
-          </div>
+      <div class="userPerfilInfo">
+        <button type="button" class="button buttonIcon">
+          <span class="icon"><i class="fas fa-home"></i></span>
+          Inicio
+        </button>
+        <button type="button" class="button buttonIcon" id="cerrarSesion">
+          <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+          Cerrar sesión
+        </button>
+        <h3 id="userNombre"></h3>
+        <div class="userPerfilAvatar">
+          <img src="../img/avatar.png" id="userPerfilAvatar" alt="Avatar default">
         </div>
-        <ul class="sideBarMenu">
-          <li>
-            <a href="#">
-              <span class="icon iconMenu"><i class="far fa-file-alt"></i></span>
-              Registrar personas
-            </a>
-          </li>
-          <li class="activeItem">
-            <a href="#">
-              <span class="icon iconMenu"><i class="far fa-file-alt"></i></span>
-              Otros registros
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="icon iconMenu"><i class="far fa-list-alt"></i></span>
-              Listar personas
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="icon iconMenu"><i class="far fa-list-alt"></i></span>
-              Otros listados
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="icon iconMenu"><i class="far fa-file"></i></span>
-              Reportes
+      </div>
+    </header>
+    <div class="innerContainer">
+      <div class="menu">
+        <ul class="menuOpciones" id="menuOpciones">
+          <li class="editarPerfil">
+            <a href="#" id="editarPerfil">
+              <span class="icon iconMenu"><i class="far fa-edit"></i></span>
+              <span class="linkTexto" id="editarPerfilText">Editar perfil</span>
             </a>
           </li>
         </ul>
       </div>
-    </div>
-    <div class="innerContainer">
-      <header class="headerSesion">
-          <button type="button" class="button buttonIcon">
-            <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
-            Cerrar sesión
-          </button>
-      </header>
       <div class="content">
         <h1 class="title titleUnderline">Lista de convenios</h1>
         <form name="form">
-            <a class="asearch"></a><i class="iconfilter fas fa-search"></i><input type="text" id="txtFiltro" class="input iFiltroConv" placeholder="Nombre del convenio"></a>
+            <a class="asearch"></a><i class="iconfilter fas fa-search"></i><input type="text" id="txtFiltro" class="input iFiltroConv" placeholder="Nombre del convenio o descripción"></a>
             <div class="colWithPaddingRight">
                 <table id="tblConvenios">
                    <thead>
@@ -86,18 +62,24 @@
             </div>
         </form>
       </div>
-      <footer>
-        <div class="footerContent">
-          <p><i class="fas fa-phone"></i> Central telefónica : +506 800-900-2000</p>
-          <p><i class="fas fa-envelope"></i> Email : srvclientes@correos.go.cr</p>
-        </div>
-        <div class="logo"><img src="../img/logo_correoscr.png" alt="logo_Correos_CR"></div>
-      </footer>
-      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-      <script src="../js/localStorage.servicio.js"></script>
-      <script src="convenios.servicios.js"></script>
-      <script src="js/listarConvenios.controlador.js"></script>
     </div>
+    <footer>
+      <div class="footerContent">
+        <p><i class="fas fa-phone"></i> Central telefónica : +506 800-900-2000</p>
+        <p><i class="fas fa-envelope"></i> Email : srvclientes@correos.go.cr</p>
+      </div>
+      <ul class="footerSociaLinks">
+        <li><a href="https://www.facebook.com/CorreosdeCostaRica/"><i class="fab fa-facebook-square"></i></a></li>
+        <li><a href="https://twitter.com/CorreosCR"><i class="fab fa-twitter-square"></i></a></li>
+      </ul>
+    </footer>
   </div>
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="../js/localStorage.servicio.js"></script>
+  <script src="../js/servicios.js"></script>
+  <script src="../js/menuOpciones.js"></script>
+  <script src="convenios.servicios.js"></script>
+  <script src="js/listarConvenios.controlador.js"></script>
 </body>
 </html>

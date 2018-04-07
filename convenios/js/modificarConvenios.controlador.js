@@ -9,23 +9,22 @@ function obtenerConvenio(){
 
     console.log(infoConvenio);
     
-    document.querySelector('#txtNombre').value=infoConvenio[0];
-    document.querySelector('#txtDescripcion').value=infoConvenio[1];
-    document.querySelector('#numId').value = infoConvenio[3];
+    document.querySelector('#txtNombre').value=infoConvenio[1];
+    document.querySelector('#txtDescripcion').value=infoConvenio[2];
 }
 
 
 
 function obtenerActualizar() {
-   
+        
         let aNuevoConvenio = [];
 
+        let id = getTemp();
         let nombre = document.querySelector('#txtNombre').value;
         let descripcion = document.querySelector('#txtDescripcion').value;
         let activo = '1';
-        let id = document.querySelector('#numId').value;
 
-        aNuevoConvenio.push(nombre, descripcion, activo, id);
+        aNuevoConvenio.push(id, nombre, descripcion, activo);
         actualizarListaConvenios(aNuevoConvenio);
         removeTemp();
         window.location.href = 'ListarConvenios.html'

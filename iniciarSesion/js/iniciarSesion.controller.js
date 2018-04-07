@@ -15,7 +15,8 @@
       ["Marta","","Castro","","213123123","marta@correos.cr","123123123","",26,"masculino","Sucursal #2",false,"5","1"],
       ["Carla", "", "Arias", "", "213123123", "carla@gmail.com", "23123123123", "", "1999-11-11", "femenino", "lugar de habitación", false, "2", "1"],
       ["Esteban", "", "Ramirez", "", "213123123", "esteban@gmail.com", "23123123123", "", "1999-11-11", "femenino", "lugar de habitación", false, "2", "1"],
-      ["Carlos", "", "Ramirez", "", "213123123", "carlos@aduanas.cr", "23123123123", "", "1999-11-11", "masculino", "lugar de habitación", false, "3", "1"]
+      ["Carlos", "", "Ramirez", "", "213123123", "carlos@aduanas.cr", "23123123123", "", "1999-11-11", "masculino", "lugar de habitación", false, "3", "1"],
+      ["Admin", "", "Ramirez", "", "213123123", "admin@correos.cr", "23123123123", "", "1999-11-11", "masculino", "lugar de habitación", false, "1", "1"]
     ];
     // Datos de inicar sesion de prueba
     var loginUsuarios = [
@@ -24,7 +25,8 @@
       ["marta@correos.cr", "12345"],
       ["carla@gmail.com", "12345"],
       ["esteban@gmail.com", "12345"],
-      ["carlos@aduanas.cr", "12345"]
+      ["carlos@aduanas.cr", "12345"],
+      ["admin@correos.cr", "12345"]
     ];
 
     listaUsuarios.forEach(usuario => guardarDatoLocal('listaUsuarios', usuario));
@@ -84,7 +86,7 @@
     console.log(tipoUsuario)
     switch (tipoUsuario) {
       case '1':
-        window.location.href = '../clientes/listarClientes.html';
+        window.location.href = '../clientes/registroClientes.html';
         break;
       case '2':
         window.location.href = '../paquetes/alertarPaquete.html';
