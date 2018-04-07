@@ -23,7 +23,7 @@ function registrar()
         var aRegistro = [];
         var infoRegistro = [];  
 
-        //var sUsr = 'adrian';        
+        var encAduanaID = Math.     
         var sSucursal = document.querySelector('#txtSucursal').value;  
         var sDireccion = document.querySelector('#txtDireccion').value;
         var sTelefono = document.querySelector('#txtTelefono').value;       

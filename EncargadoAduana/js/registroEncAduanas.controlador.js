@@ -21,55 +21,41 @@ function obtenerDatos()
     }
     else
     {
-        //primer nombre = 0
-        //primer apellido = 2
-        //telefono =  5
+      
         let aEncAduanas = [];
-        let valido = true;
+        let regiEncaAdunaID = Math.random().toString(36).substring(8);
 
-        let inputPrimernombre = document.querySelector('#txtPrimernombre');//0
+        let inputPrimernombre = document.querySelector('#txtPrimernombre');
         let sPrimernombre = inputPrimernombre.value;
-
-        let inputSegundonombre = document.querySelector('#txtSegundonombre');//1
+        let inputSegundonombre = document.querySelector('#txtSegundonombre');
         let sSegundonombre = inputSegundonombre.value;
-
-        let inputPrimerapellido = document.querySelector('#txtPrimerapellido');//2
+        let inputPrimerapellido = document.querySelector('#txtPrimerapellido');
         let sPrimerapellido = inputPrimerapellido.value;
-
-        let inputSegundoapellido = document.querySelector('#txtSegundoapellido');//3
+        let inputSegundoapellido = document.querySelector('#txtSegundoapellido');
         let sSegundoapellido = inputSegundoapellido.value;
-
-        let inputIdentificacion = document.querySelector('#txtIdentificacion');//4
+        let inputIdentificacion = document.querySelector('#txtIdentificacion');
         let sIdentificacion = inputIdentificacion.value;
-
-        let inputTelefono1 = document.querySelector('#txtTelefono1');//5
+        let inputTelefono1 = document.querySelector('#txtTelefono1');
         let sTelefono1 = inputTelefono1.value;
-
         let inputTelefono2 = document.querySelector('#txtTelefono2');
         let sTelefono2 = inputTelefono2.value;
-
         let inputCorreo = document.querySelector('#txtCorreo');
         let sCorreo = inputCorreo.value;
-
         let inputFechanacimiento = document.querySelector('#txtFechanacimiento');
         let sFechanacimiento = inputFechanacimiento.value;
-
         let selectGenero = document.querySelector('#sltGenero');
         let sGenero = selectGenero.value;
-
         let selectSucursal= document.querySelector('#sltSucursal');
         let sSucursal = selectSucursal.value;
-
         let inputPuestoReal = document.querySelector('#txtPuestoReal');
         let sPuestoReal = inputPuestoReal.value;
+        //let sEdad = Calcularedad();
 
-        let sEdad = Calcularedad();
-
-        //let tipoUsuario = 'rol';
+        let tipoUsuario = '3';
         let activo = '1';
 
 
-        aEncAduanas.push(sPrimernombre, sSegundonombre, sPrimerapellido, sSegundoapellido, sIdentificacion, sTelefono1, sTelefono2, sCorreo, sFechanacimiento, sGenero, sSucursal,sEdad, sPuestoReal, activo);
+        aEncAduanas.push(regiEncaAdunaID,sPrimernombre, sSegundonombre, sPrimerapellido, sSegundoapellido, sIdentificacion, sCorreo, sTelefono1, sTelefono2,sFechanacimiento, sGenero, sSucursal, sPuestoReal,tipoUsuario, activo);
         console.log(aEncAduanas);
         
         setListaEncAduanas(aEncAduanas);
@@ -80,13 +66,14 @@ function obtenerDatos()
             icon: 'success',
             button: "Ok",
         })
-        limpiar();
+        // limpiar();
     }
 }
 
 //Validacion
 
-function validar() {
+function validar() 
+{
     let aEncAduanas = document.querySelectorAll('input:required,select:required');
     let berror = false;
 
@@ -100,7 +87,10 @@ function validar() {
     } return berror;
 }
 
-function Calcularedad() {
+
+
+function Calcularedad() 
+{
     let hoy = new Date();
     let fecha = document.querySelector('#txtFechanacimiento').value;
     let nacimiento = new Date(fecha);
@@ -133,14 +123,16 @@ $(function() {
     });
 })
 
-function processImage(id) {
+function processImage(id)
+{
     let options = {
         client_hints: true,
     };
     return  $.cloudinary.url(id, options);
 }
 
-function limpiar() {
+function limpiar()
+{
     document.querySelector('#txtPrimernombre').value = "";
     document.querySelector('#txtSegundonombre').value = "";
     document.querySelector('#txtPrimerapellido').value = "";
