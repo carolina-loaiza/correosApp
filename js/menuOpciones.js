@@ -129,7 +129,7 @@
     if (paginaActual.includes('Registrar')){
       document.querySelector('#menuOpciones li:nth-child(2) .linkTexto').classList.add('activo');
       subMenuTexto = ['Cliente', 'Encargado de aduana', 'Encargado de sucursal', 'Repartidor'];
-      subMenuLinks = ['../clientes/registroClientes.html', '../clientes/registroClientes.html', '../encargadoSucursal/index_registrar.html', '../repartidor/registrar_repartidor.html'];
+      subMenuLinks = ['../clientes/registroClientes.html', '../EncargadoAduana/RegistroEncAduanas.html', '../encargadoSucursal/index_registrar.html', '../repartidor/registrar_repartidor.html'];
     }
 
     if (paginaActual.includes('Otros registros')){
@@ -141,7 +141,7 @@
     if (paginaActual.includes('Listar usuarios')){
       document.querySelector('#menuOpciones li:nth-child(4) .linkTexto').classList.add('activo');
       subMenuTexto = ['Clientes', 'Encargados de aduana', 'Encargados de sucursal', 'Repartidores'];
-      subMenuLinks = ['../clientes/listarClientes.html', '../clientes/registroClientes.html', '../encargadoSucursal/index_listar.html', '../repartidor/registrar_repartidor.html'];
+      subMenuLinks = ['../clientes/listarClientes.html', '../EncargadoAduana/listarEncargadoAduana.html', '../encargadoSucursal/index_listar.html', '../repartidor/registrar_repartidor.html'];
     }
 
     if (paginaActual.includes('Otros listados')){
