@@ -141,7 +141,7 @@
     if (paginaActual.includes('Listar usuarios')){
       document.querySelector('#menuOpciones li:nth-child(4) .linkTexto').classList.add('activo');
       subMenuTexto = ['Clientes', 'Encargados de aduana', 'Encargados de sucursal', 'Repartidores'];
-      subMenuLinks = ['../clientes/listarClientes.html', '../clientes/registroClientes.html', '../encargadoSucursal/index_registrar.html', '../repartidor/registrar_repartidor.html'];
+      subMenuLinks = ['../clientes/listarClientes.html', '../clientes/registroClientes.html', '../encargadoSucursal/index_listar.html', '../repartidor/registrar_repartidor.html'];
     }
 
     if (paginaActual.includes('Otros listados')){

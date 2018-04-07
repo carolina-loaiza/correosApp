@@ -3,16 +3,12 @@
 
   function mostarDatosUsuarios() {
     var datosUsuario = [];
-    console.log(getTemp());
     if (getTemp()) {
       datosUsuario = buscarClientePorCorreo(getTemp());
+      document.querySelector('#desactivarCuenta').style.display = 'none';
     } else {
       datosUsuario = obtenerDatoLocal('usuario');
-    }
-
-    if (datosUsuario[12] != '2') {
-      document.querySelector('#desactivarCuenta').style.display = 'none';
-    }
+    };
 
     document.querySelector('.formRegistroClientes input[name="nombre"').value = datosUsuario[0]
     document.querySelector('.formRegistroClientes input[name="segundoNombre"').value = datosUsuario[1]
