@@ -54,7 +54,7 @@ function obtenerEncargado() {
     document.querySelector('#opGenero').value = infoEncargado[11];
     document.querySelector('#opSucursal').value = infoEncargado[12];
 
-    urlFotoPerfil = infoRepartidor[6];
+    urlFotoPerfil = infoEncargado[6];
 
     if (urlFotoPerfil) {
         imagePreview.setAttribute("src", urlFotoPerfil);
