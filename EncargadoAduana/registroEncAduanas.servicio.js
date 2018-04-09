@@ -22,7 +22,7 @@ function setListaEncAduanas(pinfoAduanas)
 
 ///////////////////////////////////////////////////////////////////////////////////
 
-function buscarRepartidor(pNombre)
+function buscarEncargadoAduana(pNombre)
 {
     let ListaEncAduanas=getListaEncAduanas();
     let encAduanaEncontrado=[];
@@ -40,12 +40,12 @@ function buscarRepartidor(pNombre)
 
 
 
-function setTemp(data)
+function setTempEncAdu(data)
 {
     localStorage.setItem('tempAduanaLs', JSON.stringify(data));
 }
 
-function getTemp()
+function getTempEncAdu()
 {
     return JSON.parse(localStorage.getItem('tempAduanaLs'));
 }
