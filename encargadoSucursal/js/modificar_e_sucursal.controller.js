@@ -47,13 +47,19 @@ function obtenerEncargado() {
     document.querySelector('#txtId').value = infoEncargado[4];
     document.querySelector('#txtCorreo').value = infoEncargado[5];
     document.querySelector('#txtCorreo').disabled = true;
-    //NO JALA LA FOTO
-    document.querySelector('#inputFotoPerfil').setAttribute('src', infoEncargado[6]);
+
     document.querySelector('#dtFecha').value = infoEncargado[10]
     document.querySelector('#txtTel1').value = infoEncargado[7];
     document.querySelector('#txtTel2').value = infoEncargado[8];   
     document.querySelector('#opGenero').value = infoEncargado[11];
     document.querySelector('#opSucursal').value = infoEncargado[12];
+
+    urlFotoPerfil = infoRepartidor[6];
+
+    if (urlFotoPerfil) {
+        imagePreview.setAttribute("src", urlFotoPerfil);
+        imagePreview.style.display = 'block';
+    }
 }
 
 function registrarDatosActualizados() {

@@ -24,6 +24,7 @@
 
     if (datosUsuario[11]) {
       document.querySelector('#previewFoto').setAttribute("src", datosUsuario[11]);
+      document.querySelector('#previewFoto').style.display = 'block';
     }
   };
 

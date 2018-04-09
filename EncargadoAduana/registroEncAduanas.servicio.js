@@ -61,7 +61,7 @@ function actualizarListaEncAduanas(pinfoAduanas)
     let ListaEncAduanas=getListaEncAduanas();
     for(let i=0;i<ListaEncAduanas.length;i++)
     {
-        if(ListaEncAduanas[i][0]==pinfoAduanas[0])
+        if(ListaEncAduanas[i][5]==pinfoAduanas[5])
         {
             ListaEncAduanas[i]=pinfoAduanas;
             localStorage.setItem('ListaEncAduanasLS',JSON.stringify(ListaEncAduanas));

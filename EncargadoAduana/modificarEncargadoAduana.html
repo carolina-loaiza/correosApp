@@ -51,87 +51,68 @@
             </div>
             <div class="content">
                 <h1 class="title titleUnderline">Modificar encargado de Aduana</h1>
-                <!--<button type="button" class="button">Button Simple</button>
-                <button type="button" class="button buttonIcon">
-                    <span class="icon">
-                        <i class="fas fa-arrow-right"></i>
-                    </span> Button Simple</button>-->
                 <form name="form" class="row">
                     <div class="col6 colWithPaddingRight">
 
                         <div class="inputContainer">
                             <label for="txtNombre">Primer nombre*</label>
-                            <div class='input'>
                                 <input type="text" id="txtNombre" required>
-                            </div>
                         </div>
 
                         <div class="inputContainer">
                             <label for="txtPrimerApellido">Primer Apellido*</label>
-                            <div class='input'>
-                                <input type="text" id="txtPrimerApellido" required>
-                            </div>
+                                <input class='input' type="text" id="txtPrimerApellido" data-tipo-input="texto" required>
                         </div>
 
                         <div class="inputContainer">
                             <label for="txtTelefono">Telefono*</label>
-                            <div class='input'>
-                                <input type="text" id="txtTelefono" required>
-                            </div>
+                                <input class='input' type="text" id="txtTelefono" data-tipo-input="texto" required>
                         </div>
 
                         <div class="inputContainer">
                             <label for="txtCorreo">Correo electrónico</label>
-                            <div class='input'>
-                                <input type="email" id="txtCorreo" disabled>
-                            </div>
+                                <input class='input' type="email" id="txtCorreo" disabled>
                         </div>
 
                         <div class="inputContainer">
                             <label for="txtTelefono1">Teléfono 1*</label>
-                            <div class='input'>
-                                <input type="number" id="txtTelefono1" required>
+                                <input class='input' type="number" id="txtTelefono1" data-tipo-input="tel" required>
                             </div>
                         </div>
 
                         <div class="inputContainer">
                             <label for="txtFechanacimiento">Fecha de nacimiento*</label>
-                            <div class='input'>
-                                <input type="date" id="txtFechanacimiento" required>
-                            </div>
+                                <input class='input' type="date" id="txtFechanacimiento" required>
                         </div>
-                        <div class="inputContainer">
-                            <br> (*Campos obligatorios) </div>
+
+                        <div class="inputContainer"><br> (*Campos obligatorios) </div>
                     </div>
 
                     <div class="col6 colWithPaddingRight">
                         <div class="inputContainer">
                             <label for="txtSegundonombre">Segundo nombre</label>
-                            <div class='input'>
-                                <input type="text" id="txtSegundonombre">
-                            </div>
+                                <input class='input' type="text" id="txtSegundonombre" data-tipo-input="texto">
                         </div>
 
                         <div class="inputContainer">
                             <label for="txtSegundoapellido">Segundo apellido</label>
-                            <div class='input'>
-                                <input type="text" id="txtSegundoapellido">
-                            </div>
+                                <input type="text" id="txtSegundoapellido" data-tipo-input="texto">
                         </div>
 
-                        <div class="inputContainerfoto">
-
-
-                            <form id="file-form" enctype="multipart/form-data">
-                                <button type="button" id='btnSeleccionarImagen' name='submit'>Agregar foto</button>
-                            </form>
-
+                        <div class="inputContainer">
+                            <label for="text">Foto de perfil</label>
+                            <div class="input" id="inputFotoPerfil">
+                              <div class="fotoPerfil"><img id="previewFoto" alt="Foto perfil"></div>
+                              <div class="inputFotoPerfil">
+                                <button type="button" class="button">Agregar foto</button>
+                                <input required class="cloudinary-fileupload" data-url="https://api.cloudinary.com/v1_1/app-correos-costarica/auto/upload" type="file" name="file">
+                              </div>
+                            </div>
                         </div>
 
                         <div class="inputContainer">
                             <label for="txtTelefono2">Teléfono 2</label>
-                            <div class='input'>
-                                <input type="number" id="txtTelefono2">
+                                <input type="number" id="txtTelefono2" data-tipo-input="tel">
                             </div>
                         </div>
 

@@ -60,6 +60,11 @@
 
       if (this.dataset.modificar) {
         var listaUsuarios = obtenerDatoLocal('listaUsuarios');
+        var image = document.querySelector('#previewFoto').getAttribute("src");
+
+        if (image) {
+          infoCliente[11] = image;
+        }
 
         for(var i = 0; i < listaUsuarios.length; i++) {
           if (listaUsuarios[i][5] === correo) {
