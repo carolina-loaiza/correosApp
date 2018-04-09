@@ -94,6 +94,6 @@ function limpiar() {
     document.querySelector('#txtCorreo').value = '';
     document.querySelector('#txtTel1').value = '';
     document.querySelector('#txtTel2').value = '';
-    document.querySelector('#dtFecfa').value = '';
+    document.querySelector('#dtFecha').value = '';
 }
 
