@@ -9,6 +9,31 @@ function buscarRepartidor(pNombre){
     return repartidorEncontrado;
 }
 
+
+function agregarSucursales() {
+    let lista = obtenerDatoLocal('RegistroLS');
+    let datosUsuario = obtenerDatoLocal('usuario');
+
+    if (document.getElementById('sltSucursal')){
+        if (datosUsuario && datosUsuario[12] === '4') {
+            let opcion = document.createElement('option');
+            opcion.value = datosUsuario[10];
+            opcion.innerText = datosUsuario[10];
+            document.getElementById('sltSucursal').appendChild(opcion);
+            return true;
+        }
+     
+        for(let i = 0; i < lista.length; i++) {
+            let opcion = document.createElement('option');
+            opcion.value = lista[i][0];
+            opcion.innerText = lista[i][0];
+            document.getElementById('sltSucursal').appendChild(opcion);
+        }
+    }
+}
+
+agregarSucursales();
+
 function setTemp(data){
     localStorage.setItem('tempLs', JSON.stringify(data));
 }

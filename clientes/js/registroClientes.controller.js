@@ -72,11 +72,17 @@
         localStorage.setItem('listaUsuarios', JSON.stringify(listaUsuarios));
         mostrarMensajeModal('registro exitoso');
       } else {
-        console.log(infoCliente);
         guardarDatoLocal('listaUsuarios', infoCliente);
         guardarDatoLocal('loginUsuarios', [correo, contraseña]);
-        mostrarMensajeModal('registro exitoso de usuario', contraseña);
+
+        if (obtenerDatoLocal('usuario')) {
+          mostrarMensajeModal('registro exitoso');
+        } else {
+          mostrarMensajeModal('registro exitoso de usuario', contraseña);
+        }
       }
+
+      document.getElementById('formRegistroClientes').reset();
     }
   }
 

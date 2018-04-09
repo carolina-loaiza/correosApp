@@ -24,7 +24,7 @@ function validarInputsRequeridos(inputs) {
   let error = false;
   
   for(let i = 0; i < inputs.length; i++) {
-    if(inputs[i].value == '' && inputs[i].type != 'file') {
+    if((inputs[i].value == '' && inputs[i].type != 'file') || esInvalidoInput(inputs[i])) {
       error = true;
       inputs[i].classList.add('inputError');
     }
@@ -103,4 +103,67 @@ function mostrarMensajeModal(tipoMensaje, contraseñaTemporal) {
       });
       break;
   }
+}
+
+
+function esInvalidoInput (input) {
+  var tipoInput = input.dataset.tipoInput;
+  var valorInput = input.value;
+
+  if (!tipoInput) {
+    return false;
+  }
+
+  var esInvalido = false;
+  var match = null;
+  var maxlength = 1;
+  var matchAlpha = /^[A-z]+$/gi;
+  var matchNumber = /^\d+$/;
+  var matchPhone = /^[0-9]{4}[-\s][0-9]{4}$/;
+  var matchEmail = /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})/;
+  var matchComment = /^[a-zA-Z0-9!?@#$%\^&*\s)(+=._-]*$/gi;
+
+  if (tipoInput === 'email') {
+    var tipoEmail = input.dataset.tipoEmail;
+    console.log(tipoEmail);
+    if (tipoEmail && !valorInput.includes(tipoEmail)) {
+      return true;
+    };
+    
+    match = matchEmail;
+    maxlength = 40;
+  }
+
+  if (tipoInput === 'tel') {
+    match = matchPhone;
+    maxlength = 14;
+  }
+
+  if (tipoInput === 'numero') {
+    maxlength = input.dataset.cantidad;
+
+    if ((valorInput.length + '') != maxlength) {
+      return true;
+    };
+
+    match = matchNumber;
+  }
+
+  if (tipoInput === 'texto') {
+    match = matchAlpha;
+    maxlength = 20;
+  }
+
+  if (tipoInput === 'textoNum') {
+    match = matchComment;
+    maxlength = 40;
+  }
+
+  var matches = valorInput.match(match);
+
+  if (matches == null) {
+    esInvalido = true;
+  }
+
+  return esInvalido;
 }

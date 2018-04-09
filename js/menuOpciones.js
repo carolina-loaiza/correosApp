@@ -75,10 +75,12 @@
       break;
   }
 
-  if (datosUsuario[11]) {
-    document.querySelector('#userPerfilAvatar').setAttribute("src", datosUsuario[11]);
-  }
-
+  datosUsuario.forEach(dato => {
+    if (dato != '' && typeof dato == 'string' && dato.includes('cloudinary')) {
+      document.querySelector('#userPerfilAvatar').setAttribute("src", dato);
+    }
+  });
+  
   document.querySelector('#userNombre').innerText = rol + " " + datosUsuario[0] + " " + datosUsuario[2];
   document.querySelector('#editarPerfil').setAttribute("href", editarPage);
 
@@ -156,7 +158,6 @@
       link.appendChild(document.createTextNode(subMenuTexto[i]));
       link.setAttribute('href', subMenuLinks[i]);
       menuItem.appendChild(link);
-      console.log(paginaActual, subMenuTexto[i]);
       if (paginaActual.includes(subMenuTexto[i])){
         menuItem.classList.add('activo');
       }
