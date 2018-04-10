@@ -16,11 +16,14 @@
     document.querySelector('.formRegistroClientes input[name="segundoApellido"').value = datosUsuario[3]
     document.querySelector('.formRegistroClientes input[name="cedula"').value = datosUsuario[4]
     document.querySelector('.formRegistroClientes input[name="email"').value = datosUsuario[5]
-    document.querySelector('.formRegistroClientes input[name="telefono1"').value = datosUsuario[6]
-    document.querySelector('.formRegistroClientes input[name="telefono2"').value = datosUsuario[7]
-    document.querySelector('.formRegistroClientes input[name="fechaNacimiento"').value = datosUsuario[8]
-    document.querySelector('.formRegistroClientes select[name="genero"').value = datosUsuario[9]
-    document.querySelector('.formRegistroClientes textarea[name="direccion"').value = datosUsuario[10]
+    document.querySelector('.formRegistroClientes input[name="telefono1"').value = datosUsuario[7]
+    document.querySelector('.formRegistroClientes input[name="telefono2"').value = datosUsuario[8]
+    document.querySelector('.formRegistroClientes input[name="fechaNacimiento"').value = datosUsuario[9]
+    document.querySelector('.formRegistroClientes select[name="genero"').value = datosUsuario[10]
+    document.querySelector('.formRegistroClientes input[name="provincia"').value = datosUsuario[11]
+    document.querySelector('.formRegistroClientes input[name="canton"').value = datosUsuario[12]
+    document.querySelector('.formRegistroClientes input[name="distrito"').value = datosUsuario[13]
+    document.querySelector('.formRegistroClientes textarea[name="direccion"').value = datosUsuario[14]
 
     if (datosUsuario[11]) {
       document.querySelector('#previewFoto').setAttribute("src", datosUsuario[11]);

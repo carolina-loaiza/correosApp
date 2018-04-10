@@ -36,23 +36,22 @@ function validarInputsRequeridos(inputs) {
   return error;
 }
 
-function validarRegistroDoble(correo) { 
-  let lista = obtenerDatoLocal('loginUsuarios'); 
-    for(let i = 0; i < lista.length; i++) { 
-      if(correo == lista[i][0]) {  
-        swal({ 
-          title: "Usuario ya registrado", 
-          text: "Esta dirección de correo ya ha sido utilizada", 
-          icon: "error", 
-          button: { 
-            text: "OK", 
-            className: "button", 
-          }}) 
-          return false;  
-      } 
-    } 
-  } 
-  
+function validarRegistroDoble(correo) {  
+  let lista = obtenerDatoLocal('loginUsuarios');  
+    for(let i = 0; i < lista.length; i++) {  
+      if(correo == lista[i][0]) {   
+        swal({  
+          title: "Usuario ya registrado",  
+          text: "Esta dirección de correo ya ha sido utilizada",  
+          icon: "error",  
+          button: {  
+            text: "OK",  
+            className: "button",  
+          }})  
+          return false;   
+      }  
+    }  
+  }  
 
 function mostrarMensajeModal(tipoMensaje, contraseñaTemporal) {
   switch (tipoMensaje) {
@@ -167,57 +166,3 @@ function esInvalidoInput (input) {
 
   return esInvalido;
 }
-
-function guardarDatos(datos, ruta){
-  let peticion = $.ajax({
-    url: 'http://localhost:4000/api/'+ruta,
-    type: 'post',
-    contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-    dataType : 'json',
-    async: false,
-    data: datos
-  });
-
-  peticion.done(function(response){
-    console.log('El usuario se registró con éxito');
-  });
-
-  peticion.fail(function(){
-    console.log('El usuario no se pudo registrar');
-  });
-}
-
-function obtenerLista(ruta){
-  let lista = [];
-
-  let peticion = $.ajax({
-    url: 'http://localhost:4000/api/'+ ruta,
-    type: 'get',
-    contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-    dataType : 'json',
-    async:false,
-    data:{}
-  });
-
-  peticion.done(function(usuarios){
-    for(let i = 0; i < usuarios.length; i++){
-      var dato = [];
-      for (var key in usuarios[i]) {
-        if (key != '__v') {
-          dato.push(usuarios[i][key]);
-        };
-      }
-      lista.push(dato);
-    }
-    console.log('Petición realizada con éxito');
-  });
-
-  peticion.fail(function(){
-    lista = [];
-    console.log('Ocurrió un error');
-  });
-  
-  return lista;
-}
-
-console.log(obtenerLista('get_all_users'));
