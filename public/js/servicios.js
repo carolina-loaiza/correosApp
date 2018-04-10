@@ -165,9 +165,7 @@ function esInvalidoInput (input) {
   }
 
   return esInvalido;
-<<<<<<< HEAD:public/js/servicios.js
 }
-
 
 function guardarDatos(datos, ruta){
   let peticion = $.ajax({
@@ -221,6 +219,3 @@ function obtenerLista(ruta){
 }
 
 console.log(obtenerLista('get_all_users'));
-=======
-}
->>>>>>> master:js/servicios.js
