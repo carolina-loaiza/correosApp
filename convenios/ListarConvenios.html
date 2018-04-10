@@ -7,8 +7,8 @@
   <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800|Roboto:400,500,700" rel="stylesheet">
   <link rel="stylesheet" href="../css/base.css">
-  <!-- <link rel="stylesheet" href="css/styleListaEncargadoAduana.css"> -->
-  <title>Correos de Costa Rica - Encargados de aduana - Listar usuarios</title>
+  <link rel="stylesheet" href="css/convenios.style.css">
+  <title>Correos de Costa Rica - Convenios - Otros listados</title>
 </head>
 <body>
   <div class="mainContainer">
@@ -41,73 +41,28 @@
         </ul>
       </div>
       <div class="content">
-        <h1 class="title titleUnderline">Listar encargados de aduanas</h1>
-
-        
-        <div class="inputContainer">
-            <label for="text" class="lupa">
-              <i class="fas fa-search"></i>
-            </label>
-  
-            <div class="input"><input type="text" placeholder="Aduanas" name="text" id="txtFiltro" required></div>
-          </div>
-        
-        <!--<button type="button" class="button buttonIcon"><span class="icon"><i class="fas fa-arrow-right"></i></span> Button Simple</button>-->
-        <form name="form" class="row">
-          <div class="col6 colWithPaddingRight">
-
-              <table id="tblListaEncargadoAduana">
-                  <thead>
+        <h1 class="title titleUnderline">Lista de convenios</h1>
+        <form name="form">
+            <a class="asearch"></a><i class="iconfilter fas fa-search"></i><input type="text" id="txtFiltro" class="input iFiltroConv" placeholder="Nombre del convenio o descripción"></a>
+            <div class="colWithPaddingRight">
+                <table id="tblConvenios">
+                   <thead>
                       <tr>
-                          <th>Primer nombre</th>
-                          <th>Primer apellido</th>
-                          <th>Correo</th>
-                          <th>Telefono</th>
-                          <th>Cedula</th>
-                          <th>Modificar</th>
-                          <th>Desactivar</th>
-                          
-                          
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Modificar</th>
+                        <th>Deshabilitar</th>
                       </tr>
-                  </thead>
-          
-                  <tbody id="tbody">
-          
-                  </tbody>
-          
+                   </thead>
+
+                   <tbody>
+                     <!-- Aquí se ingresan los valores generados dinamicamente -->
+                   </tbody>
                 </table>
-
-            <!-- <div class="inputContainer">
-              <label for="text">Categoria de articulo</label>
-              <div class="input"><input type="text" name="text" id="txtCategoria" required></div>
             </div>
-
-            <div class="inputContainer">
-              <label for="text">Impuesto del articulo</label>
-              <div class="input"><input type="text" name="text" id="txtImpuestos" required></div>
-            </div> -->
-
-            <!-- 
-            <div class="inputContainer">
-              <label for="text">Telefono</label>
-              <div class="input"><input type="text" name="text" id="txtTelefono" required></div>
-
-            </div> -->
-
-              <div>
-                <button type="button" class="button" id="btnRegistrar">Registrar</button>
-              </div>
-              <!--               
-              <div>
-                <img src="../../img/GoogleMap.jpg" alt="Mapa" width="460" height="345">
-              </div> -->
-          </div>
-          
-            
         </form>
       </div>
     </div>
-
     <footer>
       <div class="footerContent">
         <p><i class="fas fa-phone"></i> Central telefónica : +506 800-900-2000</p>
@@ -124,11 +79,7 @@
   <script src="../js/localStorage.servicio.js"></script>
   <script src="../js/servicios.js"></script>
   <script src="../js/menuOpciones.js"></script>
-  <script src="registroEncAduanas.servicio.js"></script>
-  <script src="js/controlador_ListarEncargadoAduana.js"></script>
-
+  <script src="convenios.servicios.js"></script>
+  <script src="js/listarConvenios.controlador.js"></script>
 </body>
 </html>
-
-
-

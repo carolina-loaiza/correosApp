@@ -39,6 +39,12 @@
   switch (datosUsuario[12]) {
     case '1':
       rol = 'Administrador';
+      menuOpciones.appendChild(crearLinkMenu('../clientes/registroClientes.html', 'Registro usuarios', ['fas', 'fa-file-alt']));
+      menuOpciones.appendChild(crearLinkMenu('../sucursales/registrar_sucursal.html', 'Otros registros', ['fas', 'fa-file-alt']));
+      menuOpciones.appendChild(crearLinkMenu('../clientes/listarClientes.html', 'Listar usuarios', ['far', 'fa-list-alt']));
+      menuOpciones.appendChild(crearLinkMenu('../sucursales/listar_Sucursal.html', 'Otros listados', ['far', 'fa-list-alt']));
+      document.querySelector('.editarPerfil').style.display = 'none';
+      crearSubMenuOpciones();
       break;
     case '2':
       rol = 'Cliente';
@@ -69,10 +75,12 @@
       break;
   }
 
-  if (datosUsuario[11]) {
-    document.querySelector('#userPerfilAvatar').setAttribute("src", datosUsuario[11]);
-  }
-
+  datosUsuario.forEach(dato => {
+    if (dato != '' && typeof dato == 'string' && dato.includes('cloudinary')) {
+      document.querySelector('#userPerfilAvatar').setAttribute("src", dato);
+    }
+  });
+  
   document.querySelector('#userNombre').innerText = rol + " " + datosUsuario[0] + " " + datosUsuario[2];
   document.querySelector('#editarPerfil').setAttribute("href", editarPage);
 
@@ -113,5 +121,51 @@
 
     return menuItem;
   }
+
+  function crearSubMenuOpciones() {
+    var subMenuLinks = [];
+    var subMenuTexto = [];
+    var contenedorSubmenu = document.createElement('ul'); 
+    contenedorSubmenu.classList.add('subMenu');
+
+    if (paginaActual.includes('Registrar')){
+      document.querySelector('#menuOpciones li:nth-child(2) .linkTexto').classList.add('activo');
+      subMenuTexto = ['Cliente', 'Encargado de aduana', 'Encargado de sucursal', 'Repartidor'];
+      subMenuLinks = ['../clientes/registroClientes.html', '../EncargadoAduana/RegistroEncAduanas.html', '../encargadoSucursal/index_registrar.html', '../repartidor/registrar_repartidor.html'];
+    }
+
+    if (paginaActual.includes('Otros registros')){
+      document.querySelector('#menuOpciones li:nth-child(3) .linkTexto').classList.add('activo');
+      subMenuTexto = ['Sucursal', 'Convenio', 'Ruta'];
+      subMenuLinks = ['../sucursales/registrar_sucursal.html', '../convenios/registrarConvenios.html', '../rutas_reparto/registrar.html'];
+    }
+
+    if (paginaActual.includes('Listar usuarios')){
+      document.querySelector('#menuOpciones li:nth-child(4) .linkTexto').classList.add('activo');
+      subMenuTexto = ['Clientes', 'Encargados de aduana', 'Encargados de sucursal', 'Repartidores'];
+      subMenuLinks = ['../clientes/listarClientes.html', '../EncargadoAduana/listarEncargadoAduana.html', '../encargadoSucursal/index_listar.html', '../repartidor/registrar_repartidor.html'];
+    }
+
+    if (paginaActual.includes('Otros listados')){
+      document.querySelector('#menuOpciones li:nth-child(5) .linkTexto').classList.add('activo');
+      subMenuTexto = ['Sucursales', 'Convenios', 'Rutas'];
+      subMenuLinks = ['../sucursales/listar_Sucursal.html', '../convenios/ListarConvenios.html', '../rutas_reparto/listado.html'];
+    }
+
+    for (let i = 0; i < subMenuLinks.length; i++) {
+      var menuItem = document.createElement('li');
+      var link = document.createElement('a');
+      link.appendChild(document.createTextNode(subMenuTexto[i]));
+      link.setAttribute('href', subMenuLinks[i]);
+      menuItem.appendChild(link);
+      if (paginaActual.includes(subMenuTexto[i])){
+        menuItem.classList.add('activo');
+      }
+
+      contenedorSubmenu.appendChild(menuItem);
+    };
+
+    document.querySelector('.content').prepend(contenedorSubmenu);
+  };
 
 })();

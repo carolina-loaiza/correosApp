@@ -17,18 +17,6 @@ function initFotoPerfil() {
 };
 initFotoPerfil();
 
-function agregarSucursales() {
-    let lista = obtenerDatoLocal('RegistroLS');
-    for(let i = 0; i < lista.length; i++) {
-        let opcion = document.createElement('option');
-        opcion.value = lista[i][0];
-        opcion.innerText = lista[i][0];
-        document.getElementById('sltSucursal').appendChild(opcion);
-    }
-}
-
-agregarSucursales();
-
 //Funcion de obtener datos.
 
 function obtenerDatos() {
@@ -69,6 +57,8 @@ function obtenerDatos() {
         let inputCorreo = document.querySelector('#txtCorreo');
         let sCorreo = inputCorreo.value;
 
+        let fotoPerfil = urlFotoPerfil;
+
         let inputFechanacimiento = document.querySelector('#txtFechanacimiento');
         let sFechanacimiento = inputFechanacimiento.value;
 
@@ -86,16 +76,19 @@ function obtenerDatos() {
             mostrarMensajeModal('error edad');
             return false;
         }
-        
 
-            aRepartidores.push(sPrimernombre, sSegundonombre, sPrimerapellido, sSegundoapellido, sIdentificacion, sCorreo, sTelefono1, sTelefono2, sFechanacimiento, sGenero, sSucursal, fotoPerfil, sTipoUsuario, sActivo);
- 
-            guardarDatoLocal('listaRepartidoresLS',aRepartidores);
-            guardarDatoLocal('listaUsuarios', aRepartidores);
-            guardarDatoLocal('loginUsuarios', [sCorreo, contraseña]);
-            mostrarMensajeModal('registro exitoso de usuario', contraseña);
-        
-
+        let registroValido = validarRegistroDoble(sCorreo);
+        if(registroValido == false) {
+            return false;
+        }
+    
+        aRepartidores.push(sPrimernombre, sSegundonombre, sPrimerapellido, sSegundoapellido, sIdentificacion, sCorreo, fotoPerfil, sTelefono1, sTelefono2, sFechanacimiento, sGenero, sSucursal, sTipoUsuario, sActivo);
+        guardarDatoLocal('listaRepartidoresLS',aRepartidores);
+        guardarDatoLocal('listaUsuarios', aRepartidores);
+        guardarDatoLocal('loginUsuarios', [sCorreo, contraseña]);
+        document.getElementById('registrarRepartidorForm').reset();
+        mostrarMensajeModal('registro exitoso');
+    
     }
 }
 

@@ -67,11 +67,16 @@
       fecha_nacimiento, genero, provincia, canton, distrito, direccion, tipoUsuario, activo);
 
       if (this.dataset.modificar) {
-        var listaClientes = obtenerDatoLocal('listaClientesLS');
+        var listaUsuarios = obtenerDatoLocal('listaUsuarios');
+        var image = document.querySelector('#previewFoto').getAttribute("src");
 
-        for(var i = 0; i < listaClientes.length; i++) {
-          if (listaClientes[i][5] === correo) {
-            listaClientes[i] = infoCliente;
+        if (image) {
+          infoCliente[11] = image;
+        }
+
+        for(var i = 0; i < listaUsuarios.length; i++) {
+          if (listaUsuarios[i][5] === correo) {
+            listaUsuarios[i] = infoCliente;
             if (!getTemp()) { 
               localStorage.setItem('usuario', JSON.stringify(infoCliente));
             }
@@ -80,13 +85,18 @@
         localStorage.setItem('listaClientesLS', JSON.stringify(listaClientes));
         mostrarMensajeModal('registro exitoso');
       } else {
-        // console.log(infoCliente);
-        guardarDatoLocal('listaClientes', infoCliente);
         guardarDatoLocal('listaUsuarios', infoCliente);
         guardarDatoLocal('loginUsuarios', [correo, contraseña]);
+
+        if (obtenerDatoLocal('usuario')) {
+          mostrarMensajeModal('registro exitoso');
+        } else {
+          mostrarMensajeModal('registro exitoso de usuario', contraseña);
+        }
         limpiar();
-        mostrarMensajeModal('registro exitoso de usuario', contraseña);
       }
+
+      document.getElementById('formRegistroClientes').reset();
     }
   }
 

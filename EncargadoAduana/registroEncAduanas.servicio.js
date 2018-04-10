@@ -22,7 +22,7 @@ function setListaEncAduanas(pinfoAduanas)
 
 ///////////////////////////////////////////////////////////////////////////////////
 
-function buscarRepartidor(pNombre)
+function buscarEncargadoAduana(pNombre)
 {
     let ListaEncAduanas=getListaEncAduanas();
     let encAduanaEncontrado=[];
@@ -40,12 +40,12 @@ function buscarRepartidor(pNombre)
 
 
 
-function setTemp(data)
+function setTempEncAdu(data)
 {
     localStorage.setItem('tempAduanaLs', JSON.stringify(data));
 }
 
-function getTemp()
+function getTempEncAdu()
 {
     return JSON.parse(localStorage.getItem('tempAduanaLs'));
 }
@@ -61,7 +61,7 @@ function actualizarListaEncAduanas(pinfoAduanas)
     let ListaEncAduanas=getListaEncAduanas();
     for(let i=0;i<ListaEncAduanas.length;i++)
     {
-        if(ListaEncAduanas[i][0]==pinfoAduanas[0])
+        if(ListaEncAduanas[i][5]==pinfoAduanas[5])
         {
             ListaEncAduanas[i]=pinfoAduanas;
             localStorage.setItem('ListaEncAduanasLS',JSON.stringify(ListaEncAduanas));

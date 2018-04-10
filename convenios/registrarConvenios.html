@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +7,8 @@
   <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800|Roboto:400,500,700" rel="stylesheet">
   <link rel="stylesheet" href="../css/base.css">
-  <!-- <link rel="stylesheet" href="css/styleListaSucursal.css"> -->
-  <title>Correos de Costa Rica - Sucursales - Otros listados</title>
+  <link rel="stylesheet" href="css/registrarConvenios.style.css">
+  <title>Correos de Costa Rica - Convenio - Otros registros</title>
 </head>
 <body>
   <div class="mainContainer">
@@ -42,37 +41,20 @@
         </ul>
       </div>
       <div class="content">
-        <h1 class="title titleUnderline">Lista de sucursales</h1>
-
-        <div class="inputContainer">
-          <label for="text" class="lupa">
-            <i class="fas fa-search"></i>
-          </label>
-
-          <div class="input">
-            <input type="text" placeholder="Sucursal" name="text" id="txtFiltro" required>
-          </div>
-        </div>
-
-
-
-        <table id="tblListaSucursal">
-          <thead>
-            <tr>
-              <th>Sucursal</th>
-              <th>Dirección</th>
-              <th>Telefono</th>
-              <th>Modificar</th>
-              <th>Desactivar</th>
-
-            </tr>
-          </thead>
-
-          <tbody id="tbody">
-
-          </tbody>
-
-        </table>
+        <h1 class="title titleUnderline">Registro de convenios</h1>
+        <form name="form" class="row">
+            <div class="col6 colWithPaddingRight">
+                <div class="inputContainer">
+                    <label for="txtNombre">Nombre del documento</label>
+                    <input id="txtNombre" type="text" class="input"  required>
+                </div>
+                <div class="inputContainer">
+                    <label for="txtDescripcion">Nombre de la entidad</label>
+                    <input id="txtDescripcion" class="input" required>
+                </div>
+           <button id="btnGuardar" type="button" class="guardar button">Registrar</button>
+           </div>
+        </form>
       </div>
     </div>
 
@@ -92,9 +74,7 @@
   <script src="../js/localStorage.servicio.js"></script>
   <script src="../js/servicios.js"></script>
   <script src="../js/menuOpciones.js"></script>
-  <script src="sucursal.service.js"></script>
-  <script src="js/listar_sucursal.controller.js"></script>
-
+  <script src="convenios.servicios.js"></script>
+  <script src="js/registrarConvenios.controlador.js"></script>
 </body>
-
 </html>

@@ -7,88 +7,61 @@
   <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800|Roboto:400,500,700" rel="stylesheet">
   <link rel="stylesheet" href="../css/base.css">
-  <link rel="stylesheet" href="css/style.css">
-  <title>Correos de Costa Rica / Registro de encargados de sucursal</title>
+  <title>Correos de Costa Rica - Registrar Encargado de sucursal</title>
 </head>
 <body>
   <div class="mainContainer">
-    <div class="sideBar">
+    <header class="headerSesion">
       <div class="logo"><img src="../img/logo_correoscr.png" alt="logo_Correos_CR"></div>
-      <div class="sideBarContent">
-        <div class="userPerfil">
-          <div class="userPerfilAvatar"><img src="../img/avatar.png" alt="Avatar default"></div>
-          <div class="userPerfilInfo">
-            <h3>Nombre del usuario</h3>
-            <h4>Administrador</h4>
-            <a href="#">Editar perfil <i class="far fa-edit"></i></a>
-          </div>
+      <div class="userPerfilInfo">
+        <button type="button" class="button buttonIcon">
+          <span class="icon"><i class="fas fa-home"></i></span>
+          Inicio
+        </button>
+        <button type="button" class="button buttonIcon" id="cerrarSesion">
+          <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+          Cerrar sesión
+        </button>
+        <h3 id="userNombre"></h3>
+        <div class="userPerfilAvatar">
+          <img src="../img/avatar.png" id="userPerfilAvatar" alt="Avatar default">
         </div>
-        <ul class="sideBarMenu">
-          <li class="activeItem">
-            <a href="#">
-              <span class="icon iconMenu"><i class="far fa-file-alt"></i></span>
-              Registrar personas
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="icon iconMenu"><i class="far fa-file-alt"></i></span>
-              Otros registros
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="icon iconMenu"><i class="far fa-list-alt"></i></span>
-              Listar personas
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="icon iconMenu"><i class="far fa-list-alt"></i></span>
-              Otros listados
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="icon iconMenu"><i class="far fa-file"></i></span>
-              Reportes
+      </div>
+    </header>
+    <div class="innerContainer">
+      <div class="menu">
+        <ul class="menuOpciones" id="menuOpciones">
+          <li class="editarPerfil">
+            <a href="#" id="editarPerfil">
+              <span class="icon iconMenu"><i class="far fa-edit"></i></span>
+              <span class="linkTexto" id="editarPerfilText">Editar perfil</span>
             </a>
           </li>
         </ul>
       </div>
-    </div>
-    <div class="innerContainer">
-      <header class="headerSesion">
-          <button type="button" class="button buttonIcon">
-            <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
-            Cerrar sesión
-          </button>
-      </header>
       <div class="content">
         <h1 class="title titleUnderline">Registro de encargados de sucursal</h1>
-        <!--<button type="button" class="button">Button Simple</button>
-        <button type="button" class="button buttonIcon"><span class="icon"><i class="fas fa-arrow-right"></i></span> Button Simple</button>-->
         <form name="form" class="row">
           <div class="col6 colWithPaddingRight">
             <div class="inputContainer">
               <label for="txtPrimerNombre">Primer Nombre*</label>
-              <input id="txtPrimerNombre" type="text" name="text" class="input" required>
+              <input id="txtPrimerNombre" type="text" name="text" class="input" data-tipo-input="texto" required>
             </div>
             <div class="inputContainer">
               <label for="txtPrimerApellido">Primer Apellido*</label>
-              <input type="text" name="text" id="txtPrimerApellido" class="input" required>
+              <input type="text" name="text" id="txtPrimerApellido" class="input" data-tipo-input="texto" required>
             </div>
             <div class="inputContainer">
               <label for="txtId">Identificación*</label>
-              <input type="text" id="txtId" name="text" class="input" required>
+              <input type="text" id="txtId" name="text" data-tipo-input="numero" data-cantidad="9" class="input" required>
             </div>
             <div class="inputContainer">
               <label for="txtCorreo">Correo electrónico*</label>
-              <input type="email" id="txtCorreo" name="text" class="input" required>
+              <input type="email" id="txtCorreo" name="text" class="input" data-tipo-input="email" data-tipo-email="correos.cr" required>
             </div>
             <div class="inputContainer">
               <label for="txtTel1">Teléfono1*</label>
-              <input type="text" class="input" id="txtTel1" required>
+              <input type="text" class="input" id="txtTel1" data-tipo-input="tel" required>
             </div>
             
             <div class="inputContainer">
@@ -102,11 +75,11 @@
           <div class="col6 colWithPaddingLeft">
             <div class="inputContainer">
               <label for="txtSegundoNombre">Segundo Nombre</label>
-              <input class="input" type="text" name="text" id="txtSegundoNombre">
+              <input class="input" type="text" name="text" data-tipo-input="texto" id="txtSegundoNombre">
             </div>
             <div class="inputContainer">
               <label for="txtSegundoApellido">Segundo Apellido</label>
-              <input type="text" class="input" id="txtSegundoApellido">
+              <input type="text" class="input" data-tipo-input="texto" id="txtSegundoApellido">
             </div>  
               <div class="inputContainer">
                   <label for="text">Foto de perfil</label>
@@ -120,7 +93,7 @@
                 </div>
             <div class="inputContainer">
               <label for="txtTel2">Teléfono2</label>
-              <input type="text" class="input" id="txtTel2">
+              <input type="text" class="input" data-tipo-input="tel" id="txtTel2">
             </div>
               <div class="inputContainer">
                 <label for="opGenero">Género</label>
@@ -142,15 +115,19 @@
         </form>
 
         <button type="button" id="btnRegistrar" class="button">Registrar</button>
-      </div> 
-      <footer>
-          <div class="footerContent">
-            <p><i class="fas fa-phone"></i> Central telefónica : +506 800-900-2000</p>
-            <p><i class="fas fa-envelope"></i> Email : srvclientes@correos.go.cr</p>
-          </div>
-          <div class="logo"><img src="../img/logo_correoscr.png" alt="logo_Correos_CR"></div>
-      </footer>
+      </div>
     </div>
+
+    <footer>
+      <div class="footerContent">
+        <p><i class="fas fa-phone"></i> Central telefónica : +506 800-900-2000</p>
+        <p><i class="fas fa-envelope"></i> Email : srvclientes@correos.go.cr</p>
+      </div>
+      <ul class="footerSociaLinks">
+        <li><a href="https://www.facebook.com/CorreosdeCostaRica/"><i class="fab fa-facebook-square"></i></a></li>
+        <li><a href="https://twitter.com/CorreosCR"><i class="fab fa-twitter-square"></i></a></li>
+      </ul>
+    </footer>
   </div>
 
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -163,6 +140,7 @@
 
   <script src="../js/localStorage.servicio.js"></script>
   <script src="../js/servicios.js"></script>
+  <script src="../js/menuOpciones.js"></script>
   <script src="e_sucursal.service.js"></script>
   <script src="js/registrar_e_sucursal.controller.js"></script>
 </body>

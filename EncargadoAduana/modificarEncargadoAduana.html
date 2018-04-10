@@ -8,161 +8,110 @@
     <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800|Roboto:400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="../css/base.css">
-    
-    <title>Correos de Costa Rica</title>
+    <title>Correos de Costa Rica - Encargados de aduana - Listar usuarios</title>
 </head>
 
 <body>
     <div class="mainContainer">
-        <div class="sideBar">
+        <header class="headerSesion">
             <div class="logo">
                 <img src="../img/logo_correoscr.png" alt="logo_Correos_CR">
             </div>
-            <div class="sideBarContent">
-                <div class="userPerfil">
-                    <div class="userPerfilAvatar">
-                        <img src="../img/avatar.png" alt="Avatar default">
-                    </div>
-                    <div class="userPerfilInfo">
-                        <h3>Nombre cliente</h3>
-                        <h4>Administrador</h4>
-                        <a href="#">Editar perfil
-                            <i class="far fa-edit"></i>
-                        </a>
-                    </div>
-                </div>
-                <ul class="sideBarMenu">
-                    <li class="activeItem">
-                        <a href="listarEncargadoAduana.html">
-                            <span class="icon iconMenu">
-                                <i class="far fa-file-alt"></i>
-                            </span>
-                            Registrar
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="icon iconMenu">
-                                <i class="fas fa-truck"></i>
-                            </span>
-                            Asignar
-                        </a>
-                    </li>
-                    <li>
-                        <a href="listarEncargadoAduana.html">
-                            <span class="icon iconMenu">
-                                <i class="fas fa-list-alt"></i>
-                            </span>
-                            Listar
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="icon iconMenu">
-                                <i class="fas fa-box"></i>
-                            </span>
-                            Reportes
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-
-        <div class="innerContainer">
-            <header class="headerSesion">
+            <div class="userPerfilInfo">
                 <button type="button" class="button buttonIcon">
+                    <span class="icon">
+                        <i class="fas fa-home"></i>
+                    </span>
+                    Inicio
+                </button>
+                <button type="button" class="button buttonIcon" id="cerrarSesion">
                     <span class="icon">
                         <i class="fas fa-sign-out-alt"></i>
                     </span>
                     Cerrar sesión
                 </button>
-            </header>
+                <h3 id="userNombre"></h3>
+                <div class="userPerfilAvatar">
+                    <img src="../img/avatar.png" id="userPerfilAvatar" alt="Avatar default">
+                </div>
+            </div>
+        </header>
+        <div class="innerContainer">
+            <div class="menu">
+                <ul class="menuOpciones" id="menuOpciones">
+                    <li class="editarPerfil">
+                        <a href="#" id="editarPerfil">
+                            <span class="icon iconMenu">
+                                <i class="far fa-edit"></i>
+                            </span>
+                            <span class="linkTexto" id="editarPerfilText">Editar perfil</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
             <div class="content">
                 <h1 class="title titleUnderline">Modificar encargado de Aduana</h1>
-                <!--<button type="button" class="button">Button Simple</button>
-                <button type="button" class="button buttonIcon">
-                    <span class="icon">
-                        <i class="fas fa-arrow-right"></i>
-                    </span> Button Simple</button>-->
                 <form name="form" class="row">
                     <div class="col6 colWithPaddingRight">
 
                         <div class="inputContainer">
                             <label for="txtNombre">Primer nombre*</label>
-                            <div class='input'>
                                 <input type="text" id="txtNombre" required>
-                            </div>
                         </div>
 
                         <div class="inputContainer">
                             <label for="txtPrimerApellido">Primer Apellido*</label>
-                            <div class='input'>
-                                <input type="text" id="txtPrimerApellido" required>
-                            </div>
+                                <input class='input' type="text" id="txtPrimerApellido" data-tipo-input="texto" required>
                         </div>
 
                         <div class="inputContainer">
-                            <label for="txtTelefono">Telefono*</label>
-                            <div class='input'>
-                                <input type="text" id="txtTelefono" required>
-                            </div>
+                            <label for="txtIdentificacion">Identificación*</label>
+                                <input type="text" id="txtIdentificacion" required>
                         </div>
-                       
-                        <div  class="inputContainer">
+
+                        <div class="inputContainer">
                             <label for="txtCorreo">Correo electrónico</label>
-                            <div class='input'>
-                                <input type="email" id="txtCorreo" disabled>
-                            </div>
+                                <input class='input' type="email" id="txtCorreo" disabled>
                         </div>
 
                         <div class="inputContainer">
                             <label for="txtTelefono1">Teléfono 1*</label>
-                            <div class='input'>
-                                <input type="number" id="txtTelefono1" required>
-                            </div>
+                                <input class='input' type="number" id="txtTelefono1" data-tipo-input="tel" required>
                         </div>
 
                         <div class="inputContainer">
-                                <label for="txtFechanacimiento">Fecha de nacimiento*</label>
-                                <div class='input'>
-                                    <input type="date" id="txtFechanacimiento" required>
-                                </div>
-                            </div> 
-                            <div class="inputContainer">
-                                <br>
-                            (*Campos obligatorios) </div>
+                            <label for="txtFechanacimiento">Fecha de nacimiento*</label>
+                                <input class='input' type="date" id="txtFechanacimiento" required>
                         </div>
+
+                        <div class="inputContainer"><br> (*Campos obligatorios) </div>
+                    </div>
 
                     <div class="col6 colWithPaddingRight">
                         <div class="inputContainer">
                             <label for="txtSegundonombre">Segundo nombre</label>
-                            <div class='input'>
-                                <input type="text" id="txtSegundonombre">
-                            </div>
+                                <input class='input' type="text" id="txtSegundonombre" data-tipo-input="texto">
                         </div>
 
                         <div class="inputContainer">
                             <label for="txtSegundoapellido">Segundo apellido</label>
-                            <div class='input'>
-                                <input type="text" id="txtSegundoapellido">
-                            </div>
+                                <input class='input' type="text" id="txtSegundoapellido" data-tipo-input="texto">
                         </div>
 
-                        <div class="inputContainerfoto">
-
-
-                            <form id="file-form"  enctype="multipart/form-data">
-                                <button type="button" id='btnSeleccionarImagen' name='submit'>Agregar foto</button>
-                            </form>
-                            
+                        <div class="inputContainer">
+                            <label for="text">Foto de perfil</label>
+                            <div class="input" id="inputFotoPerfil">
+                              <div class="fotoPerfil"><img id="previewFoto" alt="Foto perfil"></div>
+                              <div class="inputFotoPerfil">
+                                <button type="button" class="button">Agregar foto</button>
+                                <input required class="cloudinary-fileupload" data-url="https://api.cloudinary.com/v1_1/app-correos-costarica/auto/upload" type="file" name="file">
+                              </div>
+                            </div>
                         </div>
 
                         <div class="inputContainer">
                             <label for="txtTelefono2">Teléfono 2</label>
-                            <div class='input'>
-                                <input type="number" id="txtTelefono2">
-                            </div>
+                                <input class='input' type="number" id="txtTelefono2" data-tipo-input="tel">
                         </div>
 
                         <div class="inputContainer">
@@ -175,53 +124,52 @@
                                     <option value="Otro">Otro</option>
                                 </select>
                             </div>
-                        </div> 
+                        </div>
 
                         <div class="inputContainer">
-                                <label for="sltSucursal">Seleccione sucursal*</label>
-                                <div class="input">
-                                    <select id="sltSucursal" required>
-                                        <option value=""></option>
-                                        <option value="Sucursal 01">S 01</option>
-                                        <option value="Sucursal 02">S 02</option>
-                                        <option value="Sucursal 03">S 03</option>
-                                        <option value="Sucursal 04">S 04</option>
-                                        <option value="Sucursal 05">S 05</option>
-                                    </select>
-                                </div>
-                            </div> 
-
-
-
-
-
+                            <label for="sltSucursal">Seleccione sucursal*</label>
+                            <div class="input">
+                                <select id="sltSucursal" required>
+                                    <option value=""></option>
+                                    <option value="Sucursal 01">S 01</option>
+                                    <option value="Sucursal 02">S 02</option>
+                                    <option value="Sucursal 03">S 03</option>
+                                    <option value="Sucursal 04">S 04</option>
+                                    <option value="Sucursal 05">S 05</option>
+                                </select>
+                            </div>
+                        </div>
 
                         <div class="buttonContainer">
                             <button class="button" type="button" id="btnGuardar">
                                 Actualizar
                             </button>
                         </div>
-                        
+
                     </div>
                 </form>
             </div>
-            <footer>
-                <div class="footerContent">
-                    <p>
-                        <i class="fas fa-phone"></i> Central telefónica : +506 800-900-2000</p>
-                    <p>
-                        <i class="fas fa-envelope"></i> Email : srvclientes@correos.go.cr</p>
-                </div>
-                <div class="logo">
-                    <img src="../img/logo_correoscr.png" alt="logo_Correos_CR">
-                </div>
-            </footer>
         </div>
+
+        <footer>
+            <div class="footerContent">
+              <p><i class="fas fa-phone"></i> Central telefónica : +506 800-900-2000</p>
+              <p><i class="fas fa-envelope"></i> Email : srvclientes@correos.go.cr</p>
+            </div>
+            <ul class="footerSociaLinks">
+              <li><a href="https://www.facebook.com/CorreosdeCostaRica/"><i class="fab fa-facebook-square"></i></a></li>
+              <li><a href="https://twitter.com/CorreosCR"><i class="fab fa-twitter-square"></i></a></li>
+            </ul>
+          </footer>
+    </div>
         <!---Script de la aplicacion -->
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <script src="registroEncAduanas.servicio.js"></script>
-        <script src="js/controlador_modificarEncargadoAduana.js"></script>
-        
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../js/localStorage.servicio.js"></script>
+    <script src="../js/servicios.js"></script>
+    <script src="../js/menuOpciones.js"></script>
+    <script src="registroEncAduanas.servicio.js"></script>
+    <script src="js/controlador_modificarEncargadoAduana.js"></script>
+
 </body>
 
 </html>

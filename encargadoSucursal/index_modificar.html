@@ -7,7 +7,7 @@
   <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800|Roboto:400,500,700" rel="stylesheet">
   <link rel="stylesheet" href="../css/base.css">
-  <link rel="stylesheet" href="css/style.css">
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
   <title>Correos de Costa Rica - Editar perfil</title>
 </head>
 <body>
@@ -42,29 +42,27 @@
       </div>
       <div class="content">
         <h1 class="title titleUnderline">Modificar datos de encargados de sucursal</h1>
-        <!--<button type="button" class="button">Button Simple</button>
-        <button type="button" class="button buttonIcon"><span class="icon"><i class="fas fa-arrow-right"></i></span> Button Simple</button>-->
         <form name="form" class="row">
           <div class="col6 colWithPaddingRight">
             <div class="inputContainer">
               <label for="txtPrimerNombre">Primer Nombre*</label>
-              <input id="txtPrimerNombre" type="text" name="text" class="input" required>
+              <input id="txtPrimerNombre" type="text" name="text" data-tipo-input="texto" class="input" required>
             </div>
             <div class="inputContainer">
               <label for="txtPrimerApellido">Primer Apellido*</label>
-              <input type="text" name="text" id="txtPrimerApellido" class="input" required>
+              <input type="text" name="text" id="txtPrimerApellido" data-tipo-input="texto" class="input" required>
             </div>
             <div class="inputContainer">
               <label for="txtId">Identificación*</label>
-              <input type="text" id="txtId" name="text" class="input" required>
+              <input type="text" id="txtId" name="text" class="input" data-tipo-input="numero" data-cantidad="9" required>
             </div>
             <div class="inputContainer">
               <label for="txtCorreo">Correo electrónico*</label>
-              <input type="email" id="txtCorreo" name="text" class="input" required>
+              <input type="email" id="txtCorreo" name="text" data-tipo-input="email" data-tipo-email="correos.cr" class="input" required>
             </div>
             <div class="inputContainer">
               <label for="txtTel1">Teléfono1*</label>
-              <input type="text" class="input" id="txtTel1" required>
+              <input type="text" class="input" id="txtTel1" data-tipo-input="tel" required>
             </div>
             
             <div class="inputContainer">
@@ -78,11 +76,11 @@
           <div class="col6 colWithPaddingLeft">
             <div class="inputContainer">
               <label for="txtSegundoNombre">Segundo Nombre</label>
-              <input class="input" type="text" name="text" id="txtSegundoNombre">
+              <input class="input" type="text" name="text" data-tipo-input="texto" id="txtSegundoNombre">
             </div>
             <div class="inputContainer">
               <label for="txtSegundoApellido">Segundo Apellido</label>
-              <input type="text" class="input" id="txtSegundoApellido">
+              <input type="text" class="input" data-tipo-input="texto" id="txtSegundoApellido">
             </div>  
               <div class="inputContainer">
                   <label for="text">Foto de perfil</label>
@@ -96,7 +94,7 @@
                 </div>
             <div class="inputContainer">
               <label for="txtTel2">Teléfono2</label>
-              <input type="text" class="input" id="txtTel2">
+              <input type="text" class="input" data-tipo-input="tel" id="txtTel2">
             </div>
               <div class="inputContainer">
                 <label for="opGenero">Género</label>

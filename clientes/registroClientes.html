@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800|Roboto:400,500,700" rel="stylesheet">
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="css/registroClientes.style.css">
-  <title>Correos de Costa Rica - Registrar cliente</title>
+  <title>Correos de Costa Rica - Registrar cliente - Cliente</title>
 </head>
 <body>
   <div class="mainContainer">
@@ -47,23 +47,23 @@
         <form id="formRegistroClientes" class="row formRegistroClientes">
           <div class="col6 colWithPaddingRight">
             <div class="inputContainer">
-              <label for="text">Primer nombre*</label>
-              <input class="input" type="text" name="nombre" required>
+              <label for="text">Primer nombre *</label>
+              <input class="input" type="text" name="nombre" data-tipo-input="texto" required>
             </div>
             <div class="inputContainer">
-              <label for="text">Primer apellido*</label>
-              <input class="input" type="text" name="primerApellido" required>
+              <label for="text">Primer apellido *</label>
+              <input class="input" type="text" name="primerApellido" data-tipo-input="texto" required>
             </div>
             <div class="inputContainer">
-              <label for="text">Cédula*</label>
-              <input class="input" type="text" name="cedula" required>
+              <label for="text">Cédula *</label>
+              <input class="input" type="text" name="cedula" data-tipo-input="numero" data-cantidad="9" required>
             </div>
             <div class="inputContainer">
-              <label for="text">Teléfono 1*</label>
-              <input class="input" type="number" name="telefono1" required>
+              <label for="text">Teléfono 1 *</label>
+              <input class="input" type="text" name="telefono1" data-tipo-input="tel" required>
             </div>
             <div class="inputContainer">
-              <label for="text">Fecha de nacimiento*</label>
+              <label for="text">Fecha de nacimiento *</label>
               <input class="input" type="date" name="fechaNacimiento" required>
             </div>
             <div class="inputContainer">
@@ -76,27 +76,28 @@
                 </div>
               </div>
             </div>
+            <div class="inputContainer"><br> (* Campos obligatorios) </div>
           </div>
           <div class="col6 colWithPaddingLeft">
             <div class="inputContainer">
               <label for="text">Segundo nombre</label>
-              <input class="input" type="text" name="segundoNombre">
+              <input class="input" type="text" name="segundoNombre" data-tipo-input="texto">
             </div>
             <div class="inputContainer">
               <label for="text">Segundo apellido</label>
-              <input class="input" type="text" name="segundoApellido">
+              <input class="input" type="text" name="segundoApellido" data-tipo-input="texto">
             </div>
             <div class="inputContainer">
-              <label for="text">Correo electrónico*</label>
-              <input class="input" type="text" name="email" required>
+              <label for="text">Correo electrónico *</label>
+              <input class="input" type="text" name="email" data-tipo-input="email" required>
             </div>
             <div class="inputContainer">
               <label for="text">Teléfono 2</label>
-              <input class="input" type="number" name="telefono2">
+              <input class="input" type="text" name="telefono2" data-tipo-input="tel">
             </div>
             <!-- Agregar opcion de seleccionar sucursal-->
             <div class="inputContainer">
-              <label for="text">Género</label>
+              <label for="text">Género *</label>
               <div class="input">
                 <select name="genero" required>
                   <option value="masculino">Masculino</option>

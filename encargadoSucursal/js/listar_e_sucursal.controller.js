@@ -6,17 +6,17 @@ listaEncargados = obtenerDatoLocal('listaEncargadosLS');
 
 
 function mostrarEncargados() {
-    listaEncargados = obtenerDatoLocal('listaEncargadosLS');
+    let listaClientes = obtenerDatoLocal('listaUsuarios');
     let tbody = document.querySelector('#tblEncargadosSucursal tbody');
     
     let sFiltro = document.querySelector('#txtFiltro').value;
 
     tbody.innerHTML = '';
 
-    for(let i = 0; i < listaEncargados.length; i++) {
+    for(let i = 0; i < listaClientes.length; i++) {
         
-        if(listaEncargados[i][13] == '1') {
-            if(listaEncargados[i][0].toLowerCase().includes(sFiltro) || listaEncargados[i][2].toLowerCase().includes(sFiltro) || listaEncargados[i][4].toLowerCase().includes(sFiltro) || listaEncargados[i][9].toLowerCase().includes(sFiltro)) {
+        if (listaClientes[i][12] === '4' && listaClientes[i][13] === '1') {
+            if(listaClientes[i][0].toLowerCase().includes(sFiltro) || listaClientes[i][2].toLowerCase().includes(sFiltro) || listaClientes[i][4].toLowerCase().includes(sFiltro) || listaClientes[i][9].toLowerCase().includes(sFiltro)) {
            let fila = tbody.insertRow();
            
            let cPrimerNombre = fila.insertCell();
@@ -31,11 +31,11 @@ function mostrarEncargados() {
            cEditar.classList.add('acciones');
            cDesactivar.classList.add('acciones');
 
-           cPrimerNombre.appendChild(document.createTextNode(listaEncargados[i][0]));
-           cPrimerApellido.appendChild(document.createTextNode(listaEncargados[i][2]));
-           cCorreo.appendChild(document.createTextNode(listaEncargados[i][5]));
-           cTelefono.appendChild(document.createTextNode(listaEncargados[i][6]));
-           cSucursal.appendChild(document.createTextNode(listaEncargados[i][10]));
+           cPrimerNombre.appendChild(document.createTextNode(listaClientes[i][0]));
+           cPrimerApellido.appendChild(document.createTextNode(listaClientes[i][2]));
+           cCorreo.appendChild(document.createTextNode(listaClientes[i][5]));
+           cTelefono.appendChild(document.createTextNode(listaClientes[i][7]));
+           cSucursal.appendChild(document.createTextNode(listaClientes[i][11]));
 
            let atag = document.createElement('a');
            atag.setAttribute('href', "index_modificar.html");
@@ -45,7 +45,7 @@ function mostrarEncargados() {
            botonEditar.classList.add("far", "fa-edit");
 
            atag.appendChild(botonEditar);
-           atag.dataset.correo = listaEncargados[i][5];
+           atag.dataset.correo = listaClientes[i][5];
            cEditar.appendChild(atag);
 
            atag.addEventListener('click', redirect);
@@ -70,7 +70,7 @@ function redirect() {
 }
 
 function eliminar() {
-    var id = this.dataset.indice;
+    let id = this.dataset.indice;
     swal({
         title: "¿Está seguro de eliminar al encargado?",
         text: "Si lo hace, el registro del encargado desaparecerá por completo",
@@ -88,10 +88,10 @@ function eliminar() {
           if(botonUsuario === "Eliminar") {
               let listaEncargados = obtenerDatoLocal('listaEncargadosLS');
               console.log(listaEncargados[id]);
-              if(listaEncargados[id][13] == '1') {
-                  listaEncargados[id][13] = '0'
+              if(listaEncargados[id][14] == '1') {
+                  listaEncargados[id][14] = '0'
               }
-              else {listaEncargados[id][13] = '1'}
+              else {listaEncargados[id][14] = '1'}
               actualizarEncargado(listaEncargados[id]);
               mostrarEncargados();
           }

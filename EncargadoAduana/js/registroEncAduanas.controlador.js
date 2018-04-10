@@ -2,75 +2,76 @@
 
 let botonGuardar = document.querySelector('#btnGuardar');
 botonGuardar.addEventListener('click', obtenerDatos);
+var imagePreview = document.querySelector('#previewFoto');
+var urlFotoPerfil = false;
+
+function initFotoPerfil() {
+    $("input.cloudinary-fileupload[type=file]").unsigned_cloudinary_upload(unsignedUser, { cloud_name: imageCloudName, tags: 'browser_uploads' })
+      .bind('cloudinarydone', function(e, data) {
+        imagePreview.setAttribute("src", data.result.url);
+        imagePreview.style.display = 'block';
+        urlFotoPerfil = data.result.url;
+        document.querySelector('#inputFotoPerfil').classList.remove('inputError');
+      });
+  };
+
+  initFotoPerfil();
 
 //Funcion de obtener datos.
 
-function obtenerDatos()
-{
-    let berror = validar();
+function obtenerDatos() {
+    let inputs = document.querySelectorAll('#registroEncAduanasForm input:required, #registroEncAduanasForm textarea:required, #registroEncAduanasForm select[name="genero"]');
+    let error = validarInputsRequeridos(inputs);
 
-    if (berror == true)
-    {
-        swal({
-            title: "Ocurrió un error",
-            text: "Faltan los datos de los campos resaltados",
-            icon: "error",
-            button: "Ok",
-            //Mensaje de error
-        });
-    }
-    else
-    {
+    if(error == true ) {
+      mostrarMensajeModal('error formulario');
+    } else { 
         //primer nombre = 0
         //primer apellido = 2
         //telefono =  5
         let aEncAduanas = [];
-        let valido = true;
+        let regiEncaAdunaID = Math.random().toString(36).substring(8);
 
-        let inputPrimernombre = document.querySelector('#txtPrimernombre');//0
+        let inputPrimernombre = document.querySelector('#txtPrimernombre');
         let sPrimernombre = inputPrimernombre.value;
-
-        let inputSegundonombre = document.querySelector('#txtSegundonombre');//1
+        let inputSegundonombre = document.querySelector('#txtSegundonombre');
         let sSegundonombre = inputSegundonombre.value;
-
-        let inputPrimerapellido = document.querySelector('#txtPrimerapellido');//2
+        let inputPrimerapellido = document.querySelector('#txtPrimerapellido');
         let sPrimerapellido = inputPrimerapellido.value;
-
-        let inputSegundoapellido = document.querySelector('#txtSegundoapellido');//3
+        let inputSegundoapellido = document.querySelector('#txtSegundoapellido');
         let sSegundoapellido = inputSegundoapellido.value;
-
-        let inputIdentificacion = document.querySelector('#txtIdentificacion');//4
+        let inputIdentificacion = document.querySelector('#txtIdentificacion');
         let sIdentificacion = inputIdentificacion.value;
-
-        let inputTelefono1 = document.querySelector('#txtTelefono1');//5
+        let inputTelefono1 = document.querySelector('#txtTelefono1');
         let sTelefono1 = inputTelefono1.value;
-
         let inputTelefono2 = document.querySelector('#txtTelefono2');
         let sTelefono2 = inputTelefono2.value;
-
         let inputCorreo = document.querySelector('#txtCorreo');
         let sCorreo = inputCorreo.value;
-
         let inputFechanacimiento = document.querySelector('#txtFechanacimiento');
         let sFechanacimiento = inputFechanacimiento.value;
-
         let selectGenero = document.querySelector('#sltGenero');
         let sGenero = selectGenero.value;
-
         let selectSucursal= document.querySelector('#sltSucursal');
         let sSucursal = selectSucursal.value;
-
         let inputPuestoReal = document.querySelector('#txtPuestoReal');
         let sPuestoReal = inputPuestoReal.value;
+        //let sEdad = Calcularedad();
 
         let sEdad = Calcularedad();
 
-        //let tipoUsuario = 'rol';
+        let tipoUsuario = '3';
         let activo = '1';
+        var fotoPerfil = urlFotoPerfil;
+
+        if (sEdad < 18) {
+            mostrarMensajeModal('error edad');
+            return false;
+        }
 
 
-        aEncAduanas.push(sPrimernombre, sSegundonombre, sPrimerapellido, sSegundoapellido, sIdentificacion, sTelefono1, sTelefono2, sCorreo, sFechanacimiento, sGenero, sSucursal,sEdad, sPuestoReal, activo);
-        console.log(aEncAduanas);
+        aEncAduanas.push(sPrimernombre, sSegundonombre, sPrimerapellido, sSegundoapellido, sIdentificacion, sCorreo, sTelefono1, sTelefono2,
+             sFechanacimiento, sGenero, sSucursal, fotoPerfil, sPuestoReal, tipoUsuario, activo);
         
         setListaEncAduanas(aEncAduanas);
     
@@ -79,26 +80,13 @@ function obtenerDatos()
             text: 'Continue',
             icon: 'success',
             button: "Ok",
-        })
+        });
+
         limpiar();
     }
 }
 
-//Validacion
 
-function validar() {
-    let aEncAduanas = document.querySelectorAll('input:required,select:required');
-    let berror = false;
-
-    for (let i = 0; i < aEncAduanas.length; i++) {
-        if (aEncAduanas[i].value === '') {
-            berror = true;
-            aEncAduanas[i].classList.add('input_error');
-        }
-        else { aEncAduanas[i].classList.remove('input_error'); }
-
-    } return berror;
-}
 
 function Calcularedad() {
     let hoy = new Date();
@@ -108,37 +96,6 @@ function Calcularedad() {
     return edad;
 }
 
-let imagenUrl = '';
-$(function() {
-    // Configure Cloudinary
-    // with credentials available on
-    // your Cloudinary account dashboard
-    $.cloudinary.config({ cloud_name: 'pabskun', api_key: '896788142178273'});
-
-    // Upload button
-    let uploadButton = $('#btnSeleccionarImagen');
-
-    // Upload button event
-    uploadButton.on('click', function(e){
-        // Initiate upload
-        cloudinary.openUploadWidget({ cloud_name: 'pabskun', upload_preset: 'proyecto', tags: ['cgal']},
-        function(error, result) {
-            if(error) console.log(error);
-            // If NO error, log image data to console
-            let id = result[0].public_id;
-             console.log(id);
-            imagenUrl = 'https://res.cloudinary.com/x-treem/image/upload/' + id;
-          console.log(imagenUrl);
-        });
-    });
-})
-
-function processImage(id) {
-    let options = {
-        client_hints: true,
-    };
-    return  $.cloudinary.url(id, options);
-}
 
 function limpiar() {
     document.querySelector('#txtPrimernombre').value = "";

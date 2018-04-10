@@ -1,39 +1,41 @@
 
-obtenerSucursal();
+obtenerEncargadoAduana();
+
 let botonActualizar = document.querySelector('#btnGuardar');
-botonActualizar.addEventListener('click',obtenerActualizar);
+botonActualizar.addEventListener('click',obtenerEncAdua_Actualizar);
 
 
-
-function obtenerSucursal()
+function obtenerEncargadoAduana()
 {
-    let sNombre=getTemp();
-    let infoAduana=buscarRepartidor(sNombre);
-
+    let snombreENC=getTempEncAdu();
+    let infoAduana=buscarEncargadoAduana(snombreENC);
+ 
     console.log(infoAduana);
     
-    document.querySelector('#txtNombre').value=infoAduana[0];
-    document.querySelector('#txtPrimerApellido').value=infoAduana[1];
-    document.querySelector('#txtIdentificacion').value = infoAduana[2];
-    document.querySelector('#txtCorreo').value = infoAduana[3];
-    document.querySelector('#txtTelefono1').value = infoAduana[4];
+    document.querySelector('#txtNombre').value=infoAduana[1];
+    document.querySelector('#txtSegundonombre').value = infoAduana[2];
+    document.querySelector('#txtPrimerApellido').value=infoAduana[3];
+    document.querySelector('#txtSegundoapellido').value = infoAduana[4];
+    document.querySelector('#txtIdentificacion').value = infoAduana[5]
+    document.querySelector('#txtCorreo').value = infoAduana[6];
+    document.querySelector('#txtTelefono1').value = infoAduana[7];
+    document.querySelector('#txtTelefono2').value = infoAduana[8];
+    document.querySelector('#txtFechanacimiento').value = infoAduana[9];
+    document.querySelector('#sltGenero').value = infoAduana[10];
+    document.querySelector('#sltSucursal').value = infoAduana[11];
 
-    document.querySelector('#txtFechanacimiento').value = infoAduana[5];//este se ingresa dif
 
-    document.querySelector('#txtSegundonombre').value = infoAduana[6];
-    document.querySelector('#txtSegundoapellido').value = infoAduana[7];
+    document.querySelector('#txtPuestoReal').value = infoAduana[13];
 
-    //agregar foto [8] 
-    document.querySelector('#txtTelefono2').value = infoAduana[9];
-    //Genero [10]
-    //seleccione sucursal [11]
 
-        
+    /*lo de abajo ese push no va aqui solo es de referencia
+    aEncAduanas.push(regiEncaAdunaID,sPrimernombre, sSegundonombre, sPrimerapellido, sSegundoapellido, sIdentificacion, sCorreo, sTelefono1, sTelefono2,sFechanacimiento, sGenero, sSucursal,sPuestoReal,tipoUsuario, activo);
+    */
+       
 }
 
 
-
-function obtenerActualizar() 
+function obtenerEncAdua_Actualizar() 
 {
     let berror = validar();
 
@@ -55,49 +57,58 @@ function obtenerActualizar()
         let valido = true;
 
         
+       
 
-        let inputNombre = document.querySelector('#txtNombre');//0
-        let sNombre = inputNombre.value;
+        let inputNombre = document.querySelector('#txtNombre');
+        let sPrimernombre = inputNombre.value;
 
-        let inputPrimerApellido = document.querySelector('#txtPrimerApellido');//1
+        let inputSegundoNombre = document.querySelector('#txtSegundonombre');
+        let sSegundoNombre = inputSegundoNombre.value;
+
+        let inputPrimerApellido = document.querySelector('#txtPrimerApellido');
         let sPrimerApellido = inputPrimerApellido.value;
 
-        let inputIdentificacion = document.querySelector('#txtIdentificacion');//2
-        let sIdentificacion = inputIdentificacion.value;
+        let inputSegundoApellido = document.querySelector('#txtSegundoapellido');
+        let sSegundoApellido = inputSegundoApellido.value;
 
+        let inputIdentificacion = document.querySelector('#txtIdentificacion');
+        let sIdentificacion = inputIdentificacion.value;
+        
         let inputCorreo = document.querySelector('#txtCorreo');//3
         let sCorreo = inputCorreo.value;
 
         let inputTelefono1 =document.querySelector('#txtTelefono1');//4
         let sTelefono1 = inputTelefono1.value;
 
-        let inputFechaNacimiento = document.querySelector('#txtFechanacimiento');//5
-        let sFechaNacimiento = inputFechaNacimiento.value;
-
-        let inputSegundoNombre = document.querySelector('#txtSegundonombre');//6
-        let sSegundoNombre = inputSegundoNombre.value;
-
-        let inputSegundoApellido = document.querySelector('#txtSegundoapellido');//7
-        let sSegundoApellido = inputSegundoApellido.value;
-
         let inputTelefono2 = document.querySelector('#txtTelefono2');
         let sTelefono2 = inputTelefono2.value;       
 
+        let inputFechaNacimiento = document.querySelector('#txtFechanacimiento');//5
+        let sFechaNacimiento = inputFechaNacimiento.value;
 
-        let temp = getTemp();
+        let inputGenero = document.querySelector('#sltGenero');
+        let sGenero = inputGenero.value;
+
+        let inputSucursal = document.querySelector('#sltSucursal');
+        let sSucursal = inputSucursal.value;
+
+        
+        let tipoUsuario = '3';
+        let activo = '1';
+
+
+        let temp = getTempEncAdu();
         
       
-        aAduana.push(sNombre, sPrimerApellido, sIdentificacion, sCorreo, sTelefono1,sFechaNacimiento, sSegundoNombre,sSegundoApellido,sTelefono2);
-        console.log(aAduana);
+        aAduana.push(temp,sPrimernombre, sSegundoNombre, sPrimerApellido, sSegundoApellido,sIdentificacion, sCorreo, sTelefono1, sTelefono2,sFechaNacimiento, sGenero, sSucursal, tipoUsuario, activo);
 
-        // aInputs.push( inputNombre, inputPrimerApellido, inputTelefono );//TALVES HAY QUE AGREGARLE EL TEMP****
+        //????????????????????????????????????????????????????? como meto tipoUsuario y activo???
+
+       
         actualizarListaEncAduanas(aAduana);
         removeTemp();
         window.location.href = 'listarEncargadoAduana.html';
-        //limpiar();
-
-
-      
+            
         
         swal({
             title: 'Datos Correctos',
@@ -110,6 +121,11 @@ function obtenerActualizar()
 
     }
 }
+
+
+
+
+
 
 //Validacion
 
