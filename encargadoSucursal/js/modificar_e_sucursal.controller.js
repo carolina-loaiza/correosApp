@@ -47,19 +47,32 @@ function obtenerEncargado() {
     document.querySelector('#txtId').value = infoEncargado[4];
     document.querySelector('#txtCorreo').value = infoEncargado[5];
     document.querySelector('#txtCorreo').disabled = true;
-    //NO JALA LA FOTO
-    document.querySelector('#inputFotoPerfil').setAttribute('src', infoEncargado[6]);
-    document.querySelector('#dtFecha').value = infoEncargado[10]
+
+    document.querySelector('#dtFecha').value = infoEncargado[9]
     document.querySelector('#txtTel1').value = infoEncargado[7];
     document.querySelector('#txtTel2').value = infoEncargado[8];   
-    document.querySelector('#opGenero').value = infoEncargado[11];
-    document.querySelector('#opSucursal').value = infoEncargado[12];
+    document.querySelector('#opGenero').value = infoEncargado[10];
+    document.querySelector('#opSucursal').value = infoEncargado[11];
+
+    urlFotoPerfil = infoEncargado[6];
+
+    if (urlFotoPerfil) {
+        imagePreview.setAttribute("src", urlFotoPerfil);
+        imagePreview.style.display = 'block';
+    }
 }
 
 function registrarDatosActualizados() {
-    let infoEncargado = [];
+    let inputs = document.querySelectorAll('input:required');
+    let error = validarInputsRequeridos(inputs);
 
-    let primerNombre = document.querySelector('#txtPrimerNombre').value;
+    if(error == true) {
+        mostrarMensajeModal('error formulario');
+    }
+    else {
+        let infoEncargado = [];
+
+        let primerNombre = document.querySelector('#txtPrimerNombre').value;
         let segundoNombre = document.querySelector('#txtSegundoNombre').value;
         let primerApellido = document.querySelector('#txtPrimerApellido').value;
         let segundoApellido = document.querySelector('#txtSegundoApellido').value;
@@ -75,11 +88,19 @@ function registrarDatosActualizados() {
         let sTipoUsuario = '4';
         let sActivo = '1';
 
+        if (edad < 18) {
+            mostrarMensajeModal('error edad');
+            return false;
+        }
+
         infoEncargado.push(primerNombre, segundoNombre, primerApellido, segundoApellido, cedula, correo, fotoPerfil, telefono_1, telefono_2
-            , edad, fechaNacimiento, genero, sucursal, sTipoUsuario, sActivo);
+            , fechaNacimiento, genero, sucursal, sTipoUsuario, sActivo);
         actualizarEncargado(infoEncargado);
         actualizarListaUsuarios(infoEncargado);
         removeTemp();
         window.location.href = 'index_listar.html';
+
+    }//else
+    
 }
 

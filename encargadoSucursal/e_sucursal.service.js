@@ -1,12 +1,12 @@
 //retorna un arreglo con los correos de los encargados de sucursal
 //se llama al darle click al boton de editar
 function buscarEncargadoPorCorreo(pCorreo) {
-let listaEncargados = obtenerDatoLocal('listaEncargadosLS');
+let listaClientes = obtenerDatoLocal('listaUsuarios');
 let encargadoEncontrado = [];
 
-for(let i = 0; i < listaEncargados.length; i++) {
-    if(pCorreo == listaEncargados[i][5]) {
-       encargadoEncontrado = listaEncargados[i];
+for(let i = 0; i < listaClientes.length; i++) {
+    if(pCorreo == listaClientes[i][5]) {
+       encargadoEncontrado = listaClientes[i];
        break; 
         }//if
     }//for

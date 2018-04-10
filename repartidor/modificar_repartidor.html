@@ -42,54 +42,37 @@
         </div>
         <div class="content">
                 <h1 class="title titleUnderline">Modificar registro de repartidor</h1>
-                <!--<button type="button" class="button">Button Simple</button>
-                <button type="button" class="button buttonIcon">
-                    <span class="icon">
-                        <i class="fas fa-arrow-right"></i>
-                    </span> Button Simple</button>-->
-                <form name="form" class="row">
-                    <div class="col6 colWithPaddingRight">
 
+                <form name="form" id="modificarRepartidorForm" class="row">
+                    <div class="col6 colWithPaddingRight">
                         <div class="inputContainer">
                             <label for="txtPrimernombre">Primer nombre*</label>
-                            <div class='input'>
-                                <input type="text" id="txtPrimernombre" required>
-                            </div>
+                            <input class='input' type="text" id="txtPrimernombre" data-tipo-input="texto" required>
                         </div>
 
                         <div class="inputContainer">
                             <label for="txtPrimerapellido">Primer apellido*</label>
-                            <div class='input'>
-                                <input type="text" id="txtPrimerapellido" required>
-                            </div>
+                            <input class='input' type="text" id="txtPrimerapellido" data-tipo-input="texto" required>
                         </div>
 
                         <div class="inputContainer">
                             <label for="txtIdentificacion">Identificación*</label>
-                            <div class='input'>
-                                <input type="text" id="txtIdentificacion" required>
-                            </div>
+                            <input class='input' type="text" id="txtIdentificacion" data-tipo-input="numero" data-cantidad="9" required>
                         </div>
 
                         <div class="inputContainer">
-                            <label for="txtCorreo">Correo electrónico</label>
-                            <div class='input'>
-                                <input type="email" id="txtCorreo" disabled>
-                            </div>
+                            <label for="txtCorreo">Correo electrónico*</label>
+                            <input class='input' type="email" id="txtCorreo" data-tipo-input="email" data-tipo-email="correos.cr" required>
                         </div>
 
                         <div class="inputContainer">
                             <label for="txtTelefono1">Teléfono 1*</label>
-                            <div class='input'>
-                                <input type="tel" id="txtTelefono1" required>
-                            </div>
+                            <input class='input' type="tel" id="txtTelefono1" data-tipo-input="tel" required>
                         </div>
 
                         <div class="inputContainer">
                             <label for="txtFechanacimiento">Fecha de nacimiento*</label>
-                            <div class='input'>
-                                <input type="date" id="txtFechanacimiento" required>
-                            </div>
+                            <input class='input' type="date" id="txtFechanacimiento" required>
                         </div>
                         <div class="inputContainer">
                             <br> (*Campos obligatorios) </div>
@@ -97,16 +80,12 @@
                     <div class="col6 colWithPaddingRight">
                         <div class="inputContainer">
                             <label for="txtSegundonombre">Segundo nombre</label>
-                            <div class='input'>
-                                <input type="text" id="txtSegundonombre">
-                            </div>
+                            <input class='input' type="text" id="txtSegundonombre" data-tipo-input="texto">
                         </div>
 
                         <div class="inputContainer">
                             <label for="txtSegundoapellido">Segundo apellido</label>
-                            <div class='input'>
-                                <input type="text" id="txtSegundoapellido">
-                            </div>
+                            <input class='input' type="text" id="txtSegundoapellido" data-tipo-input="texto">
                         </div>
 
                         <div class="inputContainer">
@@ -126,7 +105,7 @@
                         <div class="inputContainer">
                             <label for="txtTelefono2">Teléfono 2</label>
                             <div class='input'>
-                                <input type="tel" id="txtTelefono2">
+                                <input type="tel" id="txtTelefono2" data-tipo-input="tel">
                             </div>
                         </div>
 
@@ -141,24 +120,15 @@
                             </div>
                         </div>
 
+
                         <div class="inputContainer">
                             <label for="sltSucursal">Seleccione sucursal*</label>
                             <div class="input">
                                 <select id="sltSucursal" required>
-                                    <option value=""></option>
-                                    <option value="Sucursal 01">S 01</option>
-                                    <option value="Sucursal 02">S 02</option>
-                                    <option value="Sucursal 03">S 03</option>
-                                    <option value="Sucursal 04">S 04</option>
-                                    <option value="Sucursal 05">S 05</option>
+
                                 </select>
                             </div>
                         </div>
-
-
-
-
-
 
                         <div class="buttonContainer">
                             <button class="button" type="button" id="btnGuardar">

@@ -11,18 +11,6 @@ function initFotoPerfil() {
       });
   };
   initFotoPerfil();
-//mete las sucursales en el select de registro 
-function agregarSucursales() {
-   let lista = obtenerDatoLocal('RegistroLS');
-   for(let i = 0; i < lista.length; i++) {
-       let opcion = document.createElement('option');
-       opcion.value = lista[i][0];
-       opcion.innerText = lista[i][0];
-       document.getElementById('sltSucursal').appendChild(opcion);
-   }
-}
-
-agregarSucursales();
 
 
 obtenerRepartidor();
@@ -47,6 +35,12 @@ function obtenerRepartidor() {
     document.querySelector('#txtFechanacimiento').value = infoRepartidor[9];
     document.querySelector('#sltGenero').value = infoRepartidor[10];
     document.querySelector('#sltSucursal').value = infoRepartidor[11];
+    urlFotoPerfil = infoRepartidor[6];
+
+    if (urlFotoPerfil) {
+        imagePreview.setAttribute("src", urlFotoPerfil);
+        imagePreview.style.display = 'block';
+    }
 
 }
 
@@ -54,8 +48,14 @@ let botonActualizar = document.querySelector('#btnGuardar');
 botonActualizar.addEventListener('click', obtenerActualizar);
 
 function obtenerActualizar() {
+    let inputs = document.querySelectorAll('input:required');
+    let berror = validarInputsRequeridos(inputs);
 
+    if (berror == true) {
+        mostrarMensajeModal('error formulario');
+    } else {
         let aRepartidores = [];
+        let contraseña = generarDato(0, 'contraseña');
 
         let inputPrimernombre = document.querySelector('#txtPrimernombre');
         let sPrimernombre = inputPrimernombre.value;
@@ -78,6 +78,8 @@ function obtenerActualizar() {
         let inputTelefono2 = document.querySelector('#txtTelefono2');
         let sTelefono2 = inputTelefono2.value;
 
+        let sEdad = Calcularedad();
+
         let inputCorreo = document.querySelector('#txtCorreo');
         let sCorreo = inputCorreo.value;
 
@@ -93,48 +95,50 @@ function obtenerActualizar() {
         let sSucursal = selectSucursal.value;
 
         let sTipoUsuario = '5';
+
         let sActivo = '1';
 
-        let eerror = validarEdad();
-
-        if (eerror == true) {
-            swal({
-                title: "Necesita ser mayor de edad para ingresar",
-                text: "Verifique la fecha de nacimiento",
-                icon: "error",
-                button: {
-                    text: "OK", className: "button",
-                },
-            });
-        } else {
-            let sEdad = Calcularedad();
-
-            aRepartidores.push(sPrimernombre, sSegundonombre, sPrimerapellido, sSegundoapellido, sIdentificacion, sCorreo, fotoPerfil, sTelefono1, sTelefono2, sFechanacimiento, sGenero, sSucursal, sTipoUsuario, sActivo);           
-            actualizarListaRepartidores(aRepartidores);
-            actualizarListaUsuarios(aRepartidores);
-            removeTemp();
-            window.location.href = 'listar_repartidor.html'
-            
-
+        if(sEdad < 18) {
+            mostrarMensajeModal('error edad');
+            return false;
         }
+        
 
-
-
-    function Calcularedad() {
-        let hoy = new Date();
-        let fecha = document.querySelector('#txtFechanacimiento').value;
-        let nacimiento = new Date(fecha);
-        let edad = hoy.getFullYear() - nacimiento.getFullYear();
-        return edad;
+        aRepartidores.push(sPrimernombre, sSegundonombre, sPrimerapellido, sSegundoapellido, sIdentificacion, sCorreo, fotoPerfil, sTelefono1, sTelefono2, sFechanacimiento, sGenero, sSucursal, sTipoUsuario, sActivo);          
+        actualizarListaRepartidores(aRepartidores);
+        actualizarListaUsuarios(aRepartidores);
+        removeTemp();
+        swal({
+            title: "Información registrada correctamente",
+            text: "Puede proceder",
+            icon: "success",
+            button: {
+              text: "OK",
+              className: "button",
+            },
+        }).then(() => {
+            window.location.href = 'listar_repartidor.html';
+        });
     }
+}
 
-    function validarEdad(pedad) {
-        let eerror = false;
-        let dato = document.querySelector('#txtFechanacimiento').value;
-        pedad = Calcularedad(dato);
-        if (pedad < 18) {
-            eerror = true;
-        }
-        return eerror;
+
+
+function Calcularedad() {
+    let hoy = new Date();
+    let fecha = document.querySelector('#txtFechanacimiento').value;
+    let nacimiento = new Date(fecha);
+    let edad = hoy.getFullYear() - nacimiento.getFullYear();
+    return edad;
+}
+
+function validarEdad(pedad) {
+    let eerror = false;
+    let dato = document.querySelector('#txtFechanacimiento').value;
+    pedad = Calcularedad(dato);
+
+    if (pedad < 18) {
+        eerror = true;
     }
+    return eerror;
 }

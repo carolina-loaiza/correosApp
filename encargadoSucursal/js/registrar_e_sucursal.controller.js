@@ -71,18 +71,13 @@ function obtenerDatos() {
             return false;
         }
         
-
-        
-
-        //la foto no se guarda
-
         infoEncargadoSucursal.push(primerNombre, segundoNombre, primerApellido, segundoApellido, cedula, correo, fotoPerfil, telefono_1, telefono_2
-        , edad, fechaNacimiento, genero, sucursal, sTipoUsuario, sActivo);
+        , fechaNacimiento, genero, sucursal, sTipoUsuario, sActivo);
         guardarDatoLocal('listaEncargadosLS', infoEncargadoSucursal);
         guardarDatoLocal('listaUsuarios', infoEncargadoSucursal);
         guardarDatoLocal('loginUsuarios', [correo, contraseña]);
 
-        mostrarMensajeModal('registro exitoso de usuario', contraseña);
+        mostrarMensajeModal('registro exitoso');
         limpiar();
 
     }//else
@@ -99,6 +94,6 @@ function limpiar() {
     document.querySelector('#txtCorreo').value = '';
     document.querySelector('#txtTel1').value = '';
     document.querySelector('#txtTel2').value = '';
-    document.querySelector('#dtFecfa').value = '';
+    document.querySelector('#dtFecha').value = '';
 }
 

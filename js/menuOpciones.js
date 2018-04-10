@@ -75,10 +75,12 @@
       break;
   }
 
-  if (datosUsuario[11]) {
-    document.querySelector('#userPerfilAvatar').setAttribute("src", datosUsuario[11]);
-  }
-
+  datosUsuario.forEach(dato => {
+    if (dato != '' && typeof dato == 'string' && dato.includes('cloudinary')) {
+      document.querySelector('#userPerfilAvatar').setAttribute("src", dato);
+    }
+  });
+  
   document.querySelector('#userNombre').innerText = rol + " " + datosUsuario[0] + " " + datosUsuario[2];
   document.querySelector('#editarPerfil').setAttribute("href", editarPage);
 
@@ -129,7 +131,7 @@
     if (paginaActual.includes('Registrar')){
       document.querySelector('#menuOpciones li:nth-child(2) .linkTexto').classList.add('activo');
       subMenuTexto = ['Cliente', 'Encargado de aduana', 'Encargado de sucursal', 'Repartidor'];
-      subMenuLinks = ['../clientes/registroClientes.html', '../clientes/registroClientes.html', '../encargadoSucursal/index_registrar.html', '../repartidor/registrar_repartidor.html'];
+      subMenuLinks = ['../clientes/registroClientes.html', '../EncargadoAduana/RegistroEncAduanas.html', '../encargadoSucursal/index_registrar.html', '../repartidor/registrar_repartidor.html'];
     }
 
     if (paginaActual.includes('Otros registros')){
@@ -141,7 +143,7 @@
     if (paginaActual.includes('Listar usuarios')){
       document.querySelector('#menuOpciones li:nth-child(4) .linkTexto').classList.add('activo');
       subMenuTexto = ['Clientes', 'Encargados de aduana', 'Encargados de sucursal', 'Repartidores'];
-      subMenuLinks = ['../clientes/listarClientes.html', '../clientes/registroClientes.html', '../encargadoSucursal/index_registrar.html', '../repartidor/registrar_repartidor.html'];
+      subMenuLinks = ['../clientes/listarClientes.html', '../EncargadoAduana/listarEncargadoAduana.html', '../encargadoSucursal/index_listar.html', '../repartidor/registrar_repartidor.html'];
     }
 
     if (paginaActual.includes('Otros listados')){
@@ -156,7 +158,6 @@
       link.appendChild(document.createTextNode(subMenuTexto[i]));
       link.setAttribute('href', subMenuLinks[i]);
       menuItem.appendChild(link);
-      console.log(paginaActual, subMenuTexto[i]);
       if (paginaActual.includes(subMenuTexto[i])){
         menuItem.classList.add('activo');
       }

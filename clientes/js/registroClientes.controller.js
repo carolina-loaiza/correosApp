@@ -60,6 +60,11 @@
 
       if (this.dataset.modificar) {
         var listaUsuarios = obtenerDatoLocal('listaUsuarios');
+        var image = document.querySelector('#previewFoto').getAttribute("src");
+
+        if (image) {
+          infoCliente[11] = image;
+        }
 
         for(var i = 0; i < listaUsuarios.length; i++) {
           if (listaUsuarios[i][5] === correo) {
@@ -72,11 +77,17 @@
         localStorage.setItem('listaUsuarios', JSON.stringify(listaUsuarios));
         mostrarMensajeModal('registro exitoso');
       } else {
-        console.log(infoCliente);
         guardarDatoLocal('listaUsuarios', infoCliente);
         guardarDatoLocal('loginUsuarios', [correo, contraseña]);
-        mostrarMensajeModal('registro exitoso de usuario', contraseña);
+
+        if (obtenerDatoLocal('usuario')) {
+          mostrarMensajeModal('registro exitoso');
+        } else {
+          mostrarMensajeModal('registro exitoso de usuario', contraseña);
+        }
       }
+
+      document.getElementById('formRegistroClientes').reset();
     }
   }
 
