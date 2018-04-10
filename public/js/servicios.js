@@ -166,3 +166,56 @@ function esInvalidoInput (input) {
 
   return esInvalido;
 }
+
+function guardarDatos(datos, ruta){
+  let peticion = $.ajax({
+    url: 'http://localhost:4000/api/'+ruta,
+    type: 'post',
+    contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+    dataType : 'json',
+    async: false,
+    data: datos
+  });
+ 
+  peticion.done(function(response){
+    console.log('El usuario se registró con éxito');
+  });
+ 
+  peticion.fail(function(){
+    console.log('El usuario no se pudo registrar');
+  });
+}
+ 
+function obtenerLista(ruta){
+  let lista = [];
+  let peticion = $.ajax({
+    url: 'http://localhost:4000/api/'+ ruta,
+    type: 'get',
+    contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+    dataType : 'json',
+    async:false,
+    data:{}
+  });
+
+  peticion.done(function(usuarios){
+    for(let i = 0; i < usuarios.length; i++){
+      var dato = [];
+      for (var key in usuarios[i]) {
+        if (key != '__v') {
+          dato.push(usuarios[i][key]);
+        };
+      }
+      lista.push(dato);
+    }
+    console.log('Petición realizada con éxito');
+  });
+
+  peticion.fail(function(){
+    lista = [];
+    console.log('Ocurrió un error');
+  });
+
+  return lista;
+}
+
+console.log(obtenerLista('get_all_users'));
