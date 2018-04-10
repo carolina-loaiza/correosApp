@@ -1,3 +1,5 @@
+<!--Hay que cagregar inputs para la direccion del cliente y la opcion de seleccionar la sucursal-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,23 +47,23 @@
         <form id="formRegistroClientes" class="row formRegistroClientes">
           <div class="col6 colWithPaddingRight">
             <div class="inputContainer">
-              <label for="text">Primer nombre</label>
+              <label for="text">Primer nombre*</label>
               <input class="input" type="text" name="nombre" required>
             </div>
             <div class="inputContainer">
-              <label for="text">Primer apellido</label>
+              <label for="text">Primer apellido*</label>
               <input class="input" type="text" name="primerApellido" required>
             </div>
             <div class="inputContainer">
-              <label for="text">Cédula</label>
+              <label for="text">Cédula*</label>
               <input class="input" type="text" name="cedula" required>
             </div>
             <div class="inputContainer">
-              <label for="text">Teléfono 1</label>
+              <label for="text">Teléfono 1*</label>
               <input class="input" type="number" name="telefono1" required>
             </div>
             <div class="inputContainer">
-              <label for="text">Fecha de nacimiento</label>
+              <label for="text">Fecha de nacimiento*</label>
               <input class="input" type="date" name="fechaNacimiento" required>
             </div>
             <div class="inputContainer">
@@ -85,13 +87,14 @@
               <input class="input" type="text" name="segundoApellido">
             </div>
             <div class="inputContainer">
-              <label for="text">Correo electrónico</label>
+              <label for="text">Correo electrónico*</label>
               <input class="input" type="text" name="email" required>
             </div>
             <div class="inputContainer">
               <label for="text">Teléfono 2</label>
               <input class="input" type="number" name="telefono2">
             </div>
+            <!-- Agregar opcion de seleccionar sucursal-->
             <div class="inputContainer">
               <label for="text">Género</label>
               <div class="input">
@@ -103,8 +106,20 @@
               </div>
             </div>
             <div class="inputContainer">
-              <label for="text">Lugar de habitación</label>
-              <textarea class="input" name="direccion" rows="10" required></textarea>
+              <label for="text">Provinicia*</label>
+              <input type="text" class="input" name="provincia" required>
+            </div>
+            <div class="inputContainer">
+              <label for="text">Cantón*</label>
+              <input type="text" class="input" name="canton" required>
+            </div>
+            <div class="inputContainer">
+              <label for="text">Distrito*</label>
+              <input type="text" class="input" name="distrito" required>
+            </div>
+            <div class="inputContainer">
+              <label for="text">Dirección exacta*</label>
+              <textarea class="input" name="direccion"cols="30" rows="10" required></textarea>
             </div>
           </div>
         </form>

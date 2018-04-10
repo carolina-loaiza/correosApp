@@ -3,7 +3,7 @@ mostrarClientes();
 document.querySelector('#txtFiltro').addEventListener('keyup', mostrarClientes);
 
 function mostrarClientes() {
-    listaClientes = obtenerDatoLocal('listaUsuarios');
+    listaClientes = obtenerDatoLocal('listaClientesLS');
     let tbody = document.querySelector('#tblClientes tbody');
 
     let sFiltro = document.querySelector('#txtFiltro').value;
@@ -28,7 +28,7 @@ function mostrarClientes() {
             cPrimerNombre.appendChild(document.createTextNode(listaClientes[i][0]));
             cPrimerApellido.appendChild(document.createTextNode(listaClientes[i][2]));
             cCorreo.appendChild(document.createTextNode(listaClientes[i][5]));
-            cTelefono.appendChild(document.createTextNode(listaClientes[i][6]));
+            cTelefono.appendChild(document.createTextNode(listaClientes[i][7]));
 
             let atag = document.createElement('a');
             atag.setAttribute('href', "editarClientes.html");
