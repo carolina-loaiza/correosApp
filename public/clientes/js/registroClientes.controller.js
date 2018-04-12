@@ -47,6 +47,7 @@
       var fecha_nacimiento = document.querySelector('.formRegistroClientes input[name="fechaNacimiento"').value;
       var edad = calcularEdad(document.querySelector('.formRegistroClientes input[name="fechaNacimiento"').value);
       var genero = document.querySelector('.formRegistroClientes select[name="genero"').value;
+      var sucursal = document.querySelector('.formRegistroClientes select[name="sucursal"').value;
       var provincia = document.querySelector('.formRegistroClientes input[name="provincia"').value;
       var canton = document.querySelector('.formRegistroClientes input[name="canton"').value;
       var distrito = document.querySelector('.formRegistroClientes input[name="distrito"').value;
@@ -62,11 +63,11 @@
       if(registroDoble == false) {
         return false;
       }
-      //cambiar el orden
-      infoCliente.push(primerNombre, segundoNombre, primerApellido, segundoApellido, cedula, correo, fotoPerfil, telefono_1, telefono_2,
-      fecha_nacimiento, genero, provincia, canton, distrito, direccion, tipoUsuario, activo);
 
-      if (this.dataset.modificar) {
+      infoCliente.push(primerNombre, segundoNombre, primerApellido, segundoApellido, cedula, correo, fotoPerfil, telefono_1, telefono_2,
+      fecha_nacimiento, genero, direccion, provincia, canton, distrito, sucursal, tipoUsuario, activo);
+
+      if (modificarCliente) {
         var listaUsuarios = obtenerDatoLocal('listaUsuarios');
         var image = document.querySelector('#previewFoto').getAttribute("src");
 
@@ -85,34 +86,17 @@
         localStorage.setItem('listaClientesLS', JSON.stringify(listaClientes));
         mostrarMensajeModal('registro exitoso');
       } else {
-        guardarDatoLocal('listaUsuarios', infoCliente);
-        guardarDatoLocal('loginUsuarios', [correo, contraseña]);
+        guardarDatosDB(infoCliente, 'save_user');
+        guardarLoginDB(correo, contraseña, true);
 
         if (obtenerDatoLocal('usuario')) {
           mostrarMensajeModal('registro exitoso');
         } else {
           mostrarMensajeModal('registro exitoso de usuario', contraseña);
         }
-        limpiar();
       }
-
       document.getElementById('formRegistroClientes').reset();
     }
   }
 
 })();
-
-function limpiar() {
-  document.querySelector('.formRegistroClientes input[name="nombre"').value = '';
-  document.querySelector('.formRegistroClientes input[name="segundoNombre"').value = '';
-  document.querySelector('.formRegistroClientes input[name="primerApellido"').value = '';
-  document.querySelector('.formRegistroClientes input[name="segundoApellido"').value = '';
-  document.querySelector('.formRegistroClientes input[name="cedula"').value = '';
-  document.querySelector('.formRegistroClientes input[name="email"').value = '';
-  document.querySelector('.formRegistroClientes input[name="telefono1"').value = '';
-  document.querySelector('.formRegistroClientes input[name="telefono2"').value = '';
-  document.querySelector('.formRegistroClientes input[name="provincia"').value = '';
-  document.querySelector('.formRegistroClientes input[name="canton"').value = '';
-  document.querySelector('.formRegistroClientes input[name="distrito"').value = '';
-  document.querySelector('.formRegistroClientes textarea[name="direccion"').value = '';
-}
