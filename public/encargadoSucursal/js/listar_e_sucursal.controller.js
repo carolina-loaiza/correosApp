@@ -55,11 +55,9 @@ function mostrarEncargados() {
     }//if estado
 }
 
-
-//funcion que redirige a un html con formulario nuevo
 function redirect() {
     let sCorreo = this.dataset.correo; 
-    setTemp(sCorreo);
+    localStorage.setItem('tempEncSusursal', sCorreo);
 }
 
 function eliminar() {
