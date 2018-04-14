@@ -36,22 +36,21 @@ function validarInputsRequeridos(inputs) {
   return error;
 }
 
-function validarRegistroDoble(correo) {  
-  let lista = obtenerDatoLocal('loginUsuarios');  
-    for(let i = 0; i < lista.length; i++) {  
-      if(correo == lista[i][0]) {   
-        swal({  
-          title: "Usuario ya registrado",  
-          text: "Esta dirección de correo ya ha sido utilizada",  
-          icon: "error",  
-          button: {  
-            text: "OK",  
-            className: "button",  
-          }})  
-          return false;   
-      }  
-    }  
-  }  
+function validarRegistroDoble(correo) {
+  let usuario = obtenerUsuarioDB(correo);
+  if (usuario) {
+    swal({  
+      title: "Usuario ya registrado",  
+      text: "Esta dirección de correo ya ha sido utilizada",  
+      icon: "error",  
+      button: {  
+        text: "OK",  
+        className: "button",  
+      }
+    })
+    return false; 
+  };
+};
 
 function mostrarMensajeModal(tipoMensaje, contraseñaTemporal) {
   switch (tipoMensaje) {
@@ -121,21 +120,24 @@ function esInvalidoInput (input) {
   var matchPhone = /^[0-9]{4}[-\s][0-9]{4}$/;
   var matchEmail = /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})/;
   var matchComment = /^[a-zA-Z0-9!?@#$%\^&*\s)(+=._-]*$/gi;
+  var matchPassword = /^(?=\S.*\d)(?=.*[a-z])(?=.*[A-Z]).[\S]{7,14}$/;
 
   if (tipoInput === 'email') {
     var tipoEmail = input.dataset.tipoEmail;
-    console.log(tipoEmail);
+   
     if (tipoEmail && !valorInput.includes(tipoEmail)) {
       return true;
     };
     
     match = matchEmail;
-    maxlength = 40;
+  }
+
+  if (tipoInput === 'pass') {
+    match = matchPassword;
   }
 
   if (tipoInput === 'tel') {
     match = matchPhone;
-    maxlength = 14;
   }
 
   if (tipoInput === 'numero') {
@@ -150,12 +152,10 @@ function esInvalidoInput (input) {
 
   if (tipoInput === 'texto') {
     match = matchAlpha;
-    maxlength = 20;
   }
 
   if (tipoInput === 'textoNum') {
     match = matchComment;
-    maxlength = 40;
   }
 
   var matches = valorInput.match(match);
@@ -167,26 +167,57 @@ function esInvalidoInput (input) {
   return esInvalido;
 }
 
-function guardarDatos(datos, ruta){
+function guardarUsuarioDB(datos, ruta){
+  let mensaje = false;
+
   let peticion = $.ajax({
     url: 'http://localhost:4000/api/'+ruta,
     type: 'post',
     contentType: 'application/x-www-form-urlencoded; charset=utf-8',
     dataType : 'json',
     async: false,
-    data: datos
+    data: {data: JSON.stringify(datos)} 
   });
  
   peticion.done(function(response){
-    console.log('El usuario se registró con éxito');
+    mensaje = 'Se registró con éxito';
+  });
+
+  peticion.fail(function(){
+    mensaje = false;
+  });
+
+  return mensaje;
+}
+
+function guardarLoginDB(correo, contraseña, temp){
+  let mensaje = false;
+
+  let peticion = $.ajax({
+    url: 'http://localhost:4000/api/save_login',
+    type: 'post',
+    contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+    dataType : 'json',
+    async: false,
+    data: {
+      pass: contraseña,
+      email: correo,
+      temp: temp
+    }
   });
  
-  peticion.fail(function(){
-    console.log('El usuario no se pudo registrar');
+  peticion.done(function(response){
+    mensaje = 'Se registró con éxito';
   });
+
+  peticion.fail(function(){
+    mensaje = false;
+  });
+
+  return mensaje;
 }
  
-function obtenerLista(ruta){
+function obtenerListaDB(ruta){
   let lista = [];
   let peticion = $.ajax({
     url: 'http://localhost:4000/api/'+ ruta,
@@ -201,7 +232,7 @@ function obtenerLista(ruta){
     for(let i = 0; i < usuarios.length; i++){
       var dato = [];
       for (var key in usuarios[i]) {
-        if (key != '__v') {
+        if (key != '__v' && key != '_id') {
           dato.push(usuarios[i][key]);
         };
       }
@@ -216,6 +247,110 @@ function obtenerLista(ruta){
   });
 
   return lista;
-}
+};
 
-console.log(obtenerLista('get_all_users'));
+function obtenerUsuarioDB(correo){
+  let usuario = [];
+  let peticion = $.ajax({
+    url: 'http://localhost:4000/api/user_by_email',
+    type: 'post',
+    contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+    dataType : 'json',
+    async:false,
+    data: {
+      correo_electronico : correo
+    }
+  });
+
+  peticion.done(function(usuarioInfo){
+    for (var key in usuarioInfo.data) {
+      if (key != '__v' && key != '_id') {
+        usuario.push(usuarioInfo.data[key]);
+      };
+    };
+    console.log('Petición realizada con éxito');
+  });
+
+  peticion.fail(function(){
+    usuario = false;
+    console.log('Ocurrió un error');
+  });
+
+  return usuario;
+};
+
+function loginUsuario(correo, pass){
+  let esValido = [];
+
+  let peticion = $.ajax({
+    url: 'http://localhost:4000/api/login',
+    type: 'post',
+    contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+    dataType : 'json',
+    async:false,
+    data: {
+      email : correo,
+      pass: pass
+    }
+  });
+
+  peticion.done(function(usuario) {
+    esValido = usuario;
+  });
+
+  peticion.fail(function() {
+    esValido = false;
+  });
+
+  return esValido;
+};
+
+function actualizarLogin(id, pass){
+  let esValido = false;
+
+  let peticion = $.ajax({
+    url: 'http://localhost:4000/api/update_login',
+    type: 'put',
+    contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+    dataType : 'json',
+    async:false,
+    data: {
+      _id: id,
+      pass: pass,
+      temp: false
+    }
+  });
+
+  peticion.done(function() {
+    esValido = true;
+  });
+
+  peticion.fail(function() {
+    esValido = false;
+  });
+
+  return esValido;
+};
+
+function actualizarUsuarioDB(datos, ruta){
+  let esValido = false;
+
+  let peticion = $.ajax({
+    url: 'http://localhost:4000/api/'+ruta,
+    type: 'put',
+    contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+    dataType : 'json',
+    async:false,
+    data: {data: JSON.stringify(datos)} 
+  });
+
+  peticion.done(function() {
+    esValido = true;
+  });
+
+  peticion.fail(function() {
+    esValido = false;
+  });
+
+  return esValido;
+};

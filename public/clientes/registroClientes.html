@@ -76,6 +76,26 @@
                 </div>
               </div>
             </div>
+            <div class="inputContainer">
+              <label for="text">Género *</label>
+              <div class="input">
+                <select name="genero" required>
+                  <option value="masculino">Masculino</option>
+                  <option value="femenino">Femenino</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+            </div>
+            <div class="inputContainer">
+              <label for="text">Seleccione una sucursal *</label>
+              <div class="input">
+                <select name="sucursal" required>
+                  <option value="Sucursal #1">Sucursal #1</option>
+                  <option value="Sucursal #2">Sucursal #2</option>
+                  <option value="Sucursal #3">Sucursal #3</option>
+                </select>
+              </div>
+            </div>
             <div class="inputContainer"><br> (* Campos obligatorios) </div>
           </div>
           <div class="col6 colWithPaddingLeft">
@@ -95,20 +115,9 @@
               <label for="text">Teléfono 2</label>
               <input class="input" type="text" name="telefono2" data-tipo-input="tel">
             </div>
-            <!-- Agregar opcion de seleccionar sucursal-->
-            <div class="inputContainer">
-              <label for="text">Género *</label>
-              <div class="input">
-                <select name="genero" required>
-                  <option value="masculino">Masculino</option>
-                  <option value="femenino">Femenino</option>
-                  <option value="otro">Otro</option>
-                </select>
-              </div>
-            </div>
             <div class="inputContainer">
               <label for="text">Provinicia*</label>
-              <input type="text" class="input" name="provincia" required>
+              <input type="text" class="input" name="provincia" data-tipo-input="texto" required>
             </div>
             <div class="inputContainer">
               <label for="text">Cantón*</label>

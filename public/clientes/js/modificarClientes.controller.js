@@ -3,8 +3,9 @@
 
   function mostarDatosUsuarios() {
     var datosUsuario = [];
-    if (getTemp()) {
-      datosUsuario = buscarClientePorCorreo(getTemp());
+    var tempCliente = localStorage.getItem('tempCliente');
+    if (tempCliente) {
+      datosUsuario = obtenerUsuarioDB(tempCliente);
       document.querySelector('#desactivarCuenta').style.display = 'none';
     } else {
       datosUsuario = obtenerDatoLocal('usuario');
@@ -25,8 +26,8 @@
     document.querySelector('.formRegistroClientes input[name="distrito"').value = datosUsuario[13]
     document.querySelector('.formRegistroClientes textarea[name="direccion"').value = datosUsuario[14]
 
-    if (datosUsuario[11]) {
-      document.querySelector('#previewFoto').setAttribute("src", datosUsuario[11]);
+    if (datosUsuario[6] && datosUsuario[6].includes('cloudinary')) {
+      document.querySelector('#previewFoto').setAttribute("src", datosUsuario[6]);
       document.querySelector('#previewFoto').style.display = 'block';
     }
   };

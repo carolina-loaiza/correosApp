@@ -18,12 +18,12 @@ router.route('/save_user')
     users.registrar(req, res);
 });
 
-router.route('/get_all_users')
+router.route('/all_users_by_type')
   .get(function(req, res) {
     users.listarTodos(req, res);
 });
 
-router.route('/update_users')
+router.route('/update_user')
   .put(function(req, res){
     users.actualizar(req, res);
 });

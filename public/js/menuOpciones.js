@@ -35,8 +35,9 @@
   var menuOpciones = document.querySelector('#menuOpciones');
   var rol = 'Rol';
   var editarPage = '#';
+  var tipo_usuario = datosUsuario.length-2;
 
-  switch (datosUsuario[12]) {
+  switch (datosUsuario[tipo_usuario]) {
     case '1':
       rol = 'Administrador';
       menuOpciones.appendChild(crearLinkMenu('../clientes/registroClientes.html', 'Registro usuarios', ['fas', 'fa-file-alt']));
@@ -75,11 +76,9 @@
       break;
   }
 
-  datosUsuario.forEach(dato => {
-    if (dato != '' && typeof dato == 'string' && dato.includes('cloudinary')) {
-      document.querySelector('#userPerfilAvatar').setAttribute("src", dato);
-    }
-  });
+  if (datosUsuario[6] && datosUsuario[6].includes('cloudinary')) {
+    document.querySelector('#userPerfilAvatar').setAttribute("src", datosUsuario[6]);
+  }
   
   document.querySelector('#userNombre').innerText = rol + " " + datosUsuario[0] + " " + datosUsuario[2];
   document.querySelector('#editarPerfil').setAttribute("href", editarPage);
@@ -143,7 +142,7 @@
     if (paginaActual.includes('Listar usuarios')){
       document.querySelector('#menuOpciones li:nth-child(4) .linkTexto').classList.add('activo');
       subMenuTexto = ['Clientes', 'Encargados de aduana', 'Encargados de sucursal', 'Repartidores'];
-      subMenuLinks = ['../clientes/listarClientes.html', '../EncargadoAduana/listarEncargadoAduana.html', '../encargadoSucursal/index_listar.html', '../repartidor/registrar_repartidor.html'];
+      subMenuLinks = ['../clientes/listarClientes.html', '../EncargadoAduana/listarEncargadoAduana.html', '../encargadoSucursal/index_listar.html', '../repartidor/listar_repartidor.html'];
     }
 
     if (paginaActual.includes('Otros listados')){

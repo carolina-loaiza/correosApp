@@ -26,11 +26,11 @@ function obtenerDatos() {
     if(error == true ) {
       mostrarMensajeModal('error formulario');
     } else { 
-        //primer nombre = 0
-        //primer apellido = 2
-        //telefono =  5
         let aEncAduanas = [];
-        let regiEncaAdunaID = Math.random().toString(36).substring(8);
+        let tipoUsuario = '3';
+        let activo = '1';
+        var fotoPerfil = urlFotoPerfil;
+        let contraseña = generarDato(0, 'contraseña');
 
         let inputPrimernombre = document.querySelector('#txtPrimernombre');
         let sPrimernombre = inputPrimernombre.value;
@@ -52,50 +52,30 @@ function obtenerDatos() {
         let sFechanacimiento = inputFechanacimiento.value;
         let selectGenero = document.querySelector('#sltGenero');
         let sGenero = selectGenero.value;
-        let selectSucursal= document.querySelector('#sltSucursal');
-        let sSucursal = selectSucursal.value;
         let inputPuestoReal = document.querySelector('#txtPuestoReal');
         let sPuestoReal = inputPuestoReal.value;
-        //let sEdad = Calcularedad();
+        
+        let sEdad = calcularEdad(sFechanacimiento);
 
-        let sEdad = Calcularedad();
-
-        let tipoUsuario = '3';
-        let activo = '1';
-        var fotoPerfil = urlFotoPerfil;
-
-        if (sEdad < 18) {
+        if(sEdad < 18) {
             mostrarMensajeModal('error edad');
             return false;
         }
 
+        let registroValido = validarRegistroDoble(sCorreo);
+        if(registroValido == false) {
+            return false;
+        }
 
-        aEncAduanas.push(sPrimernombre, sSegundonombre, sPrimerapellido, sSegundoapellido, sIdentificacion, sCorreo, sTelefono1, sTelefono2,
-             sFechanacimiento, sGenero, sSucursal, fotoPerfil, sPuestoReal, tipoUsuario, activo);
+        aEncAduanas.push(sPrimernombre, sSegundonombre, sPrimerapellido, sSegundoapellido, sIdentificacion, sCorreo, fotoPerfil, sTelefono1, sTelefono2,
+            sFechanacimiento, sGenero, '', sPuestoReal, tipoUsuario, activo);
         
-        setListaEncAduanas(aEncAduanas);
-    
-        swal({
-            title: 'Datos Correctos',
-            text: 'Continue',
-            icon: 'success',
-            button: "Ok",
-        });
-
+        guardarUsuarioDB(aEncAduanas, 'save_user');
+        guardarLoginDB(sCorreo, contraseña, true);
         limpiar();
+        mostrarMensajeModal('registro exitoso');
     }
-}
-
-
-
-function Calcularedad() {
-    let hoy = new Date();
-    let fecha = document.querySelector('#txtFechanacimiento').value;
-    let nacimiento = new Date(fecha);
-    let edad = hoy.getFullYear() - nacimiento.getFullYear();
-    return edad;
-}
-
+};
 
 function limpiar() {
     document.querySelector('#txtPrimernombre').value = "";
@@ -108,6 +88,6 @@ function limpiar() {
     document.querySelector('#txtTelefono2').value = "";
     document.querySelector('#txtFechanacimiento').value = "";
     document.querySelector('#sltGenero').value = "";
-    document.querySelector('#sltSucursal').value = "";
+    document.querySelector('#txtPuestoReal').value = "";
 }
 

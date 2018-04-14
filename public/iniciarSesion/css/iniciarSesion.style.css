@@ -33,3 +33,9 @@
   padding-top: 10px;
   text-decoration: underline;
 }
+
+.infoPass {
+  font-style: italic;
+  font-size: 11px;
+  margin-top: 8px;
+}

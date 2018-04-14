@@ -1,24 +1,21 @@
 
+let listaRepartidores = obtenerListaDB('all_users_by_type?type=5');
 document.querySelector('#txtFiltro').addEventListener('keyup',mostrarRepartidores);
 
 mostrarRepartidores();
 
 function mostrarRepartidores() {
-    let listaRepartidores = obtenerDatoLocal('listaRepartidoresLS');
-
     let cuerpoTabla = document.querySelector('#tblbase tbody');
     let sFiltro = document.querySelector('#txtFiltro').value;
-
     cuerpoTabla.innerHTML = '';
 
     for (let i = 0; i < listaRepartidores.length; i++) {
-        if (listaRepartidores[i][10].toLowerCase().includes(sFiltro.toLowerCase())||listaRepartidores[i][0].toLowerCase().includes(sFiltro.toLowerCase())||listaRepartidores[i][2].toLowerCase().includes(sFiltro.toLowerCase())) {
+        if (listaRepartidores[i][0].toLowerCase().includes(sFiltro.toLowerCase())||listaRepartidores[i][1].toLowerCase().includes(sFiltro.toLowerCase())||listaRepartidores[i][2].toLowerCase().includes(sFiltro.toLowerCase())) {
             let fila = cuerpoTabla.insertRow();
 
             let cPrimernombre = fila.insertCell();
             let cPrimerapellido = fila.insertCell();
-            //let cTelefono1 = fila.insertCell();
-            //let cCorreo = fila.insertCell();
+            let cCorreo = fila.insertCell();
             let cSucursal=fila.insertCell();
 
             let cModificar = fila.insertCell();
@@ -26,17 +23,10 @@ function mostrarRepartidores() {
             let cEstado= fila.insertCell();
             cModificar.classList.add('acciones');
             cDesactivar.classList.add('acciones');
+
             cPrimernombre.appendChild(document.createTextNode(listaRepartidores[i][0]));
-            // cSegundonombre.appendChild(document.createTextNode(listaRepartidores[i][1]));
             cPrimerapellido.appendChild(document.createTextNode(listaRepartidores[i][2]));
-            // cSegundoapellido.appendChild(document.createTextNode(listaRepartidores[i][3]));
-            //cIdentificacion.appendChild(document.createTextNode(listaRepartidores[i][4]));
-            //cTelefono1.appendChild(document.createTextNode(listaRepartidores[i][5]));
-            //cTelefono2.appendChild(document.createTextNode(listaRepartidores[i][6]));
-            //cCorreo.appendChild(document.createTextNode(listaRepartidores[i][7]));
-            //cFechanacimiento.appendChild(document.createTextNode(listaRepartidores[i][8]));
-            //cGenero.appendChild(document.createTextNode(listaRepartidores[i][9]));
-            //cEdad.appendChild(document.createTextNode(listaRepartidores[i][11]));
+            cCorreo.appendChild(document.createTextNode(listaRepartidores[i][5]));
             cSucursal.appendChild(document.createTextNode(listaRepartidores[i][11]));
 
             var estado = 'Activo';
