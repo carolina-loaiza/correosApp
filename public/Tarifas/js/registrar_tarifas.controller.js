@@ -2,7 +2,7 @@ document.querySelector('#btnRegistrar').addEventListener('click', obtenerDatos);
 
 
 //jala las sucursales ya registradas del LS
-let listaSucursales = obtenerDatoLocal('RegistroLS');
+var listaSucursales = [["Sucursal #1","Direccion Sucursal #1","312423423", "200", "200"],["Sucursal #2","Direccion Sucursal #2","453453455", "200", "200"],["Sucursal #3","Direccion Sucursal #3","564334535", "200", "200"]];
 
 
 
