@@ -167,7 +167,7 @@ function esInvalidoInput (input) {
   return esInvalido;
 }
 
-function guardarDatosDB(datos, ruta){
+function guardarUsuarioDB(datos, ruta){
   let mensaje = false;
 
   let peticion = $.ajax({
@@ -319,6 +319,29 @@ function actualizarLogin(id, pass){
       pass: pass,
       temp: false
     }
+  });
+
+  peticion.done(function() {
+    esValido = true;
+  });
+
+  peticion.fail(function() {
+    esValido = false;
+  });
+
+  return esValido;
+};
+
+function actualizarUsuarioDB(datos, ruta){
+  let esValido = false;
+
+  let peticion = $.ajax({
+    url: 'http://localhost:4000/api/'+ruta,
+    type: 'put',
+    contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+    dataType : 'json',
+    async:false,
+    data: {data: JSON.stringify(datos)} 
   });
 
   peticion.done(function() {

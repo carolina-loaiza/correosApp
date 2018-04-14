@@ -59,34 +59,30 @@
         return false;
       }
 
-      let registroDoble = validarRegistroDoble(correo);
-      if(registroDoble == false) {
-        return false;
-      }
-
       infoCliente.push(primerNombre, segundoNombre, primerApellido, segundoApellido, cedula, correo, fotoPerfil, telefono_1, telefono_2,
       fecha_nacimiento, genero, direccion, provincia, canton, distrito, sucursal, tipoUsuario, activo);
 
       if (modificarCliente) {
-        var listaUsuarios = obtenerDatoLocal('listaUsuarios');
         var image = document.querySelector('#previewFoto').getAttribute("src");
 
         if (image) {
-          infoCliente[11] = image;
-        }
+          infoCliente[6] = image;
+        };
 
-        for(var i = 0; i < listaUsuarios.length; i++) {
-          if (listaUsuarios[i][5] === correo) {
-            listaUsuarios[i] = infoCliente;
-            if (!getTemp()) { 
-              localStorage.setItem('usuario', JSON.stringify(infoCliente));
-            }
-          }
-        }
-        localStorage.setItem('listaClientesLS', JSON.stringify(listaClientes));
+        if (!localStorage.getItem('tempCliente')) { 
+          localStorage.setItem('usuario', JSON.stringify(infoCliente));
+        };
+        actualizarUsuarioDB(infoCliente, 'update_user');
+        localStorage.removeItem('tempCliente');
         mostrarMensajeModal('registro exitoso');
       } else {
-        guardarDatosDB(infoCliente, 'save_user');
+
+        let registroDoble = validarRegistroDoble(correo);
+        if(registroDoble == false) {
+          return false;
+        }
+
+        guardarUsuarioDB(infoCliente, 'save_user');
         guardarLoginDB(correo, contraseña, true);
 
         if (obtenerDatoLocal('usuario')) {

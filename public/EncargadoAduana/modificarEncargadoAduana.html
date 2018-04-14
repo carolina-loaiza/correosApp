@@ -51,34 +51,39 @@
             </div>
             <div class="content">
                 <h1 class="title titleUnderline">Modificar encargado de Aduana</h1>
-                <form name="form" class="row">
+                <form id="registroEncAduanasForm" class="row">
                     <div class="col6 colWithPaddingRight">
-
                         <div class="inputContainer">
-                            <label for="txtNombre">Primer nombre*</label>
-                                <input type="text" id="txtNombre" required>
+                            <label for="txtPrimernombre">Primer nombre*</label>
+                                <input class='input' type="text" id="txtPrimernombre" data-tipo-input="texto" required>
                         </div>
 
+                        <!-- numero 1 -->
                         <div class="inputContainer">
-                            <label for="txtPrimerApellido">Primer Apellido*</label>
-                                <input class='input' type="text" id="txtPrimerApellido" data-tipo-input="texto" required>
+                            <label for="txtPrimerapellido">Primer apellido*</label>
+                                <input class='input' type="text" id="txtPrimerapellido" data-tipo-input="texto" required>
                         </div>
 
+
+                        <!-- numero 2 -->
                         <div class="inputContainer">
                             <label for="txtIdentificacion">Identificación*</label>
-                                <input type="text" id="txtIdentificacion" required>
+                                <input class='input' type="text" id="txtIdentificacion" data-tipo-input="numero" data-cantidad="9" required>
                         </div>
 
+                        <!-- numero 3 -->
                         <div class="inputContainer">
-                            <label for="txtCorreo">Correo electrónico</label>
-                                <input class='input' type="email" id="txtCorreo" disabled>
+                            <label for="txtCorreo">Correo electrónico*</label>
+                                <input class='input' type="email" id="txtCorreo" data-tipo-input="email" data-tipo-email="aduanas.cr" required>
                         </div>
 
+                        <!-- numero 4 -->
                         <div class="inputContainer">
                             <label for="txtTelefono1">Teléfono 1*</label>
-                                <input class='input' type="number" id="txtTelefono1" data-tipo-input="tel" required>
+                                <input class='input' type="text" id="txtTelefono1" data-tipo-input="tel" required>
                         </div>
 
+                        <!-- numero 5 -->
                         <div class="inputContainer">
                             <label for="txtFechanacimiento">Fecha de nacimiento*</label>
                                 <input class='input' type="date" id="txtFechanacimiento" required>
@@ -87,12 +92,14 @@
                         <div class="inputContainer"><br> (*Campos obligatorios) </div>
                     </div>
 
+                    <!-- numero 6 -->
                     <div class="col6 colWithPaddingRight">
                         <div class="inputContainer">
                             <label for="txtSegundonombre">Segundo nombre</label>
                                 <input class='input' type="text" id="txtSegundonombre" data-tipo-input="texto">
                         </div>
 
+                        <!-- numero 7 -->
                         <div class="inputContainer">
                             <label for="txtSegundoapellido">Segundo apellido</label>
                                 <input class='input' type="text" id="txtSegundoapellido" data-tipo-input="texto">
@@ -109,16 +116,17 @@
                             </div>
                         </div>
 
+                        <!-- numero 9 -->
                         <div class="inputContainer">
                             <label for="txtTelefono2">Teléfono 2</label>
-                                <input class='input' type="number" id="txtTelefono2" data-tipo-input="tel">
+                                <input class='input' type="text" id="txtTelefono2" data-tipo-input="tel">
                         </div>
 
+                        <!-- numero 10 -->
                         <div class="inputContainer">
                             <label for="sltGenero">Género*</label>
                             <div class='input'>
                                 <select id="sltGenero" required>
-                                    <option value=""></option>
                                     <option value="Masculino">Masculino</option>
                                     <option value="Femenino">Femenino</option>
                                     <option value="Otro">Otro</option>
@@ -126,18 +134,10 @@
                             </div>
                         </div>
 
+                        <!-- numero 12 -->
                         <div class="inputContainer">
-                            <label for="sltSucursal">Seleccione sucursal*</label>
-                            <div class="input">
-                                <select id="sltSucursal" required>
-                                    <option value=""></option>
-                                    <option value="Sucursal 01">S 01</option>
-                                    <option value="Sucursal 02">S 02</option>
-                                    <option value="Sucursal 03">S 03</option>
-                                    <option value="Sucursal 04">S 04</option>
-                                    <option value="Sucursal 05">S 05</option>
-                                </select>
-                            </div>
+                            <label for="txtPuestoReal">Puesto Real</label>
+                                <input class='input' type="text" id="txtPuestoReal" required>
                         </div>
 
                         <div class="buttonContainer">
@@ -164,6 +164,11 @@
     </div>
         <!---Script de la aplicacion -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/cloudinary/cloudinary_js/master/js/jquery.ui.widget.js"></script>
+    <script src="https://rawgit.com/cloudinary/cloudinary_js/master/js/jquery.iframe-transport.js"></script>
+    <script src="https://rawgit.com/cloudinary/cloudinary_js/master/js/jquery.fileupload.js"></script>
+    <script src="https://rawgit.com/cloudinary/cloudinary_js/master/js/jquery.cloudinary.js"></script>
     <script src="../js/localStorage.servicio.js"></script>
     <script src="../js/servicios.js"></script>
     <script src="../js/menuOpciones.js"></script>

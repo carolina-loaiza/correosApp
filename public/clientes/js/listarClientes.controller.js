@@ -1,17 +1,16 @@
-mostrarClientes();
+
+var listaClientes = obtenerListaDB('all_users_by_type?type=2');
 
 document.querySelector('#txtFiltro').addEventListener('keyup', mostrarClientes);
 
 function mostrarClientes() {
-    listaClientes = obtenerDatoLocal('listaClientesLS');
     let tbody = document.querySelector('#tblClientes tbody');
-
     let sFiltro = document.querySelector('#txtFiltro').value;
-
     tbody.innerHTML = '';
 
     for (let i = 0; i < listaClientes.length; i++) {
-        if (listaClientes[i][12] === '2' && listaClientes[i][13] === '1') {
+        var activo = listaClientes[i].length-1;
+        if (listaClientes[i][activo] === '1') {
             if (listaClientes[i][0].toLowerCase().includes(sFiltro) || listaClientes[i][2].toLowerCase().includes(sFiltro) || listaClientes[i][5].toLowerCase().includes(sFiltro)) {
                 let fila = tbody.insertRow();
 
@@ -26,10 +25,10 @@ function mostrarClientes() {
                 cEditar.classList.add('acciones');
                 cDesactivar.classList.add('acciones');
 
-            cPrimerNombre.appendChild(document.createTextNode(listaClientes[i][0]));
-            cPrimerApellido.appendChild(document.createTextNode(listaClientes[i][2]));
-            cCorreo.appendChild(document.createTextNode(listaClientes[i][5]));
-            cTelefono.appendChild(document.createTextNode(listaClientes[i][7]));
+                cPrimerNombre.appendChild(document.createTextNode(listaClientes[i][0]));
+                cPrimerApellido.appendChild(document.createTextNode(listaClientes[i][2]));
+                cCorreo.appendChild(document.createTextNode(listaClientes[i][5]));
+                cTelefono.appendChild(document.createTextNode(listaClientes[i][7]));
 
                 let atag = document.createElement('a');
                 atag.setAttribute('href', "editarClientes.html");
@@ -50,14 +49,14 @@ function mostrarClientes() {
                 cDesactivar.appendChild(botonDesactivar);
             }
         }
-
-        //el correo está en la posición 5 
     }
 }
 
+mostrarClientes();
+
 function redirect() {
     let sCorreo = this.dataset.correo;
-    setTemp(sCorreo);
+    localStorage.setItem('tempCliente', sCorreo);
 }
 
 function eliminar() {

@@ -52,7 +52,7 @@ function obtenerDatos() {
         let inputTelefono2 = document.querySelector('#txtTelefono2');
         let sTelefono2 = inputTelefono2.value;
 
-        let sEdad = Calcularedad();
+        let sEdad = calcularEdad(document.querySelector('#txtFechanacimiento').value);
 
         let inputCorreo = document.querySelector('#txtCorreo');
         let sCorreo = inputCorreo.value;
@@ -82,30 +82,15 @@ function obtenerDatos() {
             return false;
         }
     
-        aRepartidores.push(sPrimernombre, sSegundonombre, sPrimerapellido, sSegundoapellido, sIdentificacion, sCorreo, fotoPerfil, sTelefono1, sTelefono2, sFechanacimiento, sGenero, sSucursal, sTipoUsuario, sActivo);
-        guardarDatoLocal('listaRepartidoresLS',aRepartidores);
-        guardarDatoLocal('listaUsuarios', aRepartidores);
-        guardarDatoLocal('loginUsuarios', [sCorreo, contraseña]);
-        document.getElementById('registrarRepartidorForm').reset();
+        aRepartidores.push(sPrimernombre, sSegundonombre, sPrimerapellido, sSegundoapellido, sIdentificacion, sCorreo, fotoPerfil, 
+        sTelefono1, sTelefono2, sFechanacimiento, sGenero, '', sSucursal, sTipoUsuario, sActivo);
+        guardarUsuarioDB(aRepartidores, 'save_user');
+        guardarLoginDB(sCorreo, contraseña, true);
+        limpiar();
         mostrarMensajeModal('registro exitoso');
     
     }
 }
-
-//Validacion
-
-
-
-
-function Calcularedad() {
-    let hoy = new Date();
-    let fecha = document.querySelector('#txtFechanacimiento').value;
-    let nacimiento = new Date(fecha);
-    let edad = hoy.getFullYear() - nacimiento.getFullYear();
-    return edad;
-}
-
-
 
 function limpiar() {
     document.querySelector('#txtPrimernombre').value = "";
