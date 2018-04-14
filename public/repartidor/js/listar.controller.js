@@ -42,7 +42,7 @@ function mostrarRepartidores() {
             elementa.setAttribute("href" , "modificar_repartidor.html");
             elementa.appendChild(botonEditar);
             elementa.addEventListener('click', redirect);
-             elementa.dataset.nombre = listaRepartidores[i][0];
+            elementa.dataset.correo = listaRepartidores[i][5];
             cModificar.appendChild(elementa);
 
             let botonDesactivar = document.createElement('i');
@@ -50,21 +50,13 @@ function mostrarRepartidores() {
             botonDesactivar.dataset.indice = i;
             botonDesactivar.addEventListener('click',desactivar);
             cDesactivar.appendChild(botonDesactivar);
-            
-
         }
-
-
-
-
-
-
     }
 }
-function redirect(){
-    let sNombre = this.dataset.nombre;
 
-    setTemp(sNombre);
+function redirect(){
+    let sCorreo = this.dataset.correo;
+    localStorage.setItem('tempRepartidor', sCorreo);
 }
 
 function desactivar(){
