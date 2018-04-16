@@ -1,18 +1,17 @@
 
     obtenerSucursal();
 
-    let sNombre=getTemp();
-        let infoRepartidor=buscarSucursal(sNombre);
+   
 
 
     function obtenerSucursal()
     {
-        let sNombre=getTemp();
-        let infoRepartidor=buscarSucursal(sNombre);
+        let sNumero=getTemp();
+        let infoRepartidor=buscarSucursalPorId(sNumero);
         
-        document.querySelector('#txtSucursal').value=infoRepartidor[0];
-        document.querySelector('#txtDireccion').value=infoRepartidor[1];
-        document.querySelector('#txtTelefono').value=infoRepartidor[2];
+        document.querySelector('#txtSucursal').value=infoRepartidor['numero'];
+        document.querySelector('#txtDireccion').value=infoRepartidor['nombre'];
+        document.querySelector('#txtTelefono').value=infoRepartidor['tel'];
         
       
     }
@@ -39,7 +38,7 @@
     
     
             aSucursales.push(sSucursal, sDireccion, sTelefono, activo);
-            actualizarListaSucursales(aSucursales);
+            actualizarSucursal(aSucursales);
             removeTemp();
             window.location.href = 'listar_sucursal.html';
         }
