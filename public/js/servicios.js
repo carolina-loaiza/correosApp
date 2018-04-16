@@ -115,8 +115,8 @@ function esInvalidoInput (input) {
   var esInvalido = false;
   var match = null;
   var maxlength = 1;
-  var matchAlpha = /^[A-z]+$/gi;
-  var matchNumber = /^\d+$/;
+  var matchAlpha = /^[a-zA-ZÀ-ÖØ-öø-ÿ ]+$/gi;
+  var matchNumber = /^[0-9]*(?:\.\d{1,2})?$/;
   var matchPhone = /^[0-9]{4}[-\s][0-9]{4}$/;
   var matchEmail = /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})/;
   var matchComment = /^[a-zA-Z0-9!?@#$%\^&*\s)(+=._-]*$/gi;
@@ -143,9 +143,11 @@ function esInvalidoInput (input) {
   if (tipoInput === 'numero') {
     maxlength = input.dataset.cantidad;
 
-    if ((valorInput.length + '') != maxlength) {
-      return true;
-    };
+    if (maxlength) {
+      if ((valorInput.length + '') != maxlength) {
+        return true;
+      };
+    }
 
     match = matchNumber;
   }

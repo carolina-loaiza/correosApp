@@ -24,3 +24,11 @@
 #editar:before {
   color: #fff;
 }
+
+.acciones {
+  text-align: center;
+}
+
+.input {
+  width: 400px;
+}

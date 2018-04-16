@@ -1,7 +1,6 @@
 (function () {
   var listaCouriers = [["12345678","Nombre del courier #1"],["42342421","Nombre del courier #2"],["421431212","Nombre del courier #3"]];
   var listaSucursales = [["Sucursal #1","Direccion Sucursal #1","312423423", "200", "200"],["Sucursal #2","Direccion Sucursal #2","453453455", "200", "200"],["Sucursal #3","Direccion Sucursal #3","564334535", "200", "200"]];
-  var listaCategorias = [["tp08","COSMETICOS","29.95","1"],["j1va","DESODORANTES","21.95","1"],["vg12j","EQUIPO DE SONIDO","49.27","1"],["1wg7","IPHONE","13","1"]];
   var listaTarjetas = [["Nombre titular", "# tarjeta", "23234", "213213", "213123", "test02@gmail.com"], ["Nombre titular", "# tarjeta", "23234", "213213", "213123", "test02@gmail.com"], ["Nombre titular", "# tarjeta", "23234", "213213", "213123", "test02@gmail.com"], ["Nombre titular", "# tarjeta", "23234", "213213", "213123", "test01@gmail.com"]];
   var alertarPaquete = document.querySelector('#alertarPaquete');
   alertarPaquete.addEventListener('click', registrarPaquete);
@@ -27,6 +26,8 @@
   }
 
   function agregarCategorias() {
+    var listaCategorias = [];
+    
     for(var i = 0; i < listaCategorias.length; i++) {
       var opcion = document.createElement('option');
       opcion.value = listaCategorias[i][1];

@@ -38,6 +38,12 @@ app.use('/api', usuarios);
 const login = require('./components/login/login.route');
 app.use('/api', login);
 
+const tiposArticulos = require('./components/tiposArticulos/tiposArticulos.route');
+app.use('/api', tiposArticulos);
+
+const tarifas = require('./components/tarifas/tarifas.route');
+app.use('/api', tarifas);
+
 module.exports = app;
 
 function _server(){

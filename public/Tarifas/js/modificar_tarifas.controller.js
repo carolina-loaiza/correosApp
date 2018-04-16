@@ -1,44 +1,41 @@
 let botonActualizar = document.querySelector('#btnActualizar');
 botonActualizar.addEventListener('click', registrarDatosActualizados);
-
-obtenerTarifa();
-
+var listaSucursales = [["Sucursal #1","Direccion Sucursal #1","312423423", "200", "200"],["Sucursal #2","Direccion Sucursal #2","453453455", "200", "200"],["Sucursal #3","Direccion Sucursal #3","564334535", "200", "200"]];
 
 function agregarSucursales() {
-    let lista = getTemp();
-    let opcion = document.createElement('option');
-    opcion.value = lista;
-    opcion.innerText = lista;
-    document.getElementById('opSucursal').appendChild(opcion);
+    for(let i = 0; i < listaSucursales.length; i++) {
+        let opcion = document.createElement('option');
+        opcion.value = listaSucursales[i][0];
+        opcion.innerText = listaSucursales[i][0];
+        document.getElementById('opSucursal').appendChild(opcion);
+    }
 }
 
 agregarSucursales();
 
-let sSucursal = getTemp();
-
 function obtenerTarifa() {
-    let sSucursal = getTemp();
-    let infoTarifa = buscarTarifaPorSucursal(sSucursal);
-    /*La tarifa de peso debe de estra disabled cuando sea
-    el encargado de sucursal quien modifique*/ 
-    document.querySelector('#numTarifaPeso').value = infoTarifa[3];
-    //document.querySelector('#opSucursal').value = infoTarifa[0];
-    document.querySelector('#numTarifaKm').value = infoTarifa[4];
+    let tempTarifa = localStorage.getItem('tempTarifa');
+    let infoTarifa = obtenerTarifaDB(tempTarifa);
+
+    document.querySelector('#numTarifaPeso').value = infoTarifa[1];
+    document.querySelector('#opSucursal').value = infoTarifa[2];
+    document.querySelector('#numTarifaKm').value = infoTarifa[3];
 }
+
+obtenerTarifa();
 
 function registrarDatosActualizados() {
     let infoTarifa = [];
 
+    let _id = localStorage.getItem('tempTarifa');
     let tarifaPeso = document.querySelector('#numTarifaPeso').value;
     let sucursal = document.querySelector('#opSucursal').value;
     let tarifaKm = document.querySelector('#numTarifaKm').value;
     let sActivo = '1';
 
-    infoTarifa.push(sucursal, tarifaPeso, tarifaKm, sActivo);
-    actualizarTarifa(infoTarifa);
-    removeTemp();
+    infoTarifa.push(_id, tarifaPeso, sucursal, tarifaKm, sActivo);
+    actualizarTarifaDB(infoTarifa);
+    localStorage.removeItem('tempTarifa');
     window.location.href = 'index_listar.html'
-
-
 }
 

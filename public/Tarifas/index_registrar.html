@@ -46,17 +46,18 @@
           <div class="col6 colWithPaddingLeft">
             <div class="inputContainer">
               <label for="numTarifaPeso">Tarifa por peso</label>
-              <input type="number" class="input" id="numTarifaPeso" required>
+              <input type="text" class="input" id="numTarifaPeso" data-tipo-input="numero" required>
             </div>
             <div class="inputContainer">
-                    <label for="opSucursal">Seleccione la sucursal</label>
-                    <div class="input" ><select id="opSucursal" required>
-                        
-                    </select></div>
-                  </div>
+              <label for="opSucursal">Seleccione la sucursal</label>
+              <div class="input">
+                <select id="opSucursal" required>
+                </select>
+              </div>
+            </div>
             <div class="inputContainer">
               <label for="numTarifaKm">Tarifa por kilómetro</label>
-              <input class="input" type="text" name="text" id="numTarifaKm" required>
+              <input class="input" type="text" id="numTarifaKm" data-tipo-input="numero" required>
             </div>
             <!--columna-->
             <button type="button" id="btnRegistrar" class="button">Registrar</button>
