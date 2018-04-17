@@ -8,8 +8,9 @@
     {
         let sNumero=getTemp();
         let infoRepartidor=buscarSucursalPorId(sNumero);
+        console.log(infoRepartidor);
         
-        document.querySelector('#txtSucursal').value=infoRepartidor['numero'];
+        document.querySelector('#numSucursal').value=infoRepartidor['numero'];
         document.querySelector('#txtDireccion').value=infoRepartidor['nombre'];
         document.querySelector('#txtTelefono').value=infoRepartidor['tel'];
         
@@ -24,7 +25,7 @@
             let aSucursales = [];
             let valido = true;
     
-            let inputSucursal = document.querySelector('#txtSucursal');
+            let inputSucursal = document.querySelector('#numSucursal');
             let sSucursal = inputSucursal.value;
     
             let inputDireccion = document.querySelector('#txtDireccion');

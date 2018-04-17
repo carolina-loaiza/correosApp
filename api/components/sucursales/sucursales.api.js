@@ -38,7 +38,7 @@ module.exports.buscar_sucursal_por_id = function(req, res){
 };
 
 module.exports.actualizar_sucursal = function(req, res){
-    userModel.findByIdAndUpdate(req.body._id, { $set: req.body },
+    userModel.findOneAndUpdate({'numero' : req.body.numero}, {$set: req.body}).then(
         function(error){
             if(error){
                 res.json({ success: false, msg: 'No se ha actualizado la sucursal debido al siguiente error: ' + handleError(error) });

@@ -118,11 +118,11 @@ function actualizarSucursal(pDatosSucursal) {
         dataType: 'json',
         async:false,
         data:{
-            'id' : pDatosSucursal[0],
-            'numero' : pDatosSucursal[1],
-            'nombre' : pDatosSucursal[2],
-            'tel' : pDatosSucursal[3],
-            'activo' : pDatosSucursal[4]
+
+            'numero' : pDatosSucursal[0],
+            'nombre' : pDatosSucursal[1],
+            'tel' : pDatosSucursal[2],
+            'activo' : pDatosSucursal[3]
         }
     });
 

@@ -6,15 +6,18 @@ mostrarListas();
 function mostrarListas() {
     //!!
     let listarSucursales = obtenerSucursal();
-    console.log(listarSucursales);
+    // console.log(listarSucursales);
     let tbody = document.querySelector('#tblListaSucursal tbody');
     let sfiltro = document.querySelector('#txtFiltro').value;
+    
+   
 
     tbody.innerHTML = '';
 
     for (let i = 0; i < listarSucursales.length; i++) {
+        let numero = listarSucursales[i]['numero'];
         if(listarSucursales[i]['activo'] == '1') {
-        if (listarSucursales[i]['numero'].includes(sfiltro) || listarSucursales[i]['nombre'].toLowerCase().includes(sfiltro)) {
+        if (numero.toString().includes(sfiltro) || listarSucursales[i]['nombre'].toLowerCase().includes(sfiltro)) {
             let fila = tbody.insertRow(); // CREA FILAS
 
 
@@ -37,6 +40,7 @@ function mostrarListas() {
             botonDesactivar.classList.add("fas", "fa-times"); //inserta el elemento icono
             botonDesactivar.dataset.indice = i;
             botonDesactivar.addEventListener('click', eliminar);
+            
 
             let elementa = document.createElement('a');
             elementa.setAttribute("href", "modificar_sucursales.html");
@@ -87,7 +91,7 @@ function eliminar() {
                   listarSucursales[id]['activo'] = '0'
               }
               else {listarSucursales[id]['activo'] = '1'}
-              actualizarSucursal(listarSucursales[id]);
+              actualizarSucursal(listarSucursales);
               mostrarListas();
           }
       })
