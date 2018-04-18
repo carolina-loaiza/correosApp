@@ -5,12 +5,10 @@ mostrarListas();
 
 function mostrarListas() {
     //!!
-    let listarSucursales = obtenerSucursal();
+    let listarSucursales = obtenerListaSucursal();
     // console.log(listarSucursales);
     let tbody = document.querySelector('#tblListaSucursal tbody');
-    let sfiltro = document.querySelector('#txtFiltro').value;
-    
-   
+    let sfiltro = document.querySelector('#txtFiltro').value;   
 
     tbody.innerHTML = '';
 
@@ -65,8 +63,8 @@ function mostrarListas() {
 
 
 function redirect() {
-    let sNombre = this.dataset.sucursal;
-    setTemp(sNombre);
+    let sucursal = this.dataset.sucursal;
+    setTemp(sucursal);
 }
 
 function eliminar() {

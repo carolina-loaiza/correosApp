@@ -1,3 +1,15 @@
+function setTemp(numero) {
+    localStorage.setItem('tempSucursal', numero);
+}
+
+function getTemp() {
+    return localStorage.getItem('tempSucursal');
+}
+
+function removeTemp() {
+    localStorage.removeItem('tempSucursal');
+}
+
 function guardarSucursal(pDatosSucursal) {
     let peticion = $.ajax({
         //los urls tiene que llamarse igual que la ruta en el archivo route
@@ -23,7 +35,7 @@ function guardarSucursal(pDatosSucursal) {
     });
 }
 //corregir!!!
-function obtenerSucursal() {
+function obtenerListaSucursal(numero) {
     let listaSucursales = [];
     let peticion = $.ajax({
         //los urls tiene que llamarse igual que la ruta en el archivo route
@@ -32,9 +44,7 @@ function obtenerSucursal() {
         contentType: 'application/x-www-form-urlencoded; charset=utf-8',
         dataType: 'json',
         async:false,
-        data:{
-            
-        }
+        data:{}
     });
 
     peticion.done(function(response) {
@@ -72,44 +82,6 @@ function buscarSucursalPorId(pid) {
     return sucursal;
 }
 
-
-
-
-
-
-// function buscarSucursal(pNombre) {
-//     let listaSucursales = obtenerDatoLocal('RegistroLS');
-//     let sucursalEncontrada = [];
-//     for (let i = 0; i < listaSucursales.length; i++) {
-//         if (pNombre == listaSucursales[i][0]) {
-//             sucursalEncontrada = listaSucursales[i];
-//         }
-//     }
-//     return sucursalEncontrada;
-// }
-
-
-
-
-
-
-function setTemp(data) {
-    localStorage.setItem('tempLs', JSON.stringify(data));
-}
-
-
-function getTemp() {
-    return JSON.parse(localStorage.getItem('tempLs'));
-}
-
-
-
-function removeTemp() {
-    localStorage.removeItem('tempLs');
-}
-
-
-
 function actualizarSucursal(pDatosSucursal) {
     let peticion = $.ajax({
         url: 'http://localhost:4000/api/actualizar_sucursal',
@@ -118,7 +90,6 @@ function actualizarSucursal(pDatosSucursal) {
         dataType: 'json',
         async:false,
         data:{
-
             'numero' : pDatosSucursal[0],
             'nombre' : pDatosSucursal[1],
             'tel' : pDatosSucursal[2],

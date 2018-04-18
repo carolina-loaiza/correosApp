@@ -4,8 +4,7 @@
    
 
 
-    function obtenerSucursal()
-    {
+    function obtenerSucursal() {
         let sNumero=getTemp();
         let infoRepartidor=buscarSucursalPorId(sNumero);
         console.log(infoRepartidor);
@@ -13,8 +12,6 @@
         document.querySelector('#numSucursal').value=infoRepartidor['numero'];
         document.querySelector('#txtDireccion').value=infoRepartidor['nombre'];
         document.querySelector('#txtTelefono').value=infoRepartidor['tel'];
-        
-      
     }
     
     let botonActualizar=document.querySelector('#btnGuardar');

@@ -5,7 +5,6 @@ const router = express.Router();
 const sucursales = require('./sucursales.api');
 
 router.param('id', function(req, res, next, id) {
-    console.log(req.body)
     req.body.id = id;
     next();
 });
