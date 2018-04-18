@@ -46,15 +46,15 @@
           <div class="col6 colWithPaddingRight">
             <div class="inputContainer">
               <label for="numeroTracking">Número de tracking</label>
-              <input class="input" type="number" name="text" id="numeroTracking" required>
+              <input class="input" type="number" name="text" data-tipo-input="numero" data-cantidad="9" id="numeroTracking" required>
             </div>
             <div class="inputContainer">
               <label for="peso">Peso (kg)</label>
-              <input class="input" type="number" name="peso" id="peso" required>
+              <input class="input" type="number" name="peso" id="peso" data-tipo-input="numero" required>
             </div>
             <div class="inputContainer">
               <label for="precioInicial">Precio (colones)</label>
-              <input class="input" type="number" name="precioInicial" id="precioInicial" required>
+              <input class="input" type="number" name="precioInicial" id="precioInicial" data-tipo-input="numero" required>
             </div>
             <div class="inputContainer">
               <label for="opSucursal">Sucursal</label>
@@ -102,6 +102,9 @@
   </div>
 
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="../Tarifas/tarifas.service.js"></script>
+  <script src="../tiposArticulos/tiposArticulo.service.js"></script>
   <script src="../js/localStorage.servicio.js"></script>
   <script src="../js/servicios.js"></script>
   <script src="../js/menuOpciones.js"></script>

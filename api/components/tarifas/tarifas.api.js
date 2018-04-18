@@ -34,7 +34,6 @@ module.exports.find = function(req, res) {
 };
 
 module.exports.actualizar = function(req, res) {
-  console.log(req.body);
   TarifasModel.findByIdAndUpdate(req.body._id, { $set: req.body }, function(err, dato) {
     if (err || !dato) {
       res.json(400, { success: false, msg: 'No se ha actualizado.'});
