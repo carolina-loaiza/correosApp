@@ -10,6 +10,7 @@ function obtenerConvenio(){
     }
     else {
         let aNuevoConvenio = [];
+        let aNuevoConvenio2 = [];
         let valido = true;
         let convenioId = Math.random().toString(36).substring(8);
         let activo = '1';
@@ -18,8 +19,10 @@ function obtenerConvenio(){
         let descripcion = document.querySelector('#txtDescripcion').value;
 
         aNuevoConvenio.push(convenioId, nombre, descripcion, activo);
+        aNuevoConvenio2.push(nombre, descripcion, activo);
         guardarDatoLocal('listaConveniosLS', aNuevoConvenio); 
 
+        guardarConvenio(aNuevoConvenio2);
         limpiar();
 
         mostrarMensajeModal('registro exitoso');
