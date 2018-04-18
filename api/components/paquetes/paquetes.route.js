@@ -8,7 +8,12 @@ router.param('id', function(req, res, next, id) {
   next();
 });
 
-router.route('/user_by_email')
+router.route('/get_all_paquetes')
+  .get(function (req, res) {
+    paquetes.listarTodos(req, res);
+});
+
+router.route('/paquetes_by_email')
   .post(function(req, res){
     paquetes.findByEmail(req, res);
 });

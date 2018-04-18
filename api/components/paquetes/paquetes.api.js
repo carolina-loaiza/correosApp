@@ -29,6 +29,7 @@ module.exports.registrar = function(req, res) {
 };
 
 module.exports.findByEmail = function(req, res) {
+  console.log(req.body);
   PaqueteModel.find({'usuario': req.body.usuario}, function(err, paquete) {
     if (err || paquete === null) {
       res.json(404, { success: false, msg: 'No se ha encontrado.'});
@@ -38,8 +39,15 @@ module.exports.findByEmail = function(req, res) {
   });
 };
 
+module.exports.listarTodos = function(req, res) {
+  PaqueteModel.find().then(function(paquetes) {
+    res.send({ success: true, data: paquetes });
+  });
+};
+
+
 module.exports.actualizar = function(req, res) {
-  PaqueteModel.findOneAndUpdate({"usuario": req.body.usuario}, { $set: req.body }, function(err, paquete) {
+  PaqueteModel.findOneAndUpdate({"numero_tracking": req.body.numero_tracking}, { $set: req.body }, function(err, paquete) {
     if (err) {
       res.json(400, { success: false, msg: 'No se ha actualizado.'});
     } else {

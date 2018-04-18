@@ -13,7 +13,8 @@ let PaqueteSchema = new mongoose.Schema({
   precio_final: {type: Number, required : true},
   usuario: {type: String, required : true},
   tarjeta: {type: String, required : true},
-  estado: {type: String, required : true}
+  estado: {type: String, required : true},
+  repartidor: {type: String}
 });
 
 module.exports = mongoose.model('Paquete', PaqueteSchema);

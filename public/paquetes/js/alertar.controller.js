@@ -77,8 +77,33 @@
       paquete.push(numeroTracking, peso, courier, sucursal, sucursalPeso, sucursalKilo, categoriaUsuario, categoriaImpuesto[2],
         precioInicial, 0, usuarioEmail, tarjeta, estadoInicial);
  
-      //guardarDatoLocal('listaPaquetes', paquete);
+      guardarPaquetesDB(paquete);
       mostrarMensajeModal('registro exitoso');
+      document.getElementById('formAlertarPaquete').reset();
     }
+  }
+
+
+  function guardarPaquetesDB(datos){
+    let mensaje = false;
+  
+    let peticion = $.ajax({
+      url: 'http://localhost:4000/api/save_paquete',
+      type: 'post',
+      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+      dataType : 'json',
+      async: false,
+      data: {data: JSON.stringify(datos)} 
+    });
+   
+    peticion.done(function(response){
+      mensaje = 'Se registró con éxito';
+    });
+  
+    peticion.fail(function(){
+      mensaje = false;
+    });
+  
+    return mensaje;
   }
 })();

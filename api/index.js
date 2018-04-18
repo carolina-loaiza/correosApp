@@ -44,6 +44,9 @@ app.use('/api', tiposArticulos);
 const tarifas = require('./components/tarifas/tarifas.route');
 app.use('/api', tarifas);
 
+const paquetes = require('./components/paquetes/paquetes.route');
+app.use('/api', paquetes);
+
 module.exports = app;
 
 function _server(){
