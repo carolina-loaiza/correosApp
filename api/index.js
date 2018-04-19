@@ -50,6 +50,15 @@ app.use('/api', paquetes);
 const emails = require('./components/email/email.route');
 app.use('/api', emails);
 
+const convenios = require('./components/convenios/convenios.route');
+app.use('/api', convenios);
+
+const sucursales = require('./components/sucursales/sucursales.route');
+app.use('/api', sucursales);
+
+const tarjetas = require('./components/tarjetas/tarjetas.route');
+app.use('/api', tarjetas);
+
 module.exports = app;
 
 function _server(){

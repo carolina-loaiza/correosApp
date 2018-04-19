@@ -1,20 +1,17 @@
 
     obtenerSucursal();
 
-    let sNombre=getTemp();
-        let infoRepartidor=buscarSucursal(sNombre);
+   
 
 
-    function obtenerSucursal()
-    {
-        let sNombre=getTemp();
-        let infoRepartidor=buscarSucursal(sNombre);
+    function obtenerSucursal() {
+        let sNumero=getTemp();
+        let infoRepartidor=buscarSucursalPorId(sNumero);
+        console.log(infoRepartidor);
         
-        document.querySelector('#txtSucursal').value=infoRepartidor[0];
-        document.querySelector('#txtDireccion').value=infoRepartidor[1];
-        document.querySelector('#txtTelefono').value=infoRepartidor[2];
-        
-      
+        document.querySelector('#numSucursal').value=infoRepartidor['numero'];
+        document.querySelector('#txtDireccion').value=infoRepartidor['nombre'];
+        document.querySelector('#txtTelefono').value=infoRepartidor['tel'];
     }
     
     let botonActualizar=document.querySelector('#btnGuardar');
@@ -25,7 +22,7 @@
             let aSucursales = [];
             let valido = true;
     
-            let inputSucursal = document.querySelector('#txtSucursal');
+            let inputSucursal = document.querySelector('#numSucursal');
             let sSucursal = inputSucursal.value;
     
             let inputDireccion = document.querySelector('#txtDireccion');
@@ -39,7 +36,7 @@
     
     
             aSucursales.push(sSucursal, sDireccion, sTelefono, activo);
-            actualizarListaSucursales(aSucursales);
+            actualizarSucursal(aSucursales);
             removeTemp();
             window.location.href = 'listar_sucursal.html';
         }

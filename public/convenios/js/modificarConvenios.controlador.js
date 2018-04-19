@@ -4,30 +4,25 @@ botonActualizar.addEventListener('click',obtenerActualizar);
 obtenerConvenio();
 
 function obtenerConvenio(){
-    let sNombre=getTemp();
-    let infoConvenio=buscarConvenio(sNombre);
+    let _Id=getTemp();
+    let infoConvenio=buscarConvenio(_Id);
 
     console.log(infoConvenio);
     
-    document.querySelector('#txtNombre').value=infoConvenio[1];
-    document.querySelector('#txtDescripcion').value=infoConvenio[2];
+    document.querySelector('#txtNombre').value=infoConvenio['nombre'];
+    document.querySelector('#txtDescripcion').value=infoConvenio['descripcion'];
 }
-
-
 
 function obtenerActualizar() {
         
-        let aNuevoConvenio = [];
-
         let id = getTemp();
         let nombre = document.querySelector('#txtNombre').value;
         let descripcion = document.querySelector('#txtDescripcion').value;
         let activo = '1';
 
-        aNuevoConvenio.push(id, nombre, descripcion, activo);
-        actualizarListaConvenios(aNuevoConvenio);
+        let aNuevoConvenio = [id, nombre, descripcion, activo];
+        actualizarConvenio(aNuevoConvenio);
         removeTemp();
         window.location.href = 'ListarConvenios.html'
 
     }
-
