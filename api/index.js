@@ -41,6 +41,9 @@ app.use('/api', login);
 const sucursales = require('./components/sucursales/sucursales.route');
 app.use('/api', sucursales);
 
+const tarjetas = require('./components/tarjetas/tarjetas.route');
+app.use('/api', tarjetas);
+
 module.exports = app;
 
 function _server(){

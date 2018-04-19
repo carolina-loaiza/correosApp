@@ -83,6 +83,7 @@ function buscarSucursalPorId(pid) {
 }
 
 function actualizarSucursal(pDatosSucursal) {
+    console.log(pDatosSucursal);
     let peticion = $.ajax({
         url: 'http://localhost:4000/api/actualizar_sucursal',
         type: 'put',
@@ -108,13 +109,3 @@ function actualizarSucursal(pDatosSucursal) {
 
 
 
-// function actualizarListaSucursales(pSucursal) {
-//     let listaSucursales = obtenerDatoLocal('RegistroLS');
-//     for (let i = 0; i < listaSucursales.length; i++) {
-//         if (pSucursal[0] == listaSucursales[i][0]) {
-//             listaSucursales[i] = pSucursal;
-
-//         }
-//     }
-//     localStorage.setItem('RegistroLS', JSON.stringify(listaSucursales));
-// }
