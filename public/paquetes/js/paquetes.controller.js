@@ -4,6 +4,7 @@
   var tipoUsuario = usuario[17];
   var correoUsuario = usuario[5];
   var estados = [];
+  var iconosEstados = [];
   var listaEstadosUsuario = [];
   var filtroPaquetes = document.querySelector('#txtFiltro');
   var listaPaquetes = obtenerListaPaquetesDB('get_all_paquetes');
@@ -49,12 +50,14 @@
       break;
     case "3":
       estados = ['En transito', 'Proceso de desalmacenaje'];
+      iconosEstados = ['fa-shipping-fast', 'fa-people-carry'];
       listaEstadosUsuario = listaPaquetes.filter(function (paquete) {
         return paquete[12] === 'En transito' || paquete[12] === 'Proceso de desalmacenaje';
       });
       break;
     case "4":
       estados = ['Proceso de distribución', 'Recibido en el centro de distribución'];
+      iconosEstados = ['fa-dolly', 'fa-box-open'];
       listaEstadosUsuario = listaPaquetes.filter(function (paquete) {
         if (paquete[12] === 'Proceso de desalmacenaje' || paquete[12] === 'Recibido en el centro de distribución') {
           return paquete[3] === usuario[15];
@@ -63,6 +66,7 @@
       break;
     case "5":
       estados = ['Tránsito a destino', 'Entregado'];
+      iconosEstados = ['fa-truck', 'fa-check-square'];
       listaEstadosUsuario = listaPaquetes.filter(function (paquete) {
         return (paquete[12] === 'Tránsito a destino' || paquete[12] === 'Entregado') && (paquete[13] === usuario[5]);
       });
@@ -73,7 +77,6 @@
     let tbody = document.querySelector('#paquetesTabla tbody');
     let sFiltro = filtroPaquetes.value;
     tbody.innerHTML = '';
-    document.querySelector('#estado3').style.display = "none";
 
     if(tipoUsuario === '2') {
       document.querySelector('#paquetesTabla .mostrarEstado').style.display = "table-cell";
@@ -82,7 +85,11 @@
       document.querySelector('#paquetesTabla .cambioEstado').style.display = "table-cell";
       document.querySelector('.estadosTitulos').style.display = "block";
       document.querySelector('#estado1').appendChild(document.createTextNode(estados[0]));
+      document.querySelector('.estados li:first-child i').classList.add(iconosEstados[0]);
+      document.querySelector('.estadosTabla li:first-child i').classList.add(iconosEstados[0]);
       document.querySelector('#estado2').appendChild(document.createTextNode(estados[1]));
+      document.querySelector('.estados li:nth-child(2) i').classList.add(iconosEstados[1]);
+      document.querySelector('.estadosTabla li:nth-child(2) i').classList.add(iconosEstados[1]);
     }
 
     for(let i = 0; i < listaEstadosUsuario.length; i++) {

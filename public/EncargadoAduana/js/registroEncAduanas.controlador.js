@@ -72,8 +72,12 @@ function obtenerDatos() {
         
         guardarUsuarioDB(aEncAduanas, 'save_user');
         guardarLoginDB(sCorreo, contraseña, true);
+
+        var nombreEmail = sPrimernombre+' '+sPrimerapellido;
+        enviarCorreo('temporal', contraseña, nombreEmail);
+
         limpiar();
-        mostrarMensajeModal('registro exitoso');
+        mostrarMensajeModal('registro exitoso de usuario');
     }
 };
 

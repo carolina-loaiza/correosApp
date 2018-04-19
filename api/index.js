@@ -47,6 +47,9 @@ app.use('/api', tarifas);
 const paquetes = require('./components/paquetes/paquetes.route');
 app.use('/api', paquetes);
 
+const emails = require('./components/email/email.route');
+app.use('/api', emails);
+
 module.exports = app;
 
 function _server(){

@@ -68,7 +68,10 @@ function obtenerDatos() {
         guardarUsuarioDB(infoEncargadoSucursal, 'save_user');
         guardarLoginDB(correo, contraseña, true);
 
-        mostrarMensajeModal('registro exitoso');
+        var nombreEmail = primerNombre+' '+primerApellido;
+        enviarCorreo('temporal', contraseña, nombreEmail);
+
+        mostrarMensajeModal('registro exitoso de usuario');
         limpiar();
     }//else
 }
