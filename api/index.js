@@ -38,6 +38,9 @@ app.use('/api', usuarios);
 const login = require('./components/login/login.route');
 app.use('/api', login);
 
+const convenios = require('./components/convenios/convenios.route');
+app.use('/api', convenios);
+
 const sucursales = require('./components/sucursales/sucursales.route');
 app.use('/api', sucursales);
 
