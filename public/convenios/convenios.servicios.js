@@ -7,16 +7,15 @@ function setTemp(data){
 function getTemp(){
     return JSON.parse(localStorage.getItem('tempLs'));
 }
-
 function removeTemp(){
    localStorage.removeItem('tempLs');
 }
 
 function buscarConvenio(pId){
-    let listaConvenios=obtenerDatoLocal('listaConveniosLS');
+    let listaConvenios=obtenerConveniosbd();
     let convenioEncontrado=[];
     for(let i=0;i<listaConvenios.length;i++){
-    if(pId == listaConvenios[i][0]){
+    if(pId == listaConvenios[i]['_id']){
         convenioEncontrado=listaConvenios[i];
         break;
     }
@@ -24,18 +23,29 @@ function buscarConvenio(pId){
     return convenioEncontrado;
 }
 
-function actualizarListaConvenios(pinfoConvenios){
-    let listaConvenios=obtenerDatoLocal('listaConveniosLS');
+function actualizarConvenio(pDatosConvenio){
+    let peticion = $.ajax({
+        url: 'http://localhost:4000/api/update_convenios',
+        type: 'put',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async:false,
+        data:{
+            '_id' : pDatosConvenio[0],
+            'nombre' : pDatosConvenio[1],
+            'descripcion' : pDatosConvenio[2],
+            'activo' : pDatosConvenio[3]
+        }
+    });
+
+    peticion.done(function(response){
+        console.log('El convenio se registró con éxito');
+    });
     
-    for(let i=0;i<listaConvenios.length;i++){
-        if(pinfoConvenios[0] == listaConvenios[i][0]){
-            listaConvenios[i]=pinfoConvenios;
-        }//if
-    }//for
-    localStorage.setItem('listaConveniosLS',JSON.stringify(listaConvenios));
+    peticion.fail(function(){
+        console.log('El convenio no se pudo registrar');
+    })
 }
-
-
 
 function guardarConvenio(pDatosConvenio){
 

@@ -21,3 +21,23 @@ module.exports.listarConv = function(req, res){
         res.send(convenios);
     });
 };
+
+module.exports.buscar_convenio_por_id = function(req, res){
+    convenioModel.findById({_id : req.body.id}).then(
+      function(convenio){
+        res.send(convenio);
+      }
+    )
+};
+
+
+module.exports.actualizar_convenio = function(req, res) {
+    convenioModel.findByIdAndUpdate(req.body._id, { $set: req.body }, function(err, user) {
+      if (err) {
+        res.json({ success: false, msg: 'No se ha actualizado.' + handleError(err) });
+  
+      } else {
+        res.json({ success: true, msg: 'Se ha actualizado correctamente.' + res });
+      }
+    });
+  };

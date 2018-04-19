@@ -17,5 +17,14 @@ router.route('/listar_conv')
         convenios.listarConv(req, res);
 });
 
+router.route('/buscar_convenio_id')
+.post(function(req, res){
+  convenios.buscar_convenio_por_id(req, res);
+});
+
+router.route('/update_convenios')
+  .put(function(req, res){
+    convenios.actualizar_convenio(req,res);
+});
 
 module.exports = router;
