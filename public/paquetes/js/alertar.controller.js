@@ -1,7 +1,7 @@
 (function () {
   var listaCouriers = [["12345678","Nombre del courier #1"],["42342421","Nombre del courier #2"],["421431212","Nombre del courier #3"]];
-  var listaTarjetas = [["Nombre titular", "# tarjeta", "23234", "213213", "213123", "test02@gmail.com"], ["Nombre titular", "# tarjeta", "23234", "213213", "213123", "test02@gmail.com"], ["Nombre titular", "# tarjeta", "23234", "213213", "213123", "test02@gmail.com"], ["Nombre titular", "# tarjeta", "23234", "213213", "213123", "test01@gmail.com"]];
   var datosUsuario = obtenerDatoLocal('usuario');
+  var listaTarjetas = buscarTarjetasPorEmail(datosUsuario[5]);
   var listaSucursales = obtenerListaTarifaDB();
   var listaCategorias = obtenerListaTipoArticuloDB();
   var sucursalUsuario = listaSucursales.filter(function(tarifa) {
@@ -36,8 +36,8 @@
   function agregarTarjetas() {
     for(var i = 0; i < listaTarjetas.length; i++) {
       var opcion = document.createElement('option');
-      opcion.value = listaTarjetas[i][1];
-      opcion.innerText = listaTarjetas[i][1];
+      opcion.value = listaTarjetas[i][0];
+      opcion.innerText = listaTarjetas[i][1] + ' - ' + listaTarjetas[i][2];
       document.getElementById('opTarjeta').appendChild(opcion);
     }
   }
@@ -105,5 +105,37 @@
     });
   
     return mensaje;
+  }
+
+  function buscarTarjetasPorEmail(email) {
+    let tarjetas = [];
+    let peticion = $.ajax({
+        url: 'http://localhost:4000/api/buscar_tarjetas_email',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async:false,
+        data: {
+          'correo' : email
+        }
+    });
+
+    peticion.done(function(tarjetasLista) {
+      for(let i = 0; i < tarjetasLista.length; i++){
+        var tarjeta = [];
+        for (var key in tarjetasLista[i]) {
+          if (key != '__v' && key != '_id') {
+            tarjeta.push(tarjetasLista[i][key]);
+          };
+        }
+        tarjetas.push(tarjeta);
+      }
+    });
+
+    peticion.fail(function() {
+      tarjetas = [];
+    });
+
+    return tarjetas;
   }
 })();
