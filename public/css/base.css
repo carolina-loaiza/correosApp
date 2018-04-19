@@ -206,6 +206,11 @@ footer .footerSociaLinks a {
 
 /* Form */
 
+
+input:focus, select:focus, textarea:focus{
+  box-shadow: 0 0 5px #ef5b13;
+  border: 1px solid #ef5b13;
+}
 .inputContainer {
   margin-bottom: 20px;
 }
@@ -215,6 +220,7 @@ footer .footerSociaLinks a {
   border: 1px solid #d5d3d3;
   margin-top: 10px;
 }
+
 
 .inputError {
   border: 1px solid red;
@@ -252,6 +258,7 @@ footer .footerSociaLinks a {
 
 /* Icons */
 
+
 .icon {
   color: #fff;
   font-size: 23px;
@@ -269,6 +276,10 @@ footer .footerSociaLinks a {
   padding: 16px 0;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+}
+
+table .fa-edit {
+  color: black;
 }
 
 /* Icons Fin */
@@ -458,6 +469,7 @@ td {
   background: #f0f0f0;
   border-bottom: 1px solid #fff;
   color: #1e2630;
+  text-align: center;
 }
 
 /* Table Fin */

@@ -33,12 +33,13 @@ obtenerEncargado();
 
 
 function obtenerEncargado() {
-    let sCorreo = getTemp();
-    let infoEncargado = buscarEncargadoPorCorreo(sCorreo);
-
-    if (!sCorreo && obtenerDatoLocal('usuario')) {
-        infoEncargado = obtenerDatoLocal('usuario');
-    }
+    var infoEncargado = [];
+    var tempEncSusursal = localStorage.getItem('tempEncSusursal');
+    if (tempEncSusursal) {
+      infoEncargado = obtenerUsuarioDB(tempEncSusursal);
+    } else {
+      infoEncargado = obtenerDatoLocal('usuario');
+    };
 
     document.querySelector('#txtPrimerNombre').value = infoEncargado[0];
     document.querySelector('#txtSegundoNombre').value = infoEncargado[1];
@@ -54,11 +55,9 @@ function obtenerEncargado() {
     document.querySelector('#opGenero').value = infoEncargado[10];
     document.querySelector('#opSucursal').value = infoEncargado[11];
 
-    urlFotoPerfil = infoEncargado[6];
-
-    if (urlFotoPerfil) {
-        imagePreview.setAttribute("src", urlFotoPerfil);
-        imagePreview.style.display = 'block';
+    if (infoEncargado[6] && infoEncargado[6].includes('cloudinary')) {
+        document.querySelector('#previewFoto').setAttribute("src", infoEncargado[6]);
+        document.querySelector('#previewFoto').style.display = 'block';
     }
 }
 
@@ -70,7 +69,7 @@ function registrarDatosActualizados() {
         mostrarMensajeModal('error formulario');
     }
     else {
-        let infoEncargado = [];
+        let infoEncargadoSucursal = [];
 
         let primerNombre = document.querySelector('#txtPrimerNombre').value;
         let segundoNombre = document.querySelector('#txtSegundoNombre').value;
@@ -78,13 +77,13 @@ function registrarDatosActualizados() {
         let segundoApellido = document.querySelector('#txtSegundoApellido').value;
         let cedula = document.querySelector('#txtId').value;
         let correo = document.querySelector('#txtCorreo').value;
-        let fotoPerfil = urlFotoPerfil
         let telefono_1 = document.querySelector('#txtTel1').value;
         let telefono_2 = document.querySelector('#txtTel2').value;
         let edad = calcularEdad(document.querySelector('#dtFecha').value);
         let fechaNacimiento = document.querySelector('#dtFecha').value;
         let genero = document.querySelector('#opGenero').value;
         let sucursal = document.querySelector('#opSucursal').value;
+        let fotoPerfil = urlFotoPerfil;
         let sTipoUsuario = '4';
         let sActivo = '1';
 
@@ -92,15 +91,23 @@ function registrarDatosActualizados() {
             mostrarMensajeModal('error edad');
             return false;
         }
+        
+        infoEncargadoSucursal.push(primerNombre, segundoNombre, primerApellido, segundoApellido, cedula, correo, fotoPerfil, telefono_1, telefono_2
+        , fechaNacimiento, genero, '', sucursal, sTipoUsuario, sActivo);
 
-        infoEncargado.push(primerNombre, segundoNombre, primerApellido, segundoApellido, cedula, correo, fotoPerfil, telefono_1, telefono_2
-            , fechaNacimiento, genero, sucursal, sTipoUsuario, sActivo);
-        actualizarEncargado(infoEncargado);
-        actualizarListaUsuarios(infoEncargado);
-        removeTemp();
-        window.location.href = 'index_listar.html';
+        var image = document.querySelector('#previewFoto').getAttribute("src");
 
-    }//else
-    
+        if (image) {
+            infoEncargadoSucursal[6] = image;
+        };
+
+        if (!localStorage.getItem('tempEncSusursal')) { 
+            localStorage.setItem('usuario', JSON.stringify(infoEncargadoSucursal));
+        };
+
+        actualizarUsuarioDB(infoEncargadoSucursal, 'update_user');
+        localStorage.removeItem('tempEncSusursal');
+        mostrarMensajeModal('registro exitoso');
+    };
 }
 

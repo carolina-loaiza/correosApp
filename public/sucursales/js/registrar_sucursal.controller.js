@@ -1,4 +1,4 @@
-//////REGISTRAR INTERFAZ
+
 
 document.querySelector('#btnRegistrar').addEventListener('click', registrar);
 
@@ -9,15 +9,16 @@ function registrar() {
     if (error == true) {
         mostrarMensajeModal('error formulario');
     } else {
-        let infoRegistro = [];
+        let infoSucursal = [];
         
         let sSucursal = document.querySelector('#numSucursal').value;
         let sDireccion = document.querySelector('#txtDireccion').value;
         let sTelefono = document.querySelector('#txtTelefono').value;
         let activo = '1';
 
-        infoRegistro.push(sSucursal, sDireccion, sTelefono, activo);
-        guardarDatoLocal('RegistroLS',infoRegistro);
+        infoSucursal.push(sSucursal, sDireccion, sTelefono, activo);
+        guardarSucursal(infoSucursal);
+        // guardarDatoLocal('RegistroLS',infoRegistro);
         limpiar();
 
         mostrarMensajeModal('registro exitoso');

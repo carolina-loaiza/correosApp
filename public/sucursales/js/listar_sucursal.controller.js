@@ -1,18 +1,24 @@
-////INTERFAZ LISTAR
+
 document.querySelector('#txtFiltro').addEventListener('keyup', mostrarListas);
+let listarSucursales = obtenerListaSucursal();
+
 mostrarListas();
 
 
+
 function mostrarListas() {
-    let listarSucursales = obtenerDatoLocal('RegistroLS');
+    //!!
+    
+    // console.log(listarSucursales);
     let tbody = document.querySelector('#tblListaSucursal tbody');
-    let sfiltro = document.querySelector('#txtFiltro').value;
+    let sfiltro = document.querySelector('#txtFiltro').value;   
 
     tbody.innerHTML = '';
 
     for (let i = 0; i < listarSucursales.length; i++) {
-        if(listarSucursales[i][3] == '1') {
-        if (listarSucursales[i][0].toLowerCase().includes(sfiltro) || listarSucursales[i][1].toLowerCase().includes(sfiltro)) {
+        let numero = listarSucursales[i]['numero'];
+        if(listarSucursales[i]['activo'] == '1') {
+        if (numero.toString().includes(sfiltro) || listarSucursales[i]['nombre'].toLowerCase().includes(sfiltro)) {
             let fila = tbody.insertRow(); // CREA FILAS
 
 
@@ -22,11 +28,10 @@ function mostrarListas() {
             let sModificar = fila.insertCell();
             let sDesactivar = fila.insertCell();
 
-            sSucursal.appendChild(document.createTextNode(listarSucursales[i][0]));
-            sDireccion.appendChild(document.createTextNode(listarSucursales[i][1]));
-            sTelefono.appendChild(document.createTextNode(listarSucursales[i][2]));
-            //sModificar.appendChild(document.createTextNode(listarSucursales[i][3]));
-            //sDesactivar.appendChild(document.createTextNode(listarSucursales[i][4]));
+            sSucursal.appendChild(document.createTextNode(listarSucursales[i]['numero']));
+            sDireccion.appendChild(document.createTextNode(listarSucursales[i]['nombre']));
+            sTelefono.appendChild(document.createTextNode(listarSucursales[i]['tel']));
+
 
             //BOTONES MODIFICAR Y DESACTIVAR
             //Se definen las variables de los  botones modificar 
@@ -36,12 +41,13 @@ function mostrarListas() {
             botonDesactivar.classList.add("fas", "fa-times"); //inserta el elemento icono
             botonDesactivar.dataset.indice = i;
             botonDesactivar.addEventListener('click', eliminar);
+            
 
             let elementa = document.createElement('a');
             elementa.setAttribute("href", "modificar_sucursales.html");
             elementa.appendChild(botonModificar);
             elementa.addEventListener('click', redirect);
-            elementa.dataset.sucursal = listarSucursales[i][0];
+            elementa.dataset.sucursal = listarSucursales[i]['numero'];
 
             sModificar.appendChild(elementa);
 
@@ -60,12 +66,13 @@ function mostrarListas() {
 
 
 function redirect() {
-    let sNombre = this.dataset.sucursal;
-    setTemp(sNombre);
+    let sucursal = this.dataset.sucursal;
+    setTemp(sucursal);
 }
 
 function eliminar() {
-    var id = this.dataset.indice;
+    let idModificar = this.dataset.indice;
+    let actualizar = [];
     swal({
         title: "¿Está seguro de eliminar la sucursal?",
         text: "Si lo hace, el registro de la misma desaparecerá por completo",
@@ -81,13 +88,16 @@ function eliminar() {
       })
       .then((botonUsuario) => {
           if(botonUsuario === "Eliminar") {
-              let listarSucursales = obtenerDatoLocal('RegistroLS');
-              if(listarSucursales[id][3] == '1') {
-                  listarSucursales[id][3] = '0'
+              //let listarSucursales = obtenerListaSucursal();
+              if(listarSucursales[idModificar]['activo'] == '1') {
+                  listarSucursales[idModificar]['activo'] = '0';
+                //   console.log(listarSucursales[idModificar]);
+                  actualizar.push(listarSucursales[idModificar]['numero'], listarSucursales[idModificar]['nombre'], listarSucursales[idModificar]['tel'], listarSucursales[idModificar]['activo']);
+                  actualizarSucursal(actualizar);
+                  mostrarListas();
               }
-              else {listarSucursales[id][3] = '1'}
-              actualizarListaSucursales(listarSucursales[id]);
-              mostrarListas();
+              
+             
           }
       })
 
