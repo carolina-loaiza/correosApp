@@ -1,96 +1,109 @@
+let listaRepartidores = obtenerListaDB('all_users_by_type?type=5');
+let listaPaquetes = obtenerListaPaquetesDB('Recibido en el centro de distribución');
+let usuario = obtenerDatoLocal('usuario');
 
-guardarDatoLocal('listaRepartidoresLS', ["Marta","","Castro","","213123123","marta@correos.cr","123123123","",26,"masculino","Sucursal #2",false,"5","1"]);
-    document.querySelector('#btnGuardar').addEventListener('click', asignarDatos);
-    if (document.querySelector('.headerSesion button')) {
-        document.querySelector('.headerSesion button').addEventListener('click', cerrarSesion);
-    
-    
-        function cerrarSesion() {
-            swal({
-              title: "¿Está seguro de que desea cerrar sesión?",
-              icon: "warning",
-              buttons: {
-                catch: {
-                  text: "Cerrar sesión",
-                  value: "Cerrar sesión",
-                  className: "button"
-                },
-                cancel: "Cancelar",
-              },
-            }).then((botonUsuario) => {
-              if (botonUsuario === 'Cerrar sesión') {
-                localStorage.removeItem('usuario');
-                window.location.href = '../iniciarSesion/index.html';
-              }
-            });
-          }}
+document.getElementById('guardarRepartidor').addEventListener('click', cambiarEstado);
 
-    //asignarDatos();
-    function asignarDatos(){
-        let berror=validar();
-        if (berror == true) {
-            swal({
-                title: "Ocurrió un error",
-                text: "Faltan los datos de los campos resaltados",
-                icon: "error",
-                button: "Ok",
-                //Mensaje de error
-            });
-        }
-        else {
-
-        let listaRepartidores= obtenerDatoLocal('listaRepartidoresLS')
-        let listaPaquetes= obtenerDatoLocal('listaPaquetes');
-        let infoPaquetes=[];
-        let paquete = document.querySelector('#sltPaquete').value;
-        let repartidor = document.querySelector('#sltRepartidor').value;
-
-        for(i=0;i<listaPaquetes.length;i++){
-            if (listaPaquetes[i][0] === paquete) {
-                listaPaquetes[i].push(repartidor);
-                listaPaquetes[i][9] = 'Tránsito a destino';
-            }
-        }
-
-        localStorage.setItem('listaPaquetes', JSON.stringify(listaPaquetes));
-    }}
-
-
-
-        function agregarPaquetes(){
-            let listaPaquetes= obtenerDatoLocal('listaPaquetes');
-            for(let i=0;i<listaPaquetes.length;i++){
-                let opcion=document.createElement('option');
-                opcion.value=listaPaquetes[i][0]; //revisar la posicion en la fila
-                opcion.innerText= listaPaquetes[i][0];
-                document.getElementById('sltPaquete').appendChild(opcion);
-            }
-        }
-        function agregarRepartidores(){
-            let listaRepartidores=obtenerDatoLocal('listaRepartidoresLS')
-            console.log(listaRepartidores);
-            for(let i=0;i<listaRepartidores.length;i++){
-                let opcion=document.createElement('option');
-                opcion.value=listaRepartidores[i][5]; //revisar la posicion en la fila
-                opcion.innerText=listaRepartidores[i][5];
-                document.getElementById('sltRepartidor').appendChild(opcion);
-            }
-        }
-
-agregarPaquetes();
 agregarRepartidores();
+agregarPaquetes();
 
-function validar() {
-    let aInputs = document.querySelectorAll(':required');
-    let berror = false;
+function obtenerListaPaquetesDB(estado){
+    let paquetes = [];
 
-    for (let i = 0; i < aInputs.length; i++) {
-        if (aInputs[i].value === '') {
-            berror = true;
-            aInputs[i].classList.add('input_error');
+    let peticion = $.ajax({
+      url: 'http://localhost:4000/api/get_all_paquetes',
+      type: 'get',
+      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+      dataType : 'json',
+      async:false,
+      data: {}
+    });
+  
+    peticion.done(function(paquetesInfo){
+      for(let i = 0; i < paquetesInfo.data.length; i++){
+        var paquete = [];
+        for (var key in paquetesInfo.data[i]) {
+          if (key != '__v' && key != '_id') {
+            paquete.push(paquetesInfo.data[i][key]);
+          };
         }
-        else { aInputs[i].classList.remove('input_error'); }
+
+        if (paquete[12] === estado && paquete[3] === usuario[15]) {
+            paquetes.push(paquete);
+        }
+      }
+    });
+  
+    peticion.fail(function(){
+      paquetes = [];
+      console.log('Ocurrió un error');
+    });
+  
+    return paquetes;
+};
 
 
-    } return berror;
+function agregarRepartidores() {
+    for(let i = 0; i < listaRepartidores.length; i++) {
+        let opcion = document.createElement('option');
+        opcion.value = listaRepartidores[i][5];
+        opcion.innerText = listaRepartidores[i][1] + ' ' + listaRepartidores[i][3];
+        document.getElementById('sltRepartidor').appendChild(opcion);
+    }
+};
+
+function agregarPaquetes() {
+    for(let i = 0; i < listaPaquetes.length; i++) {
+        let opcion = document.createElement('option');
+        opcion.value = listaPaquetes[i][0];
+        opcion.innerText = listaPaquetes[i][0];
+        document.getElementById('sltPaquete').appendChild(opcion);
+    }
+};
+
+function cambiarEstado() {
+    var idPaquete = document.getElementById('sltPaquete').value;
+    var newRepartidor = document.getElementById('sltRepartidor').value;
+    var newEstado = 'Tránsito a destino';
+
+    $.ajax({
+      url: 'http://localhost:4000/api/update_paquete',
+      type: 'put',
+      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+      dataType : 'json',
+      async: false,
+      data: {
+        numero_tracking: idPaquete,
+        estado: newEstado,
+        repartidor: newRepartidor
+      }
+    });
 }
+
+function mostrarTabla() {
+    let listaPaquetes1 = obtenerListaPaquetesDB('Tránsito a destino');
+    let listaPaquetes2 = obtenerListaPaquetesDB('Entregado');
+
+    let listaPaquetes = listaPaquetes1.concat(listaPaquetes2); 
+    let tbody = document.querySelector('#paquetesListaTabla tbody');
+
+    listaPaquetes.forEach(paquete => {
+        let fila = tbody.insertRow();
+        let number = fila.insertCell();
+        let repartidor = fila.insertCell();
+        let repartidorEmail = fila.insertCell();
+        let estado = fila.insertCell();
+        let repartidorUsuario = listaRepartidores.find(function(repartidor) {
+            return repartidor[5] === paquete[13];
+        })
+
+        number.appendChild(document.createTextNode(paquete[0]));
+        repartidor.appendChild(document.createTextNode(repartidorUsuario[0]+' '+repartidorUsuario[2]));
+        repartidorEmail.appendChild(document.createTextNode(paquete[13]));
+        estado.appendChild(document.createTextNode(paquete[12]));
+    });
+}
+
+mostrarTabla();
+
+

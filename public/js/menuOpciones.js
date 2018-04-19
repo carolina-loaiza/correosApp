@@ -135,8 +135,8 @@
 
     if (paginaActual.includes('Otros registros')){
       document.querySelector('#menuOpciones li:nth-child(3) .linkTexto').classList.add('activo');
-      subMenuTexto = ['Sucursal', 'Convenio', 'Ruta'];
-      subMenuLinks = ['../sucursales/registrar_sucursal.html', '../convenios/registrarConvenios.html', '../rutas_reparto/registrar.html'];
+      subMenuTexto = ['Sucursal', 'Convenio', 'Ruta', 'Tarifas', 'Tipos de artículos'];
+      subMenuLinks = ['../sucursales/registrar_sucursal.html', '../convenios/registrarConvenios.html', '../rutas_reparto/registrar.html', '../Tarifas/index_registrar.html', '../tiposArticulos/registrar_tiposArticulo.html'];
     }
 
     if (paginaActual.includes('Listar usuarios')){
@@ -147,8 +147,8 @@
 
     if (paginaActual.includes('Otros listados')){
       document.querySelector('#menuOpciones li:nth-child(5) .linkTexto').classList.add('activo');
-      subMenuTexto = ['Sucursales', 'Convenios', 'Rutas'];
-      subMenuLinks = ['../sucursales/listar_Sucursal.html', '../convenios/ListarConvenios.html', '../rutas_reparto/listado.html'];
+      subMenuTexto = ['Sucursales', 'Convenios', 'Rutas', 'Tarifas', 'Tipos de artículos'];
+      subMenuLinks = ['../sucursales/listar_Sucursal.html', '../convenios/ListarConvenios.html', '../rutas_reparto/listado.html', '../Tarifas/index_listar.html', '../tiposArticulos/listar_tiposArticulo.html'];
     }
 
     for (let i = 0; i < subMenuLinks.length; i++) {

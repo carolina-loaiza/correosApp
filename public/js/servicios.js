@@ -52,7 +52,7 @@ function validarRegistroDoble(correo) {
   };
 };
 
-function mostrarMensajeModal(tipoMensaje, contraseñaTemporal) {
+function mostrarMensajeModal(tipoMensaje) {
   switch (tipoMensaje) {
     case 'error formulario':
       swal({
@@ -90,7 +90,7 @@ function mostrarMensajeModal(tipoMensaje, contraseñaTemporal) {
     case 'registro exitoso de usuario':
       swal({
         title: "Información registrada correctamente",
-        text: "Se ha enviado una contraseña temporal al correo electrónico registrado. Contraseña temporal: "+contraseñaTemporal,
+        text: "Se ha enviado una contraseña temporal al correo electrónico registrado.",
         icon: "success",
         button: {
           text: "OK",
@@ -115,8 +115,8 @@ function esInvalidoInput (input) {
   var esInvalido = false;
   var match = null;
   var maxlength = 1;
-  var matchAlpha = /^[A-z]+$/gi;
-  var matchNumber = /^\d+$/;
+  var matchAlpha = /^[a-zA-ZÀ-ÖØ-öø-ÿ ]+$/gi;
+  var matchNumber = /^[0-9]*(?:\.\d{1,2})?$/;
   var matchPhone = /^[0-9]{4}[-\s][0-9]{4}$/;
   var matchEmail = /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})/;
   var matchComment = /^[a-zA-Z0-9!?@#$%\^&*\s)(+=._-]*$/gi;
@@ -143,9 +143,11 @@ function esInvalidoInput (input) {
   if (tipoInput === 'numero') {
     maxlength = input.dataset.cantidad;
 
-    if ((valorInput.length + '') != maxlength) {
-      return true;
-    };
+    if (maxlength) {
+      if ((valorInput.length + '') != maxlength) {
+        return true;
+      };
+    }
 
     match = matchNumber;
   }
@@ -353,4 +355,34 @@ function actualizarUsuarioDB(datos, ruta){
   });
 
   return esValido;
+};
+
+
+function enviarCorreo(type, contraseña, nombre){
+  let data = {};
+  let mensaje = '';
+  
+  if (type === 'temporal') {
+    data.nombre = nombre;
+    data.temporal = contraseña;
+  };
+
+  let peticion = $.ajax({
+    url: 'http://localhost:4000/api/send_email',
+    type: 'post',
+    contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+    dataType : 'json',
+    async: false,
+    data: data
+  });
+ 
+  peticion.done(function(response){
+    mensaje = 'Se registró con éxito';
+  });
+
+  peticion.fail(function(){
+    mensaje = false;
+  });
+
+  return mensaje;
 };

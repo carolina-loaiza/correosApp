@@ -1,39 +1,74 @@
 (function () {
 
-
-  var listaPaquetes = obtenerDatoLocal('listaPaquetes');
   var usuario = obtenerDatoLocal('usuario');
-  var tipoUsuario = usuario[12];
+  var tipoUsuario = usuario[17];
   var correoUsuario = usuario[5];
   var estados = [];
+  var iconosEstados = [];
   var listaEstadosUsuario = [];
-  let filtroPaquetes = document.querySelector('#txtFiltro');
+  var filtroPaquetes = document.querySelector('#txtFiltro');
+  var listaPaquetes = obtenerListaPaquetesDB('get_all_paquetes');
   filtroPaquetes.addEventListener('keyup', mostrarListaPaquetes);
+
+  function obtenerListaPaquetesDB(ruta, esCliente){
+    let paquetes = [];
+    var typeAjax = esCliente ? 'post' : 'get';
+    var datosCliente = esCliente ? { usuario : correoUsuario } : {};
+
+    let peticion = $.ajax({
+      url: 'http://localhost:4000/api/'+ruta,
+      type: typeAjax,
+      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+      dataType : 'json',
+      async:false,
+      data: datosCliente
+    });
+  
+    peticion.done(function(paquetesInfo){
+      for(let i = 0; i < paquetesInfo.data.length; i++){
+        var paquete = [];
+        for (var key in paquetesInfo.data[i]) {
+          if (key != '__v' && key != '_id') {
+            paquete.push(paquetesInfo.data[i][key]);
+          };
+        }
+        paquetes.push(paquete);
+      }
+    });
+  
+    peticion.fail(function(){
+      paquetes = [];
+      console.log('Ocurrió un error');
+    });
+  
+    return paquetes;
+  };
   
   switch (tipoUsuario) {
     case "2":
-      listaEstadosUsuario = listaPaquetes.filter(function (paquete) {
-        return correoUsuario === paquete[8];
-      });
+      listaEstadosUsuario = obtenerListaPaquetesDB('paquetes_by_email', true);
       break;
     case "3":
       estados = ['En transito', 'Proceso de desalmacenaje'];
+      iconosEstados = ['fa-shipping-fast', 'fa-people-carry'];
       listaEstadosUsuario = listaPaquetes.filter(function (paquete) {
-        return paquete[9] === 'En transito' || paquete[9] === 'Proceso de desalmacenaje';
+        return paquete[12] === 'En transito' || paquete[12] === 'Proceso de desalmacenaje';
       });
       break;
     case "4":
-      estados = ['Proceso de distribución', 'Recibido en el centro de distribución', 'Tránsito a destino'];
+      estados = ['Proceso de distribución', 'Recibido en el centro de distribución'];
+      iconosEstados = ['fa-dolly', 'fa-box-open'];
       listaEstadosUsuario = listaPaquetes.filter(function (paquete) {
-        if (paquete[9] === 'Proceso de desalmacenaje' || paquete[9] === 'Recibido en el centro de distribución' || paquete[9] === 'Tránsito a destino') {
-          return paquete[3] === usuario[10];
+        if (paquete[12] === 'Proceso de desalmacenaje' || paquete[12] === 'Recibido en el centro de distribución') {
+          return paquete[3] === usuario[15];
         }
       });
       break;
     case "5":
       estados = ['Tránsito a destino', 'Entregado'];
+      iconosEstados = ['fa-truck', 'fa-check-square'];
       listaEstadosUsuario = listaPaquetes.filter(function (paquete) {
-        return (paquete[9] === 'Tránsito a destino' || paquete[9] === 'Entregado') && (paquete[10] === usuario[5]);
+        return (paquete[12] === 'Tránsito a destino' || paquete[12] === 'Entregado') && (paquete[13] === usuario[5]);
       });
       break;
   }
@@ -42,30 +77,26 @@
     let tbody = document.querySelector('#paquetesTabla tbody');
     let sFiltro = filtroPaquetes.value;
     tbody.innerHTML = '';
-    document.querySelector('#estado3').style.display = "none";
 
-    if(usuario[12] === '2') {
+    if(tipoUsuario === '2') {
       document.querySelector('#paquetesTabla .mostrarEstado').style.display = "table-cell";
     } else {
       document.querySelector('#paquetesTabla .mostrarIDCliente').style.display = "table-cell";
       document.querySelector('#paquetesTabla .cambioEstado').style.display = "table-cell";
       document.querySelector('.estadosTitulos').style.display = "block";
       document.querySelector('#estado1').appendChild(document.createTextNode(estados[0]));
+      document.querySelector('.estados li:first-child i').classList.add(iconosEstados[0]);
+      document.querySelector('.estadosTabla li:first-child i').classList.add(iconosEstados[0]);
       document.querySelector('#estado2').appendChild(document.createTextNode(estados[1]));
-    }
-
-    if (usuario[12] === '4') {
-      document.querySelector('#paquetesTabla .estadoSucursal').style.display = "table-cell";
-      document.querySelector('#estado3').style.display = "block";
-      document.querySelector('#estado3').appendChild(document.createTextNode(estados[2]));
+      document.querySelector('.estados li:nth-child(2) i').classList.add(iconosEstados[1]);
+      document.querySelector('.estadosTabla li:nth-child(2) i').classList.add(iconosEstados[1]);
     }
 
     for(let i = 0; i < listaEstadosUsuario.length; i++) {
-        console.log(listaEstadosUsuario);
-        if(listaEstadosUsuario[i][0].toLowerCase().includes(sFiltro) || listaEstadosUsuario[i][2].toLowerCase().includes(sFiltro) || listaEstadosUsuario[i][5].toLowerCase().includes(sFiltro)) {
+        if(listaEstadosUsuario[i][0].toLowerCase().includes(sFiltro) || listaEstadosUsuario[i][2].toLowerCase().includes(sFiltro) || listaEstadosUsuario[i][6].toLowerCase().includes(sFiltro)) {
           let fila = tbody.insertRow();
           
-          if(usuario[12] != '2') {
+          if(tipoUsuario != '2') {
             let clienteID = fila.insertCell();
             clienteID.appendChild(document.createTextNode(listaEstadosUsuario[i][8]));
           }
@@ -74,22 +105,22 @@
           let categoria = fila.insertCell();
           let peso = fila.insertCell();
 
-          if(usuario[12] === '2') {
+          if(tipoUsuario === '2') {
             let estadoCliente = fila.insertCell();
-            estadoCliente.appendChild(document.createTextNode(listaEstadosUsuario[i][9]));
+            estadoCliente.appendChild(document.createTextNode(listaEstadosUsuario[i][12]));
           }
 
-          if(usuario[12] != '2') {
+          if(tipoUsuario != '2') {
             let estadoSwitch = fila.insertCell();
-            estadoSwitch.appendChild(crearEstadoSwitch(listaEstadosUsuario[i][0], listaEstadosUsuario[i][9]));
+            estadoSwitch.appendChild(crearEstadoSwitch(listaEstadosUsuario[i][0], listaEstadosUsuario[i][12]));
           }
 
           numeroTracking.appendChild(document.createTextNode(listaEstadosUsuario[i][0]));
           courier.appendChild(document.createTextNode(listaEstadosUsuario[i][2]));
-          categoria.appendChild(document.createTextNode(listaEstadosUsuario[i][4]));
+          categoria.appendChild(document.createTextNode(listaEstadosUsuario[i][6]));
           peso.appendChild(document.createTextNode(listaEstadosUsuario[i][1]));
 
-          if (usuario[12] === '4') {
+          if (tipoUsuario === '4') {
             let estadoSucursal = fila.insertCell();
             let estadoSucursalTexto = listaEstadosUsuario[i][10] ? listaEstadosUsuario[i][10] : '';
             estadoSucursal.appendChild(document.createTextNode(estadoSucursalTexto));
@@ -111,7 +142,8 @@
 
     if (estado === estados[1]) {
       inputCheck.setAttribute('checked', 'checked');
-    }
+    };
+    
     inputCheck.classList.add('onoffswitch-checkbox');
     inputCheck.dataset.paquete = idPaquete;
     inputCheck.addEventListener('change', cambiarEstado);
@@ -136,20 +168,30 @@
   }
 
   function cambiarEstado() {
-    if(this.checked) {
-      var idPaquete = this.dataset.paquete
-      var listaPaquetesActuales = obtenerDatoLocal('listaPaquetes');
-      for(var i = 0; i < listaPaquetesActuales.length; i++) {
-        if(listaPaquetesActuales[i][0] === idPaquete) {
-          listaPaquetesActuales[i][9] = estados[1];
-        }
-      }
-      localStorage.setItem('listaPaquetes', JSON.stringify(listaPaquetesActuales));
+    var idPaquete = this.dataset.paquete;
+    var newEstado = '';
 
-      if (estados[1] === "Entregado") {
-        mostrarFactura();
+    if(this.checked) {
+      newEstado = estados[1];
+    } else {
+      newEstado = estados[0];
+    }
+
+    $.ajax({
+      url: 'http://localhost:4000/api/update_paquete',
+      type: 'put',
+      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+      dataType : 'json',
+      async: false,
+      data: {
+        numero_tracking: idPaquete,
+        estado: newEstado
       }
-    };
+    });
+
+    /* if (estados[1] === "Entregado") {
+      mostrarFactura();
+    } */
   }
 
   function mostrarFactura() {

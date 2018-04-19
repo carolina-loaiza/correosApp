@@ -1,46 +1,9 @@
-.buttonContainer{
-    margin-top: 25px;
-    text-align: center;
+.colButton {
+  align-items: center;
+  display: flex;
 }
 
-  .asignar{
-    display: inline-block;
-  }
- .tblbase{  
-    max-width: 200px;
-    margin-top: 20px;
-    border-collapse: collapse;
- }
- .tblbase  th{
-   text-align: center;
-   font-size: 13px;
-   font-weight: normal;
-   padding: 12px;
-   background-color: rgb(95,179,62);
-   color:white;
- }
-
- .tblbase td{
-   
-   padding: 11px;
-   background: #e8edff;
-   border-bottom: 1px solid #fff;
-   color: #1e2630;
-   border-top: 1px solid transparent;
- }
-
-
-
-
- .tblbase tr{
-   padding: 15px;
-
- }
- .tblbase tr:hover td{
-   background:#d0dafd;
-   color:#339;
-
- }
- .input_error{
-  border:1px solid red;
+.filtro {
+  width: 95%;
+  display: inline-block;
 }

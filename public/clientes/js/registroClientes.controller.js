@@ -85,10 +85,13 @@
         guardarUsuarioDB(infoCliente, 'save_user');
         guardarLoginDB(correo, contraseña, true);
 
+        var nombreEmail = primerNombre+' '+primerApellido;
+        enviarCorreo('temporal', contraseña, nombreEmail);
+
         if (obtenerDatoLocal('usuario')) {
           mostrarMensajeModal('registro exitoso');
         } else {
-          mostrarMensajeModal('registro exitoso de usuario', contraseña);
+          mostrarMensajeModal('registro exitoso de usuario');
         }
       }
       document.getElementById('formRegistroClientes').reset();

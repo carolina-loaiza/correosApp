@@ -86,8 +86,12 @@ function obtenerDatos() {
         sTelefono1, sTelefono2, sFechanacimiento, sGenero, '', sSucursal, sTipoUsuario, sActivo);
         guardarUsuarioDB(aRepartidores, 'save_user');
         guardarLoginDB(sCorreo, contraseña, true);
+
+        var nombreEmail = sPrimernombre+' '+sPrimerapellido;
+        enviarCorreo('temporal', contraseña, nombreEmail);
+
         limpiar();
-        mostrarMensajeModal('registro exitoso');
+        mostrarMensajeModal('registro exitoso de usuario');
     
     }
 }

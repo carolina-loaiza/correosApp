@@ -2,13 +2,11 @@
 obtenerTipoArticulo();
 
 function obtenerTipoArticulo() {
-    let sNombre = getTemp();
-    let infoArticulo = buscarTipo(sNombre);
+    let tempArticulo = localStorage.getItem('tempArticulo');
+    let infoArticulo = obtenerTipoArticuloDB(tempArticulo);
 
     document.querySelector('#txtCategoria').value = infoArticulo[1];
     document.querySelector('#txtImpuestos').value = infoArticulo[2];
-
-
 }
 
 let botonActualizar = document.querySelector('#btnGuardar');
@@ -24,7 +22,7 @@ function obtenerActualizar() {
 
         let aArticulos = [];
 
-        let id = getTemp();
+        let _id = localStorage.getItem('tempArticulo');
 
         let inputCategoria = document.querySelector('#txtCategoria');
         let sCategoria = inputCategoria.value;
@@ -33,13 +31,11 @@ function obtenerActualizar() {
         let sImpuestos = inputImpuestos.value;
 
         let sActivo = '1';
-        
 
-
-        aArticulos.push(id, sCategoria, sImpuestos, sActivo);
+        aArticulos.push(_id, sCategoria, sImpuestos, sActivo);
         
-        actualizarListaArticulos(aArticulos);
-        removeTemp();
+        actualizarTipoArticuloDB(aArticulos);
+        localStorage.removeItem('tempArticulo');
         window.location.href = 'listar_tiposArticulo.html';
     }
 }

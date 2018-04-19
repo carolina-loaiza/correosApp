@@ -1,12 +1,15 @@
 (function () {
   var listaCouriers = [["12345678","Nombre del courier #1"],["42342421","Nombre del courier #2"],["421431212","Nombre del courier #3"]];
-  var listaSucursales = [["Sucursal #1","Direccion Sucursal #1","312423423", "200", "200"],["Sucursal #2","Direccion Sucursal #2","453453455", "200", "200"],["Sucursal #3","Direccion Sucursal #3","564334535", "200", "200"]];
-  var listaCategorias = [["tp08","COSMETICOS","29.95","1"],["j1va","DESODORANTES","21.95","1"],["vg12j","EQUIPO DE SONIDO","49.27","1"],["1wg7","IPHONE","13","1"]];
   var listaTarjetas = [["Nombre titular", "# tarjeta", "23234", "213213", "213123", "test02@gmail.com"], ["Nombre titular", "# tarjeta", "23234", "213213", "213123", "test02@gmail.com"], ["Nombre titular", "# tarjeta", "23234", "213213", "213123", "test02@gmail.com"], ["Nombre titular", "# tarjeta", "23234", "213213", "213123", "test01@gmail.com"]];
+  var datosUsuario = obtenerDatoLocal('usuario');
+  var listaSucursales = obtenerListaTarifaDB();
+  var listaCategorias = obtenerListaTipoArticuloDB();
+  var sucursalUsuario = listaSucursales.filter(function(tarifa) {
+    return tarifa[2] === datosUsuario[15];
+  })[0];
+
   var alertarPaquete = document.querySelector('#alertarPaquete');
   alertarPaquete.addEventListener('click', registrarPaquete);
-
-  //var listaSucursales = obtenerDatoLocal('RegistroLS');
 
   function agregarCouriers() {
     for(var i = 0; i < listaCouriers.length; i++) {
@@ -18,12 +21,7 @@
   }
 
   function agregarSucursales() {
-    for(var i = 0; i < listaSucursales.length; i++) {
-      var opcion = document.createElement('option');
-      opcion.value = listaSucursales[i][0];
-      opcion.innerText = listaSucursales[i][0];
-      document.getElementById('opSucursal').appendChild(opcion);
-    }
+    document.getElementById('sucursal').value = datosUsuario[15];
   }
 
   function agregarCategorias() {
@@ -61,19 +59,51 @@
       var paquete = [];
 
       var numeroTracking = document.querySelector('#numeroTracking').value;
-      var peso = document.querySelector('#peso').value;
+      var peso = parseInt(document.querySelector('#peso').value);
       var courier = document.querySelector('#opCourier').value;
-      var sucursal = document.querySelector('#opSucursal').value;
-      var categoria = document.querySelector('#opCategoria').value;
-      var tarjeta = document.querySelector('#opTarjeta').value;
-      var precioInicial = document.querySelector('#precioInicial').value;
-      var precioFinal = precioInicial;
-      var usuarioEmail = obtenerDatoLocal('usuario');
-      var estadoInicial = 'En transito'; 
+      var sucursal = document.querySelector('#sucursal').value;
+      var sucursalPeso = sucursalUsuario[1];
+      var sucursalKilo = sucursalUsuario[3];
+      var categoriaUsuario = document.querySelector('#opCategoria').value;
+      var categoriaImpuesto = listaCategorias.filter(function(categoria) {
+        return categoria[1] === categoriaUsuario;
+      })[0];
 
-      paquete.push(numeroTracking, peso, courier, sucursal, categoria, tarjeta, precioInicial, precioFinal, usuarioEmail[5], estadoInicial);
-      guardarDatoLocal('listaPaquetes', paquete);
+      var precioInicial = parseInt(document.querySelector('#precioInicial').value);
+      var usuarioEmail = datosUsuario[5];
+      var tarjeta = document.querySelector('#opTarjeta').value;
+      var estadoInicial = 'En transito';
+
+      paquete.push(numeroTracking, peso, courier, sucursal, sucursalPeso, sucursalKilo, categoriaUsuario, categoriaImpuesto[2],
+        precioInicial, 0, usuarioEmail, tarjeta, estadoInicial);
+ 
+      guardarPaquetesDB(paquete);
       mostrarMensajeModal('registro exitoso');
+      document.getElementById('formAlertarPaquete').reset();
     }
+  }
+
+
+  function guardarPaquetesDB(datos){
+    let mensaje = false;
+  
+    let peticion = $.ajax({
+      url: 'http://localhost:4000/api/save_paquete',
+      type: 'post',
+      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+      dataType : 'json',
+      async: false,
+      data: {data: JSON.stringify(datos)} 
+    });
+   
+    peticion.done(function(response){
+      mensaje = 'Se registró con éxito';
+    });
+  
+    peticion.fail(function(){
+      mensaje = false;
+    });
+  
+    return mensaje;
   }
 })();

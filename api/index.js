@@ -38,6 +38,18 @@ app.use('/api', usuarios);
 const login = require('./components/login/login.route');
 app.use('/api', login);
 
+const tiposArticulos = require('./components/tiposArticulos/tiposArticulos.route');
+app.use('/api', tiposArticulos);
+
+const tarifas = require('./components/tarifas/tarifas.route');
+app.use('/api', tarifas);
+
+const paquetes = require('./components/paquetes/paquetes.route');
+app.use('/api', paquetes);
+
+const emails = require('./components/email/email.route');
+app.use('/api', emails);
+
 const convenios = require('./components/convenios/convenios.route');
 app.use('/api', convenios);
 

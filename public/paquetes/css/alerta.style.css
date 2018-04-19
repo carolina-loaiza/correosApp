@@ -10,6 +10,12 @@
   display: inline-block;
 }
 
+.estados li i {
+  font-size: 25px;
+  margin-right: 5px;
+  color: #000;
+}
+
 .estados li img {
   width: 30px;
   vertical-align: middle;
@@ -68,7 +74,8 @@
 .onoffswitch-inner:before {
   content: "";
   padding-left: 10px;
-  background-color: #5FB33E; color: #FFFFFF;
+  background-color: #4170a3;
+  color: #FFFFFF;
 }
 .onoffswitch-inner:after {
   content: "";
@@ -80,7 +87,7 @@
   display: block; width: 34px; margin: 4.5px;
   background: #FFFFFF;
   position: absolute; top: 0; bottom: 0;
-  right: 74%;
+  right: 64%;
   border: 2px solid #FFFFFF; border-radius: 50px;
   transition: all 0.3s ease-in 0s; 
 }

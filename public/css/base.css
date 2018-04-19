@@ -194,6 +194,12 @@ footer .footerSociaLinks a {
   width: 50%;
 }
 
+.col3 {
+  -webkit-flex: auto;
+  flex: auto;
+  width: 35%;
+}
+
 .colWithPaddingLeft {
   padding-left: 10px;
 }
