@@ -1,11 +1,14 @@
 
 document.querySelector('#txtFiltro').addEventListener('keyup', mostrarListas);
+let listarSucursales = obtenerListaSucursal();
+
 mostrarListas();
+
 
 
 function mostrarListas() {
     //!!
-    let listarSucursales = obtenerListaSucursal();
+    
     // console.log(listarSucursales);
     let tbody = document.querySelector('#tblListaSucursal tbody');
     let sfiltro = document.querySelector('#txtFiltro').value;   
@@ -68,7 +71,8 @@ function redirect() {
 }
 
 function eliminar() {
-    var id = this.dataset.indice;
+    let idModificar = this.dataset.indice;
+    let actualizar = [];
     swal({
         title: "¿Está seguro de eliminar la sucursal?",
         text: "Si lo hace, el registro de la misma desaparecerá por completo",
@@ -84,13 +88,16 @@ function eliminar() {
       })
       .then((botonUsuario) => {
           if(botonUsuario === "Eliminar") {
-              let listarSucursales = obtenerSucursal();
-              if(listarSucursales[id]['activo'] == '1') {
-                  listarSucursales[id]['activo'] = '0'
+              //let listarSucursales = obtenerListaSucursal();
+              if(listarSucursales[idModificar]['activo'] == '1') {
+                  listarSucursales[idModificar]['activo'] = '0';
+                //   console.log(listarSucursales[idModificar]);
+                  actualizar.push(listarSucursales[idModificar]['numero'], listarSucursales[idModificar]['nombre'], listarSucursales[idModificar]['tel'], listarSucursales[idModificar]['activo']);
+                  actualizarSucursal(actualizar);
+                  mostrarListas();
               }
-              else {listarSucursales[id]['activo'] = '1'}
-              actualizarSucursal(listarSucursales);
-              mostrarListas();
+              
+             
           }
       })
 
