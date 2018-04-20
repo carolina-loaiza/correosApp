@@ -131,7 +131,7 @@ module.exports.actualizar = function(req, res) {
 };
 
 module.exports.eliminar=function(req, res){
-  UserModel.findOneAndUpdate({'correo_electronico' : req.body.correo_electronico} {$set req.body}).then(
+  UserModel.findOneAndUpdate({'correo_electronico' : req.body.correo_electronico}, {$set: req.body}).then(
   function(usuario, err){
     console.log(err, usuario);
     if(err || usuario == null){
