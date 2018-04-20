@@ -1,5 +1,7 @@
 (function () {
+  //Tiene que jalar couriers
   var listaCouriers = [["12345678","Nombre del courier #1"],["42342421","Nombre del courier #2"],["421431212","Nombre del courier #3"]];
+  //Tiene que jalar tarjetas (me parece que tarjetas no tiene un registro local).
   var listaTarjetas = [["Nombre titular", "# tarjeta", "23234", "213213", "213123", "test02@gmail.com"], ["Nombre titular", "# tarjeta", "23234", "213213", "213123", "test02@gmail.com"], ["Nombre titular", "# tarjeta", "23234", "213213", "213123", "test02@gmail.com"], ["Nombre titular", "# tarjeta", "23234", "213213", "213123", "test01@gmail.com"]];
   var datosUsuario = obtenerDatoLocal('usuario');
   var listaSucursales = obtenerListaTarifaDB();

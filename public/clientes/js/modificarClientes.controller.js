@@ -1,6 +1,18 @@
 (function () {
   document.querySelector('#desactivarCuenta').addEventListener('click', desactivarCuenta);
 
+  function agregarSucursales() {
+    let lista = obtenerDatoLocal('RegistroLS');
+    for(let i = 0; i < lista.length; i++) {
+        let opcion = document.createElement('option');
+        opcion.value = lista[i][0];
+        opcion.innerText = lista[i][0];
+        document.getElementById('opSucursal').appendChild(opcion);
+    }
+}
+
+agregarSucursales();
+
   function mostarDatosUsuarios() {
     var datosUsuario = [];
     var tempCliente = localStorage.getItem('tempCliente');
@@ -21,10 +33,11 @@
     document.querySelector('.formRegistroClientes input[name="telefono2"').value = datosUsuario[8]
     document.querySelector('.formRegistroClientes input[name="fechaNacimiento"').value = datosUsuario[9]
     document.querySelector('.formRegistroClientes select[name="genero"').value = datosUsuario[10]
-    document.querySelector('.formRegistroClientes input[name="provincia"').value = datosUsuario[11]
-    document.querySelector('.formRegistroClientes input[name="canton"').value = datosUsuario[12]
-    document.querySelector('.formRegistroClientes input[name="distrito"').value = datosUsuario[13]
-    document.querySelector('.formRegistroClientes textarea[name="direccion"').value = datosUsuario[14]
+    document.querySelector('.formRegistroClientes textarea[name="direccion"').value = datosUsuario[11]
+    document.querySelector('.formRegistroClientes input[name="provincia"').value = datosUsuario[12]
+    document.querySelector('.formRegistroClientes input[name="canton"').value = datosUsuario[13]
+    document.querySelector('.formRegistroClientes input[name="distrito"').value = datosUsuario[14]
+    document.querySelector('.formRegistroClientes input[name="sucursal"').value = datosUsuario[15]
 
     if (datosUsuario[6] && datosUsuario[6].includes('cloudinary')) {
       document.querySelector('#previewFoto').setAttribute("src", datosUsuario[6]);
