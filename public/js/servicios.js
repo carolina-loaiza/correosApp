@@ -357,14 +357,17 @@ function actualizarUsuarioDB(datos, ruta){
   return esValido;
 };
 
-
-function enviarCorreo(type, contraseña, nombre){
+function enviarCorreo(type, contraseña, nombre, factura){
   let data = {};
   let mensaje = '';
   
   if (type === 'temporal') {
     data.nombre = nombre;
     data.temporal = contraseña;
+  };
+
+  if (type === 'factura') {
+    data = factura;
   };
 
   let peticion = $.ajax({

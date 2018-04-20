@@ -1,7 +1,14 @@
 
 var listaClientes = obtenerListaDB('all_users_by_type?type=2');
-
+var usuario = obtenerDatoLocal('usuario');
 document.querySelector('#txtFiltro').addEventListener('keyup', mostrarClientes);
+
+
+if (usuario[17] === '4') {
+    listaClientes = listaClientes.filter(function (cliente) {
+        return cliente[15] === usuario[15];
+    });
+};
 
 function mostrarClientes() {
     let tbody = document.querySelector('#tblClientes tbody');
