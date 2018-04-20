@@ -36,6 +36,7 @@
     
     
             aSucursales.push(sSucursal, sDireccion, sTelefono, activo);
+            guardarDatoLocal('RegistroLS', aSucursales);
             actualizarSucursal(aSucursales);
             removeTemp();
             window.location.href = 'listar_sucursal.html';
