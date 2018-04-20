@@ -386,3 +386,26 @@ function enviarCorreo(type, contraseña, nombre){
 
   return mensaje;
 };
+
+
+function actualizarUsuario(correo){
+  let peticion = $.ajax({
+    url: 'http://localhost:4000/api/delete_user',
+    type: 'put',
+    contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+    dataType: 'json',
+    async:false,
+    data:{
+        'activo' : '0',
+        'correo_electronico' : correo
+    }
+});
+
+peticion.done(function(response){
+    console.log('El convenio se registró con éxito');
+});
+
+peticion.fail(function(){
+    console.log('El convenio no se pudo registrar');
+})
+};

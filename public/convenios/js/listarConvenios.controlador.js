@@ -74,7 +74,6 @@ function eliminar() {
       .then((botonUsuario) => {
           if(botonUsuario === "Eliminar") {
               let listaConvenios = obtenerConveniosbd();
-            //   console.log(listaConvenios[id]);
               if(listaConvenios[id]['activo'] == '1') {
                   listaConvenios[id]['activo'] = '0';
 
@@ -83,7 +82,6 @@ function eliminar() {
                   actualizarConvenio(pajita);
                 mostrarConvenios2();
               }
-              
           }
       })
 }

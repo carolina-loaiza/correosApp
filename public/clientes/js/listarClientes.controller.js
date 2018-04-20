@@ -45,7 +45,7 @@ function mostrarClientes() {
                 let botonDesactivar = document.createElement('i');
                 botonDesactivar.classList.add("fas", "fa-times");
                 botonDesactivar.dataset.correo = listaClientes[i][5];
-                botonDesactivar.addEventListener('click', eliminar);
+                botonDesactivar.addEventListener('click', eliminarCliente);
                 cDesactivar.appendChild(botonDesactivar);
             }
         }
@@ -59,8 +59,9 @@ function redirect() {
     localStorage.setItem('tempCliente', sCorreo);
 }
 
-function eliminar() {
+function eliminarCliente1() {
     let correo = this.dataset.correo;
+    var userEliminar = [];
     swal({
         title: "¿Está seguro de desactivar al cliente?",
         text: "Si lo hace, el registro del cliente desaparecerá por completo",
@@ -76,14 +77,42 @@ function eliminar() {
     })
     .then((botonUsuario) => {
         if (botonUsuario === "Eliminar") {
-            let listaClientes = obtenerDatoLocal('listaUsuarios');
-            for (let i = 0; i < listaClientes.length; i++) {
-                console.log(listaClientes[i][5], correo);
-                if (listaClientes[i][5] === correo) {
-                    listaClientes[i][13] = '0';
-                }
-            }
-            localStorage.setItem('listaUsuarios', JSON.stringify(listaClientes));
+            let listaClientes = obtenerUsuarioDB();
+
+                if (listaClientes[i]['correo'] === correo) {
+                    listaClientes[i]['activo'] = '0';
+
+            userEliminar.push(listaClientes[id]['_id'], 
+            listaClientes[id]['primerNombre'], listaClientes[id]['segundoNombre'], listaClientes[id]['primerApellido'], listaClientes[id]['segundoApellido'], listaClientes[id]['cedula'], listaClientes[id]['correo'], listaClientes[id]['fotoPerfil'], listaClientes[id]['telefono_1'], listaClientes[id]['telefono_2'], listaClientes[id]['fecha_nacimiento'], listaClientes[id]['genero'], listaClientes[id]['direccion'], listaClientes[id]['provincia'], listaClientes[id]['canton'], listaClientes[id]['distrito'], listaClientes[id]['sucursal'], listaClientes[id]['tipoUsuario'], listaClientes[id]['activo']);
+
+            actualizarCliente(correo, activo);
+            mostrarClientes();
+        }
+    })
+}
+
+
+function eliminarCliente(){
+    let correo = this.dataset.correo;
+    var userEliminar = [];
+    swal({
+        title: "¿Está seguro de desactivar al cliente?",
+        text: "Si lo hace, el registro del cliente desaparecerá por completo",
+        icon: "warning",
+        buttons: {
+            catch: {
+                text: 'Eliminar',
+                value: 'Eliminar',
+                className: 'button',
+            },
+            cancel: 'Cancelar'
+        },
+    })
+    .then((botonUsuario) => {
+        if (botonUsuario === "Eliminar") {
+            let listaClientes = obtenerUsuarioDB();
+
+            actualizarCliente(correo);
             mostrarClientes();
         }
     })

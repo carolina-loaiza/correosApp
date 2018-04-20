@@ -28,4 +28,9 @@ router.route('/update_user')
     users.actualizar(req, res);
 });
 
+router.route('/delete_user')
+  .put(function(req, res){
+    users.eliminar(req, res);
+});
+
 module.exports = router;

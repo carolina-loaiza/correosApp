@@ -129,3 +129,15 @@ module.exports.actualizar = function(req, res) {
     }
   });
 };
+
+module.exports.eliminar=function(req, res){
+  UserModel.findOneAndUpdate({'correo_electronico' : req.body.correo_electronico} {$set req.body}).then(
+  function(usuario, err){
+    console.log(err, usuario);
+    if(err || usuario == null){
+      res.json({success: false, msg: 'No se ha actualizado el usuario debido al siguiente error: ' + error})
+    }else{
+      res.json({success: true, msg: 'El usuario se ha actualizado éxitosamente '});
+    }
+  });
+};
