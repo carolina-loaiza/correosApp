@@ -15,11 +15,11 @@ document.querySelector('#btnRegistrar').addEventListener('click', obtenerDatos);
     initFotoPerfil();
 
  function agregarSucursales() {
-     let lista = obtenerDatoLocal('RegistroLS');
+     let lista = obtenerListaSucursales();
      for(let i = 0; i < lista.length; i++) {
          let opcion = document.createElement('option');
-         opcion.value = lista[i][0];
-         opcion.innerText = lista[i][0];
+         opcion.value = lista[i][1];
+         opcion.innerText = lista[i][1];
          document.getElementById('opSucursal').appendChild(opcion);
      }
  }

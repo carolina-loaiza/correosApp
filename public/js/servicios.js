@@ -390,25 +390,50 @@ function enviarCorreo(type, contraseña, nombre, factura){
   return mensaje;
 };
 
-
 function actualizarUsuario(correo){
-  let peticion = $.ajax({
-    url: 'http://localhost:4000/api/delete_user',
-    type: 'put',
-    contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-    dataType: 'json',
-    async:false,
-    data:{
-        'activo' : '0',
-        'correo_electronico' : correo
-    }
-});
+    let peticion = $.ajax({
+      url: 'http://localhost:4000/api/delete_user',
+      type: 'put',
+      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+      dataType: 'json',
+      async:false,
+      data:{
+          'activo' : '0',
+          'correo_electronico' : correo
+      }
+  });
 
-peticion.done(function(response){
-    console.log('El convenio se registró con éxito');
-});
+  peticion.done(function(response){
+      console.log('El convenio se registró con éxito');
+  });
 
-peticion.fail(function(){
-    console.log('El convenio no se pudo registrar');
-})
+  peticion.fail(function(){
+      console.log('El convenio no se pudo registrar');
+  })
 };
+
+function obtenerListaSucursales() {
+  let listaSucursales = [];
+  let peticion = $.ajax({
+      url: 'http://localhost:4000/api/listar_todas_sucursales',
+      type: 'get',
+      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+      dataType: 'json',
+      async:false,
+      data:{}
+  });
+
+  peticion.done(function(response) {
+    for(let i = 0; i < response.length; i++){
+      var sucursal = [];
+      for (var key in response[i]) {
+        if (key != '__v' && key != '_id') {
+          sucursal.push(response[i][key]);
+        };
+      }
+      listaSucursales.push(sucursal);
+    }
+  });
+
+  return listaSucursales;
+}

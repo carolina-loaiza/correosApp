@@ -1,6 +1,5 @@
 (function () {
-  //Tiene que jalar couriers
-  var listaCouriers = [["12345678","Nombre del courier #1"],["42342421","Nombre del courier #2"],["421431212","Nombre del courier #3"]];
+  var listaCouriers = obtenerListaCourier();
   var datosUsuario = obtenerDatoLocal('usuario');
   var listaTarjetas = buscarTarjetasPorEmail(datosUsuario[5]);
   var listaSucursales = obtenerListaTarifaDB();
@@ -15,8 +14,8 @@
   function agregarCouriers() {
     for(var i = 0; i < listaCouriers.length; i++) {
       var opcion = document.createElement('option');
-      opcion.value = listaCouriers[i][1];
-      opcion.innerText = listaCouriers[i][1];
+      opcion.value = listaCouriers[i]['nombre'];
+      opcion.innerText = listaCouriers[i]['nombre'];
       document.getElementById('opCourier').appendChild(opcion);
     }
   }
@@ -138,5 +137,27 @@
     });
 
     return tarjetas;
+  }
+
+  function obtenerListaCourier() {
+    let listaCouriers = [];
+    let peticion = $.ajax({
+        url: 'http://localhost:4000/api/listar_todos_couriers',
+        type: 'get',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async:false,
+        data:{}
+    });
+
+    peticion.done(function(response) {
+      listaCouriers = response;
+    });
+
+    peticion.fail(function() {
+        
+    });
+
+    return listaCouriers;
   }
 })();
