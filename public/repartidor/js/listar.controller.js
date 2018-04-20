@@ -1,9 +1,8 @@
-
 let listaRepartidores = obtenerListaDB('all_users_by_type?type=5');
-var usuario = obtenerDatoLocal('usuario');
+// var usuario = obtenerDatoLocal('usuario');
 document.querySelector('#txtFiltro').addEventListener('keyup',mostrarRepartidores);
-
-if (usuario[17] === '4') {
+mostrarRepartidores();
+if (usuario[17] === '5') {
     listaRepartidores = listaRepartidores.filter(function (cliente) {
         return cliente[15] === usuario[15];
     });
@@ -37,7 +36,7 @@ function mostrarRepartidores() {
             cSucursal.appendChild(document.createTextNode(listaRepartidores[i][11]));
 
             var estado = 'Activo';
-            if (listaRepartidores[i][13] === '0') {
+            if (listaRepartidores[i][18] == '0') {
                 estado = 'Inactivo';
             }
             cEstado.appendChild(document.createTextNode(estado));
@@ -54,7 +53,7 @@ function mostrarRepartidores() {
 
             let botonDesactivar = document.createElement('i');
             botonDesactivar.classList.add("far","fa-dot-circle");
-            botonDesactivar.dataset.indice = i;
+            botonDesactivar.dataset.correo = listaRepartidores[i][5];
             botonDesactivar.addEventListener('click',desactivar);
             cDesactivar.appendChild(botonDesactivar);
         }
@@ -67,16 +66,30 @@ function redirect(){
 }
 
 function desactivar(){
-    let listaRepartidores= obtenerDatoLocal('listaRepartidoresLS');
-    if(listaRepartidores[this.dataset.indice][13]=='1'){
-        listaRepartidores[this.dataset.indice][13]='0'
-    }
-    else {
-        listaRepartidores[this.dataset.indice][13]='1'
-    };
-    actualizarListaRepartidores(listaRepartidores[this.dataset.indice]);
-    mostrarRepartidores();
-}
+    let correo = this.dataset.correo;
+    var userEliminar = [];
+    swal({
+        title: "¿Está seguro de desactivar al repartidor?",
+        text: "Si lo hace, el registro del repartidor no podrá ser utilizado",
+        icon: "warning",
+        buttons: {
+            catch: {
+                text: 'Eliminar',
+                value: 'Eliminar',
+                className: 'button',
+            },
+            cancel: 'Cancelar'
+        },
+    })
+    .then((botonUsuario) => {
+        if (botonUsuario === "Eliminar") {
+            let listaClientes = obtenerUsuarioDB(correo);
+
+            actualizarUsuario(correo);
+        }
+        mostrarRepartidores();
+    });
+};
 
 
 

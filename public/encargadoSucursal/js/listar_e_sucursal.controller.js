@@ -47,7 +47,7 @@ function mostrarEncargados() {
                 
                 let botonDesactivar = document.createElement('i');
                 botonDesactivar.classList.add("fas", "fa-times");
-                botonDesactivar.dataset.indice = i;
+                botonDesactivar.dataset.correo = listaEncargados[i][5];
                 botonDesactivar.addEventListener('click', eliminar);
                 cDesactivar.appendChild(botonDesactivar);
             }
@@ -55,13 +55,13 @@ function mostrarEncargados() {
     }//if estado
 }
 
-function redirect() {
+function redirect() { 
     let sCorreo = this.dataset.correo; 
     localStorage.setItem('tempEncSusursal', sCorreo);
 }
 
 function eliminar() {
-    let id = this.dataset.indice;
+    let correo = this.dataset.correo;
     swal({
         title: "¿Está seguro de eliminar al encargado?",
         text: "Si lo hace, el registro del encargado desaparecerá por completo",
@@ -76,20 +76,14 @@ function eliminar() {
         },
       })
       .then((botonUsuario) => {
-          if(botonUsuario === "Eliminar") {
-              let listaEncargados = obtenerDatoLocal('listaEncargadosLS');
-              console.log(listaEncargados[id]);
-              if(listaEncargados[id][14] == '1') {
-                  listaEncargados[id][14] = '0'
-              }
-              else {listaEncargados[id][14] = '1'}
-              actualizarEncargado(listaEncargados[id]);
-              mostrarEncargados();
-          }
-      })
+        if (botonUsuario === "Eliminar") {
+            let listaClientes = obtenerUsuarioDB(correo);
 
-
-}
+            actualizarUsuario(correo);
+        }
+        mostrarEncargados();
+    });
+};
 
 
 
