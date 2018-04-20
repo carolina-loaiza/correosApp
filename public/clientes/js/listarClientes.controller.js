@@ -45,7 +45,7 @@ function mostrarClientes() {
                 let botonDesactivar = document.createElement('i');
                 botonDesactivar.classList.add("fas", "fa-times");
                 botonDesactivar.dataset.correo = listaClientes[i][5];
-                botonDesactivar.addEventListener('click', eliminar);
+                botonDesactivar.addEventListener('click', eliminarCliente);
                 cDesactivar.appendChild(botonDesactivar);
             }
         }
@@ -59,8 +59,9 @@ function redirect() {
     localStorage.setItem('tempCliente', sCorreo);
 }
 
-function eliminar() {
+function eliminarCliente(){
     let correo = this.dataset.correo;
+    var userEliminar = [];
     swal({
         title: "¿Está seguro de desactivar al cliente?",
         text: "Si lo hace, el registro del cliente desaparecerá por completo",
@@ -76,15 +77,10 @@ function eliminar() {
     })
     .then((botonUsuario) => {
         if (botonUsuario === "Eliminar") {
-            let listaClientes = obtenerDatoLocal('listaUsuarios');
-            for (let i = 0; i < listaClientes.length; i++) {
-                console.log(listaClientes[i][5], correo);
-                if (listaClientes[i][5] === correo) {
-                    listaClientes[i][13] = '0';
-                }
-            }
-            localStorage.setItem('listaUsuarios', JSON.stringify(listaClientes));
-            mostrarClientes();
+            let listaClientes = obtenerUsuarioDB(correo);
+
+            actualizarUsuario(correo);
         }
-    })
-}
+        mostrarClientes();
+    });
+};
