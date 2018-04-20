@@ -5,11 +5,11 @@ obtenerCourier();
 
 function obtenerCourier() {
     let sCourier = getTemp();
-    let infoCourier = buscarCourierPorNombre(sCourier);
+    let infoCourier = buscarCourierPorId(sCourier);
 
-    document.querySelector('#numCourier').value = infoCourier[0];
+    document.querySelector('#numCourier').value = infoCourier['numero'];
     document.querySelector('#numCourier').disabled = true;    
-    document.querySelector('#txtNombre').value = infoCourier[1];
+    document.querySelector('#txtNombre').value = infoCourier['nombre'];
 }
 
 function registrarDatosActualizados() {
@@ -18,10 +18,10 @@ function registrarDatosActualizados() {
     let numero = document.querySelector('#numCourier').value;
 
     let nombre = document.querySelector('#txtNombre').value;
-    let sActivo = 1;
+    let activo = '1';
 
-    courier.push(numero, nombre, sActivo);
+    courier.push(numero, nombre, activo);
     actualizarCourier(courier);
     removeTemp();
-    window.location.href = 'index.html';
+    window.location.href = 'listar_courier.html';
 }

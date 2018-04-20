@@ -34,7 +34,7 @@ function guardarSucursal(pDatosSucursal) {
 
     });
 }
-//corregir!!!
+
 function obtenerListaSucursal(numero) {
     let listaSucursales = [];
     let peticion = $.ajax({
