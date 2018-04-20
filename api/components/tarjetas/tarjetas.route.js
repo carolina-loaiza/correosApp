@@ -24,6 +24,11 @@ router.route('/buscar_tarjeta_id')
         tarjetas.buscar_tarjeta_por_id(req, res);
     });
 
+router.route('/buscar_tarjetas_email')
+    .post(function(req, res){
+        tarjetas.buscar_tarjetas_por_email(req, res);
+    });
+
 router.route('/actualizar_tarjeta')
     .put(function(req, res){
         tarjetas.actualizar_tarjeta(req, res);

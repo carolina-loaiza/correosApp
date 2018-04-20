@@ -14,7 +14,8 @@ let PaqueteSchema = new mongoose.Schema({
   usuario: {type: String, required : true},
   tarjeta: {type: String, required : true},
   estado: {type: String, required : true},
-  repartidor: {type: String}
+  repartidor: {type: String},
+  distancia_kilometro: {type: Number}
 });
 
 module.exports = mongoose.model('Paquete', PaqueteSchema);

@@ -36,6 +36,13 @@ module.exports.buscar_tarjeta_por_id = function(req, res){
         });
 };
 
+module.exports.buscar_tarjetas_por_email = function(req, res){
+    tarjetasModel.find({'correo' : req.body.correo, 'activo': '1'}).then(
+        function(tarjetas){
+            res.send(tarjetas);
+        });
+};
+
 module.exports.actualizar_tarjeta = function(req, res){
     console.log(req.body);
     tarjetasModel.findOneAndUpdate({'id' : req.body.id}, {$set: req.body}).then(

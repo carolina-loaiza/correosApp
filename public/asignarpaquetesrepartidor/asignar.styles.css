@@ -7,3 +7,7 @@
   width: 95%;
   display: inline-block;
 }
+
+.select {
+  padding: 7px 12px;
+}

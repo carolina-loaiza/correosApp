@@ -1,6 +1,13 @@
 
 let listaRepartidores = obtenerListaDB('all_users_by_type?type=5');
+var usuario = obtenerDatoLocal('usuario');
 document.querySelector('#txtFiltro').addEventListener('keyup',mostrarRepartidores);
+
+if (usuario[17] === '4') {
+    listaRepartidores = listaRepartidores.filter(function (cliente) {
+        return cliente[15] === usuario[15];
+    });
+};
 
 mostrarRepartidores();
 

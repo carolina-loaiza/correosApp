@@ -11,7 +11,7 @@ function buscarRepartidor(pNombre){
 
 
 function agregarSucursales() {
-    let lista = obtenerDatoLocal('RegistroLS');
+    let lista = obtenerListaSucursales();
     let datosUsuario = obtenerDatoLocal('usuario');
 
     if (document.getElementById('sltSucursal')){
@@ -25,8 +25,8 @@ function agregarSucursales() {
      
         for(let i = 0; i < lista.length; i++) {
             let opcion = document.createElement('option');
-            opcion.value = lista[i][0];
-            opcion.innerText = lista[i][0];
+            opcion.value = lista[i][1];
+            opcion.innerText = lista[i][1];
             document.getElementById('sltSucursal').appendChild(opcion);
         }
     }

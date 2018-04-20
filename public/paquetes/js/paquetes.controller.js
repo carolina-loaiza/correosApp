@@ -123,7 +123,7 @@
           if (tipoUsuario === '4') {
             let estadoSucursal = fila.insertCell();
             let estadoSucursalTexto = listaEstadosUsuario[i][10] ? listaEstadosUsuario[i][10] : '';
-            estadoSucursal.appendChild(document.createTextNode(estadoSucursalTexto));
+            //estadoSucursal.appendChild(document.createTextNode(estadoSucursalTexto));
           }
         }
     }
@@ -189,21 +189,58 @@
       }
     });
 
-    /* if (estados[1] === "Entregado") {
-      mostrarFactura();
-    } */
+    if (newEstado === "Entregado") {
+      var paqueteEntregado = listaEstadosUsuario.find(function(paquete) {
+        return paquete[0] === idPaquete;
+      });
+
+      crearFactura(paqueteEntregado);
+    }
   }
 
-  function mostrarFactura() {
+  function crearFactura(paqueteEntregado) {
+    var cliente =  obtenerUsuarioDB(paqueteEntregado[10]);
+    var costoImpuesto = (paqueteEntregado[8]*paqueteEntregado[7])/100;
+    var precioFinal = ((paqueteEntregado[5]*paqueteEntregado[14]) + (paqueteEntregado[4]*paqueteEntregado[1]) + (paqueteEntregado[8]+costoImpuesto));
+
+    var data = {
+      nombreCliente: cliente[0]+' '+cliente[2],
+      numeroFactura: Math.floor(Math.random() * 900) + 100,
+      numeroTracking: paqueteEntregado[0],
+      fechaEntrega: fechaActual(),
+      sucursal: paqueteEntregado[3],
+      correo: paqueteEntregado[10],
+      direccion: cliente[11]+', '+cliente[12]+', '+cliente[13]+', '+cliente[14],
+      precioInicial: paqueteEntregado[8],
+      precioFinal: precioFinal,
+      costoKilometro: paqueteEntregado[5],
+      costoPeso: paqueteEntregado[4],
+      distancia: paqueteEntregado[14],
+      peso: paqueteEntregado[1],
+      impuesto: paqueteEntregado[7] 
+    };
+    
     swal({
-      title: "Paquete entregado.",
-      icon: "success",
+      title: "Factura entregada.",
       button: {
-        text: "Ver factura",
+        text: "Cerrar",
         className: "button",
       },
-    }).then(() => {
-      window.location.href = '../factura/factura.html';
     });
+
+    enviarCorreo('factura', false, false, data);
   }
+
+  function fechaActual() {
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1;
+    var yyyy = today.getFullYear();
+
+    if(dd<10) dd = '0'+dd
+
+    if(mm<10) mm = '0'+mm;
+
+    return dd + '/' + mm + '/' + yyyy;
+  };
 })();

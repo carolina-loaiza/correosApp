@@ -1,6 +1,6 @@
+let usuario = obtenerDatoLocal('usuario');
 let listaRepartidores = obtenerListaDB('all_users_by_type?type=5');
 let listaPaquetes = obtenerListaPaquetesDB('Recibido en el centro de distribución');
-let usuario = obtenerDatoLocal('usuario');
 
 document.getElementById('guardarRepartidor').addEventListener('click', cambiarEstado);
 
@@ -62,11 +62,20 @@ function agregarPaquetes() {
 };
 
 function cambiarEstado() {
+    let inputs = document.querySelectorAll('input:required, select');
+    let error = validarInputsRequeridos(inputs);
+
+    if(error == true ) {
+      mostrarMensajeModal('error formulario');
+      return false;
+    }
+
     var idPaquete = document.getElementById('sltPaquete').value;
     var newRepartidor = document.getElementById('sltRepartidor').value;
+    var distancia = document.getElementById('distancia').value;
     var newEstado = 'Tránsito a destino';
 
-    $.ajax({
+    var peticion = $.ajax({
       url: 'http://localhost:4000/api/update_paquete',
       type: 'put',
       contentType: 'application/x-www-form-urlencoded; charset=utf-8',
@@ -75,8 +84,13 @@ function cambiarEstado() {
       data: {
         numero_tracking: idPaquete,
         estado: newEstado,
-        repartidor: newRepartidor
+        repartidor: newRepartidor,
+        distancia_kilometro: distancia,
       }
+    });
+
+    peticion.done(function(response) {
+        document.getElementById('formAsignar').reset();
     });
 }
 

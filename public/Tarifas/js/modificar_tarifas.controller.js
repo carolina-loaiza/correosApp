@@ -1,12 +1,12 @@
 let botonActualizar = document.querySelector('#btnActualizar');
 botonActualizar.addEventListener('click', registrarDatosActualizados);
-var listaSucursales = [["Sucursal #1","Direccion Sucursal #1","312423423", "200", "200"],["Sucursal #2","Direccion Sucursal #2","453453455", "200", "200"],["Sucursal #3","Direccion Sucursal #3","564334535", "200", "200"]];
+var listaSucursales = obtenerListaSucursales();
 
 function agregarSucursales() {
     for(let i = 0; i < listaSucursales.length; i++) {
         let opcion = document.createElement('option');
-        opcion.value = listaSucursales[i][0];
-        opcion.innerText = listaSucursales[i][0];
+        opcion.value = listaSucursales[i][1];
+        opcion.innerText = listaSucursales[i][1];
         document.getElementById('opSucursal').appendChild(opcion);
     }
 }
