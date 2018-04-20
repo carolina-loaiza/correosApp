@@ -41,9 +41,9 @@
     case '1':
       rol = 'Administrador';
       menuOpciones.appendChild(crearLinkMenu('../clientes/registroClientes.html', 'Registro usuarios', ['fas', 'fa-file-alt']));
-      menuOpciones.appendChild(crearLinkMenu('../sucursales/registrar_sucursal.html', 'Otros registros', ['fas', 'fa-file-alt']));
+      menuOpciones.appendChild(crearLinkMenu('../Couriers/registrar_courier.html', 'Otros registros', ['fas', 'fa-file-alt']));
       menuOpciones.appendChild(crearLinkMenu('../clientes/listarClientes.html', 'Listar usuarios', ['far', 'fa-list-alt']));
-      menuOpciones.appendChild(crearLinkMenu('../sucursales/listar_Sucursal.html', 'Otros listados', ['far', 'fa-list-alt']));
+      menuOpciones.appendChild(crearLinkMenu('../Couriers/listar_courier.html', 'Otros listados', ['far', 'fa-list-alt']));
       document.querySelector('.editarPerfil').style.display = 'none';
       crearSubMenuOpciones();
       break;
@@ -135,8 +135,8 @@
 
     if (paginaActual.includes('Otros registros')){
       document.querySelector('#menuOpciones li:nth-child(3) .linkTexto').classList.add('activo');
-      subMenuTexto = ['Sucursal', 'Convenio', 'Ruta', 'Tarifas', 'Tipos de artículos'];
-      subMenuLinks = ['../sucursales/registrar_sucursal.html', '../convenios/registrarConvenios.html', '../rutas_reparto/registrar.html', '../Tarifas/index_registrar.html', '../tiposArticulos/registrar_tiposArticulo.html'];
+      subMenuTexto = ['Couriers', 'Sucursal', 'Convenio', 'Ruta', 'Tarifas', 'Tipos de artículos'];
+      subMenuLinks = ['../Couriers/registrar_courier.html', '../sucursales/registrar_sucursal.html', '../convenios/registrarConvenios.html', '../rutas_reparto/registrar.html', '../Tarifas/index_registrar.html', '../tiposArticulos/registrar_tiposArticulo.html'];
     }
 
     if (paginaActual.includes('Listar usuarios')){
@@ -147,8 +147,8 @@
 
     if (paginaActual.includes('Otros listados')){
       document.querySelector('#menuOpciones li:nth-child(5) .linkTexto').classList.add('activo');
-      subMenuTexto = ['Sucursales', 'Convenios', 'Rutas', 'Tarifas', 'Tipos de artículos'];
-      subMenuLinks = ['../sucursales/listar_Sucursal.html', '../convenios/ListarConvenios.html', '../rutas_reparto/listado.html', '../Tarifas/index_listar.html', '../tiposArticulos/listar_tiposArticulo.html'];
+      subMenuTexto = ['Couriers', 'Sucursales', 'Convenios', 'Rutas', 'Tarifas', 'Tipos de artículos'];
+      subMenuLinks = ['../Couriers/listar_courier.html', '../sucursales/listar_Sucursal.html', '../convenios/ListarConvenios.html', '../rutas_reparto/listado.html', '../Tarifas/index_listar.html', '../tiposArticulos/listar_tiposArticulo.html'];
     }
 
     for (let i = 0; i < subMenuLinks.length; i++) {
