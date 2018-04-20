@@ -1,39 +1,108 @@
+function guardarCourier(pDatosCourier) {
+    let peticion = $.ajax({
+        //los urls tiene que llamarse igual que la ruta en el archivo route
+        url: 'http://localhost:4000/api/registrar_courier',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async:false,
+        data:{
+            'numero' : pDatosCourier[0],
+            'nombre' : pDatosCourier[1],
+            'activo' : pDatosCourier[2]
+        }
+    });
 
-function buscarCourierPorNombre(pCourier) {
-    let listaCouriers = obtenerDatoLocal('listaCouriersLS');
-    let courierEcontrado = [];
+    peticion.done(function(response){
 
-    for(let i = 0; i < listaCouriers.length; i++) {
-        if(pCourier == listaCouriers[i][0]) {
-            courierEcontrado = listaCouriers[i];
-            break;
-        }//if
-    }//for
-    return courierEcontrado;
+    });
+
+    peticion.fail(function() {
+
+    });
 }
 
-function setTemp(data) {
-    localStorage.setItem('tempLS', JSON.stringify(data));
+function obtenerListaCourier(numero) {
+    let listaCouriers = [];
+    let peticion = $.ajax({
+        url: 'http://localhost:4000/api/listar_todos_couriers',
+        type: 'get',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async:false,
+        data:{}
+    });
+
+    peticion.done(function(response) {
+        listaCouriers = response;
+    });
+
+    peticion.fail(function() {
+        
+    });
+
+    return listaCouriers;
+}
+
+
+function buscarCourierPorId(pid) {
+    let courier = [];
+    let peticion = $.ajax({
+        url: 'http://localhost:4000/api/buscar_courier_id',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async:false,
+        data: {
+            'numero' : pid
+        }
+    });
+
+    peticion.done(function(response) {
+        courier = response;
+    });
+
+    peticion.fail(function() {
+
+    });
+
+    return courier;
+}
+
+
+
+function setTemp(numero) {
+    localStorage.setItem('tempCourier', numero);
 }
 
 function getTemp() {
-    return JSON.parse(localStorage.getItem('tempLS'));
+    return localStorage.getItem('tempCourier');
 }
 
 function removeTemp() {
-    localStorage.removeItem('tempLS')
+    localStorage.removeItem('tempCourier');
 }
 
-function actualizarCourier(pInfoCourier) {
-    let listaCouriers = obtenerDatoLocal('listaCouriersLS');
+function actualizarCourier(pDatosCourier) {
+    let peticion = $.ajax({
+        url: 'http://localhost:4000/api/actualizar_courier',
+        type: 'put',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async:false,
+        data:{
+            'numero' : pDatosCourier[0],
+            'nombre' : pDatosCourier[1],
+            'activo' : pDatosCourier[2]
+        }
+    });
 
-    for(let i = 0; i < listaCouriers.length; i++) {
-        if(pInfoCourier[0] == listaCouriers[i][0]) {
-            listaCouriers[i][0] = pInfoCourier[0];
-            listaCouriers[i][1] = pInfoCourier[1];
-            listaCouriers[i][2] = pInfoCourier[2];
-        }//if
-    }//for loop
-    localStorage.setItem('listaCouriersLS', JSON.stringify(listaCouriers));
+    peticion.done(function(response) {
+
+    });
+
+    peticion.fail(function() {
+
+    });
 }
 

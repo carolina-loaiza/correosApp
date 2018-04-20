@@ -1,10 +1,11 @@
-mostrarCouriers();
-console.log(obtenerDatoLocal('listaCouriersLS'));
-
 document.querySelector('#txtFiltro').addEventListener('keyup', mostrarCouriers);
+let listaCouriers = obtenerListaCourier();
+
+
+mostrarCouriers();
+
 
 function mostrarCouriers() {
-    listaCouriers = obtenerDatoLocal('listaCouriersLS');
     let tbody = document.querySelector('#tblCouriers tbody');
 
     let sFiltro = document.querySelector('#txtFiltro').value;
@@ -12,8 +13,8 @@ function mostrarCouriers() {
     tbody.innerHTML = '';
 
     for(let i = 0; i < listaCouriers.length; i++) {
-        if(listaCouriers[i][2] == '1') {
-        if (listaCouriers[i][1].toLowerCase().includes(sFiltro)) {
+        if(listaCouriers[i]['activo'] == '1') {
+        if (listaCouriers[i]['nombre'].toLowerCase().includes(sFiltro)) {
             let fila = tbody.insertRow();
 
             let cNumero = fila.insertCell();
@@ -25,17 +26,17 @@ function mostrarCouriers() {
             cEditar.classList.add('acciones');
             cDesactivar.classList.add('acciones');
 
-            cNumero.appendChild(document.createTextNode(listaCouriers[i][0]));
-            cNombre.appendChild(document.createTextNode(listaCouriers[i][1]));
+            cNumero.appendChild(document.createTextNode(listaCouriers[i]['numero']));
+            cNombre.appendChild(document.createTextNode(listaCouriers[i]['nombre']));
             //crea un elemento anchor y le asocia el href del html de modificar
             let atag = document.createElement('a');
-            atag.setAttribute('href', "index_modificar.html");
+            atag.setAttribute('href', "modificar_courier.html");
             //se crea un icono de editar
             let botonEditar = document.createElement('i');
             botonEditar.classList.add("far", "fa-edit");
             //se envuelve al icono de editar en el elemento anchor
             atag.appendChild(botonEditar);
-            atag.dataset.nombre = listaCouriers[i][0];
+            atag.dataset.courier = listaCouriers[i]['numero'];
             cEditar.appendChild(atag);
 
 
@@ -55,13 +56,14 @@ function mostrarCouriers() {
 }//funcion
 
 function redirect() {
-    var sNombre = this.dataset.nombre;
-    setTemp(sNombre);
+    var courier = this.dataset.courier;
+    setTemp(courier);
 
 }
 
 function eliminar() {
-        let id = this.dataset.indice;
+        let idModificar = this.dataset.indice;
+        let actualizar = [];
         swal({
             title: "¿Está seguro de eliminar el courier?",
             text: "Si lo hace, el registro del mismo desaparecerá por completo",
@@ -77,14 +79,15 @@ function eliminar() {
           })
           .then((botonUsuario) => {
               if(botonUsuario === "Eliminar") {
-                  let listaCouriers = obtenerDatoLocal('listaCouriersLS');
-                  console.log(listaCouriers);
-                  if(listaCouriers[id][2] == '1') {
-                      listaCouriers[id][2] = '0'
-                  }
-                  else {listaCouriers[id][2] = '1'}
-                  actualizarCourier(listaCouriers[id]);
-                  mostrarCouriers();
+            
+                  if(listaCouriers[idModificar]['activo'] == '1') {
+                    listaCouriers[idModificar]['activo'] = '0';
+                 
+                    actualizar.push(listaCouriers[idModificar]['numero'], listaCouriers[idModificar]['nombre'], listaCouriers[idModificar]['activo']);
+                    actualizarCourier(actualizar);
+                    mostrarCouriers();
+                }
+                  
               }
           })
     
