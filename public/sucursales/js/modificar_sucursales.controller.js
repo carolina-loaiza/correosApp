@@ -7,7 +7,6 @@
     function obtenerSucursal() {
         let sNumero=getTemp();
         let infoRepartidor=buscarSucursalPorId(sNumero);
-        console.log(infoRepartidor);
         
         document.querySelector('#numSucursal').value=infoRepartidor['numero'];
         document.querySelector('#txtDireccion').value=infoRepartidor['nombre'];
@@ -20,7 +19,6 @@
     function obtenerActualizar() {
        
             let aSucursales = [];
-            let valido = true;
     
             let inputSucursal = document.querySelector('#numSucursal');
             let sSucursal = inputSucursal.value;
@@ -36,6 +34,7 @@
     
     
             aSucursales.push(sSucursal, sDireccion, sTelefono, activo);
+            guardarDatoLocal('RegistroLS', aSucursales);
             actualizarSucursal(aSucursales);
             removeTemp();
             window.location.href = 'listar_sucursal.html';

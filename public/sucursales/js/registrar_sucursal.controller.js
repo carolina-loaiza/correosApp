@@ -18,7 +18,7 @@ function registrar() {
 
         infoSucursal.push(sSucursal, sDireccion, sTelefono, activo);
         guardarSucursal(infoSucursal);
-        // guardarDatoLocal('RegistroLS',infoRegistro);
+        guardarDatoLocal('RegistroLS',infoSucursal);
         limpiar();
 
         mostrarMensajeModal('registro exitoso');

@@ -59,6 +59,9 @@ app.use('/api', sucursales);
 const tarjetas = require('./components/tarjetas/tarjetas.route');
 app.use('/api', tarjetas);
 
+const couriers = require('./components/couriers/couriers.route');
+app.use('/api', couriers);
+
 module.exports = app;
 
 function _server(){

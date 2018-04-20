@@ -24,6 +24,18 @@
 
   initFotoPerfil();
 
+  function agregarSucursales() {
+    let lista = obtenerDatoLocal('RegistroLS');
+    for(let i = 0; i < lista.length; i++) {
+        let opcion = document.createElement('option');
+        opcion.value = lista[i][0];
+        opcion.innerText = lista[i][0];
+        document.getElementById('opSucursal').appendChild(opcion);
+    }
+}
+
+agregarSucursales();
+
   function guardarDatos() {
     let inputs = document.querySelectorAll('#formRegistroClientes input:required, #formRegistroClientes textarea:required, #formRegistroClientes select[name="genero"]');
     let error = validarInputsRequeridos(inputs);
@@ -99,3 +111,5 @@
   }
 
 })();
+
+

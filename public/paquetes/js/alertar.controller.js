@@ -1,4 +1,5 @@
 (function () {
+  //Tiene que jalar couriers
   var listaCouriers = [["12345678","Nombre del courier #1"],["42342421","Nombre del courier #2"],["421431212","Nombre del courier #3"]];
   var datosUsuario = obtenerDatoLocal('usuario');
   var listaTarjetas = buscarTarjetasPorEmail(datosUsuario[5]);
