@@ -1,6 +1,6 @@
-
 let listarEncAduana = obtenerListaDB('all_users_by_type?type=3');
 document.querySelector('#txtFiltro').addEventListener('keyup', mostrarEncargadoAduana );
+
 mostrarEncargadoAduana();
 
 function mostrarEncargadoAduana() {
@@ -46,7 +46,6 @@ function mostrarEncargadoAduana() {
                 elementA.dataset.correo = listarEncAduana[i][5];
 
                 sModificar.appendChild(elementA);
-
                 elementA.appendChild(botonModificar);
                 sModificar.classList.add('acciones');
 
@@ -55,6 +54,7 @@ function mostrarEncargadoAduana() {
 
 
                 botonDesactivar.dataset.correo = listarEncAduana[i][5];
+                botonDesactivar.addEventListener('click', eliminarEAduana);
 
                 sDesactivar.classList.add('iconos');
             }
@@ -67,3 +67,29 @@ function redirect() {
     let correo = this.dataset.correo;
     localStorage.setItem('tempEncAduanas', correo);
 }
+
+function eliminarEAduana(){
+    let correo = this.dataset.correo;
+    var userEliminar = [];
+    swal({
+        title: "¿Está seguro de desactivar Encargado de Aduanas?",
+        text: "Si lo hace, el registro de Encargado de aduanas desaparecerá por completo",
+        icon: "warning",
+        buttons: {
+            catch: {
+                text: 'Eliminar',
+                value: 'Eliminar',
+                className: 'button',
+            },
+            cancel: 'Cancelar'
+        },
+    })
+    .then((botonUsuario) => {
+        if (botonUsuario === "Eliminar") {
+            let listaEAduanas = obtenerUsuarioDB(correo);
+
+            actualizarUsuario(correo);
+        }
+        mostrarEncargadoAduana();
+    });
+};
