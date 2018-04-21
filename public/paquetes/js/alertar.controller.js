@@ -7,7 +7,7 @@
   var sucursalUsuario = listaSucursales.filter(function(tarifa) {
     return tarifa[2] === datosUsuario[15];
   })[0];
-
+  console.log(listaSucursales);
   var alertarPaquete = document.querySelector('#alertarPaquete');
   alertarPaquete.addEventListener('click', registrarPaquete);
 
@@ -57,7 +57,7 @@
     }
     else {
       var paquete = [];
-
+      console.log(sucursalUsuario);
       var numeroTracking = document.querySelector('#numeroTracking').value;
       var peso = parseInt(document.querySelector('#peso').value);
       var courier = document.querySelector('#opCourier').value;
