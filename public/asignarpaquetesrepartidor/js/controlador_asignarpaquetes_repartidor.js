@@ -3,7 +3,7 @@ let listaRepartidores = obtenerListaDB('all_users_by_type?type=5');
 let listaPaquetes = obtenerListaPaquetesDB('Recibido en el centro de distribución');
 
 document.getElementById('guardarRepartidor').addEventListener('click', cambiarEstado);
-
+console.log(listaRepartidores);
 agregarRepartidores();
 agregarPaquetes();
 
@@ -47,7 +47,7 @@ function agregarRepartidores() {
     for(let i = 0; i < listaRepartidores.length; i++) {
         let opcion = document.createElement('option');
         opcion.value = listaRepartidores[i][5];
-        opcion.innerText = listaRepartidores[i][1] + ' ' + listaRepartidores[i][3];
+        opcion.innerText = listaRepartidores[i][0] + ' ' + listaRepartidores[i][2];
         document.getElementById('sltRepartidor').appendChild(opcion);
     }
 };

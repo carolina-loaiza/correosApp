@@ -33,7 +33,7 @@ function mostrarRepartidores() {
             cPrimernombre.appendChild(document.createTextNode(listaRepartidores[i][0]));
             cPrimerapellido.appendChild(document.createTextNode(listaRepartidores[i][2]));
             cCorreo.appendChild(document.createTextNode(listaRepartidores[i][5]));
-            cSucursal.appendChild(document.createTextNode(listaRepartidores[i][11]));
+            cSucursal.appendChild(document.createTextNode(listaRepartidores[i][15]));
 
             var estado = 'Activo';
             if (listaRepartidores[i][18] == '0') {

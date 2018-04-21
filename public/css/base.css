@@ -155,6 +155,10 @@ footer .footerSociaLinks a {
   float: right;
 }
 
+.userPerfilInfo a {
+  color: #fff;
+}
+
 .userPerfilInfo h3{
   display: inline-block;
   color: #fff;
