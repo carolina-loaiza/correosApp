@@ -7,8 +7,8 @@ module.exports.enviar_correo = function(req, res) {
   let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'cloaizar@ucenfotec.ac.cr',
-      pass: 'U.carolina.cenfo'
+      user: 'xxxxxxxxx',
+      pass: 'xxxxxx'
     },
     tls: {
       ejectUnauthorized: false
